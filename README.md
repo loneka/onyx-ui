@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://suite.loneka.com/OnyxUI">
+  <a href="https://loneka.com/OnyxUI">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="/gh-assets/logo.svg"></source>
       <source media="(prefers-color-scheme: light)" srcset="/gh-assets/logo.svg"></source>
@@ -36,7 +36,7 @@ Give your UI the look and feel you desire with ease.
 
 Messy markup sucks. Style any component, with less code, using OnyxUI's passthrough styling props.
 
-## [Documentation 📄](https://suite.loneka.com/OnyxUI/)
+## [Documentation 📄](https://loneka.com/OnyxUI/)
 
 ##
 
