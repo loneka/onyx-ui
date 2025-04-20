@@ -17,7 +17,7 @@ local Components = {
 	Frame = Frame,
 }
 
-type Props = Frame.Props & {
+export type Props = Frame.Props & {
 	Length: Fusion.UsedAs<UDim>?,
 	FillDirection: Fusion.UsedAs<Enum.FillDirection>?,
 	Color: Fusion.UsedAs<Color3>?,
