@@ -2,15 +2,13 @@ local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
 
-local Scoped = Fusion.scoped
-
 local Components = {
 	Text = require(OnyxUI.Components.Text),
 }
 
 return {
 	story = function(Props)
-		local Scope = Scoped(Fusion, Util, Components)
+		local Scope = Fusion.scoped(Fusion, Util, Components)
 
 		Scope:Text {
 			Parent = Props.target,

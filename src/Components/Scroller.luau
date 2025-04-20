@@ -9,8 +9,6 @@ local Fusion = require(OnyxUI.Parent.Fusion)
 local Themer = require(OnyxUI.Themer)
 local Util = require(OnyxUI.Util)
 
-local InnerScope = Fusion.innerScope
-
 local Base = require(script.Parent.Base)
 local Components = {
 	Base = Base,
@@ -56,7 +54,7 @@ export type Props = Base.Props & {
 		@field VerticalScrollBarPosition Fusion.UsedAs<Enum.VerticalScrollBarPosition>?
 ]=]
 return function(Scope: Fusion.Scope<any>, Props: Props): Instance
-	local Scope = InnerScope(Scope, Fusion, Util, Components)
+	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
 	local BottomImage = Util.Fallback(

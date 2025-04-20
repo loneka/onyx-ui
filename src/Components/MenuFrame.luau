@@ -11,7 +11,6 @@ local Themer = require(OnyxUI.Themer)
 local Util = require(OnyxUI.Util)
 
 local Out = Fusion.Out
-local InnerScope = Fusion.innerScope
 
 local Group = require(script.Parent.Group)
 local Components = {
@@ -27,7 +26,7 @@ export type Props = Group.Props & {}
 		@field ... GroupProps
 ]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
-	local Scope = InnerScope(Scope, Fusion, Util, Components)
+	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
 	local AutomaticSize = Scope:EnsureValue(Util.Fallback(Props.AutomaticSize, Enum.AutomaticSize.None))

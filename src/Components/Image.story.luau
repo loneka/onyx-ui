@@ -3,7 +3,6 @@ local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Themer = require(OnyxUI.Themer)
 
-local Scoped = Fusion.scoped
 local Children = Fusion.Children
 
 local Frame = require(OnyxUI.Components.Frame)

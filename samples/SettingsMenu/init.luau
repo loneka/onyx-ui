@@ -4,7 +4,6 @@ local Fusion = require(script.Parent.Parent.OnyxUI.Packages.Fusion)
 local Themer = OnyxUI.Themer
 local Util = OnyxUI.Util
 local Children = Fusion.Children
-local InnerScope = Fusion.innerScope
 
 local SettingToggle = require(script.SettingToggle)
 
@@ -13,7 +12,7 @@ export type Props = {
 }
 
 return function(Scope: Fusion.Scope<any>, Props: Props)
-	local Scope = InnerScope(Scope, Fusion, OnyxUI.Util, OnyxUI.Components, {
+	local Scope = Fusion.innerScope(Scope, Fusion, OnyxUI.Util, OnyxUI.Components, {
 		SettingToggle = SettingToggle,
 	})
 	local Theme = Themer.Theme:now()

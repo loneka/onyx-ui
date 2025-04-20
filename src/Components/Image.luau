@@ -8,8 +8,6 @@ local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
 
-local InnerScope = Fusion.innerScope
-
 local Base = require(script.Parent.Base)
 local Components = {
 	Base = Base,
@@ -47,7 +45,7 @@ export type Props = Base.Props & {
 		@field TileSize Fusion.UsedAs<UDim2>?
 ]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
-	local Scope = InnerScope(Scope, Fusion, Util, Components)
+	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 
 	local FallbackImage = Util.Fallback(Props.FallbackImage, "rbxasset://textures/ui/GuiImagePlaceholder.png")
 	local Image = Util.Fallback(Props.Image, nil)

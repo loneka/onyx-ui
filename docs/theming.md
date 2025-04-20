@@ -20,9 +20,9 @@ Check out [ThemeSpec.luau](https://github.com/ImAvafe/OnyxUI/blob/main/src/Theme
 1. Copy the following code into a new "`MyTheme`" module
   ```lua
   local Themer = OnyxUI.Themer
-  local Scoped = Fusion.scoped
+  
 
-  local Scope = Scoped()
+  local Scope = Fusion.scoped()
 
   local MyTheme = Themer.NewTheme(Scope, {
     -- Specify theme properties here

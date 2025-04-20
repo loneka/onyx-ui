@@ -4,7 +4,6 @@ local Fusion = require(OnyxUI.Parent.Fusion)
 local Themer = require(OnyxUI.Themer)
 
 local Children = Fusion.Children
-local Scoped = Fusion.scoped
 
 local TitleBar = require(OnyxUI.Components.TitleBar)
 local Frame = require(OnyxUI.Components.Frame)

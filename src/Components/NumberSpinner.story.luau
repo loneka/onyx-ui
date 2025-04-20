@@ -3,8 +3,6 @@ local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 
 local Children = Fusion.Children
-local Scoped = Fusion.scoped
-local Peek = Fusion.peek
 
 local Frame = require(OnyxUI.Components.Frame)
 local NumberSpinner = require(OnyxUI.Components.NumberSpinner)
@@ -33,7 +31,7 @@ return {
 		end)
 		local CountThread = task.spawn(function()
 			while task.wait(1) do
-				CountNumber:set(Peek(CountNumber) + 1)
+				CountNumber:set(Fusion.peek(CountNumber) + 1)
 			end
 		end)
 

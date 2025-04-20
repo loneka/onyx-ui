@@ -4,9 +4,7 @@ local Fusion = require(OnyxUI.Parent.Fusion)
 local Themer = require(OnyxUI.Themer)
 local Util = require(OnyxUI.Util)
 
-local Scoped = Fusion.scoped
 local Children = Fusion.Children
-local Peek = Fusion.peek
 
 local Frame = require(script.Parent.Frame)
 local Avatar = require(script.Parent.Avatar)
@@ -24,16 +22,16 @@ return {
 		local Theme = Themer.Theme:now()
 
 		local IndicatorColor = Scope:Value(INDICATOR_COLORS[2])
-		local RingThickness = Scope:Value(Peek(Theme.StrokeThickness["2"]))
+		local RingThickness = Scope:Value(Fusion.peek(Theme.StrokeThickness["2"]))
 
 		local RandomizerThread = task.spawn(function()
 			while task.wait(1) do
 				IndicatorColor:set(INDICATOR_COLORS[math.random(1, #INDICATOR_COLORS)])
 
-				if Peek(RingThickness) == Peek(Theme.StrokeThickness["2"]) then
-					RingThickness:set(Peek(Theme.StrokeThickness["3"]))
+				if Fusion.peek(RingThickness) == Fusion.peek(Theme.StrokeThickness["2"]) then
+					RingThickness:set(Fusion.peek(Theme.StrokeThickness["3"]))
 				else
-					RingThickness:set(Peek(Theme.StrokeThickness["2"]))
+					RingThickness:set(Fusion.peek(Theme.StrokeThickness["2"]))
 				end
 			end
 		end)

@@ -33,16 +33,12 @@ Here's a basic component example, making use of some of OnyxUI's features.
 local OnyxUI = require(path.to.OnyxUI)
 local Fusion = require(path.to.Fusion)
 
-local Themer = OnyxUI.Themer
-local InnerScope = Fusion.innerScope
-local Util = OnyxUI.Util
-
 return function(Scope: Fusion.Scope<any>, Props)
-	local Scope = InnerScope(Scope, Fusion, OnyxUI.Util, OnyxUI.Components)
-	local Theme = Themer.Theme:now()
+	local Scope = Fusion.innerScope(Scope, Fusion, OnyxUI.Util, OnyxUI.Components)
+	local Theme = OnyxUI.Themer.Theme:now()
 
 	return Scope:Card {
-		BackgroundColor3 = Util.Colors.Gray["200"],
+		BackgroundColor3 = OnyxUI.Util.Colors.Gray["200"],
 		Padding = Scope:Computed(function(Use)
 			return UDim.new(0, Use(Theme.Spacing["2"]))
 		end),

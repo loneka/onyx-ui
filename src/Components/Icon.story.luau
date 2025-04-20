@@ -1,8 +1,6 @@
 local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 
-local Scoped = Fusion.scoped
-
 local Icon = require(script.Parent.Icon)
 local Components = {
 	Icon = Icon,

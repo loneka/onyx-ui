@@ -12,12 +12,10 @@
 local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 
-local Peek = Fusion.peek
-
 return function(Scope: Fusion.Scope<any>, Value: Fusion.UsedAs<any>): Fusion.Value<Fusion.Scope<any>, any>
 	if (typeof(Value) == "table") and (Value.kind == "Value") then
 		return Value
 	else
-		return Fusion.Value(Scope, Peek(Value))
+		return Fusion.Value(Scope, Fusion.peek(Value))
 	end
 end

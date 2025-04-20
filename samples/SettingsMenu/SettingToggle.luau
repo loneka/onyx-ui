@@ -4,7 +4,6 @@ local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
 
 local Children = Fusion.Children
-local InnerScope = Fusion.innerScope
 
 local SwitchGroup = require(OnyxUI.Components.SwitchGroup)
 local SwitchInput = require(OnyxUI.Components.SwitchInput)
@@ -22,7 +21,7 @@ export type Props = SwitchGroup.Props & {
 }
 
 local function SettingToggle(Scope: Fusion.Scope<any>, Props: Props)
-	local Scope = InnerScope(Scope, Fusion, Util, Components)
+	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
 	local Switched = Scope:EnsureValue(Util.Fallback(Props.Switched, false))

@@ -9,9 +9,7 @@ local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
 
-local InnerScope = Fusion.innerScope
 local Children = Fusion.Children
-local Peek = Fusion.peek
 
 local BaseButton = require(script.Parent.BaseButton)
 local Components = {
@@ -40,7 +38,7 @@ export type Props = BaseButton.Props & {
 		@field ContentSize Fusion.UsedAs<number>?
 ]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
-	local Scope = InnerScope(Scope, Fusion, Util, Components)
+	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
 	local Options = Util.Fallback(Props.Options, {})
@@ -83,8 +81,8 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	end)
 
 	local function RotateSelection(Increment: number)
-		local OptionsValue = Peek(Options)
-		local SelectionValue = Peek(Selection)
+		local OptionsValue = Fusion.peek(Options)
+		local SelectionValue = Fusion.peek(Selection)
 		local NewSelection = SelectionValue + Increment
 
 		if NewSelection > #OptionsValue then
@@ -96,9 +94,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		Selection:set(NewSelection)
 	end
 
-	local OldSelectionValue = Peek(Props.Selection) or 1
+	local OldSelectionValue = Fusion.peek(Props.Selection) or 1
 	Scope:Observer(Selection):onChange(function()
-		local SelectionValue = Peek(Selection)
+		local SelectionValue = Fusion.peek(Selection)
 
 		local SelectionIncreased = SelectionValue > OldSelectionValue
 		ShownIncrement:set((SelectionIncreased and 1) or -1)

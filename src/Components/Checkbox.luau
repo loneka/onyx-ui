@@ -9,9 +9,7 @@ local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
 
-local Peek = Fusion.peek
 local Children = Fusion.Children
-local InnerScope = Fusion.innerScope
 
 local BaseButton = require(script.Parent.BaseButton)
 local Icon = require(script.Parent.Icon)
@@ -39,7 +37,7 @@ local DISABLED_CONTENT_TRANSPARENCY = 0.75
 		@field Color Fusion.UsedAs<Color3>?
 ]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
-	local Scope = InnerScope(Scope, Fusion, Util, Components)
+	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
 	local Checked = Scope:EnsureValue(Util.Fallback(Props.Checked, false))
@@ -99,7 +97,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		IsHolding = IsHolding,
 
 		OnActivated = function()
-			Checked:set(not Peek(Checked))
+			Checked:set(not Fusion.peek(Checked))
 		end,
 
 		[Children] = {

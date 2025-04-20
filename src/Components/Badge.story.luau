@@ -4,9 +4,7 @@ local Fusion = require(OnyxUI.Parent.Fusion)
 local Themer = require(OnyxUI.Themer)
 local Util = require(OnyxUI.Util)
 
-local Scoped = Fusion.scoped
 local Children = Fusion.Children
-local Peek = Fusion.peek
 
 local Frame = require(OnyxUI.Components.Frame)
 local Badge = require(OnyxUI.Components.Badge)
@@ -26,11 +24,11 @@ return {
 
 		local CountThread = task.spawn(function()
 			while task.wait(0.08) do
-				if Peek(NotificationCount) == 100 then
+				if Fusion.peek(NotificationCount) == 100 then
 					task.wait(3)
 					NotificationCount:set(1)
 				else
-					NotificationCount:set(Peek(NotificationCount) + 1)
+					NotificationCount:set(Fusion.peek(NotificationCount) + 1)
 				end
 			end
 		end)

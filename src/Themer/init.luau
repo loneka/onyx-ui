@@ -22,7 +22,6 @@ local NewTheme = require(script.NewTheme)
 local ThemeSpec = require(script.ThemeSpec)
 local Fusion = require(OnyxUI.Parent.Fusion)
 
-local Scoped = Fusion.scoped
 local Contextual = Fusion.Contextual
 
 export type ThemeSpec = ThemeSpec.ThemeSpec
@@ -52,6 +51,6 @@ end
 local Theme: Fusion.Contextual<Theme> = Contextual(OnyxNightTheme)
 Themer.Theme = Theme
 
-export type Theme = typeof(Themer.NewTheme(Scoped(), {}))
+export type Theme = typeof(Themer.NewTheme(Fusion.scoped(), {}))
 
 return Themer

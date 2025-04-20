@@ -10,9 +10,7 @@ local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
 
-local Peek = Fusion.peek
 local Children = Fusion.Children
-local InnerScope = Fusion.innerScope
 
 local Frame = require(script.Parent.Frame)
 local BaseButton = require(script.Parent.BaseButton)
@@ -36,7 +34,7 @@ export type Props = BaseButton.Props & {
 		@field Color Fusion.UsedAs<Color3>?
 ]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
-	local Scope = InnerScope(Scope, Fusion, Util, Components)
+	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
 	local Switched = Scope:EnsureValue(Util.Fallback(Props.Switched, false))
@@ -130,7 +128,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		IsHovering = IsHovering,
 		IsHolding = IsHolding,
 		OnActivated = function()
-			Switched:set(not Peek(Switched))
+			Switched:set(not Fusion.peek(Switched))
 		end,
 
 		[Children] = {

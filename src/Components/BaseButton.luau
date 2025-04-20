@@ -11,9 +11,7 @@ local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
 
-local Peek = Fusion.peek
 local OnEvent = Fusion.OnEvent
-local InnerScope = Fusion.innerScope
 
 local Base = require(script.Parent.Base)
 local Components = {
@@ -53,7 +51,7 @@ export type Props = Base.Props & {
 }
 
 return function(Scope: Fusion.Scope<any>, Props: Props)
-	local Scope = InnerScope(Scope, Fusion, Util, Components)
+	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
 	local Disabled = Util.Fallback(Props.Disabled, false)
@@ -91,39 +89,39 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		TextSize = 0,
 
 		[OnEvent "Activated"] = function()
-			if not Peek(Disabled) then
-				SoundService:PlayLocalSound(Peek(ClickSound))
-				Peek(OnActivated)()
+			if not Fusion.peek(Disabled) then
+				SoundService:PlayLocalSound(Fusion.peek(ClickSound))
+				Fusion.peek(OnActivated)()
 			end
 		end,
 		[OnEvent "MouseEnter"] = function()
-			if Peek(Active) then
-				SoundService:PlayLocalSound(Peek(HoverSound))
+			if Fusion.peek(Active) then
+				SoundService:PlayLocalSound(Fusion.peek(HoverSound))
 			end
 			IsHovering:set(true)
-			Peek(OnMouseEnter)()
+			Fusion.peek(OnMouseEnter)()
 		end,
 		[OnEvent "SelectionGained"] = function()
-			if Peek(Active) then
-				SoundService:PlayLocalSound(Peek(HoverSound))
+			if Fusion.peek(Active) then
+				SoundService:PlayLocalSound(Fusion.peek(HoverSound))
 			end
 			IsHovering:set(true)
-			Peek(OnMouseEnter)()
+			Fusion.peek(OnMouseEnter)()
 		end,
 		[OnEvent "MouseLeave"] = function()
 			IsHovering:set(false)
 			IsHolding:set(false)
-			Peek(OnMouseLeave)()
+			Fusion.peek(OnMouseLeave)()
 		end,
 		[OnEvent "MouseButton1Down"] = function()
-			if not Peek(Disabled) then
+			if not Fusion.peek(Disabled) then
 				IsHolding:set(true)
-				Peek(OnMouseButton1Down)()
+				Fusion.peek(OnMouseButton1Down)()
 			end
 		end,
 		[OnEvent "MouseButton1Up"] = function()
 			IsHolding:set(false)
-			Peek(OnMouseButton1Up)()
+			Fusion.peek(OnMouseButton1Up)()
 		end,
 	}
 end

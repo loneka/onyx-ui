@@ -12,10 +12,10 @@ Want to ensure your component props are Fusion `Value`s? This makes it a one-lin
 
 ```lua
 local Util = OnyxUI.Util
-local InnerScope = Fusion.innerScope
+
 
 return function(Props)
-  local Scope = InnerScope(Scope, Util)
+  local Scope = Fusion.innerScope(Scope, Util)
 
   local MyProp = Scope:Fallback(Props.MyProp, "Default")
 end
@@ -29,10 +29,10 @@ Let's say you have a "CustomButton" component, and you want it to support `Size`
 local Util = OnyxUI.Util
 local Themer = OnyxUI.Themer
 local Components = OnyxUI.Components
-local InnerScope = Fusion.innerScope
+
 
 return function(Props)
-  local Scope = InnerScope(Scope, Fusion, Util, Components)
+  local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
   local Theme = Themer.Theme:now()
 
   return Scope:BaseButton(Util.CombineProps(Props, {

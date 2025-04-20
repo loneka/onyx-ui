@@ -4,7 +4,6 @@ local Fusion = require(OnyxUI.Parent.Fusion)
 local Themer = require(OnyxUI.Themer)
 
 local Children = Fusion.Children
-local Scoped = Fusion.scoped
 
 local TextInput = require(script.Parent.TextInput)
 local Frame = require(script.Parent.Frame)

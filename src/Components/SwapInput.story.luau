@@ -3,7 +3,6 @@ local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
 
-local Scoped = Fusion.scoped
 local Children = Fusion.Children
 
 local Components = {
@@ -13,7 +12,7 @@ local Components = {
 
 return {
 	story = function(Props)
-		local Scope = Scoped(Fusion, Util, Components)
+		local Scope = Fusion.scoped(Fusion, Util, Components)
 		local Theme = Themer.Theme:now()
 
 		Scope:Frame {

@@ -9,8 +9,6 @@ local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
 
-local InnerScope = Fusion.innerScope
-
 local Base = require(script.Parent.Base)
 local Components = {
 	Base = Base,
@@ -56,7 +54,7 @@ export type Props = Base.Props & {
 		@field TextTransparency Fusion.UsedAs<number>?
 ]=]
 return function(Scope: Fusion.Scope<any>, Props: Props): Instance
-	local Scope = InnerScope(Scope, Fusion, Util, Components)
+	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
 	local TextColor3 = Util.Fallback(Props.TextColor3, Theme.Colors.BaseContent.Main)

@@ -11,7 +11,6 @@ local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
 
 local Children = Fusion.Children
-local InnerScope = Fusion.innerScope
 
 local Frame = require(script.Parent.Frame)
 local IconButton = require(script.Parent.IconButton)
@@ -46,7 +45,7 @@ export type Props = Frame.Props & {
 		@field OnClose Fusion.UsedAs<() -> ()>?
 ]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
-	local Scope = InnerScope(Scope, Fusion, Util, Components)
+	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
 	local Content = Util.Fallback(Props.Content, {})

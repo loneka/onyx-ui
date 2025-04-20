@@ -4,7 +4,6 @@ local Themer = require(OnyxUI.Themer)
 local BitCave = require(script.Parent.Parent.Themes.BitCave)
 
 local Children = Fusion.Children
-local Scoped = Fusion.scoped
 
 local Frame = require(OnyxUI.Components.Frame)
 local SettingsMenu = require(script.Parent)

@@ -11,9 +11,7 @@ local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
 
-local Peek = Fusion.peek
 local OnEvent = Fusion.OnEvent
-local InnerScope = Fusion.innerScope
 
 local Base = require(script.Parent.Base)
 local Components = {
@@ -71,7 +69,7 @@ export type Props = Base.Props & {
 }
 
 return function(Scope: Fusion.Scope<any>, Props: Props)
-	local Scope = InnerScope(Scope, Fusion, Util, Components)
+	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
 	local Text = Scope:EnsureValue(Util.Fallback(Props.Text, ""))
@@ -126,8 +124,8 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local InvalidInputActive = Scope:Value(false)
 
 	local function ProcessText(NewText: string)
-		local CharacterLimitValue = Peek(CharacterLimit)
-		local TextProcessorValue = Peek(TextProcessor)
+		local CharacterLimitValue = Fusion.peek(CharacterLimit)
+		local TextProcessorValue = Fusion.peek(TextProcessor)
 		local LimitedText = NewText:sub(1, utf8.offset(NewText, CharacterLimitValue))
 		local FullyProcessedText = TextProcessorValue(LimitedText)
 
@@ -205,24 +203,24 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		TextWrapped = Props.TextWrapped,
 
 		[OnEvent "Focused"] = function()
-			if (not Peek(Disabled)) and Peek(TextEditable) then
+			if (not Fusion.peek(Disabled)) and Fusion.peek(TextEditable) then
 				IsFocused:set(true)
-				SoundService:PlayLocalSound(Peek(Theme.Sound.Focus))
-				Peek(OnFocused)()
+				SoundService:PlayLocalSound(Fusion.peek(Theme.Sound.Focus))
+				Fusion.peek(OnFocused)()
 			end
 		end,
 		[OnEvent "FocusLost"] = function()
 			IsFocused:set(false)
-			Peek(OnFocusLost)()
+			Fusion.peek(OnFocusLost)()
 		end,
 		[OnEvent "MouseEnter"] = function()
-			if not Peek(Disabled) then
-				SoundService:PlayLocalSound(Peek(Theme.Sound.Hover))
+			if not Fusion.peek(Disabled) then
+				SoundService:PlayLocalSound(Fusion.peek(Theme.Sound.Hover))
 			end
 		end,
 		[OnEvent "SelectionGained"] = function()
-			if (not Peek(Disabled)) and Peek(TextEditable) then
-				SoundService:PlayLocalSound(Peek(Theme.Sound.Hover))
+			if (not Fusion.peek(Disabled)) and Fusion.peek(TextEditable) then
+				SoundService:PlayLocalSound(Fusion.peek(Theme.Sound.Hover))
 			end
 		end,
 	}

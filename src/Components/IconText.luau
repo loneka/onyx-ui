@@ -10,7 +10,6 @@ local Fusion = require(OnyxUI.Parent.Fusion)
 local Themer = require(OnyxUI.Themer)
 
 local Children = Fusion.Children
-local InnerScope = Fusion.innerScope
 
 local Frame = require(OnyxUI.Components.Frame)
 local Text = require(OnyxUI.Components.Text)
@@ -45,7 +44,7 @@ export type Props = Frame.Props & {
 		@field ContentFontFace Fusion.UsedAs<Font>?
 ]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
-	local Scope = InnerScope(Scope, Fusion, Util, Components)
+	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
 	local Content = Util.Fallback(Props.Content, {})
