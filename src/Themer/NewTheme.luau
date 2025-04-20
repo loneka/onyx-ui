@@ -162,8 +162,28 @@ local function NewTheme(Scope: Fusion.Scope<any>, ThemeSpec: ThemeSpec)
 			["3.75"] = Scope:Value(nil),
 			["4.5"] = Scope:Value(nil),
 		},
-		Spacing = {
+		Padding = {
 			Base = Scope:Value(16),
+			["0"] = Scope:Value(0),
+			["0.25"] = Scope:Value(nil),
+			["0.5"] = Scope:Value(nil),
+			["0.75"] = Scope:Value(nil),
+			["1"] = Scope:Value(nil),
+			["1.5"] = Scope:Value(nil),
+			["2"] = Scope:Value(nil),
+			["3"] = Scope:Value(nil),
+			["4"] = Scope:Value(nil),
+			["6"] = Scope:Value(nil),
+			["8"] = Scope:Value(nil),
+			["12"] = Scope:Value(nil),
+			["16"] = Scope:Value(nil),
+			["24"] = Scope:Value(nil),
+			["32"] = Scope:Value(nil),
+			["40"] = Scope:Value(nil),
+			["48"] = Scope:Value(nil),
+		},
+		Spacing = {
+			Base = Scope:Value(22),
 			["0"] = Scope:Value(0),
 			["0.25"] = Scope:Value(nil),
 			["0.5"] = Scope:Value(nil),
@@ -260,6 +280,7 @@ local function NewTheme(Scope: Fusion.Scope<any>, ThemeSpec: ThemeSpec)
 	ReconcileValues(ThemeObject, ThemeSpec)
 
 	ProcessColors(ThemeObject)
+	ProcessMultipliers(ThemeObject.Padding)
 	ProcessMultipliers(ThemeObject.Spacing)
 	ProcessMultipliers(ThemeObject.TextSize)
 	ProcessMultipliers(ThemeObject.CornerRadius)

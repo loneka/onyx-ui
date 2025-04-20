@@ -78,7 +78,7 @@ return {
 					ListFillDirection = Enum.FillDirection.Horizontal,
 					ListVerticalAlignment = Enum.VerticalAlignment.Center,
 					Padding = Scope:Computed(function(Use)
-						return UDim.new(0, Use(Theme.Spacing["1"]))
+						return UDim.new(0, Use(Theme.Padding["1"]))
 					end),
 
 					[Children] = {

@@ -24,7 +24,7 @@ return {
 				return UDim.new(0, Use(Theme.StrokeThickness["1"]))
 			end),
 			Size = Scope:Computed(function(Use)
-				return UDim2.fromOffset(Use(Theme.Spacing["16"]), 0)
+				return UDim2.fromOffset(Use(Theme.Padding["16"]), 0)
 			end),
 			AutomaticSize = Enum.AutomaticSize.Y,
 			ListEnabled = true,

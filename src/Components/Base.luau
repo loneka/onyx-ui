@@ -269,7 +269,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 	local Padding = Util.Fallback(
 		Props.Padding,
 		Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Spacing["1"]))
+			return UDim.new(0, Use(Theme.Padding["1"]))
 		end)
 	)
 	local PaddingBottom = Util.Fallback(Props.PaddingBottom, Props.Padding)

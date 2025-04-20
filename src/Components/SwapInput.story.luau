@@ -19,7 +19,7 @@ return {
 		Scope:Frame {
 			Parent = Props.target,
 			Size = Scope:Computed(function(Use)
-				return UDim2.fromOffset(Use(Theme.Spacing["16"]), 0)
+				return UDim2.fromOffset(Use(Theme.Padding["16"]), 0)
 			end),
 			AutomaticSize = Enum.AutomaticSize.Y,
 			Padding = Scope:Computed(function(Use)

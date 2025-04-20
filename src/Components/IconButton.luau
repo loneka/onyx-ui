@@ -33,7 +33,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 	local Image = Util.Fallback(Props.Image, "")
 	local Padding = Scope:Computed(function(Use)
-		return UDim.new(0, Use(Theme.Spacing["0.25"]))
+		return UDim.new(0, Use(Theme.Padding["0.25"]))
 	end)
 
 	return Scope:Button(Util.CombineProps(Props, {

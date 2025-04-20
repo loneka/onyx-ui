@@ -113,7 +113,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		ListFillDirection = Enum.FillDirection.Horizontal,
 		ListVerticalAlignment = Enum.VerticalAlignment.Center,
 		Padding = Scope:Computed(function(Use)
-			local Offset = Use(Theme.Spacing["0.25"])
+			local Offset = Use(Theme.Padding["0.25"])
 			return UDim.new(0, Offset)
 		end),
 		StrokeEnabled = true,

@@ -141,7 +141,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			return UDim.new(0, Use(Theme.CornerRadius["1"]))
 		end),
 		Padding = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Spacing["0.5"]))
+			return UDim.new(0, Use(Theme.Padding["0.5"]))
 		end),
 		StrokeEnabled = true,
 		StrokeColor = Scope:Spring(

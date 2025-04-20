@@ -123,11 +123,11 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	end)
 	local PaddingX = Scope:Computed(function(Use)
 		local VariantSizes = {
-			ExtraSmall = Use(Theme.Spacing["0.25"]),
-			Small = Use(Theme.Spacing["0.5"]),
-			Medium = Use(Theme.Spacing["0.75"]),
-			Large = Use(Theme.Spacing["1"]),
-			ExtraLarge = Use(Theme.Spacing["1.5"]),
+			ExtraSmall = Use(Theme.Padding["0.25"]),
+			Small = Use(Theme.Padding["0.5"]),
+			Medium = Use(Theme.Padding["0.75"]),
+			Large = Use(Theme.Padding["1"]),
+			ExtraLarge = Use(Theme.Padding["1.5"]),
 		}
 
 		return UDim.new(0, VariantSizes[Use(SizeVariant)])
@@ -141,7 +141,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			ExtraLarge = 2,
 		}
 
-		return UDim.new(0, Use(Theme.Spacing["0.25"]) * VariantSizes[Use(SizeVariant)])
+		return UDim.new(0, Use(Theme.Padding["0.25"]) * VariantSizes[Use(SizeVariant)])
 	end)
 
 	return Scope:BaseButton(Util.CombineProps(Props, {
