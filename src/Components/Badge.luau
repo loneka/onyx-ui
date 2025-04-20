@@ -9,7 +9,6 @@ local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
-local ColorUtils = require(OnyxUI.Parent.ColorUtils)
 
 local Children = Fusion.Children
 local InnerScope = Fusion.innerScope
@@ -52,7 +51,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		Props.ContentColor,
 
 		Scope:Computed(function(Use)
-			return ColorUtils.Emphasize(Use(Color), Use(Theme.Emphasis.Contrast))
+			return Util.Emphasize(Use(Color), Use(Theme.Emphasis.Contrast))
 		end)
 	)
 	local ContentSize = Util.Fallback(Props.ContentSize, Theme.TextSize["1"])

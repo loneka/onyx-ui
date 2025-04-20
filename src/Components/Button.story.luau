@@ -36,6 +36,10 @@ return {
 				},
 				Scope:Button {
 					Content = { "Button" },
+					Color = Theme.Colors.BaseContent.Main,
+				},
+				Scope:Button {
+					Content = { "Button" },
 					Color = Theme.Colors.Primary.Main,
 				},
 				Scope:Button {

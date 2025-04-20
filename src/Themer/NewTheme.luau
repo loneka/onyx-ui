@@ -30,7 +30,7 @@ local function ProcessColors(ThemeObject)
 		local MainValue = Peek(ColorObject.Main)
 		if MainValue ~= nil then
 			if Peek(ColorObject.Contrast) == nil then
-				ColorObject.Contrast:set(ColorUtils.Emphasize(MainValue, Peek(ThemeObject.Emphasis.Contrast)))
+				ColorObject.Contrast:set(Util.Emphasize(MainValue, Peek(ThemeObject.Emphasis.Contrast)))
 			end
 
 			if Peek(ColorObject.Dark) == nil then
@@ -250,9 +250,9 @@ local function NewTheme(Scope: Fusion.Scope<any>, ThemeSpec: ThemeSpec)
 			}),
 		},
 		Emphasis = {
-			Light = Scope:Value(0.15),
-			Regular = Scope:Value(0.3),
-			Strong = Scope:Value(0.5),
+			Light = Scope:Value(0.1),
+			Regular = Scope:Value(0.2),
+			Strong = Scope:Value(0.3),
 			Contrast = Scope:Value(1),
 		},
 	}

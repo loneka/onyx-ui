@@ -6,7 +6,6 @@
 
 local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
-local ColorUtils = require(OnyxUI.Parent.ColorUtils)
 local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
 
@@ -63,7 +62,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local ContentColor = Util.Fallback(
 		Props.ContentColor,
 		Scope:Computed(function(Use)
-			return ColorUtils.Emphasize(Use(Color), Use(Theme.Emphasis.Contrast))
+			return Util.Emphasize(Use(Color), Use(Theme.Emphasis.Contrast))
 		end)
 	)
 	local ContentSize = Util.Fallback(
@@ -89,12 +88,14 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		if Use(Disabled) then
 			return Use(Theme.Colors.BaseContent.Main)
 		else
+			local BaseColor = Use(Color)
+
 			if Use(IsHolding) then
-				return ColorUtils.Emphasize(Use(Color), Use(Theme.Emphasis.Regular))
+				return Util.Emphasize(BaseColor, Use(Theme.Emphasis.Regular))
 			elseif Use(IsHovering) then
-				return ColorUtils.Emphasize(Use(Color), Use(Theme.Emphasis.Light))
+				return Util.Emphasize(BaseColor, Use(Theme.Emphasis.Light))
 			else
-				return Use(Color)
+				return BaseColor
 			end
 		end
 	end)

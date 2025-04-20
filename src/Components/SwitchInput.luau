@@ -9,7 +9,6 @@ local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
-local ColorUtils = require(OnyxUI.Parent.ColorUtils)
 
 local Peek = Fusion.peek
 local Children = Fusion.Children
@@ -63,9 +62,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 		if not Use(Disabled) then
 			if Use(IsHolding) then
-				return ColorUtils.Emphasize(Use(ActiveColor), Use(Theme.Emphasis.Regular))
+				return Util.Emphasize(Use(ActiveColor), Use(Theme.Emphasis.Regular))
 			elseif Use(IsHovering) then
-				return ColorUtils.Emphasize(Use(ActiveColor), Use(Theme.Emphasis.Light))
+				return Util.Emphasize(Use(ActiveColor), Use(Theme.Emphasis.Light))
 			end
 		end
 
@@ -82,13 +81,13 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		if not Use(Disabled) then
 			if Use(IsHolding) then
 				if not Use(Switched) then
-					return ColorUtils.Emphasize(Use(ActiveColor), Use(Theme.Emphasis.Regular))
+					return Util.Emphasize(Use(ActiveColor), Use(Theme.Emphasis.Regular))
 				else
 					return ActiveColor
 				end
 			elseif Use(IsHovering) then
 				if not Use(Switched) then
-					return ColorUtils.Emphasize(Use(ActiveColor), Use(Theme.Emphasis.Light))
+					return Util.Emphasize(Use(ActiveColor), Use(Theme.Emphasis.Light))
 				else
 					return ActiveColor
 				end

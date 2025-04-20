@@ -8,7 +8,6 @@ local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
-local ColorUtils = require(OnyxUI.Parent.ColorUtils)
 
 local Peek = Fusion.peek
 local Children = Fusion.Children
@@ -55,9 +54,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			return Use(Theme.Colors.BaseContent.Main)
 		else
 			if Use(IsHolding) then
-				return ColorUtils.Emphasize(Use(Color), Use(Theme.Emphasis.Regular))
+				return Util.Emphasize(Use(Color), Use(Theme.Emphasis.Regular))
 			elseif Use(IsHovering) then
-				return ColorUtils.Emphasize(Use(Color), Use(Theme.Emphasis.Light))
+				return Util.Emphasize(Use(Color), Use(Theme.Emphasis.Light))
 			else
 				return Use(Color)
 			end
@@ -123,7 +122,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 					Theme.SpringDampening["1"]
 				),
 				ImageColor3 = Scope:Computed(function(Use)
-					return ColorUtils.Emphasize(Use(Color), Use(Theme.Emphasis.Contrast))
+					return Util.Emphasize(Use(Color), Use(Theme.Emphasis.Contrast))
 				end),
 				Rotation = Scope:Spring(
 					Scope:Computed(function(Use)
