@@ -27,7 +27,6 @@ classes = [
   "Divider",
   "AutoScaleFrame",
   "Image",
-  "NumberSpinner",
   "IconText",
   "Heading",
   "SwapInput",

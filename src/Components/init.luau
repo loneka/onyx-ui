@@ -19,7 +19,6 @@ local Components = {
 	IconText = require(script.IconText),
 	Image = require(script.Image),
 	MenuFrame = require(script.MenuFrame),
-	NumberSpinner = require(script.NumberSpinner),
 	ProgressBar = require(script.ProgressBar),
 	Scroller = require(script.Scroller),
 	SwitchInput = require(script.SwitchInput),
