@@ -108,6 +108,11 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			IsHovering:set(true)
 			Fusion.peek(OnMouseEnter)()
 		end,
+		[OnEvent "SelectionLost"] = function()
+			IsHovering:set(false)
+			IsHolding:set(false)
+			Fusion.peek(OnMouseLeave)()
+		end,
 		[OnEvent "MouseLeave"] = function()
 			IsHovering:set(false)
 			IsHolding:set(false)
