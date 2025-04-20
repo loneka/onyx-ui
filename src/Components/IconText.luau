@@ -69,27 +69,30 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		end),
 
 		[Children] = {
-			Scope:ForValues(Content, function(Use, Scope, ContentString: string)
-				if string.find(ContentString, "rbxassetid://", 1, true) then
-					return Scope:Icon {
-						Image = ContentString,
-						ImageColor3 = ContentColor,
-						Size = Scope:Computed(function(Use)
-							return UDim2.fromOffset(Use(ContentSize), Use(ContentSize))
-						end),
-						ImageTransparency = ContentTransparency,
-					}
-				else
-					return Scope:Text {
-						Text = ContentString,
-						TextColor3 = ContentColor,
-						TextSize = ContentSize,
-						TextTransparency = ContentTransparency,
-						TextWrapped = ContentWrapped,
-						RichText = ContentRichText,
-						FontFace = ContentFontFace,
-					}
-				end
+			Scope:ForPairs(Content, function(Use, Scope, Index: number, ContentString: string)
+				return Index,
+					Themer.Theme:is(Theme):during(function()
+						if string.find(ContentString, "rbxassetid://", 1, true) then
+							return Scope:Icon {
+								Image = ContentString,
+								ImageColor3 = ContentColor,
+								Size = Scope:Computed(function(Use)
+									return UDim2.fromOffset(Use(ContentSize), Use(ContentSize))
+								end),
+								ImageTransparency = ContentTransparency,
+							}
+						else
+							return Scope:Text {
+								Text = ContentString,
+								TextColor3 = ContentColor,
+								TextSize = ContentSize,
+								TextTransparency = ContentTransparency,
+								TextWrapped = ContentWrapped,
+								RichText = ContentRichText,
+								FontFace = ContentFontFace,
+							}
+						end
+					end)
 			end),
 		},
 	}))

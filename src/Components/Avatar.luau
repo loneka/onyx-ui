@@ -90,38 +90,40 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		[Children] = {
 			Scope:Computed(function(Use)
 				if Use(EnsuredProps.IndicatorEnabled) then
-					return Scope:Group {
-						Name = "Indicator",
-						BackgroundColor3 = Scope:Spring(
-							EnsuredProps.IndicatorColor,
-							Theme.SpringSpeed["0.5"],
-							Theme.SpringDampening["1"]
-						),
-						BackgroundTransparency = 0,
-						Size = UDim2.fromScale(0.25, 0.25),
-						AutomaticSize = Enum.AutomaticSize.None,
-						AnchorPoint = Vector2.new(1, 1),
-						Position = UDim2.fromScale(1, 1),
-						AspectRatio = 1,
-						CornerRadius = EnsuredProps.IndicatorCornerRadius,
+					return Themer.Theme:is(Theme):during(function()
+						return Scope:Group {
+							Name = "Indicator",
+							BackgroundColor3 = Scope:Spring(
+								EnsuredProps.IndicatorColor,
+								Theme.SpringSpeed["0.5"],
+								Theme.SpringDampening["1"]
+							),
+							BackgroundTransparency = 0,
+							Size = UDim2.fromScale(0.25, 0.25),
+							AutomaticSize = Enum.AutomaticSize.None,
+							AnchorPoint = Vector2.new(1, 1),
+							Position = UDim2.fromScale(1, 1),
+							AspectRatio = 1,
+							CornerRadius = EnsuredProps.IndicatorCornerRadius,
 
-						[Children] = {
-							Scope:Icon {
-								Image = EnsuredProps.IndicatorIcon,
-								ImageColor3 = EnsuredProps.IndicatorIconColor,
-								ImageTransparency = Scope:Computed(function(Use)
-									if Use(EnsuredProps.IndicatorIcon) then
-										return 0
-									else
-										return 1
-									end
-								end),
-								Size = UDim2.fromScale(1, 1),
-								AnchorPoint = Vector2.new(0.5, 0.5),
-								Position = UDim2.fromScale(0.5, 0.5),
+							[Children] = {
+								Scope:Icon {
+									Image = EnsuredProps.IndicatorIcon,
+									ImageColor3 = EnsuredProps.IndicatorIconColor,
+									ImageTransparency = Scope:Computed(function(Use)
+										if Use(EnsuredProps.IndicatorIcon) then
+											return 0
+										else
+											return 1
+										end
+									end),
+									Size = UDim2.fromScale(1, 1),
+									AnchorPoint = Vector2.new(0.5, 0.5),
+									Position = UDim2.fromScale(0.5, 0.5),
+								},
 							},
-						},
-					}
+						}
+					end)
 				else
 					return
 				end

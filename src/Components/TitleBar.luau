@@ -82,22 +82,24 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			},
 			Scope:Computed(function(Use)
 				if Use(CloseButtonDisabled) == false then
-					return Scope:IconButton {
-						Name = "CloseButton",
-						Image = CloseButtonIcon,
-						ContentSize = ContentSize,
-						ContentColor = ContentColor,
-						Color = ContentColor,
-						Style = "Ghost",
-						AnchorPoint = Vector2.new(1, 0.5),
-						Position = UDim2.fromScale(1, 0.5),
+					return Themer.Theme:is(Theme):during(function()
+						return Scope:IconButton {
+							Name = "CloseButton",
+							Image = CloseButtonIcon,
+							ContentSize = ContentSize,
+							ContentColor = ContentColor,
+							Color = ContentColor,
+							Style = "Ghost",
+							AnchorPoint = Vector2.new(1, 0.5),
+							Position = UDim2.fromScale(1, 0.5),
 
-						OnActivated = function()
-							if Use(OnClose) then
-								Use(OnClose)()
-							end
-						end,
-					}
+							OnActivated = function()
+								if Use(OnClose) then
+									Use(OnClose)()
+								end
+							end,
+						}
+					end)
 				else
 					return
 				end
