@@ -55,6 +55,28 @@ export type ThemeSpec = {
 
 		[string]: number?,
 	}?,
+	Padding: {
+		Base: number?,
+		["0"]: number?,
+		["0.25"]: number?,
+		["0.5"]: number?,
+		["0.75"]: number?,
+		["1"]: number?,
+		["1.5"]: number?,
+		["2"]: number?,
+		["3"]: number?,
+		["4"]: number?,
+		["6"]: number?,
+		["8"]: number?,
+		["12"]: number?,
+		["16"]: number?,
+		["24"]: number?,
+		["32"]: number?,
+		["40"]: number?,
+		["48"]: number?,
+
+		[string]: number?,
+	}?,
 	Spacing: {
 		Base: number?,
 		["0"]: number?,
@@ -88,6 +110,14 @@ export type ThemeSpec = {
 		["4"]: number?,
 		["6"]: number?,
 		Full: number?,
+
+		[string]: number?,
+	}?,
+	StrokeEmphasis: {
+		Light: number?,
+		Regular: number?,
+		Strong: number?,
+		Contrast: number?,
 
 		[string]: number?,
 	}?,

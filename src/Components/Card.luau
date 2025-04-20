@@ -26,15 +26,21 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
+	local BackgroundColor3 = Util.Fallback(Props.BackgroundColor3, Theme.Colors.Base.Main)
+
 	return Scope:Frame(Util.CombineProps(Props, {
 		Name = "Card",
-		BackgroundColor3 = Theme.Colors.Neutral.Main,
+		BackgroundColor3 = BackgroundColor3,
 		BackgroundTransparency = 0,
 		CornerRadius = Scope:Computed(function(Use)
 			return UDim.new(0, Use(Theme.CornerRadius["1"]))
 		end),
 		Padding = Scope:Computed(function(Use)
 			return UDim.new(0, Use(Theme.Padding["1"]))
+		end),
+		StrokeEnabled = true,
+		StrokeColor = Scope:Computed(function(Use)
+			return Util.Emphasize(Use(BackgroundColor3), Use(Theme.StrokeEmphasis.Light))
 		end),
 	}))
 end

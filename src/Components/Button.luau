@@ -113,6 +113,15 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			end
 		end
 	end)
+	local EffectiveStrokeEmphasis = Scope:Computed(function(Use)
+		local StrokeEmphasis = Use(Theme.StrokeEmphasis.Regular)
+
+		if (Use(Style) ~= "Filled") or Use(Disabled) or Use(IsHovering) or Use(IsHolding) then
+			return 0
+		else
+			return StrokeEmphasis
+		end
+	end)
 	local EffectiveContentTransparency = Scope:Computed(function(Use)
 		if Use(Disabled) then
 			return DISABLED_CONTENT_TRANSPARENCY
@@ -170,7 +179,13 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		ListVerticalAlignment = Enum.VerticalAlignment.Center,
 		ListWraps = false,
 		StrokeEnabled = true,
-		StrokeColor = Scope:Spring(EffectiveColor, Theme.SpringSpeed["1"], Theme.SpringDampening["1"]),
+		StrokeColor = Scope:Spring(
+			Scope:Computed(function(Use)
+				return Util.Emphasize(Use(EffectiveColor), Use(EffectiveStrokeEmphasis))
+			end),
+			Theme.SpringSpeed["1"],
+			Theme.SpringDampening["1"]
+		),
 		StrokeTransparency = Scope:Computed(function(Use)
 			if Use(Style) == "Ghost" then
 				return 1

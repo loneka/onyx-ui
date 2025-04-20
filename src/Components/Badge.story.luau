@@ -51,10 +51,6 @@ return {
 					Content = { "Badge" },
 				},
 				Scope:Badge {
-					Content = { " PREMIUM" },
-					Color = Util.Colors.Amber["500"],
-				},
-				Scope:Badge {
 					Content = { "rbxassetid://103798699021677", "-50%" },
 					Color = Util.Colors.Red["500"],
 				},

@@ -41,6 +41,13 @@ local function ProcessColors(ThemeObject)
 	end
 end
 
+local function ProcessEmphasis(Objects)
+	local BaseEmphasis = Fusion.peek(Objects.Regular)
+
+	Objects.Light:set(BaseEmphasis * 2 / 3)
+	Objects.Strong:set(BaseEmphasis * 2)
+end
+
 local function ProcessMultipliers(Objects: {
 	Base: Fusion.Value<Fusion.Scope<any>, number>,
 	[string]: Fusion.Value<Fusion.Scope<any>, number>,
@@ -220,6 +227,12 @@ local function NewTheme(Scope: Fusion.Scope<any>, ThemeSpec: ThemeSpec)
 			["4"] = Scope:Value(nil),
 			["8"] = Scope:Value(nil),
 		},
+		StrokeEmphasis = {
+			Regular = Scope:Value(0.1),
+			Light = Scope:Value(nil),
+			Strong = Scope:Value(nil),
+			Contrast = Scope:Value(1),
+		},
 		SpringSpeed = {
 			Base = Scope:Value(40),
 			["0.1"] = Scope:Value(nil),
@@ -267,15 +280,17 @@ local function NewTheme(Scope: Fusion.Scope<any>, ThemeSpec: ThemeSpec)
 			}),
 		},
 		Emphasis = {
-			Light = Scope:Value(0.1),
 			Regular = Scope:Value(0.2),
-			Strong = Scope:Value(0.3),
+			Light = Scope:Value(nil),
+			Strong = Scope:Value(nil),
 			Contrast = Scope:Value(1),
 		},
 	}
 
 	ReconcileValues(ThemeObject, ThemeSpec)
 
+	ProcessEmphasis(ThemeObject.Emphasis)
+	ProcessEmphasis(ThemeObject.StrokeEmphasis)
 	ProcessColors(ThemeObject)
 	ProcessMultipliers(ThemeObject.Padding)
 	ProcessMultipliers(ThemeObject.Spacing)

@@ -58,6 +58,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			return UDim.new(0, 200)
 		end)
 	)
+	local StrokeThickness = Util.Fallback(Props.StrokeThickness, Theme.StrokeThickness["1"])
 
 	return Scope:Group(Util.CombineProps(Props, {
 		Name = "ProgressBar",
@@ -74,6 +75,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		BackgroundTransparency = 0,
 		BackgroundColor3 = Theme.Colors.Neutral.Dark,
 		CornerRadius = CornerRadius,
+		Padding = Scope:Computed(function(Use)
+			return UDim.new(0, Use(StrokeThickness))
+		end),
 
 		[Children] = {
 			Scope:Frame {
@@ -114,6 +118,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 				AutomaticSize = Enum.AutomaticSize.None,
 				BackgroundTransparency = 0,
 				BackgroundColor3 = Color,
+				StrokeEnabled = true,
 			},
 		},
 	}))

@@ -70,6 +70,13 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			end
 		end
 	end)
+	local EffectiveStrokeColor = Scope:Computed(function(Use)
+		if Use(Disabled) or Use(IsHovering) or Use(IsHolding) then
+			return Use(EffectiveColor)
+		else
+			return Util.Emphasize(Use(EffectiveColor), Use(Theme.StrokeEmphasis.Regular))
+		end
+	end)
 
 	local function ProcessDrag(Position: Vector2)
 		local AbsoluteSizeValue = Fusion.peek(AbsoluteSize)
@@ -130,6 +137,15 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 							return UDim.new(0, Use(Theme.CornerRadius.Full))
 						end),
 						AutomaticSize = Enum.AutomaticSize.None,
+						StrokeEnabled = true,
+						StrokeColor = EffectiveStrokeColor,
+						StrokeTransparency = Scope:Computed(function(Use)
+							if Use(Disabled) then
+								return DISABLED_BACKGROUND_TRANSPARENCY
+							else
+								return 0
+							end
+						end),
 
 						[Children] = {
 							Scope:Frame {

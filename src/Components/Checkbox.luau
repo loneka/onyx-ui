@@ -84,7 +84,13 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			return UDim.new(0, Use(Theme.CornerRadius["0.5"]))
 		end),
 		StrokeEnabled = true,
-		StrokeColor = EffectiveColor,
+		StrokeColor = Scope:Computed(function(Use)
+			if (not Use(Checked)) or Use(Disabled) or Use(IsHovering) or Use(IsHolding) then
+				return Use(EffectiveColor)
+			else
+				return Util.Emphasize(Use(EffectiveColor), Use(Theme.StrokeEmphasis.Regular))
+			end
+		end),
 		StrokeTransparency = Scope:Computed(function(Use)
 			if Use(Disabled) then
 				return DISABLED_BACKGROUND_TRANSPARENCY

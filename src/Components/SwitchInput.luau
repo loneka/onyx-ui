@@ -100,6 +100,13 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			return UDim.new(0, Use(Theme.CornerRadius.Full))
 		end)
 	)
+	local EffectiveStrokeColor = Scope:Computed(function(Use)
+		if (not Use(Switched)) or Use(Disabled) or Use(IsHovering) or Use(IsHolding) then
+			return Use(EffectiveColor)
+		else
+			return Util.Emphasize(Use(EffectiveColor), Use(Theme.StrokeEmphasis.Regular))
+		end
+	end)
 
 	return Scope:BaseButton(Util.CombineProps(Props, {
 		Name = "SwitchInput",
@@ -121,7 +128,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			Theme.SpringSpeed["1"],
 			Theme.SpringDampening["1"]
 		),
-		StrokeColor = Scope:Spring(EffectiveColor, Theme.SpringSpeed["1"], Theme.SpringDampening["1"]),
+		StrokeColor = Scope:Spring(EffectiveStrokeColor, Theme.SpringSpeed["1"], Theme.SpringDampening["1"]),
 		CornerRadius = EffectiveCornerRadius,
 		ClickSound = Theme.Sound.Switch,
 

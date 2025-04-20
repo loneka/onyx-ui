@@ -58,16 +58,19 @@ local OnyxNight = NewTheme(Scope, {
 		Base = 19,
 	},
 	CornerRadius = {
-		Base = 6,
+		Base = 8,
 	},
 	StrokeThickness = {
-		Base = 2,
+		Base = 1,
+	},
+	StrokeEmphasis = {
+		Regular = 0.2,
 	},
 	Spacing = {
 		Base = 22,
 	},
 	Padding = {
-		Base = 18,
+		Base = 24,
 	},
 	SpringSpeed = {
 		Base = 50,

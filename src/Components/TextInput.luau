@@ -152,7 +152,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 					return Use(Theme.Colors.NeutralContent.Dark)
 				end
 			end),
-			Theme.SpringSpeed.Immediate,
+			Theme.SpringSpeed["1"],
 			Theme.SpringDampening["1"]
 		),
 		StrokeTransparency = Scope:Spring(

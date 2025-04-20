@@ -63,10 +63,10 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			return UDim.new(0, Use(Theme.Padding["0"]))
 		end),
 		PaddingLeft = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Padding["0.5"]))
+			return UDim.new(0, Use(Theme.Padding["0.25"]))
 		end),
 		PaddingRight = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Padding["0.5"]))
+			return UDim.new(0, Use(Theme.Padding["0.25"]))
 		end),
 		CornerRadius = Scope:Computed(function(Use)
 			return UDim.new(0, Use(Theme.CornerRadius["2"]))
@@ -79,6 +79,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		ListHorizontalAlignment = Enum.HorizontalAlignment.Center,
 		ListVerticalAlignment = Enum.VerticalAlignment.Center,
 		ListWraps = ContentWrapped,
+		StrokeEnabled = true,
 
 		[Children] = {
 			Scope:IconText {

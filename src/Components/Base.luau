@@ -252,7 +252,13 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 	local AutomaticSize = Util.Fallback(Props.AutomaticSize, Enum.AutomaticSize.XY)
 	local CornerRadius = Util.Fallback(Props.CornerRadius, UDim.new(0, 0))
 	local StrokeThickness = Util.Fallback(Props.StrokeThickness, Theme.StrokeThickness["1"])
-	local StrokeColor = Util.Fallback(Props.StrokeColor, Theme.Colors.Neutral.Main)
+	local BackgroundColor3 = Util.Fallback(Props.BackgroundColor3, Theme.Colors.Base.Main)
+	local StrokeColor = Util.Fallback(
+		Props.StrokeColor,
+		Scope:Computed(function(Use)
+			return Util.Emphasize(Use(BackgroundColor3), Use(Theme.StrokeEmphasis["Regular"]))
+		end)
+	)
 	local StrokeApplyStrokeMode = Util.Fallback(Props.StrokeApplyStrokeMode, Enum.ApplyStrokeMode.Border)
 	local StrokeLineJoinMode = Util.Fallback(
 		Props.StrokeLineJoinMode,

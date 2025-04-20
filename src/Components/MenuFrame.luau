@@ -29,12 +29,14 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
+	local BackgroundColor3 = Util.Fallback(Props.BackgroundColor3, Theme.Colors.Base.Main)
+
 	local AutomaticSize = Scope:EnsureValue(Util.Fallback(Props.AutomaticSize, Enum.AutomaticSize.None))
 
 	return Scope:Group(Util.CombineProps(Props, {
 		Name = "MenuFrame",
 		GroupTransparency = Props.GroupTransparency,
-		BackgroundColor3 = Theme.Colors.Base.Main,
+		BackgroundColor3 = BackgroundColor3,
 		BackgroundTransparency = 0,
 		Padding = Scope:Computed(function(Use)
 			return UDim.new(0, Use(Theme.Spacing["1"]))
@@ -43,7 +45,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			return UDim.new(0, Use(Theme.CornerRadius["3"]))
 		end),
 		StrokeEnabled = true,
-		StrokeColor = Theme.Colors.Neutral.Main,
+		StrokeColor = Scope:Computed(function(Use)
+			return Util.Emphasize(Use(BackgroundColor3), Use(Theme.StrokeEmphasis.Light))
+		end),
 
 		[Out "AutomaticSize"] = AutomaticSize,
 	}))
