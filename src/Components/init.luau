@@ -22,7 +22,6 @@ local Components = {
 	ProgressBar = require(script.ProgressBar),
 	Scroller = require(script.Scroller),
 	Switch = require(script.Switch),
-	SwitchGroup = require(script.SwitchGroup),
 	TextInput = require(script.TextInput),
 	TextArea = require(script.TextArea),
 	TitleBar = require(script.TitleBar),

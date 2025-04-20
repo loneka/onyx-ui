@@ -4,13 +4,13 @@
 		Useful for pairing [`Switch`](/api/Switch)s with other components, like [`Text`](/api/Text).
 ]=]
 
-local OnyxUI = script.Parent.Parent
+local OnyxUI = script.Parent.Parent.Parent.OnyxUI.Packages.OnyxUI
 local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
 local Fusion = require(OnyxUI.Parent.Fusion)
 
-local BaseButton = require(script.Parent.BaseButton)
-local Switch = require(script.Parent.Switch)
+local BaseButton = require(OnyxUI.Components.BaseButton)
+local Switch = require(OnyxUI.Components.Switch)
 local Components = {
 	BaseButton = BaseButton,
 	Switch = Switch,

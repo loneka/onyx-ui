@@ -5,7 +5,7 @@ local Util = require(OnyxUI.Util)
 
 local Children = Fusion.Children
 
-local SwitchGroup = require(OnyxUI.Components.SwitchGroup)
+local SwitchGroup = require(script.Parent.SwitchGroup)
 local Switch = require(OnyxUI.Components.Switch)
 local Text = require(OnyxUI.Components.Text)
 local Components = {
