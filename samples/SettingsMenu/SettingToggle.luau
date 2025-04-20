@@ -6,11 +6,11 @@ local Util = require(OnyxUI.Util)
 local Children = Fusion.Children
 
 local SwitchGroup = require(OnyxUI.Components.SwitchGroup)
-local SwitchInput = require(OnyxUI.Components.SwitchInput)
+local Switch = require(OnyxUI.Components.Switch)
 local Text = require(OnyxUI.Components.Text)
 local Components = {
 	Text = Text,
-	SwitchInput = SwitchInput,
+	Switch = Switch,
 	SwitchGroup = SwitchGroup,
 }
 
@@ -50,7 +50,7 @@ local function SettingToggle(Scope: Fusion.Scope<any>, Props: Props)
 				end),
 				TextWrapped = false,
 			},
-			Scope:SwitchInput {
+			Scope:Switch {
 				AnchorPoint = Vector2.new(1, 0),
 				Position = UDim2.fromScale(1, 0),
 				Switched = Switched,

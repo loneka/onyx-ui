@@ -12,7 +12,7 @@ classes = [
   "Card",
   "Group",
   "MenuFrame",
-  "SwitchInput",
+  "Switch",
   "SwitchGroup",
   "Text",
   "Badge",
@@ -29,7 +29,7 @@ classes = [
   "Image",
   "IconText",
   "Heading",
-  "SwapInput",
+  "TextSwap",
   "Slider",
 ]
 

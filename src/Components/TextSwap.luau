@@ -1,5 +1,5 @@
 --[=[
-		@class SwapInput
+		@class TextSwap
 		
 		Swap between an array values.
 ]=]
@@ -27,8 +27,8 @@ export type Props = BaseButton.Props & {
 }
 
 --[=[
-		@within SwapInput
-		@interface SwapInputProps
+		@within TextSwap
+		@interface TextSwapProps
 
 		@field ... BaseButtonProps
 		@field Options Fusion.UsedAs<{ string }>?
@@ -105,7 +105,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	end)
 
 	return Scope:BaseButton(Util.CombineProps(Props, {
-		Name = "SwapInput",
+		Name = "TextSwap",
 		ListEnabled = true,
 		ListHorizontalFlex = Enum.UIFlexAlignment.SpaceBetween,
 		ListFillDirection = Enum.FillDirection.Horizontal,

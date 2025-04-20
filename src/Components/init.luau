@@ -21,12 +21,12 @@ local Components = {
 	MenuFrame = require(script.MenuFrame),
 	ProgressBar = require(script.ProgressBar),
 	Scroller = require(script.Scroller),
-	SwitchInput = require(script.SwitchInput),
+	Switch = require(script.Switch),
 	SwitchGroup = require(script.SwitchGroup),
 	TextInput = require(script.TextInput),
 	TextArea = require(script.TextArea),
 	TitleBar = require(script.TitleBar),
-	SwapInput = require(script.SwapInput),
+	TextSwap = require(script.TextSwap),
 	Slider = require(script.Slider),
 }
 

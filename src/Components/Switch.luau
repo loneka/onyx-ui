@@ -1,5 +1,5 @@
 --[=[
-		@class SwitchInput
+		@class Switch
 		
 		Useful for letting the user switch things on / off.
 ]=]
@@ -25,8 +25,8 @@ export type Props = BaseButton.Props & {
 }
 
 --[=[
-		@within SwitchInput
-		@interface SwitchInputProps
+		@within Switch
+		@interface SwitchProps
 
 		@field ... BaseButtonProps
 		@field Switched Fusion.UsedAs<boolean>?
@@ -109,7 +109,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	end)
 
 	return Scope:BaseButton(Util.CombineProps(Props, {
-		Name = "SwitchInput",
+		Name = "Switch",
 		Size = Size,
 		AutomaticSize = AutomaticSize,
 		Disabled = Disabled,

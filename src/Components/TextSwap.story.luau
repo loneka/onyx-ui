@@ -6,7 +6,7 @@ local Themer = require(OnyxUI.Themer)
 local Children = Fusion.Children
 
 local Components = {
-	SwapInput = require(OnyxUI.Components.SwapInput),
+	TextSwap = require(OnyxUI.Components.TextSwap),
 	Frame = require(OnyxUI.Components.Frame),
 }
 
@@ -31,14 +31,14 @@ return {
 			ListHorizontalFlex = Enum.UIFlexAlignment.Fill,
 
 			[Children] = {
-				Scope:SwapInput {
+				Scope:TextSwap {
 					Options = { "Hamburger", "Pizza", "Ice Cream" },
 				},
-				Scope:SwapInput {
+				Scope:TextSwap {
 					Options = { "Disabled" },
 					Disabled = true,
 				},
-				Scope:SwapInput {
+				Scope:TextSwap {
 					Options = { "Cats", "Dogs", "Zebras" },
 					Color = Theme.Colors.Primary.Main,
 				},

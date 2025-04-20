@@ -5,10 +5,10 @@ local Themer = require(OnyxUI.Themer)
 
 local Children = Fusion.Children
 
-local SwitchInput = require(script.Parent.SwitchInput)
+local Switch = require(script.Parent.Switch)
 local Frame = require(script.Parent.Frame)
 local Components = {
-	SwitchInput = SwitchInput,
+	Switch = Switch,
 	Frame = Frame,
 }
 
@@ -28,8 +28,8 @@ return {
 			end),
 
 			[Children] = {
-				Scope:SwitchInput {},
-				Scope:SwitchInput {
+				Scope:Switch {},
+				Scope:Switch {
 					Disabled = true,
 				},
 			},

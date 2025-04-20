@@ -22,12 +22,12 @@ local Image = require(script.Components.Image)
 local MenuFrame = require(script.Components.MenuFrame)
 local ProgressBar = require(script.Components.ProgressBar)
 local Scroller = require(script.Components.Scroller)
-local SwitchInput = require(script.Components.SwitchInput)
+local Switch = require(script.Components.Switch)
 local SwitchGroup = require(script.Components.SwitchGroup)
 local TextInput = require(script.Components.TextInput)
 local TextArea = require(script.Components.TextArea)
 local TitleBar = require(script.Components.TitleBar)
-local SwapInput = require(script.Components.SwapInput)
+local TextSwap = require(script.Components.TextSwap)
 local Slider = require(script.Components.Slider)
 
 export type Theme = Themer.Theme
@@ -53,12 +53,12 @@ export type ImageProps = Image.Props
 export type MenuFrameProps = MenuFrame.Props
 export type ProgressBarProps = ProgressBar.Props
 export type ScrollerProps = Scroller.Props
-export type SwitchInputProps = SwitchInput.Props
+export type SwitchProps = Switch.Props
 export type SwitchGroupProps = SwitchGroup.Props
 export type TextInputProps = TextInput.Props
 export type TextAreaProps = TextArea.Props
 export type TitleBarProps = TitleBar.Props
-export type SwapInputProps = SwapInput.Props
+export type TextSwapProps = TextSwap.Props
 export type SliderProps = Slider.Props
 
 return {

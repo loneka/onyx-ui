@@ -1,7 +1,7 @@
 --[=[
 		@class SwitchGroup
 		
-		Useful for pairing [`SwitchInput`](/api/SwitchInput)s with other components, like [`Text`](/api/Text).
+		Useful for pairing [`Switch`](/api/Switch)s with other components, like [`Text`](/api/Text).
 ]=]
 
 local OnyxUI = script.Parent.Parent
@@ -10,19 +10,19 @@ local Themer = require(OnyxUI.Themer)
 local Fusion = require(OnyxUI.Parent.Fusion)
 
 local BaseButton = require(script.Parent.BaseButton)
-local SwitchInput = require(script.Parent.SwitchInput)
+local Switch = require(script.Parent.Switch)
 local Components = {
 	BaseButton = BaseButton,
-	SwitchInput = SwitchInput,
+	Switch = Switch,
 }
 
-export type Props = SwitchInput.Props & {}
+export type Props = Switch.Props & {}
 
 --[=[
 		@within SwitchGroup
 		@interface SwitchGroupProps
 
-		@field ... SwitchInputProps
+		@field ... SwitchProps
 ]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
