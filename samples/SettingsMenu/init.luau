@@ -17,20 +17,21 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	})
 	local Theme = Themer.Theme:now()
 
-	return Scope:MenuFrame(Util.CombineProps(Props, {
+	return Scope:Card(Util.CombineProps(Props, {
 		Parent = Props.Parent,
 		Size = Scope:Computed(function(Use)
 			return UDim2.fromOffset(Use(Theme.Sizing["16"], 0))
 		end),
 		AutomaticSize = Enum.AutomaticSize.Y,
 		ListEnabled = true,
-		ListPadding = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Spacing["0.75"]))
+		CornerRadius = Scope:Computed(function(Use)
+			return UDim.new(0, Use(Theme.CornerRadius["2"]))
 		end),
 
 		[Children] = {
 			Scope:TitleBar {
 				Content = { "Settings" },
+				ContentSize = Theme.TextSize["1.25"],
 			},
 			Scope:Scroller {
 				Size = UDim2.new(UDim.new(1, 0), UDim.new(0, 175)),

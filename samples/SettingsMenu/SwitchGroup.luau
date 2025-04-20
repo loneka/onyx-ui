@@ -1,9 +1,3 @@
---[=[
-		@class SwitchGroup
-		
-		Useful for pairing [`Switch`](/api/Switch)s with other components, like [`Text`](/api/Text).
-]=]
-
 local OnyxUI = script.Parent.Parent.Parent.OnyxUI.Packages.OnyxUI
 local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
@@ -18,12 +12,6 @@ local Components = {
 
 export type Props = Switch.Props & {}
 
---[=[
-		@within SwitchGroup
-		@interface SwitchGroupProps
-
-		@field ... SwitchProps
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()

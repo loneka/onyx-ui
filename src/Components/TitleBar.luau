@@ -1,7 +1,7 @@
 --[=[
 		@class TitleBar
 		
-		For displaying a title, and an optional close button. Pairs with [`MenuFrame`](/api/MenuFrame).
+		For displaying a title, and an optional close button.
 ]=]
 
 local OnyxUI = script.Parent.Parent
@@ -49,7 +49,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Theme = Themer.Theme:now()
 
 	local Content = Util.Fallback(Props.Content, {})
-	local ContentSize = Util.Fallback(Props.ContentSize, Theme.TextSize["1.5"])
+	local ContentSize = Util.Fallback(Props.ContentSize, Theme.TextSize["1"])
 	local ContentColor = Util.Fallback(Props.ContentColor, Theme.Colors.BaseContent.Main)
 	local ContentFontFace = Util.Fallback(
 		Props.ContentFontFace,
