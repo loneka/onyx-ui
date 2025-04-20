@@ -69,6 +69,9 @@ local OnyxNight = NewTheme(Scope, {
 	Spacing = {
 		Base = 22,
 	},
+	Sizing = {
+		Base = 22,
+	},
 	Padding = {
 		Base = 24,
 	},

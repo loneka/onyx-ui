@@ -72,6 +72,9 @@ local BitCave = NewTheme(Scope, {
 	Padding = {
 		Base = 28,
 	},
+	Sizing = {
+		Base = 24,
+	},
 	SpringSpeed = {
 		Base = 60,
 	},

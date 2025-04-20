@@ -28,9 +28,7 @@ return {
 			[Children] = {
 				Scope:SettingsMenu {},
 				Themer.Theme:is(BitCave):during(function()
-					return Scope:SettingsMenu {
-						Size = UDim2.fromOffset(380, 0),
-					}
+					return Scope:SettingsMenu {}
 				end),
 			},
 		}

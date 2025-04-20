@@ -19,7 +19,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 	return Scope:MenuFrame(Util.CombineProps(Props, {
 		Parent = Props.Parent,
-		Size = UDim2.fromOffset(330, 0),
+		Size = Scope:Computed(function(Use)
+			return UDim2.fromOffset(Use(Theme.Sizing["16"], 0))
+		end),
 		AutomaticSize = Enum.AutomaticSize.Y,
 		ListEnabled = true,
 		ListPadding = Scope:Computed(function(Use)
