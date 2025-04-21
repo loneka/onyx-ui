@@ -15,6 +15,102 @@ local Themer = require(OnyxUI.Themer)
 
 local Children = Fusion.Children
 
+export type GradientProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	Color: Fusion.UsedAs<ColorSequence>?,
+	Offset: Fusion.UsedAs<UDim>?,
+	Rotation: Fusion.UsedAs<number>?,
+	Transparency: Fusion.UsedAs<number>?,
+}
+export type PaddingProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	Padding: Fusion.UsedAs<UDim>?,
+	Top: Fusion.UsedAs<UDim>?,
+	Left: Fusion.UsedAs<UDim>?,
+	Right: Fusion.UsedAs<UDim>?,
+	Bottom: Fusion.UsedAs<UDim>?,
+}
+export type CornerProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	Radius: Fusion.UsedAs<UDim>?,
+}
+export type StrokeProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	Thickness: Fusion.UsedAs<number>?,
+	Color: Fusion.UsedAs<Color3>?,
+	Transparency: Fusion.UsedAs<number>?,
+	LineJoinMode: Fusion.UsedAs<Enum.LineJoinMode>?,
+	ApplyStrokeMode: Fusion.UsedAs<Enum.ApplyStrokeMode>?,
+
+	Gradient: Fusion.UsedAs<GradientProps>?,
+}
+export type AspectProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	Ratio: Fusion.UsedAs<number>?,
+	Type: Fusion.UsedAs<Enum.AspectType>?,
+	DominantAxis: Fusion.UsedAs<Enum.DominantAxis>?,
+}
+export type ScaleProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	Scale: Fusion.UsedAs<number>?,
+}
+export type FlexProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	Mode: Fusion.UsedAs<Enum.UIFlexMode>?,
+	ItemLineAlignment: Fusion.UsedAs<Enum.ItemLineAlignment>?,
+	GrowRatio: Fusion.UsedAs<number>?,
+	ShrinkRatio: Fusion.UsedAs<number>?,
+}
+export type ListProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	Padding: Fusion.UsedAs<UDim>?,
+	FillDirection: Fusion.UsedAs<Enum.FillDirection>?,
+	SortOrder: Fusion.UsedAs<Enum.SortOrder>?,
+	Wraps: Fusion.UsedAs<boolean>?,
+	HorizontalAlignment: Fusion.UsedAs<Enum.HorizontalAlignment>?,
+	HorizontalFlex: Fusion.UsedAs<boolean>?,
+	VerticalAlignment: Fusion.UsedAs<Enum.VerticalAlignment>?,
+	VerticalFlex: Fusion.UsedAs<boolean>?,
+	ItemLineAlignment: Fusion.UsedAs<Enum.ItemLineAlignment>?,
+}
+export type GridProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	CellPadding: Fusion.UsedAs<UDim>?,
+	CellSize: Fusion.UsedAs<UDim2>?,
+	FillDirection: Fusion.UsedAs<Enum.FillDirection>?,
+	FillDirectionMaxCells: Fusion.UsedAs<number>?,
+	SortOrder: Fusion.UsedAs<Enum.SortOrder>?,
+	StartCorner: Fusion.UsedAs<Enum.StartCorner>?,
+	HorizontalAlignment: Fusion.UsedAs<Enum.HorizontalAlignment>?,
+	VerticalAlignment: Fusion.UsedAs<Enum.VerticalAlignment>?,
+}
+export type TableProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	Padding: Fusion.UsedAs<UDim>?,
+	FillEmptySpaceColumns: Fusion.UsedAs<boolean>?,
+	FillEmptySpaceRows: Fusion.UsedAs<boolean>?,
+	FillDirection: Fusion.UsedAs<Enum.FillDirection>?,
+	SortOrder: Fusion.UsedAs<Enum.SortOrder>?,
+	MajorAxis: Fusion.UsedAs<Enum.TableMajorAxis>?,
+	HorizontalAlignment: Fusion.UsedAs<Enum.HorizontalAlignment>?,
+	VerticalAlignment: Fusion.UsedAs<Enum.VerticalAlignment>?,
+}
+export type PageProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	Animated: Fusion.UsedAs<boolean>?,
+	Circular: Fusion.UsedAs<boolean>?,
+	EasingDirection: Fusion.UsedAs<Enum.EasingDirection>?,
+	EasingStyle: Fusion.UsedAs<Enum.EasingStyle>?,
+	Padding: Fusion.UsedAs<UDim>?,
+	TweenTime: Fusion.UsedAs<number>?,
+	FillDirection: Fusion.UsedAs<Enum.FillDirection>?,
+	SortOrder: Fusion.UsedAs<Enum.SortOrder>?,
+	HorizontalAlignment: Fusion.UsedAs<Enum.HorizontalAlignment>?,
+	VerticalAlignment: Fusion.UsedAs<Enum.VerticalAlignment>?,
+	GamepadInputEnabled: Fusion.UsedAs<boolean>?,
+	ScrollWheelInputEnabled: Fusion.UsedAs<boolean>?,
+	TouchInputEnabled: Fusion.UsedAs<boolean>?,
+}
 export type Props = {
 	ClassName: string?,
 
@@ -49,83 +145,18 @@ export type Props = {
 	SelectionBehaviorLeft: Fusion.UsedAs<Enum.SelectionBehavior>?,
 	SelectionGroup: Fusion.UsedAs<boolean>?,
 
-	CornerRadius: Fusion.UsedAs<UDim>?,
+	Corner: Fusion.UsedAs<CornerProps>?,
+	Padding: Fusion.UsedAs<PaddingProps>?,
+	Stroke: Fusion.UsedAs<StrokeProps>?,
+	Gradient: Fusion.UsedAs<GradientProps>?,
+	Aspect: Fusion.UsedAs<AspectProps>?,
+	Scale: Fusion.UsedAs<ScaleProps>?,
 
-	Padding: Fusion.UsedAs<UDim>?,
-	PaddingTop: Fusion.UsedAs<UDim>?,
-	PaddingLeft: Fusion.UsedAs<UDim>?,
-	PaddingRight: Fusion.UsedAs<UDim>?,
-	PaddingBottom: Fusion.UsedAs<UDim>?,
-
-	Scale: Fusion.UsedAs<number>?,
-
-	StrokeEnabled: Fusion.UsedAs<boolean>?,
-	StrokeThickness: Fusion.UsedAs<number>?,
-	StrokeColor: Fusion.UsedAs<Color3>?,
-	StrokeTransparency: Fusion.UsedAs<number>?,
-	StrokeLineJoinMode: Fusion.UsedAs<Enum.LineJoinMode>?,
-	StrokeApplyStrokeMode: Fusion.UsedAs<Enum.ApplyStrokeMode>?,
-
-	GradientEnabled: Fusion.UsedAs<boolean>?,
-	GradientColor: Fusion.UsedAs<ColorSequence>?,
-	GradientOffset: Fusion.UsedAs<UDim>?,
-	GradientRotation: Fusion.UsedAs<number>?,
-	GradientTransparency: Fusion.UsedAs<number>?,
-
-	AspectRatio: Fusion.UsedAs<number>?,
-	AspectType: Fusion.UsedAs<Enum.AspectType>?,
-	DominantAxis: Fusion.UsedAs<Enum.DominantAxis>?,
-
-	ListEnabled: Fusion.UsedAs<boolean>?,
-	ListPadding: Fusion.UsedAs<UDim>?,
-	ListFillDirection: Fusion.UsedAs<Enum.FillDirection>?,
-	ListSortOrder: Fusion.UsedAs<Enum.SortOrder>?,
-	ListWraps: Fusion.UsedAs<boolean>?,
-	ListHorizontalAlignment: Fusion.UsedAs<Enum.HorizontalAlignment>?,
-	ListHorizontalFlex: Fusion.UsedAs<boolean>?,
-	ListVerticalAlignment: Fusion.UsedAs<Enum.VerticalAlignment>?,
-	ListVerticalFlex: Fusion.UsedAs<boolean>?,
-	ListItemLineAlignment: Fusion.UsedAs<Enum.ItemLineAlignment>?,
-
-	GridEnabled: Fusion.UsedAs<boolean>?,
-	GridCellPadding: Fusion.UsedAs<UDim>?,
-	GridCellSize: Fusion.UsedAs<UDim2>?,
-	GridFillDirection: Fusion.UsedAs<Enum.FillDirection>?,
-	GridFillDirectionMaxCells: Fusion.UsedAs<number>?,
-	GridSortOrder: Fusion.UsedAs<Enum.SortOrder>?,
-	GridStartCorner: Fusion.UsedAs<Enum.StartCorner>?,
-	GridHorizontalAlignment: Fusion.UsedAs<Enum.HorizontalAlignment>?,
-	GridVerticalAlignment: Fusion.UsedAs<Enum.VerticalAlignment>?,
-
-	TableEnabled: Fusion.UsedAs<boolean>?,
-	TablePadding: Fusion.UsedAs<UDim>?,
-	TableFillEmptySpaceColumns: Fusion.UsedAs<boolean>?,
-	TableFillEmptySpaceRows: Fusion.UsedAs<boolean>?,
-	TableFillDirection: Fusion.UsedAs<Enum.FillDirection>?,
-	TableSortOrder: Fusion.UsedAs<Enum.SortOrder>?,
-	TableMajorAxis: Fusion.UsedAs<Enum.TableMajorAxis>?,
-	TableHorizontalAlignment: Fusion.UsedAs<Enum.HorizontalAlignment>?,
-	TableVerticalAlignment: Fusion.UsedAs<Enum.VerticalAlignment>?,
-
-	PageEnabled: Fusion.UsedAs<boolean>?,
-	PageAnimated: Fusion.UsedAs<boolean>?,
-	PageCircular: Fusion.UsedAs<boolean>?,
-	PageEasingDirection: Fusion.UsedAs<Enum.EasingDirection>?,
-	PageEasingStyle: Fusion.UsedAs<Enum.EasingStyle>?,
-	PagePadding: Fusion.UsedAs<UDim>?,
-	PageTweenTime: Fusion.UsedAs<number>?,
-	PageFillDirection: Fusion.UsedAs<Enum.FillDirection>?,
-	PageSortOrder: Fusion.UsedAs<Enum.SortOrder>?,
-	PageHorizontalAlignment: Fusion.UsedAs<Enum.HorizontalAlignment>?,
-	PageVerticalAlignment: Fusion.UsedAs<Enum.VerticalAlignment>?,
-	PageGamepadInputEnabled: Fusion.UsedAs<boolean>?,
-	PageScrollWheelInputEnabled: Fusion.UsedAs<boolean>?,
-	PageTouchInputEnabled: Fusion.UsedAs<boolean>?,
-
-	FlexMode: Fusion.UsedAs<Enum.UIFlexMode>?,
-	FlexItemLineAlignment: Fusion.UsedAs<Enum.ItemLineAlignment>?,
-	FlexGrowRatio: Fusion.UsedAs<number>?,
-	FlexShrinkRatio: Fusion.UsedAs<number>?,
+	List: Fusion.UsedAs<ListProps>?,
+	Grid: Fusion.UsedAs<GridProps>?,
+	Table: Fusion.UsedAs<TableProps>?,
+	Page: Fusion.UsedAs<PageProps>?,
+	Flex: Fusion.UsedAs<FlexProps>?,
 
 	MaxSize: Fusion.UsedAs<Vector2>?,
 	MinSize: Fusion.UsedAs<Vector2>?,
@@ -134,6 +165,135 @@ export type Props = {
 	MinTextSize: Fusion.UsedAs<number>?,
 }
 
+--[=[
+	@within Base
+	@interface PaddingProps
+
+	@field Enabled Fusion.UsedAs<boolean>?
+	@field Padding Fusion.UsedAs<UDim>?
+	@field Top Fusion.UsedAs<UDim>?
+	@field Left Fusion.UsedAs<UDim>?
+	@field Right Fusion.UsedAs<UDim>?
+	@field Bottom Fusion.UsedAs<UDim>?
+]=]
+--[=[
+	@within Base
+	@interface GradientProps
+
+	@field Enabled Fusion.UsedAs<boolean>?
+	@field Color Fusion.UsedAs<ColorSequence>?
+	@field Offset Fusion.UsedAs<UDim>?
+	@field Rotation Fusion.UsedAs<number>?
+	@field Transparency Fusion.UsedAs<number>?
+]=]
+--[=[
+	@within Base
+	@interface CornerProps
+
+	@field Enabled Fusion.UsedAs<boolean>?
+	@field Radius Fusion.UsedAs<UDim>?
+]=]
+--[=[
+	@within Base
+	@interface StrokeProps
+
+	@field Enabled Fusion.UsedAs<boolean>?
+	@field Thickness Fusion.UsedAs<number>?
+	@field Color Fusion.UsedAs<Color3>?
+	@field Transparency Fusion.UsedAs<number>?
+	@field LineJoinMode Fusion.UsedAs<Enum.LineJoinMode>?
+	@field ApplyStrokeMode Fusion.UsedAs<Enum.ApplyStrokeMode>?
+
+	@field Gradient Fusion.UsedAs<GradientProps>?
+]=]
+--[=[
+	@within Base
+	@interface AspectProps
+
+	@field Enabled Fusion.UsedAs<boolean>?
+	@field Ratio Fusion.UsedAs<number>?
+	@field Type Fusion.UsedAs<Enum.AspectType>?
+	@field DominantAxis Fusion.UsedAs<Enum.DominantAxis>?
+]=]
+--[=[
+	@within Base
+	@interface ScaleProps
+
+	@field Enabled Fusion.UsedAs<boolean>?
+	@field Scale Fusion.UsedAs<number>?
+]=]
+--[=[
+	@within Base
+	@interface FlexProps
+
+	@field Enabled Fusion.UsedAs<boolean>?
+	@field Mode Fusion.UsedAs<Enum.UIFlexMode>?
+	@field ItemLineAlignment Fusion.UsedAs<Enum.ItemLineAlignment>?
+	@field GrowRatio Fusion.UsedAs<number>?
+	@field ShrinkRatio Fusion.UsedAs<number>?
+]=]
+--[=[
+	@within Base
+	@interface ListProps
+
+	@field Enabled Fusion.UsedAs<boolean>?
+	@field Padding Fusion.UsedAs<UDim>?
+	@field FillDirection Fusion.UsedAs<Enum.FillDirection>?
+	@field SortOrder Fusion.UsedAs<Enum.SortOrder>?
+	@field Wraps Fusion.UsedAs<boolean>?
+	@field HorizontalAlignment Fusion.UsedAs<Enum.HorizontalAlignment>?
+	@field HorizontalFlex Fusion.UsedAs<boolean>?
+	@field VerticalAlignment Fusion.UsedAs<Enum.VerticalAlignment>?
+	@field VerticalFlex Fusion.UsedAs<boolean>?
+	@field ItemLineAlignment Fusion.UsedAs<Enum.ItemLineAlignment>?
+]=]
+--[=[
+	@within Base
+	@interface GridProps
+
+	@field Enabled Fusion.UsedAs<boolean>?
+	@field CellPadding Fusion.UsedAs<UDim>?
+	@field CellSize Fusion.UsedAs<UDim2>?
+	@field FillDirection Fusion.UsedAs<Enum.FillDirection>?
+	@field FillDirectionMaxCells Fusion.UsedAs<number>?
+	@field SortOrder Fusion.UsedAs<Enum.SortOrder>?
+	@field StartCorner Fusion.UsedAs<Enum.StartCorner>?
+	@field HorizontalAlignment Fusion.UsedAs<Enum.HorizontalAlignment>?
+	@field VerticalAlignment Fusion.UsedAs<Enum.VerticalAlignment>?
+]=]
+--[=[
+	@within Base
+	@interface TableProps
+
+	@field Enabled Fusion.UsedAs<boolean>?
+	@field Padding Fusion.UsedAs<UDim>?
+	@field FillEmptySpaceColumns Fusion.UsedAs<boolean>?
+	@field FillEmptySpaceRows Fusion.UsedAs<boolean>?
+	@field FillDirection Fusion.UsedAs<Enum.FillDirection>?
+	@field SortOrder Fusion.UsedAs<Enum.SortOrder>?
+	@field MajorAxis Fusion.UsedAs<Enum.TableMajorAxis>?
+	@field HorizontalAlignment Fusion.UsedAs<Enum.HorizontalAlignment>?
+	@field VerticalAlignment Fusion.UsedAs<Enum.VerticalAlignment>?
+]=]
+--[=[
+	@within Base
+	@interface PageProps
+
+	@field Enabled Fusion.UsedAs<boolean>?
+	@field Animated Fusion.UsedAs<boolean>?
+	@field Circular Fusion.UsedAs<boolean>?
+	@field EasingDirection Fusion.UsedAs<Enum.EasingDirection>?
+	@field EasingStyle Fusion.UsedAs<Enum.EasingStyle>?
+	@field Padding Fusion.UsedAs<UDim>?
+	@field TweenTime Fusion.UsedAs<number>?
+	@field FillDirection Fusion.UsedAs<Enum.FillDirection>?
+	@field SortOrder Fusion.UsedAs<Enum.SortOrder>?
+	@field HorizontalAlignment Fusion.UsedAs<Enum.HorizontalAlignment>?
+	@field VerticalAlignment Fusion.UsedAs<Enum.VerticalAlignment>?
+	@field GamepadInputEnabled Fusion.UsedAs<boolean>?
+	@field ScrollWheelInputEnabled Fusion.UsedAs<boolean>?
+	@field TouchInputEnabled Fusion.UsedAs<boolean>?
+]=]
 --[=[
 	@within Base
 	@interface BaseProps
@@ -171,75 +331,23 @@ export type Props = {
 	@field SelectionBehaviorRight Fusion.UsedAs<Enum.SelectionBehavior>?
 	@field SelectionBehaviorLeft Fusion.UsedAs<Enum.SelectionBehavior>?
 	@field SelectionGroup Fusion.UsedAs<boolean>?
-	@field CornerRadius Fusion.UsedAs<UDim>?
-	@field Padding Fusion.UsedAs<UDim>?
-	@field PaddingTop Fusion.UsedAs<UDim>?
-	@field PaddingLeft Fusion.UsedAs<UDim>?
-	@field PaddingRight Fusion.UsedAs<UDim>?
-	@field PaddingBottom Fusion.UsedAs<UDim>?
-	@field Scale Fusion.UsedAs<number>?
-	@field StrokeEnabled Fusion.UsedAs<boolean>?
-	@field StrokeThickness Fusion.UsedAs<number>?
-	@field StrokeColor Fusion.UsedAs<Color3>?
-	@field StrokeTransparency Fusion.UsedAs<number>?
-	@field StrokeLineJoinMode Fusion.UsedAs<Enum.LineJoinMode>?
-	@field StrokeApplyStrokeMode Fusion.UsedAs<Enum.ApplyStrokeMode>?
-	@field GradientEnabled Fusion.UsedAs<boolean>?
-	@field GradientColor Fusion.UsedAs<ColorSequence>?
-	@field GradientOffset Fusion.UsedAs<UDim>?
-	@field GradientRotation Fusion.UsedAs<number>?
-	@field GradientTransparency Fusion.UsedAs<number>?
-	@field AspectRatio Fusion.UsedAs<number>?
-	@field AspectType Fusion.UsedAs<Enum.AspectType>?
-	@field DominantAxis Fusion.UsedAs<Enum.DominantAxis>?
-	@field ListEnabled Fusion.UsedAs<boolean>?
-	@field ListPadding Fusion.UsedAs<UDim>?
-	@field ListFillDirection Fusion.UsedAs<Enum.FillDirection>?
-	@field ListSortOrder Fusion.UsedAs<Enum.SortOrder>?
-	@field ListWraps Fusion.UsedAs<boolean>?
-	@field ListHorizontalAlignment Fusion.UsedAs<Enum.HorizontalAlignment>?
-	@field ListHorizontalFlex Fusion.UsedAs<boolean>?
-	@field ListVerticalAlignment Fusion.UsedAs<Enum.VerticalAlignment>?
-	@field ListVerticalFlex Fusion.UsedAs<boolean>?
-	@field ListItemLineAlignment Fusion.UsedAs<Enum.ItemLineAlignment>?
-	@field GridEnabled Fusion.UsedAs<boolean>?
-	@field GridCellPadding Fusion.UsedAs<UDim>?
-	@field GridCellSize Fusion.UsedAs<UDim2>?
-	@field GridFillDirection Fusion.UsedAs<Enum.FillDirection>?
-	@field GridFillDirectionMaxCells Fusion.UsedAs<number>?
-	@field GridSortOrder Fusion.UsedAs<Enum.SortOrder>?
-	@field GridStartCorner Fusion.UsedAs<Enum.StartCorner>?
-	@field GridHorizontalAlignment Fusion.UsedAs<Enum.HorizontalAlignment>?
-	@field GridVerticalAlignment Fusion.UsedAs<Enum.VerticalAlignment>?
-	@field TableEnabled Fusion.UsedAs<boolean>?
-	@field TablePadding Fusion.UsedAs<UDim>?
-	@field TableFillEmptySpaceColumns Fusion.UsedAs<boolean>?
-	@field TableFillEmptySpaceRows Fusion.UsedAs<boolean>?
-	@field TableFillDirection Fusion.UsedAs<Enum.FillDirection>?
-	@field TableSortOrder Fusion.UsedAs<Enum.SortOrder>?
-	@field TableMajorAxis Fusion.UsedAs<Enum.TableMajorAxis>?
-	@field TableHorizontalAlignment Fusion.UsedAs<Enum.HorizontalAlignment>?
-	@field TableVerticalAlignment Fusion.UsedAs<Enum.VerticalAlignment>?
-	@field PageEnabled Fusion.UsedAs<boolean>?
-	@field PageAnimated Fusion.UsedAs<boolean>?
-	@field PageCircular Fusion.UsedAs<boolean>?
-	@field PageEasingDirection Fusion.UsedAs<Enum.EasingDirection>?
-	@field PageEasingStyle Fusion.UsedAs<Enum.EasingStyle>?
-	@field PagePadding Fusion.UsedAs<UDim>?
-	@field PageTweenTime Fusion.UsedAs<number>?
-	@field PageFillDirection Fusion.UsedAs<Enum.FillDirection>?
-	@field PageSortOrder Fusion.UsedAs<Enum.SortOrder>?
-	@field PageHorizontalAlignment Fusion.UsedAs<Enum.HorizontalAlignment>?
-	@field PageVerticalAlignment Fusion.UsedAs<Enum.VerticalAlignment>?
-	@field PageGamepadInputEnabled Fusion.UsedAs<boolean>?
-	@field PageScrollWheelInputEnabled Fusion.UsedAs<boolean>?
-	@field PageTouchInputEnabled Fusion.UsedAs<boolean>?
-	@field FlexMode Fusion.UsedAs<Enum.UIFlexMode>?
-	@field FlexItemLineAlignment Fusion.UsedAs<Enum.ItemLineAlignment>?
-	@field FlexGrowRatio Fusion.UsedAs<number>?
-	@field FlexShrinkRatio Fusion.UsedAs<number>?
+
+	@field Corner Fusion.UsedAs<CornerProps>?
+	@field Padding Fusion.UsedAs<PaddingProps>?
+	@field Stroke Fusion.UsedAs<StrokeProps>?
+	@field Gradient Fusion.UsedAs<GradientProps>?
+	@field Aspect Fusion.UsedAs<AspectProps>?
+	@field Scale Fusion.UsedAs<ScaleProps>?
+
+	@field List Fusion.UsedAs<ListProps>?
+	@field Grid Fusion.UsedAs<GridProps>?
+	@field Table Fusion.UsedAs<TableProps>?
+	@field Page Fusion.UsedAs<PageProps>?
+	@field Flex Fusion.UsedAs<FlexProps>?
+
 	@field MaxSize Fusion.UsedAs<Vector2>?
 	@field MinSize Fusion.UsedAs<Vector2>?
+
 	@field MaxTextSize Fusion.UsedAs<number>?
 	@field MinTextSize Fusion.UsedAs<number>?
 ]=]
@@ -250,73 +358,69 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 	local ClassName = Util.Fallback(Props.ClassName, "Frame")
 	local Name = Util.Fallback(Props.Name, "Base")
 	local AutomaticSize = Util.Fallback(Props.AutomaticSize, Enum.AutomaticSize.XY)
-	local CornerRadius = Util.Fallback(Props.CornerRadius, UDim.new(0, 0))
-	local StrokeThickness = Util.Fallback(Props.StrokeThickness, Theme.StrokeThickness["1"])
 	local BackgroundColor3 = Util.Fallback(Props.BackgroundColor3, Theme.Colors.Base.Main)
-	local StrokeColor = Util.Fallback(
-		Props.StrokeColor,
-		Scope:Computed(function(Use)
+	local Corner = Util.Fallback(Props.Corner, {
+		Radius = UDim.new(0, 0),
+	})
+	local Stroke = Util.Fallback(Props.Stroke, {
+		Thickness = Theme.StrokeThickness["1"],
+		Color = Scope:Computed(function(Use)
 			return Util.Emphasize(Use(BackgroundColor3), Use(Theme.StrokeEmphasis["Regular"]))
-		end)
-	)
-	local StrokeApplyStrokeMode = Util.Fallback(Props.StrokeApplyStrokeMode, Enum.ApplyStrokeMode.Border)
-	local StrokeLineJoinMode = Util.Fallback(
-		Props.StrokeLineJoinMode,
-		Scope:Computed(function(Use)
-			local CornerRadiusValue = Use(CornerRadius)
+		end),
+		ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
+		LineJoinMode = Scope:Computed(function(Use)
+			local CornerRadiusValue = Use(Use(Corner).Radius)
+
 			if (CornerRadiusValue ~= nil) and ((CornerRadiusValue.Offset > 1) or (CornerRadiusValue.Scale > 1)) then
 				return Enum.LineJoinMode.Round
 			else
 				return Enum.LineJoinMode.Miter
 			end
-		end)
-	)
-	local Padding = Util.Fallback(
-		Props.Padding,
-		Scope:Computed(function(Use)
+		end),
+	})
+	local Padding = Util.Fallback(Props.Padding, {
+		Padding = Scope:Computed(function(Use)
 			return UDim.new(0, Use(Theme.Padding["1"]))
-		end)
-	)
-	local PaddingBottom = Util.Fallback(Props.PaddingBottom, Props.Padding)
-	local PaddingLeft = Util.Fallback(Props.PaddingLeft, Props.Padding)
-	local PaddingRight = Util.Fallback(Props.PaddingRight, Props.Padding)
-	local PaddingTop = Util.Fallback(Props.PaddingTop, Props.Padding)
-	local ListPadding = Util.Fallback(
-		Props.ListPadding,
-		Scope:Computed(function(Use)
+		end),
+	})
+	local List = Util.Fallback(Props.List, {
+		Padding = Scope:Computed(function(Use)
 			return UDim.new(0, Use(Theme.Spacing["1"]))
-		end)
-	)
-	local ListSortOrder = Util.Fallback(Props.ListSortOrder, Enum.SortOrder.LayoutOrder)
-	local GridCellPadding = Util.Fallback(
-		Props.GridCellPadding,
-		Scope:Computed(function(Use)
-			return UDim2.fromOffset(Use(Theme.Spacing["0.5"]), Use(Theme.Spacing["0.5"]))
-		end)
-	)
-	local GridSortOrder = Util.Fallback(Props.GridSortOrder, Enum.SortOrder.LayoutOrder)
-	local PagePadding = Util.Fallback(
-		Props.PagePadding,
-		Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Spacing["0.5"]))
-		end)
-	)
-	local PageSortOrder = Util.Fallback(Props.PageSortOrder, Enum.SortOrder.LayoutOrder)
-	local TablePadding = Util.Fallback(
-		Props.TablePadding,
-		Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Spacing["0.5"]))
-		end)
-	)
-	local TableSortOrder = Util.Fallback(Props.TableSortOrder, Enum.SortOrder.LayoutOrder)
+		end),
+		SortOrder = Enum.SortOrder.LayoutOrder,
+	})
+	local Grid = Util.Fallback(Props.Grid, {
+		CellPadding = Scope:Computed(function(Use)
+			return UDim2.fromOffset(Use(Theme.Spacing["1"]), Use(Theme.Spacing["1"]))
+		end),
+		SortOrder = Enum.SortOrder.LayoutOrder,
+	})
+	local Table = Util.Fallback(Props.Table, {
+		Padding = Scope:Computed(function(Use)
+			return UDim2.fromOffset(Use(Theme.Spacing["1"]), Use(Theme.Spacing["1"]))
+		end),
+		SortOrder = Enum.SortOrder.LayoutOrder,
+	})
+	local Page = Util.Fallback(Props.Page, {
+		Padding = Scope:Computed(function(Use)
+			return UDim.new(0, Use(Theme.Spacing["1"]))
+		end),
+		SortOrder = Enum.SortOrder.LayoutOrder,
+	})
 
-	local PaddingInEffect = Scope:Computed(function(Use)
-		local Paddings = { Props.Padding, Props.PaddingTop, Props.PaddingLeft, Props.PaddingRight, Props.PaddingBottom }
+	local PaddingActive = Scope:Computed(function(Use)
+		local InProps = Use(Props.Padding) ~= nil
+		local PaddingValue = Use(Padding)
+		local Paddings =
+			{ PaddingValue.Padding, PaddingValue.Top, PaddingValue.Left, PaddingValue.Right, PaddingValue.Bottom }
 
-		for _, PaddingProp in pairs(Paddings) do
-			local PaddingValue = Use(PaddingProp)
-			if typeof(PaddingValue) == "UDim" then
-				return true
+		if InProps then
+			for _, PaddingProp in pairs(Paddings) do
+				local PaddingPropValue = Use(PaddingProp)
+
+				if typeof(PaddingPropValue) == "UDim" then
+					return true
+				end
 			end
 		end
 
@@ -357,26 +461,26 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 		SelectionGroup = Props.SelectionGroup,
 
 		[Children] = {
+			-- Styling
 			Scope:Computed(function(Use)
-				local CornerRadiusValue = Use(CornerRadius)
-				if
-					(CornerRadiusValue ~= nil)
-					and ((CornerRadiusValue.Offset ~= 0) or (CornerRadiusValue.Scale ~= 0))
-				then
+				local CornerValue = Use(Corner) or {}
+				local InProps = Use(Props.Corner) ~= nil
+
+				if InProps and (Use(CornerValue.Enabled) ~= false) then
 					return Scope:New "UICorner" {
-						CornerRadius = CornerRadius,
+						CornerRadius = CornerValue.Radius,
 					}
-				else
-					return
 				end
 			end),
 			Scope:Computed(function(Use)
-				local PaddingInEffectValue = Use(PaddingInEffect)
-				if PaddingInEffectValue == true then
+				local PaddingActiveValue = Use(PaddingActive)
+
+				if PaddingActiveValue == true then
 					return Scope:New "UIPadding" {
 						PaddingTop = Scope:Computed(function(Use)
-							local PaddingTopValue = Use(PaddingTop)
+							local PaddingTopValue = Use(Use(Padding).Top)
 							local PaddingValue = Use(Padding)
+
 							if typeof(PaddingTopValue) == "UDim" then
 								return PaddingTopValue
 							elseif typeof(PaddingValue) == "UDim" then
@@ -386,8 +490,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 							end
 						end),
 						PaddingBottom = Scope:Computed(function(Use)
-							local PaddingBottomValue = Use(PaddingBottom)
+							local PaddingBottomValue = Use(Use(Padding).Bottom)
 							local PaddingValue = Use(Padding)
+
 							if typeof(PaddingBottomValue) == "UDim" then
 								return PaddingBottomValue
 							elseif typeof(PaddingValue) == "UDim" then
@@ -397,8 +502,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 							end
 						end),
 						PaddingLeft = Scope:Computed(function(Use)
-							local PaddingLeftValue = Use(PaddingLeft)
+							local PaddingLeftValue = Use(Use(Padding).Left)
 							local PaddingValue = Use(Padding)
+
 							if typeof(PaddingLeftValue) == "UDim" then
 								return PaddingLeftValue
 							elseif typeof(PaddingValue) == "UDim" then
@@ -408,8 +514,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 							end
 						end),
 						PaddingRight = Scope:Computed(function(Use)
-							local PaddingRightValue = Use(PaddingRight)
+							local PaddingRightValue = Use(Use(Padding).Right)
 							local PaddingValue = Use(Padding)
+
 							if typeof(PaddingRightValue) == "UDim" then
 								return PaddingRightValue
 							elseif typeof(PaddingValue) == "UDim" then
@@ -419,56 +526,59 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 							end
 						end),
 					}
-				else
-					return
 				end
 			end),
 			Scope:Computed(function(Use)
-				local ScaleValue = Use(Props.Scale)
-				if (ScaleValue ~= nil) and (ScaleValue ~= 1) then
-					return Scope:New "UIScale" {
-						Scale = ScaleValue,
-					}
-				else
-					return
-				end
-			end),
-			Scope:Computed(function(Use)
-				if Use(Props.StrokeEnabled) == true then
+				local StrokeValue = Use(Stroke) or {}
+				local InProps = Use(Props.Stroke) ~= nil
+
+				if InProps and (Use(StrokeValue.Enabled) ~= false) then
 					return Scope:New "UIStroke" {
-						Enabled = Props.StrokeEnabled,
-						Thickness = StrokeThickness,
-						Color = StrokeColor,
-						Transparency = Props.StrokeTransparency,
-						ApplyStrokeMode = StrokeApplyStrokeMode,
-						LineJoinMode = StrokeLineJoinMode,
+						Enabled = StrokeValue.Enabled,
+						Thickness = StrokeValue.Thickness,
+						Color = StrokeValue.Color,
+						Transparency = StrokeValue.Transparency,
+						ApplyStrokeMode = StrokeValue.ApplyStrokeMode,
+						LineJoinMode = StrokeValue.LineJoinMode,
 					}
-				else
-					return
 				end
 			end),
 			Scope:Computed(function(Use)
-				if Use(Props.GradientEnabled) == true then
+				local GradientValue = Use(Props.Gradient) or {}
+				local InProps = Use(Props.Gradient) ~= nil
+
+				if InProps and (Use(GradientValue.Enabled) ~= false) then
 					return Scope:New "UIGradient" {
-						Enabled = Props.GradientEnabled,
-						Color = Props.GradientColor,
-						Offset = Props.GradientOffset,
-						Rotation = Props.GradientRotation,
-						Transparency = Props.GradientTransparency,
+						Enabled = GradientValue.Enabled,
+						Color = GradientValue.Color,
+						Offset = GradientValue.Offset,
+						Rotation = GradientValue.Rotation,
+						Transparency = GradientValue.Transparency,
 					}
-				else
-					return
+				end
+			end),
+
+			-- Sizing
+			Scope:Computed(function(Use)
+				local ScaleValue = Use(Props.Scale) or {}
+				local InProps = Use(Props.Scale) ~= nil
+
+				if InProps and (Use(ScaleValue.Enabled) ~= false) then
+					return Scope:New "UIScale" {
+						Scale = ScaleValue.Scale,
+					}
 				end
 			end),
 			Scope:Computed(function(Use)
-				if Use(Props.AspectRatio) ~= nil then
+				local AspectValue = Use(Props.Aspect) or {}
+				local InProps = Use(Props.Aspect) ~= nil
+
+				if InProps and (Use(AspectValue.Enabled) ~= false) then
 					return Scope:New "UIAspectRatioConstraint" {
-						AspectRatio = Props.AspectRatio,
-						DominantAxis = Props.DominantAxis,
-						AspectType = Props.AspectType,
+						AspectRatio = AspectValue.Ratio,
+						DominantAxis = AspectValue.DominantAxis,
+						AspectType = AspectValue.AspectType,
 					}
-				else
-					return
 				end
 			end),
 			Scope:Computed(function(Use)
@@ -477,8 +587,6 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 						MaxSize = Props.MaxSize,
 						MinSize = Props.MinSize,
 					}
-				else
-					return
 				end
 			end),
 			Scope:Computed(function(Use)
@@ -487,91 +595,97 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 						MaxTextSize = Props.MaxTextSize,
 						MinTextSize = Props.MinTextSize,
 					}
-				else
-					return
 				end
 			end),
+
+			-- Layout
 			Scope:Computed(function(Use)
-				if Use(Props.ListEnabled) == true then
+				local ListValue = Use(List) or {}
+				local InProps = Use(Props.List) ~= nil
+
+				if InProps and (Use(ListValue.Enabled) ~= false) then
 					return Scope:New "UIListLayout" {
-						Padding = ListPadding,
-						FillDirection = Props.ListFillDirection,
-						SortOrder = ListSortOrder,
-						Wraps = Props.ListWraps,
-						HorizontalAlignment = Props.ListHorizontalAlignment,
-						HorizontalFlex = Props.ListHorizontalFlex,
-						ItemLineAlignment = Props.ListItemLineAlignment,
-						VerticalAlignment = Props.ListVerticalAlignment,
-						VerticalFlex = Props.ListVerticalFlex,
+						Padding = ListValue.Padding,
+						FillDirection = ListValue.FillDirection,
+						SortOrder = ListValue.SortOrder,
+						Wraps = ListValue.Wraps,
+						HorizontalAlignment = ListValue.HorizontalAlignment,
+						HorizontalFlex = ListValue.HorizontalFlex,
+						ItemLineAlignment = ListValue.ItemLineAlignment,
+						VerticalAlignment = ListValue.VerticalAlignment,
+						VerticalFlex = ListValue.VerticalFlex,
 					}
-				else
-					return
 				end
 			end),
 			Scope:Computed(function(Use)
-				if Use(Props.GridEnabled) == true then
+				local GridValue = Use(Grid) or {}
+				local InProps = Use(Props.Grid) ~= nil
+
+				if InProps and (Use(GridValue.Enabled) ~= false) then
 					return Scope:New "UIGridLayout" {
-						CellPadding = GridCellPadding,
-						CellSize = Props.GridCellSize,
-						FillDirection = Props.GridFillDirection,
-						FillDirectionMaxCells = Props.GridFillDirectionMaxCells,
-						SortOrder = GridSortOrder,
-						StartCorner = Props.GridStartCorner,
-						HorizontalAlignment = Props.GridHorizontalAlignment,
-						VerticalAlignment = Props.GridVerticalAlignment,
+						CellPadding = GridValue.CellPadding,
+						CellSize = GridValue.CellSize,
+						FillDirection = GridValue.FillDirection,
+						FillDirectionMaxCells = GridValue.FillDirectionMaxCells,
+						SortOrder = GridValue.SortOrder,
+						StartCorner = GridValue.StartCorner,
+						HorizontalAlignment = GridValue.HorizontalAlignment,
+						VerticalAlignment = GridValue.VerticalAlignment,
 					}
-				else
-					return
 				end
 			end),
 			Scope:Computed(function(Use)
-				if Use(Props.TableEnabled) == true then
+				local TableValue = Use(Table) or {}
+				local InProps = Use(Props.Table) ~= nil
+
+				if InProps and (Use(TableValue.Enabled) ~= false) then
 					return Scope:New "UITableLayout" {
-						Padding = TablePadding,
-						FillEmptySpaceColumns = Props.TableFillEmptySpaceColumns,
-						FillEmptySpaceRows = Props.TableFillEmptySpaceRows,
-						FillDirection = Props.TableFillDirection,
-						SortOrder = TableSortOrder,
-						MajorAxis = Props.TableMajorAxis,
-						HorizontalAlignment = Props.TableHorizontalAlignment,
-						VerticalAlignment = Props.TableVerticalAlignment,
+						Padding = TableValue.Padding,
+						FillEmptySpaceColumns = TableValue.FillEmptySpaceColumns,
+						FillEmptySpaceRows = TableValue.FillEmptySpaceRows,
+						FillDirection = TableValue.FillDirection,
+						SortOrder = TableValue.SortOrder,
+						MajorAxis = TableValue.MajorAxis,
+						HorizontalAlignment = TableValue.HorizontalAlignment,
+						VerticalAlignment = TableValue.VerticalAlignment,
 					}
 				else
 					return
 				end
 			end),
 			Scope:Computed(function(Use)
-				if Use(Props.PageEnabled) == true then
+				local PageValue = Use(Page) or {}
+				local InProps = Use(Props.Page) ~= nil
+
+				if InProps and (Use(PageValue.Enabled) ~= false) then
 					return Scope:New "UIPageLayout" {
-						Animated = Props.PageAnimated,
-						Circular = Props.PageCircular,
-						EasingDirection = Props.PageEasingDirection,
-						EasingStyle = Props.PageEasingStyle,
-						Padding = PagePadding,
-						TweenTime = Props.PageTweenTime,
-						FillDirection = Props.PageFillDirection,
-						SortOrder = PageSortOrder,
-						HorizontalAlignment = Props.PageHorizontalAlignment,
-						VerticalAlignment = Props.PageVerticalAlignment,
-						GamepadInputEnabled = Props.PageGamepadInputEnabled,
-						ScrollWheelInputEnabled = Props.PageScrollWheelInputEnabled,
-						TouchInputEnabled = Props.PageTouchInputEnabled,
+						Animated = PageValue.Animated,
+						Circular = PageValue.Circular,
+						EasingDirection = PageValue.EasingDirection,
+						EasingStyle = PageValue.EasingStyle,
+						Padding = PageValue.Padding,
+						TweenTime = PageValue.TweenTime,
+						FillDirection = PageValue.FillDirection,
+						SortOrder = PageValue.SortOrder,
+						HorizontalAlignment = PageValue.HorizontalAlignment,
+						VerticalAlignment = PageValue.VerticalAlignment,
+						GamepadInputEnabled = PageValue.GamepadInputEnabled,
+						ScrollWheelInputEnabled = PageValue.ScrollWheelInputEnabled,
+						TouchInputEnabled = PageValue.TouchInputEnabled,
 					}
-				else
-					return
 				end
 			end),
 			Scope:Computed(function(Use)
-				local FlexMode = Use(Props.FlexMode)
-				if (FlexMode ~= nil) and (FlexMode ~= Enum.UIFlexMode.None) then
+				local FlexValue = Use(Props.Flex) or {}
+				local InProps = Use(Props.Flex) ~= nil
+
+				if InProps and (Use(FlexValue.Mode) ~= Enum.UIFlexMode.None) then
 					return Scope:New "UIFlexItem" {
-						FlexMode = Props.FlexMode,
-						FlexItemLineAlignment = Props.FlexItemLineAlignment,
-						FlexGrowRatio = Props.FlexGrowRatio,
-						FlexShrinkRatio = Props.FlexShrinkRatio,
+						FlexMode = FlexValue.Mode,
+						FlexItemLineAlignment = FlexValue.ItemLineAlignment,
+						FlexGrowRatio = FlexValue.GrowRatio,
+						FlexShrinkRatio = FlexValue.ShrinkRatio,
 					}
-				else
-					return
 				end
 			end),
 
