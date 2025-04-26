@@ -4,10 +4,6 @@ sidebar_position: 1
 
 # Getting Started
 
-:::info
-  OnyxUI is premature software, relying on the premature software Fusion. If that doesn't deter you, get ready to enjoy how easy UI can be. ✨
-:::
-
 ## Installation
 
 ### Wally package
@@ -37,11 +33,10 @@ return function(Scope: Fusion.Scope<any>, Props)
 	local Scope = Fusion.innerScope(Scope, Fusion, OnyxUI.Util, OnyxUI.Components)
 	local Theme = OnyxUI.Themer.Theme:now()
 
-	return Scope:Card {
-		BackgroundColor3 = OnyxUI.Util.Colors.Gray["200"],
-		Padding = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Spacing["2"]))
-		end),
+	return Scope:Button {
+		Content = { "Press me!" },
+		Color = Theme.Colors.Primary.Main,
+		SizeVariant = "Large",
 	}
 end
 ```

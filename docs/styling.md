@@ -1,16 +1,16 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # Styling
 
 Styling props are globally supported props for styling UI. These aim to stay close to Roblox's way of doing things, but differ when necessary.
 
-# Property-based styling
+## Property-based styling
 
 Traditional properties like `BackgroundColor3` are supported identically to how Roblox does it. Use these as you would normally. There are exceptions however, like how `Color` is preferred over `BackgroundColor3` in [`Button`](/api/Button).
 
-# Children-based styling
+## Children-based styling
 
 `UIPadding`s, `UIStroke`s, `UIListLayout`s... Children-based styling is just too much mess. In OnyxUI, all components support an extensive set of props to *avoid* working with these objects, so you can write code faster!
 
@@ -18,9 +18,9 @@ Traditional properties like `BackgroundColor3` are supported identically to how 
   Most of the below also support `Enabled` for easily enabling/disabling their effects.
 :::
 
-## Cosmetic
+### Cosmetic
 
-### Corner Radius
+#### Corner Radius
 
 ```lua
 Corner = {
@@ -28,7 +28,7 @@ Corner = {
 }
 ```
 
-### Stroke
+#### Stroke
 
 ```lua
 Stroke = {
@@ -51,7 +51,7 @@ Stroke = {
 }
 ```
 
-### Gradient
+#### Gradient
 
 ```lua
 Gradient = {
@@ -62,9 +62,9 @@ Gradient = {
 }
 ```
 
-## Layout
+### Layout
 
-### Padding
+#### Padding
 
 Equal-sided padding:
 
@@ -85,7 +85,7 @@ Padding = {
 }
 ```
 
-### Flex
+#### Flex
 
 Fill the parent container:
 
@@ -106,7 +106,7 @@ Flex = {
 }
 ```
 
-### List
+#### List
 
 Vertical list:
 
@@ -130,7 +130,7 @@ List = {
 }
 ```
 
-### Grid
+#### Grid
 
 Horizontally-filled grid:
 
@@ -142,13 +142,13 @@ Grid = {
 }
 ```
 
-### Others
+#### Others
 
 Other layouts like `UITableLayout` and `UIPageLayout` are generally inferior and unused. For API reference, see the [`Base`](/api/Base) component's source code.
 
-## Constraints
+### Constraints
 
-### Aspect ratio
+#### Aspect ratio
 
 Square-locked size:
 
@@ -168,7 +168,7 @@ Aspect = {
 }
 ```
 
-### Scale
+#### Scale
 
 Scaled by 2x:
 
@@ -178,7 +178,7 @@ Scale = {
 }
 ```
 
-### Size constraint
+#### Size constraint
 
 Smaller than 100x 100y:
 
@@ -194,7 +194,7 @@ MaxSize = Vector2.new(math.huge, math.huge),
 MinSize = Vector2.new(0, 0),
 ```
 
-### Text size constraint
+#### Text size constraint
 
 Bigger than 12, smaller than 24:
 
@@ -203,6 +203,6 @@ MaxTextSize = 24,
 MinTextSize = 12,
 ```
 
-# Using in custom components
+## Using in custom components
 
 To support styling props in your own components, make use of the [`CombineProps`](/docs/utilities#combineprops) utility to pass props through automatically. Your component must be based upon an OnyxUI component such as [`Base`](/api/Base) for this to work.

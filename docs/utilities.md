@@ -1,61 +1,58 @@
 ---
-sidebar_position: 5
+sidebar_position: 4
 ---
 
 # Utilities
 
-Important utilities for UI development.
+## [Fallback](/api/Util#Fallback)
 
-## [EnsureValue](/api/Util#EnsureValue)
-
-Want to ensure your component props are Fusion `Value`s? This makes it a one-line operation.
+Guarantee your props to fall back on a default value.
 
 ```lua
-local Util = OnyxUI.Util
-
-
-return function(Props)
-  local Scope = Fusion.innerScope(Scope, Util)
-
-  local MyProp = Scope:Fallback(Props.MyProp, "Default")
-end
+local Color = OnyxUI.Util.Fallback(Props.Color, Theme.Colors.Neutral.Main)
 ```
 
 ## [CombineProps](/api/Util#CombineProps)
 
-Let's say you have a "CustomButton" component, and you want it to support `Size`, `Position`, and other arbitrary properties. Manually implementing all that boilerplate in the component itself is tedious. So let's have `CombineProps` do the passthrough for us:
+Automatically support every single OnyxUI property available, right in your custom component. `Size`, `Position`, `Padding`, etc. Every. single. one.
 
 ```lua
-local Util = OnyxUI.Util
-local Themer = OnyxUI.Themer
-local Components = OnyxUI.Components
-
-
 return function(Props)
-  local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
+  local Scope = Fusion.innerScope(Scope, Fusion, OnyxUI.Util, OnyxUI.Components)
   local Theme = Themer.Theme:now()
 
-  return Scope:BaseButton(Util.CombineProps(Props, {
+  return Scope:BaseButton(OnyxUI.Util.CombineProps(Props, {
     BackgroundTransparency = 0,
-    CornerRadius = Computed(function(Use)
-      return UDim.new(0, Use(Theme.CornerRadius["1"]))
-    end),
+    Corner = {
+      Radius = Computed(function(Use)
+        return UDim.new(0, Use(Theme.CornerRadius["1"]))
+      end),
+    },
 
     -- All properties from OnyxUI's `BaseButton` component will now work.
   }))
 end
 ```
 
+## [EnsureValue](/api/Util#EnsureValue)
+
+Want to ensure your component props are Fusion `Value`s? This makes it a one-line operation.
+
+```lua
+return function(Props)
+  local Scope = Fusion.innerScope(Scope, OnyxUI.Util)
+
+  local MyProp = Scope:Fallback(Props.MyProp, "Default")
+end
+```
 ## [Colors](/api/Util#Colors)
 
 Color shorthands imported from [TailwindCSS's color palette](https://tailwindcss.com/docs/customizing-colors#default-color-palette). So you don't have to worry about color picking anymore.
 
 ```lua
-local Util = OnyxUI.Util
-
 return function(Props)
   return Scope:Button {
-    Color = Util.Colors.Red["500"], -- Shade "500" of Colors.Red
+    Color = OnyxUI.Util.Colors.Red["500"], -- Shade "500" of Colors.Red
   }
 end
 ```
