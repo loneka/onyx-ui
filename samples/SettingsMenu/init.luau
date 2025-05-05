@@ -23,9 +23,12 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			return UDim2.fromOffset(Use(Theme.Sizing["16"], 0))
 		end),
 		AutomaticSize = Enum.AutomaticSize.Y,
+		List = {},
 		ListEnabled = true,
-		CornerRadius = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.CornerRadius["2"]))
+		Corner = Scope:Computed(function(Use)
+			return {
+				Radius = UDim.new(0, Use(Theme.CornerRadius["2"])),
+			}
 		end),
 
 		[Children] = {
@@ -36,13 +39,14 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			Scope:Scroller {
 				Size = UDim2.new(UDim.new(1, 0), UDim.new(0, 175)),
 				AutomaticSize = Enum.AutomaticSize.None,
-				ListEnabled = true,
-				ListHorizontalFlex = Enum.UIFlexAlignment.Fill,
+				List = {
+					HorizontalFlex = Enum.UIFlexAlignment.Fill,
+				},
 				Padding = Scope:Computed(function(Use)
-					return UDim.new(0, Use(Theme.StrokeThickness["1"]))
-				end),
-				PaddingRight = Scope:Computed(function(Use)
-					return UDim.new(0, Use(Theme.StrokeThickness["1"]) + Use(Theme.Spacing["1"]))
+					return {
+						Padding = UDim.new(0, Use(Theme.StrokeThickness["1"])),
+						Right = UDim.new(0, Use(Theme.StrokeThickness["1"]) + Use(Theme.Spacing["1"])),
+					}
 				end),
 
 				[Children] = {

@@ -62,11 +62,12 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 	return Scope:Frame(Util.CombineProps(Props, {
 		Name = script.Name,
-		ListEnabled = true,
-		ListFillDirection = Enum.FillDirection.Horizontal,
-		ListPadding = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Spacing["0"]))
-		end),
+		List = {
+			FillDirection = Enum.FillDirection.Horizontal,
+			Padding = Scope:Computed(function(Use)
+				return UDim.new(0, Use(Theme.Spacing["0"]))
+			end),
+		},
 
 		[Children] = {
 			Scope:ForPairs(Content, function(Use, Scope, Index: number, ContentString: string)

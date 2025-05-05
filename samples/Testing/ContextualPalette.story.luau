@@ -13,10 +13,11 @@ local function Palette(Scope: Fusion.Scope<any>, _: any)
 	return Scope:Base {
 		Name = "Palette",
 		BackgroundTransparency = 1,
-		ListEnabled = true,
-		ListPadding = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Spacing["0.75"]))
-		end),
+		List = {
+			Padding = Scope:Computed(function(Use)
+				return UDim.new(0, Use(Theme.Spacing["0.75"]))
+			end),
+		},
 
 		[Children] = {
 			{
@@ -59,8 +60,9 @@ return {
 
 		Scope:Base {
 			Parent = Props.target,
-			ListEnabled = true,
-			ListFillDirection = Enum.FillDirection.Horizontal,
+			List = {
+				FillDirection = Enum.FillDirection.Horizontal,
+			},
 			BackgroundTransparency = 1,
 
 			[Children] = {

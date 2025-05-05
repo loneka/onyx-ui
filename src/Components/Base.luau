@@ -478,52 +478,32 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 				if PaddingActiveValue == true then
 					return Scope:New "UIPadding" {
 						PaddingTop = Scope:Computed(function(Use)
-							local PaddingTopValue = Use(Use(Padding).Top)
 							local PaddingValue = Use(Padding)
+							local PaddingAllValue = Use(PaddingValue.Padding)
+							local PaddingTopValue = Use(PaddingValue.Top)
 
-							if typeof(PaddingTopValue) == "UDim" then
-								return PaddingTopValue
-							elseif typeof(PaddingValue) == "UDim" then
-								return PaddingValue
-							else
-								return UDim.new()
-							end
+							return PaddingTopValue or PaddingAllValue or UDim.new()
 						end),
 						PaddingBottom = Scope:Computed(function(Use)
-							local PaddingBottomValue = Use(Use(Padding).Bottom)
 							local PaddingValue = Use(Padding)
+							local PaddingAllValue = Use(PaddingValue.Padding)
+							local PaddingBottomValue = Use(PaddingValue.Bottom)
 
-							if typeof(PaddingBottomValue) == "UDim" then
-								return PaddingBottomValue
-							elseif typeof(PaddingValue) == "UDim" then
-								return PaddingValue
-							else
-								return UDim.new()
-							end
+							return PaddingBottomValue or PaddingAllValue or UDim.new()
 						end),
 						PaddingLeft = Scope:Computed(function(Use)
-							local PaddingLeftValue = Use(Use(Padding).Left)
 							local PaddingValue = Use(Padding)
+							local PaddingAllValue = Use(PaddingValue.Padding)
+							local PaddingLeftValue = Use(PaddingValue.Left)
 
-							if typeof(PaddingLeftValue) == "UDim" then
-								return PaddingLeftValue
-							elseif typeof(PaddingValue) == "UDim" then
-								return PaddingValue
-							else
-								return UDim.new()
-							end
+							return PaddingLeftValue or PaddingAllValue or UDim.new()
 						end),
 						PaddingRight = Scope:Computed(function(Use)
-							local PaddingRightValue = Use(Use(Padding).Right)
 							local PaddingValue = Use(Padding)
+							local PaddingAllValue = Use(PaddingValue.Padding)
+							local PaddingRightValue = Use(PaddingValue.Right)
 
-							if typeof(PaddingRightValue) == "UDim" then
-								return PaddingRightValue
-							elseif typeof(PaddingValue) == "UDim" then
-								return PaddingValue
-							else
-								return UDim.new()
-							end
+							return PaddingRightValue or PaddingAllValue or UDim.new()
 						end),
 					}
 				end

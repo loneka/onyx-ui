@@ -18,11 +18,11 @@ Scope:Card {
   Stroke = {
     Thickness = Theme.StrokeThickness["2"],
   },
-  Padding = {
-    Padding = Scope:Computed(function(Use)
-      return UDim.new(0, Use(Theme.Padding["2"]))
-    end)
-  }
+  Padding = Scope:Computed(function(Use)
+    return {
+      Padding = UDim.new(0, Use(Theme.Padding["2"]))
+    }
+  end),
 }
 ```
 

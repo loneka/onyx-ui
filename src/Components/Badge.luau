@@ -60,26 +60,27 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		BackgroundColor3 = Color,
 		BackgroundTransparency = 0,
 		Padding = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Padding["0"]))
+			return {
+				Padding = UDim.new(0, Use(Theme.Padding["0"])),
+				Left = UDim.new(0, Use(Theme.Padding["0.25"])),
+				Right = UDim.new(0, Use(Theme.Padding["0.25"])),
+			}
 		end),
-		PaddingLeft = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Padding["0.25"]))
+		Corner = Scope:Computed(function(Use)
+			return {
+				Radius = UDim.new(0, Use(Theme.CornerRadius["2"])),
+			}
 		end),
-		PaddingRight = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Padding["0.25"]))
+		List = Scope:Computed(function(Use)
+			return {
+				Padding = UDim.new(0, Use(Theme.Spacing["0.25"])),
+				FillDirection = Enum.FillDirection.Horizontal,
+				HorizontalAlignment = Enum.HorizontalAlignment.Center,
+				VerticalAlignment = Enum.VerticalAlignment.Center,
+				Wraps = ContentWrapped,
+			}
 		end),
-		CornerRadius = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.CornerRadius["2"]))
-		end),
-		ListEnabled = true,
-		ListPadding = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Spacing["0.25"]))
-		end),
-		ListFillDirection = Enum.FillDirection.Horizontal,
-		ListHorizontalAlignment = Enum.HorizontalAlignment.Center,
-		ListVerticalAlignment = Enum.VerticalAlignment.Center,
-		ListWraps = ContentWrapped,
-		StrokeEnabled = true,
+		Stroke = {},
 
 		[Children] = {
 			Scope:IconText {
@@ -87,11 +88,13 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 				ContentColor = ContentColor,
 				ContentSize = ContentSize,
 				ContentWrapped = ContentWrapped,
-				ListHorizontalAlignment = Enum.HorizontalAlignment.Center,
-				ListVerticalAlignment = Enum.VerticalAlignment.Center,
-				ListPadding = Scope:Computed(function(Use)
-					return UDim.new(0, Use(Theme.Spacing["0.25"]))
-				end),
+				List = {
+					HorizontalAlignment = Enum.HorizontalAlignment.Center,
+					VerticalAlignment = Enum.VerticalAlignment.Center,
+					Padding = Scope:Computed(function(Use)
+						return UDim.new(0, Use(Theme.Spacing["0.25"]))
+					end),
+				},
 			},
 		},
 	}))
