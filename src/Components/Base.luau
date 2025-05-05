@@ -24,7 +24,7 @@ export type GradientProps = {
 }
 export type PaddingProps = {
 	Enabled: Fusion.UsedAs<boolean>?,
-	Padding: Fusion.UsedAs<UDim>?,
+	All: Fusion.UsedAs<UDim>?,
 	Top: Fusion.UsedAs<UDim>?,
 	Left: Fusion.UsedAs<UDim>?,
 	Right: Fusion.UsedAs<UDim>?,
@@ -111,6 +111,16 @@ export type PageProps = {
 	ScrollWheelInputEnabled: Fusion.UsedAs<boolean>?,
 	TouchInputEnabled: Fusion.UsedAs<boolean>?,
 }
+export type SizeConstraintProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	Max: Fusion.UsedAs<Vector2>?,
+	Min: Fusion.UsedAs<Vector2>?,
+}
+export type TextSizeConstraintProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	Max: Fusion.UsedAs<number>?,
+	Min: Fusion.UsedAs<number>?,
+}
 export type Props = {
 	ClassName: string?,
 
@@ -145,24 +155,21 @@ export type Props = {
 	SelectionBehaviorLeft: Fusion.UsedAs<Enum.SelectionBehavior>?,
 	SelectionGroup: Fusion.UsedAs<boolean>?,
 
-	Corner: Fusion.UsedAs<CornerProps>?,
-	Padding: Fusion.UsedAs<PaddingProps>?,
-	Stroke: Fusion.UsedAs<StrokeProps>?,
-	Gradient: Fusion.UsedAs<GradientProps>?,
-	Aspect: Fusion.UsedAs<AspectProps>?,
-	Scale: Fusion.UsedAs<ScaleProps>?,
+	Corner: CornerProps?,
+	Padding: PaddingProps?,
+	Stroke: StrokeProps?,
+	Gradient: GradientProps?,
+	Aspect: AspectProps?,
+	Scale: ScaleProps?,
 
-	List: Fusion.UsedAs<ListProps>?,
-	Grid: Fusion.UsedAs<GridProps>?,
-	Table: Fusion.UsedAs<TableProps>?,
-	Page: Fusion.UsedAs<PageProps>?,
-	Flex: Fusion.UsedAs<FlexProps>?,
+	List: ListProps?,
+	Grid: GridProps?,
+	Table: TableProps?,
+	Page: PageProps?,
+	Flex: FlexProps?,
 
-	MaxSize: Fusion.UsedAs<Vector2>?,
-	MinSize: Fusion.UsedAs<Vector2>?,
-
-	MaxTextSize: Fusion.UsedAs<number>?,
-	MinTextSize: Fusion.UsedAs<number>?,
+	SizeConstraint: SizeConstraintProps?,
+	TextSizeConstraint: TextSizeConstraintProps?,
 }
 
 --[=[
@@ -410,12 +417,12 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 
 	local PaddingActive = Scope:Computed(function(Use)
 		local InProps = Use(Props.Padding) ~= nil
-		local PaddingValue = Use(Padding)
+		local PaddingValue = Use(Padding) or {}
 		local Paddings =
 			{ PaddingValue.All, PaddingValue.Top, PaddingValue.Left, PaddingValue.Right, PaddingValue.Bottom }
 
 		if InProps then
-			for _, PaddingProp in pairs(Paddings) do
+			for _, PaddingProp in Paddings do
 				local PaddingPropValue = Use(PaddingProp)
 
 				if typeof(PaddingPropValue) == "UDim" then
@@ -463,7 +470,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 		[Children] = {
 			-- Styling
 			Scope:Computed(function(Use)
-				local CornerValue = Use(Corner) or {}
+				local CornerValue: CornerProps = Use(Corner) or {}
 				local InProps = Use(Props.Corner) ~= nil
 
 				if InProps and (Use(CornerValue.Enabled) ~= false) then
@@ -474,32 +481,29 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 			end),
 			Scope:Computed(function(Use)
 				local PaddingActiveValue = Use(PaddingActive)
+				local PaddingValue: PaddingProps = Use(Padding) or {}
 
 				if PaddingActiveValue == true then
 					return Scope:New "UIPadding" {
 						PaddingTop = Scope:Computed(function(Use)
-							local PaddingValue = Use(Padding)
 							local PaddingAllValue = Use(PaddingValue.All)
 							local PaddingTopValue = Use(PaddingValue.Top)
 
 							return PaddingTopValue or PaddingAllValue or UDim.new()
 						end),
 						PaddingBottom = Scope:Computed(function(Use)
-							local PaddingValue = Use(Padding)
 							local PaddingAllValue = Use(PaddingValue.All)
 							local PaddingBottomValue = Use(PaddingValue.Bottom)
 
 							return PaddingBottomValue or PaddingAllValue or UDim.new()
 						end),
 						PaddingLeft = Scope:Computed(function(Use)
-							local PaddingValue = Use(Padding)
 							local PaddingAllValue = Use(PaddingValue.All)
 							local PaddingLeftValue = Use(PaddingValue.Left)
 
 							return PaddingLeftValue or PaddingAllValue or UDim.new()
 						end),
 						PaddingRight = Scope:Computed(function(Use)
-							local PaddingValue = Use(Padding)
 							local PaddingAllValue = Use(PaddingValue.All)
 							local PaddingRightValue = Use(PaddingValue.Right)
 
@@ -509,7 +513,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 				end
 			end),
 			Scope:Computed(function(Use)
-				local StrokeValue = Use(Stroke) or {}
+				local StrokeValue: StrokeProps = Use(Stroke) or {}
 				local InProps = Use(Props.Stroke) ~= nil
 
 				if InProps and (Use(StrokeValue.Enabled) ~= false) then
@@ -524,7 +528,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 				end
 			end),
 			Scope:Computed(function(Use)
-				local GradientValue = Use(Props.Gradient) or {}
+				local GradientValue: GradientProps = Use(Props.Gradient) or {}
 				local InProps = Use(Props.Gradient) ~= nil
 
 				if InProps and (Use(GradientValue.Enabled) ~= false) then
@@ -540,7 +544,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 
 			-- Sizing
 			Scope:Computed(function(Use)
-				local ScaleValue = Use(Props.Scale) or {}
+				local ScaleValue: ScaleProps = Use(Props.Scale) or {}
 				local InProps = Use(Props.Scale) ~= nil
 
 				if InProps and (Use(ScaleValue.Enabled) ~= false) then
@@ -550,37 +554,44 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 				end
 			end),
 			Scope:Computed(function(Use)
-				local AspectValue = Use(Props.Aspect) or {}
+				local AspectValue: AspectProps = Use(Props.Aspect) or {}
 				local InProps = Use(Props.Aspect) ~= nil
 
 				if InProps and (Use(AspectValue.Enabled) ~= false) then
 					return Scope:New "UIAspectRatioConstraint" {
 						AspectRatio = AspectValue.Ratio,
 						DominantAxis = AspectValue.DominantAxis,
-						AspectType = AspectValue.AspectType,
+						AspectType = AspectValue.Type,
 					}
 				end
 			end),
 			Scope:Computed(function(Use)
-				if (Use(Props.MaxSize) ~= nil) or (Use(Props.MinSize) ~= nil) then
+				local SizeConstraintValue: SizeConstraintProps = Use(Props.SizeConstraint) or {}
+
+				if
+					(Use(SizeConstraintValue.Enabled) ~= false) and (Use(SizeConstraintValue.Max) ~= nil)
+					or (Use(SizeConstraintValue.Min) ~= nil)
+				then
 					return Scope:New "UISizeConstraint" {
-						MaxSize = Props.MaxSize,
-						MinSize = Props.MinSize,
+						MaxSize = SizeConstraintValue.Max,
+						MinSize = SizeConstraintValue.Min,
 					}
 				end
 			end),
 			Scope:Computed(function(Use)
-				if (Use(Props.MaxTextSize) ~= nil) or (Use(Props.MinTextSize) ~= nil) then
+				local TextSizeConstraintValue: TextSizeConstraintProps = Use(Props.TextSizeConstraint) or {}
+
+				if (Use(TextSizeConstraintValue.Max) ~= nil) or (Use(TextSizeConstraintValue.Min) ~= nil) then
 					return Scope:New "UITextSizeConstraint" {
-						MaxTextSize = Props.MaxTextSize,
-						MinTextSize = Props.MinTextSize,
+						MaxTextSize = TextSizeConstraintValue.Max,
+						MinTextSize = TextSizeConstraintValue.Min,
 					}
 				end
 			end),
 
 			-- Layout
 			Scope:Computed(function(Use)
-				local ListValue = Use(List) or {}
+				local ListValue: ListProps = Use(List) or {}
 				local InProps = Use(Props.List) ~= nil
 
 				if InProps and (Use(ListValue.Enabled) ~= false) then

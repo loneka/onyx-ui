@@ -15,7 +15,7 @@ Traditional properties like `BackgroundColor3` are supported identically to how 
 `UIPadding`s, `UIStroke`s, `UIListLayout`s... Children-based styling is just too much mess. In OnyxUI, all components support an extensive set of props to *avoid* working with these objects, while offering their benefits.
 
 :::tip
-  Many of the styles below also support `Enabled` for easily enabling/disabling their effects.
+  The styles below also support `Enabled` for easily enabling/disabling their effects.
 :::
 
 ### Corner Radius
