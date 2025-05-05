@@ -15,7 +15,7 @@ return {
 			BackgroundTransparency = 1,
 			List = {},
 			Padding = {
-				Padding = Scope:Computed(function(Use)
+				All = Scope:Computed(function(Use)
 					return UDim.new(0, Use(Theme.StrokeThickness["4"]))
 				end),
 			},
@@ -40,7 +40,7 @@ return {
 					ClassName = "Frame",
 					AutomaticSize = Enum.AutomaticSize.XY,
 					Padding = {
-						Padding = UDim.new(0, 30),
+						All = UDim.new(0, 30),
 						Left = UDim.new(0, 10),
 					},
 					List = {
@@ -77,6 +77,8 @@ return {
 							},
 							Gradient = {
 								Color = ColorSequence.new(Color3.fromRGB(255, 255, 255), Color3.fromRGB(0, 0, 0)),
+								Rotation = 90,
+								Transparency = NumberSequence.new(0, 0.5),
 							},
 						},
 						Scope:Base {
@@ -103,7 +105,7 @@ return {
 						CellSize = UDim2.fromOffset(50, 50),
 					},
 					Padding = {
-						Padding = UDim.new(0, 10),
+						All = UDim.new(0, 10),
 					},
 					Corner = {
 						Radius = UDim.new(0, 10),
