@@ -4,7 +4,7 @@
 		The foundational component of OnyxUI, from which all other components are built off of. Props supported here typically work in all other components.
 
 		:::info Styling props
-		A reference of common styling props can be found in [this docs page](/docs/styling-props).
+		A reference of common styling props can be found in [this docs page](/docs/styling).
 		:::
 ]=]
 
@@ -379,7 +379,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 		end),
 	})
 	local Padding = Util.Fallback(Props.Padding, {
-		Padding = Scope:Computed(function(Use)
+		All = Scope:Computed(function(Use)
 			return UDim.new(0, Use(Theme.Padding["1"]))
 		end),
 	})
@@ -412,7 +412,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 		local InProps = Use(Props.Padding) ~= nil
 		local PaddingValue = Use(Padding)
 		local Paddings =
-			{ PaddingValue.Padding, PaddingValue.Top, PaddingValue.Left, PaddingValue.Right, PaddingValue.Bottom }
+			{ PaddingValue.All, PaddingValue.Top, PaddingValue.Left, PaddingValue.Right, PaddingValue.Bottom }
 
 		if InProps then
 			for _, PaddingProp in pairs(Paddings) do
@@ -479,28 +479,28 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 					return Scope:New "UIPadding" {
 						PaddingTop = Scope:Computed(function(Use)
 							local PaddingValue = Use(Padding)
-							local PaddingAllValue = Use(PaddingValue.Padding)
+							local PaddingAllValue = Use(PaddingValue.All)
 							local PaddingTopValue = Use(PaddingValue.Top)
 
 							return PaddingTopValue or PaddingAllValue or UDim.new()
 						end),
 						PaddingBottom = Scope:Computed(function(Use)
 							local PaddingValue = Use(Padding)
-							local PaddingAllValue = Use(PaddingValue.Padding)
+							local PaddingAllValue = Use(PaddingValue.All)
 							local PaddingBottomValue = Use(PaddingValue.Bottom)
 
 							return PaddingBottomValue or PaddingAllValue or UDim.new()
 						end),
 						PaddingLeft = Scope:Computed(function(Use)
 							local PaddingValue = Use(Padding)
-							local PaddingAllValue = Use(PaddingValue.Padding)
+							local PaddingAllValue = Use(PaddingValue.All)
 							local PaddingLeftValue = Use(PaddingValue.Left)
 
 							return PaddingLeftValue or PaddingAllValue or UDim.new()
 						end),
 						PaddingRight = Scope:Computed(function(Use)
 							local PaddingValue = Use(Padding)
-							local PaddingAllValue = Use(PaddingValue.Padding)
+							local PaddingAllValue = Use(PaddingValue.All)
 							local PaddingRightValue = Use(PaddingValue.Right)
 
 							return PaddingRightValue or PaddingAllValue or UDim.new()

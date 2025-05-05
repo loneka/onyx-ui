@@ -6,21 +6,19 @@ sidebar_position: 2
 
 Styling props are globally supported props for styling UI. These aim to stay close to Roblox's way of doing things, but differ when necessary.
 
-## Property-based styling
+## Traditional styling
 
 Traditional properties like `BackgroundColor3` are supported identically to how Roblox does it. Use these as you would normally. There are exceptions however, like how `Color` is preferred over `BackgroundColor3` in [`Button`](/api/Button).
 
 ## Children-based styling
 
-`UIPadding`s, `UIStroke`s, `UIListLayout`s... Children-based styling is just too much mess. In OnyxUI, all components support an extensive set of props to *avoid* working with these objects, so you can write code faster!
+`UIPadding`s, `UIStroke`s, `UIListLayout`s... Children-based styling is just too much mess. In OnyxUI, all components support an extensive set of props to *avoid* working with these objects, while offering their benefits.
 
 :::tip
-  Most of the below also support `Enabled` for easily enabling/disabling their effects.
+  Many of the styles below also support `Enabled` for easily enabling/disabling their effects.
 :::
 
-### Cosmetic
-
-#### Corner Radius
+### Corner Radius
 
 ```lua
 Corner = {
@@ -28,7 +26,7 @@ Corner = {
 }
 ```
 
-#### Stroke
+### Stroke
 
 ```lua
 Stroke = {
@@ -51,26 +49,24 @@ Stroke = {
 }
 ```
 
-#### Gradient
+### Gradient
 
 ```lua
 Gradient = {
   Color = ColorSequence.new(),
   Rotation = 90,
-  Offset = 0,
   Transparency = 0,
+  Offset = 0,
 }
 ```
 
-### Layout
-
-#### Padding
+### Padding
 
 Equal-sided padding:
 
 ```lua
 Padding = {
-  Padding = UDim.new(0, 4),
+  All = UDim.new(0, 4),
 }
 ```
 
@@ -85,7 +81,7 @@ Padding = {
 }
 ```
 
-#### Flex
+### Flex
 
 Fill the parent container:
 
@@ -100,13 +96,13 @@ Grow with a custom ratio, center-aligned:
 ```lua
 Flex = {
   Mode = Enum.FlexMode.Grow,
-  ItemLineAlignment = Enum.ItemLineAlignment.Center,
   GrowRatio = 1,
   ShrinkRatio = 0,
+  ItemLineAlignment = Enum.ItemLineAlignment.Center,
 }
 ```
 
-#### List
+### List
 
 Vertical list:
 
@@ -130,7 +126,7 @@ List = {
 }
 ```
 
-#### Grid
+### Grid
 
 Horizontally-filled grid:
 
@@ -142,18 +138,16 @@ Grid = {
 }
 ```
 
-#### Others
+### Other Layouts
 
 Other layouts like `UITableLayout` and `UIPageLayout` are generally inferior and unused. For API reference, see the [`Base`](/api/Base) component's source code.
 
-### Constraints
-
-#### Aspect ratio
+### Aspect ratio
 
 Square-locked size:
 
 ```lua
-AspectRatio = {
+Aspect = {
   Ratio = 1,
 }
 ```
@@ -168,7 +162,7 @@ Aspect = {
 }
 ```
 
-#### Scale
+### Scale
 
 Scaled by 2x:
 
@@ -178,29 +172,26 @@ Scale = {
 }
 ```
 
-#### Size constraint
+### Size constraint
 
 Smaller than 100x 100y:
 
 ```lua
-MaxSize = Vector2.new(100, 100),
-MinSize = Vector2.new(0, 0),
+SizeConstraint = {
+  Max = Vector2.new(100, 100),
+  Min = Vector2.new(0, 0),
+}
 ```
 
-No constraint:
+### Text size constraint
+
+Smaller than 24, bigger than 12:
 
 ```lua
-MaxSize = Vector2.new(math.huge, math.huge),
-MinSize = Vector2.new(0, 0),
-```
-
-#### Text size constraint
-
-Bigger than 12, smaller than 24:
-
-```lua
-MaxTextSize = 24,
-MinTextSize = 12,
+TextSizeConstraint = {
+  Max = 24,
+  Min = 12,
+}
 ```
 
 ## Using in custom components
