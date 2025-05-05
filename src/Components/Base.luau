@@ -528,8 +528,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 						[Children] = {
 							Scope:Computed(function(Use)
 								local GradientValue: GradientProps = Use(StrokeValue.Gradient) or {}
+								local GradientInProps = StrokeValue.Gradient ~= nil
 
-								if Use(GradientValue.Enabled) ~= false then
+								if GradientInProps and (Use(GradientValue.Enabled) ~= false) then
 									return Scope:New "UIGradient" {
 										Enabled = GradientValue.Enabled,
 										Color = GradientValue.Color,

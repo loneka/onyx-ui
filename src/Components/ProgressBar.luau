@@ -120,7 +120,21 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 				AutomaticSize = Enum.AutomaticSize.None,
 				BackgroundTransparency = 0,
 				BackgroundColor3 = Color,
-				Stroke = {},
+				Stroke = {
+					Color = Color3.fromRGB(255, 255, 255),
+					Gradient = {
+						Color = Scope:Computed(function(Use)
+							return ColorSequence.new({
+								ColorSequenceKeypoint.new(
+									0,
+									Util.Emphasize(Use(Color), Use(Theme.StrokeEmphasis.Regular))
+								),
+								ColorSequenceKeypoint.new(1, Use(Color)),
+							})
+						end),
+						Rotation = 90,
+					},
+				},
 			},
 		},
 	}))

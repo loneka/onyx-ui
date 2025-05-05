@@ -99,11 +99,13 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 		return ActiveColor
 	end)
-	local EffectiveStrokeColor = Scope:Computed(function(Use)
-		if (not Use(Switched)) or Use(Disabled) or Use(IsHovering) or Use(IsHolding) then
-			return Use(EffectiveColor)
+	local EffectiveStrokeEmphasis = Scope:Computed(function(Use)
+		local StrokeEmphasis = Use(Theme.StrokeEmphasis.Regular)
+
+		if Use(Disabled) or Use(IsHovering) or Use(IsHolding) then
+			return 0
 		else
-			return Util.Emphasize(Use(EffectiveColor), Use(Theme.StrokeEmphasis.Regular))
+			return StrokeEmphasis
 		end
 	end)
 
@@ -113,7 +115,17 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		AutomaticSize = AutomaticSize,
 		Disabled = Disabled,
 		Stroke = {
-			StrokeTransparency = Scope:Spring(
+			Color = Color3.fromRGB(255, 255, 255),
+			Gradient = {
+				Color = Scope:Computed(function(Use)
+					return ColorSequence.new({
+						ColorSequenceKeypoint.new(0, Util.Emphasize(Use(EffectiveColor), Use(EffectiveStrokeEmphasis))),
+						ColorSequenceKeypoint.new(1, Use(EffectiveColor)),
+					})
+				end),
+				Rotation = 90,
+			},
+			Transparency = Scope:Spring(
 				Scope:Computed(function(Use)
 					if Use(Disabled) then
 						return 0.8
@@ -127,7 +139,6 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 				Theme.SpringSpeed["1"],
 				Theme.SpringDampening["1"]
 			),
-			Color = Scope:Spring(EffectiveStrokeColor, Theme.SpringSpeed["1"], Theme.SpringDampening["1"]),
 		},
 		Corner = Corner,
 

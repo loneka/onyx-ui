@@ -184,31 +184,13 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			Wraps = false,
 		},
 		Stroke = {
+			Color = Color3.fromRGB(255, 255, 255),
 			Gradient = {
-				Color = Scope:Spring(
-					Scope:Computed(function(Use)
-						local KeypointColor = Util.Emphasize(Use(EffectiveColor), Use(EffectiveStrokeEmphasis))
-
-						return ColorSequence.new({
-							ColorSequenceKeypoint.new(0, KeypointColor),
-							ColorSequenceKeypoint.new(1, KeypointColor),
-						})
-					end),
-					Theme.SpringSpeed["1"],
-					Theme.SpringDampening["1"]
-				),
-				Transparency = Scope:Computed(function(Use)
-					if Use(Style) == "Filled" then
-						return NumberSequence.new({
-							NumberSequenceKeypoint.new(0, 0),
-							NumberSequenceKeypoint.new(1, 1),
-						})
-					else
-						return NumberSequence.new({
-							NumberSequenceKeypoint.new(0, 0),
-							NumberSequenceKeypoint.new(1, 0),
-						})
-					end
+				Color = Scope:Computed(function(Use)
+					return ColorSequence.new({
+						ColorSequenceKeypoint.new(0, Util.Emphasize(Use(EffectiveColor), Use(EffectiveStrokeEmphasis))),
+						ColorSequenceKeypoint.new(1, Use(EffectiveColor)),
+					})
 				end),
 				Rotation = 90,
 			},
