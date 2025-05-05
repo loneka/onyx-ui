@@ -61,25 +61,25 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		BackgroundTransparency = 0,
 		Padding = Scope:Computed(function(Use)
 			return {
-				Padding = UDim.new(0, Use(Theme.Padding["0"])),
+				All = UDim.new(0, Use(Theme.Padding["0"])),
 				Left = UDim.new(0, Use(Theme.Padding["0.25"])),
 				Right = UDim.new(0, Use(Theme.Padding["0.25"])),
 			}
 		end),
-		Corner = Scope:Computed(function(Use)
-			return {
-				Radius = UDim.new(0, Use(Theme.CornerRadius["2"])),
-			}
-		end),
-		List = Scope:Computed(function(Use)
-			return {
-				Padding = UDim.new(0, Use(Theme.Spacing["0.25"])),
-				FillDirection = Enum.FillDirection.Horizontal,
-				HorizontalAlignment = Enum.HorizontalAlignment.Center,
-				VerticalAlignment = Enum.VerticalAlignment.Center,
-				Wraps = ContentWrapped,
-			}
-		end),
+		Corner = {
+			Radius = Scope:Computed(function(Use)
+				return UDim.new(0, Use(Theme.CornerRadius["2"]))
+			end),
+		},
+		List = {
+			Padding = Scope:Computed(function(Use)
+				return UDim.new(0, Use(Theme.Spacing["0.25"]))
+			end),
+			FillDirection = Enum.FillDirection.Horizontal,
+			HorizontalAlignment = Enum.HorizontalAlignment.Center,
+			VerticalAlignment = Enum.VerticalAlignment.Center,
+			Wraps = ContentWrapped,
+		},
 		Stroke = {},
 
 		[Children] = {

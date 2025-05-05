@@ -135,40 +135,45 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Object = Scope:Hydrate(Scope:Base(Util.CombineProps(Props, {
 		ClassName = "TextBox",
 		Name = "TextInput",
-		CornerRadius = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.CornerRadius["1"]))
-		end),
-		Padding = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Padding["0.5"]))
-		end),
-		StrokeEnabled = true,
-		StrokeColor = Scope:Spring(
-			Scope:Computed(function(Use)
-				if Use(InvalidInputActive) then
-					return Use(Theme.Colors.Error.Main)
-				elseif Use(IsFocused) then
-					return Use(Color)
-				else
-					return Use(Theme.Colors.NeutralContent.Dark)
-				end
+		Corner = {
+			Radius = Scope:Computed(function(Use)
+				return UDim.new(0, Use(Theme.CornerRadius["1"]))
 			end),
-			Theme.SpringSpeed["1"],
-			Theme.SpringDampening["1"]
-		),
-		StrokeTransparency = Scope:Spring(
-			Scope:Computed(function(Use)
-				if Use(Disabled) then
-					return 0.9
-				end
-				if Use(IsFocused) then
-					return 0
-				else
-					return 0.8
-				end
+		},
+		Padding = {
+			All = Scope:Computed(function(Use)
+				return UDim.new(0, Use(Theme.Padding["0.5"]))
 			end),
-			Theme.SpringSpeed["1"],
-			Theme.SpringDampening["1"]
-		),
+		},
+		Stroke = {
+			Color = Scope:Spring(
+				Scope:Computed(function(Use)
+					if Use(InvalidInputActive) then
+						return Use(Theme.Colors.Error.Main)
+					elseif Use(IsFocused) then
+						return Use(Color)
+					else
+						return Use(Theme.Colors.NeutralContent.Dark)
+					end
+				end),
+				Theme.SpringSpeed["1"],
+				Theme.SpringDampening["1"]
+			),
+			Transparency = Scope:Spring(
+				Scope:Computed(function(Use)
+					if Use(Disabled) then
+						return 0.9
+					end
+					if Use(IsFocused) then
+						return 0
+					else
+						return 0.8
+					end
+				end),
+				Theme.SpringSpeed["1"],
+				Theme.SpringDampening["1"]
+			),
+		},
 		AutomaticSize = Enum.AutomaticSize.XY,
 		AutoLocalize = false,
 		Active = Scope:Computed(function(Use)

@@ -39,19 +39,21 @@ return {
 
 		Scope:Frame {
 			Parent = Props.target,
-			ListEnabled = true,
-			ListHorizontalFlex = Enum.UIFlexAlignment.Fill,
-			ListPadding = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.Spacing["1.5"]))
-			end),
+			List = {
+				HorizontalFlex = Enum.UIFlexAlignment.Fill,
+				Padding = Scope:Computed(function(Use)
+					return UDim.new(0, Use(Theme.Spacing["1.5"]))
+				end),
+			},
 
 			[Children] = {
 				Scope:Frame {
-					ListEnabled = true,
-					ListHorizontalFlex = Enum.UIFlexAlignment.Fill,
-					ListPadding = Scope:Computed(function(Use)
-						return UDim.new(0, Use(Theme.Spacing["0.5"]))
-					end),
+					List = {
+						HorizontalFlex = Enum.UIFlexAlignment.Fill,
+						Padding = Scope:Computed(function(Use)
+							return UDim.new(0, Use(Theme.Spacing["0.5"]))
+						end),
+					},
 
 					[Children] = {
 						Scope:Text {
@@ -67,23 +69,25 @@ return {
 					},
 				},
 				Scope:Frame {
-					ListEnabled = true,
-					ListHorizontalFlex = Enum.UIFlexAlignment.Fill,
-					ListPadding = Scope:Computed(function(Use)
-						return UDim.new(0, Use(Theme.Spacing["0.5"]))
-					end),
+					List = {
+						HorizontalFlex = Enum.UIFlexAlignment.Fill,
+						Padding = Scope:Computed(function(Use)
+							return UDim.new(0, Use(Theme.Spacing["0.5"]))
+						end),
+					},
 
 					[Children] = {
 						Scope:Text {
 							Text = "With text",
 						},
 						Scope:Frame {
-							ListEnabled = true,
-							ListFillDirection = Enum.FillDirection.Horizontal,
-							ListVerticalAlignment = Enum.VerticalAlignment.Center,
-							ListPadding = Scope:Computed(function(Use)
-								return UDim.new(0, Use(Theme.Spacing["0.5"]))
-							end),
+							List = {
+								FillDirection = Enum.FillDirection.Horizontal,
+								VerticalAlignment = Enum.VerticalAlignment.Center,
+								Padding = Scope:Computed(function(Use)
+									return UDim.new(0, Use(Theme.Spacing["0.5"]))
+								end),
+							},
 
 							[Children] = {
 								Scope:Text {
@@ -99,11 +103,12 @@ return {
 					},
 				},
 				Scope:Frame {
-					ListEnabled = true,
-					ListHorizontalFlex = Enum.UIFlexAlignment.Fill,
-					ListPadding = Scope:Computed(function(Use)
-						return UDim.new(0, Use(Theme.Spacing["0.5"]))
-					end),
+					List = {
+						HorizontalFlex = Enum.UIFlexAlignment.Fill,
+						Padding = Scope:Computed(function(Use)
+							return UDim.new(0, Use(Theme.Spacing["0.5"]))
+						end),
+					},
 
 					[Children] = {
 						Scope:Text {
@@ -116,22 +121,24 @@ return {
 					},
 				},
 				Scope:Frame {
-					ListEnabled = true,
-					ListHorizontalFlex = Enum.UIFlexAlignment.Fill,
-					ListPadding = Scope:Computed(function(Use)
-						return UDim.new(0, Use(Theme.Spacing["0.5"]))
-					end),
+					List = {
+						HorizontalFlex = Enum.UIFlexAlignment.Fill,
+						Padding = Scope:Computed(function(Use)
+							return UDim.new(0, Use(Theme.Spacing["0.5"]))
+						end),
+					},
 
 					[Children] = {
 						Scope:Text {
 							Text = "Vertical",
 						},
 						Scope:Frame {
-							ListEnabled = true,
-							ListFillDirection = Enum.FillDirection.Horizontal,
-							ListPadding = Scope:Computed(function(Use)
-								return UDim.new(0, Use(Theme.Spacing["0.5"]))
-							end),
+							List = {
+								FillDirection = Enum.FillDirection.Horizontal,
+								Padding = Scope:Computed(function(Use)
+									return UDim.new(0, Use(Theme.Spacing["0.5"]))
+								end),
+							},
 
 							[Children] = {
 

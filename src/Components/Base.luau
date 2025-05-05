@@ -20,7 +20,7 @@ export type GradientProps = {
 	Color: Fusion.UsedAs<ColorSequence>?,
 	Offset: Fusion.UsedAs<UDim>?,
 	Rotation: Fusion.UsedAs<number>?,
-	Transparency: Fusion.UsedAs<number>?,
+	Transparency: Fusion.UsedAs<NumberSequence>?,
 }
 export type PaddingProps = {
 	Enabled: Fusion.UsedAs<boolean>?,
@@ -524,6 +524,22 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 						Transparency = StrokeValue.Transparency,
 						ApplyStrokeMode = StrokeValue.ApplyStrokeMode,
 						LineJoinMode = StrokeValue.LineJoinMode,
+
+						[Children] = {
+							Scope:Computed(function(Use)
+								local GradientValue: GradientProps = Use(StrokeValue.Gradient) or {}
+
+								if Use(GradientValue.Enabled) ~= false then
+									return Scope:New "UIGradient" {
+										Enabled = GradientValue.Enabled,
+										Color = GradientValue.Color,
+										Offset = GradientValue.Offset,
+										Rotation = GradientValue.Rotation,
+										Transparency = GradientValue.Transparency,
+									}
+								end
+							end),
+						},
 					}
 				end
 			end),

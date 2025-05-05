@@ -19,11 +19,15 @@ local function CombineProps(
 	ExcludedKeys: { any }?
 ): Fusion.PropertyTable
 	for Key, Value in pairs(Source) do
-		if (ExcludedKeys ~= nil) and (table.find(ExcludedKeys, Key) ~= nil) then
-			continue
-		end
+		if (typeof(Value) == "table") and (Value.kind == nil) and (typeof(Target[Key]) == "table") then
+			Target[Key] = CombineProps(Value, Target[Key])
+		else
+			if (ExcludedKeys ~= nil) and (table.find(ExcludedKeys, Key) ~= nil) then
+				continue
+			end
 
-		Target[Key] = Value
+			Target[Key] = Value
+		end
 	end
 
 	return Target

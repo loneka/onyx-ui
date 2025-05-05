@@ -19,13 +19,14 @@ return {
 
 		Scope:Frame {
 			Parent = Props.target,
-			Padding = Scope:Computed(function(Use)
-				return {
-					Padding = UDim.new(0, Use(Theme.StrokeThickness["1"])),
-				}
-			end),
-			ListEnabled = true,
-			ListFillDirection = Enum.FillDirection.Horizontal,
+			Padding = {
+				All = Scope:Computed(function(Use)
+					return UDim.new(0, Use(Theme.StrokeThickness["1"]))
+				end),
+			},
+			List = {
+				FillDirection = Enum.FillDirection.Horizontal,
+			},
 
 			[Children] = {
 				Scope:SettingsMenu {},

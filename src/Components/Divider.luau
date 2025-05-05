@@ -5,7 +5,6 @@
 ]=]
 
 local OnyxUI = script.Parent.Parent
-
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
@@ -46,7 +45,6 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Transparency = Util.Fallback(Props.Transparency, 0.9)
 	local Spacing = Util.Fallback(
 		Props.Spacing,
-
 		Scope:Computed(function(Use)
 			return UDim.new(0, Use(Theme.Spacing["0.5"]))
 		end)
@@ -83,10 +81,12 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 				return Enum.AutomaticSize.X
 			end
 		end),
-		PaddingTop = VerticalPadding,
-		PaddingBottom = VerticalPadding,
-		PaddingLeft = HorizontalPadding,
-		PaddingRight = HorizontalPadding,
+		Padding = {
+			Top = VerticalPadding,
+			Bottom = VerticalPadding,
+			Left = HorizontalPadding,
+			Right = HorizontalPadding,
+		},
 
 		[Children] = {
 			Scope:Frame {

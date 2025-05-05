@@ -21,10 +21,11 @@ return {
 
 		Scope:Frame {
 			Parent = Props.target,
-			ListEnabled = true,
-			ListPadding = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.Spacing["0.5"]))
-			end),
+			List = {
+				Padding = Scope:Computed(function(Use)
+					return UDim.new(0, Use(Theme.Spacing["0.5"]))
+				end),
+			},
 
 			[Children] = {
 				Scope:Heading {

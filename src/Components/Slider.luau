@@ -90,13 +90,16 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 	local Slider = Scope:BaseButton(Util.CombineProps(Props, {
 		Name = script.Name,
-		CornerRadius = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.CornerRadius.Full))
-		end),
+		Corner = {
+			Radius = Scope:Computed(function(Use)
+				return UDim.new(0, Use(Theme.CornerRadius.Full))
+			end),
+		},
 		Size = Scope:Computed(function(Use)
 			return UDim2.fromOffset(0, Use(Theme.TextSize["1"]))
 		end),
 		AutomaticSize = Enum.AutomaticSize.Y,
+
 		Disabled = Disabled,
 		IsHovering = IsHovering,
 
@@ -104,15 +107,19 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			DragDetector,
 			Scope:Hydrate(Scope:Frame {
 				Name = "Progress",
-				CornerRadius = Scope:Computed(function(Use)
-					return UDim.new(0, Use(Theme.CornerRadius.Full))
-				end),
 				BackgroundTransparency = 0,
 				BackgroundColor3 = Theme.Colors.Neutral.Main,
 				Size = Scope:Computed(function(Use)
 					return UDim2.new(UDim.new(1, 0), UDim.new(0, Use(Theme.TextSize["0.75"])))
 				end),
-				FlexMode = Enum.UIFlexMode.Fill,
+				Corner = {
+					Radius = Scope:Computed(function(Use)
+						return UDim.new(0, Use(Theme.CornerRadius.Full))
+					end),
+				},
+				Flex = {
+					Mode = Enum.UIFlexMode.Fill,
+				},
 
 				[Children] = {
 					Scope:Frame {
@@ -133,24 +140,26 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 							Theme.SpringSpeed["1"],
 							Theme.SpringDampening["1"]
 						),
-						CornerRadius = Scope:Computed(function(Use)
-							return UDim.new(0, Use(Theme.CornerRadius.Full))
-						end),
 						AutomaticSize = Enum.AutomaticSize.None,
-						StrokeEnabled = true,
-						StrokeColor = EffectiveStrokeColor,
-						StrokeTransparency = Scope:Computed(function(Use)
-							if Use(Disabled) then
-								return DISABLED_BACKGROUND_TRANSPARENCY
-							else
-								return 0
-							end
-						end),
+						Corner = {
+							Radius = Scope:Computed(function(Use)
+								return UDim.new(0, Use(Theme.CornerRadius.Full))
+							end),
+						},
+						Stroke = {
+							Color = EffectiveStrokeColor,
+							Transparency = Scope:Computed(function(Use)
+								if Use(Disabled) then
+									return DISABLED_BACKGROUND_TRANSPARENCY
+								else
+									return 0
+								end
+							end),
+						},
 
 						[Children] = {
 							Scope:Frame {
 								Name = "Ball",
-								AspectRatio = 1,
 								AnchorPoint = Scope:Computed(function(Use)
 									local ValueValue = Use(Value)
 									return Vector2.new(ValueValue, 0.5)
@@ -168,13 +177,19 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 										return Use(Theme.Colors.BaseContent.Main)
 									end
 								end),
-								CornerRadius = Scope:Computed(function(Use)
-									return UDim.new(0, Use(Theme.CornerRadius.Full))
-								end),
-								StrokeEnabled = true,
-								StrokeColor = Theme.Colors.Neutral.Main,
-								StrokeThickness = Theme.StrokeThickness["1"],
 								AutomaticSize = Enum.AutomaticSize.None,
+								Corner = {
+									Radius = Scope:Computed(function(Use)
+										return UDim.new(0, Use(Theme.CornerRadius.Full))
+									end),
+								},
+								Stroke = {
+									Color = Theme.Colors.Neutral.Main,
+									Thickness = Theme.StrokeThickness["1"],
+								},
+								Aspect = {
+									Ratio = 1,
+								},
 
 								[Children] = {
 									Scope:Frame {
@@ -198,10 +213,12 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 											Theme.SpringSpeed["1"],
 											Theme.SpringDampening["1"]
 										),
-										CornerRadius = Scope:Computed(function(Use)
-											return UDim.new(0, Use(Theme.CornerRadius.Full))
-										end),
 										AutomaticSize = Enum.AutomaticSize.None,
+										Corner = {
+											Radius = Scope:Computed(function(Use)
+												return UDim.new(0, Use(Theme.CornerRadius.Full))
+											end),
+										},
 									},
 								},
 							},

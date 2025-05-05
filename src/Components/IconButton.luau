@@ -36,10 +36,12 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 	return Scope:Button(Util.CombineProps(Props, {
 		Name = "IconButton",
-		PaddingLeft = Padding,
-		PaddingRight = Padding,
-		PaddingTop = Padding,
-		PaddingBottom = Padding,
+		Padding = {
+			Left = Padding,
+			Right = Padding,
+			Top = Padding,
+			Bottom = Padding,
+		},
 		Content = Scope:Computed(function(Use)
 			return { Use(Image) }
 		end),

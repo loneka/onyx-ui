@@ -20,11 +20,12 @@ return {
 		Scope:Frame {
 			Parent = Props.target,
 			AutomaticSize = Enum.AutomaticSize.XY,
-			ListEnabled = true,
-			ListFillDirection = Enum.FillDirection.Horizontal,
-			ListPadding = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.Spacing["0.75"]))
-			end),
+			List = {
+				FillDirection = Enum.FillDirection.Horizontal,
+				Padding = Scope:Computed(function(Use)
+					return UDim.new(0, Use(Theme.Spacing["0.75"]))
+				end),
+			},
 
 			[Children] = {
 				Scope:Image {

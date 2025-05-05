@@ -19,13 +19,16 @@ return {
 
 		Scope:Frame {
 			Parent = Props.target,
-			Padding = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.StrokeThickness["1"]))
-			end),
-			ListEnabled = true,
-			ListPadding = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.Spacing["0.5"]))
-			end),
+			Padding = {
+				All = Scope:Computed(function(Use)
+					return UDim.new(0, Use(Theme.StrokeThickness["1"]))
+				end),
+			},
+			List = {
+				Padding = Scope:Computed(function(Use)
+					return UDim.new(0, Use(Theme.Spacing["0.5"]))
+				end),
+			},
 
 			[Children] = {
 				Scope:Switch {},

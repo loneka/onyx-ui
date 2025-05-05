@@ -21,13 +21,16 @@ return {
 
 		Scope:Frame {
 			Parent = Props.target,
-			ListEnabled = true,
-			ListPadding = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.Spacing["0.5"]))
-			end),
-			Padding = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.StrokeThickness["1"]))
-			end),
+			List = {
+				Padding = Scope:Computed(function(Use)
+					return UDim.new(0, Use(Theme.Spacing["0.5"]))
+				end),
+			},
+			Padding = {
+				All = Scope:Computed(function(Use)
+					return UDim.new(0, Use(Theme.StrokeThickness["1"]))
+				end),
+			},
 
 			[Children] = {
 				Scope:Button {
@@ -73,12 +76,15 @@ return {
 				},
 				Scope:Divider {},
 				Scope:Frame {
-					ListEnabled = true,
-					ListFillDirection = Enum.FillDirection.Horizontal,
-					ListVerticalAlignment = Enum.VerticalAlignment.Center,
-					Padding = Scope:Computed(function(Use)
-						return UDim.new(0, Use(Theme.Padding["1"]))
-					end),
+					List = {
+						FillDirection = Enum.FillDirection.Horizontal,
+						VerticalAlignment = Enum.VerticalAlignment.Center,
+					},
+					Padding = {
+						All = Scope:Computed(function(Use)
+							return UDim.new(0, Use(Theme.Padding["1"]))
+						end),
+					},
 
 					[Children] = {
 						Scope:Button {

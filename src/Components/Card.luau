@@ -32,15 +32,20 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		Name = "Card",
 		BackgroundColor3 = BackgroundColor3,
 		BackgroundTransparency = 0,
-		CornerRadius = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.CornerRadius["1"]))
+		Corner = Scope:Computed(function(Use)
+			return {
+				Radius = UDim.new(0, Use(Theme.CornerRadius["1"])),
+			}
 		end),
 		Padding = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Padding["1"]))
+			return {
+				All = UDim.new(0, Use(Theme.Padding["1"])),
+			}
 		end),
-		StrokeEnabled = true,
-		StrokeColor = Scope:Computed(function(Use)
-			return Util.Emphasize(Use(BackgroundColor3), Use(Theme.StrokeEmphasis.Light))
-		end),
+		Stroke = {
+			Color = Scope:Computed(function(Use)
+				return Util.Emphasize(Use(BackgroundColor3), Use(Theme.StrokeEmphasis.Light))
+			end),
+		},
 	}))
 end

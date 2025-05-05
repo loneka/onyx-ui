@@ -23,11 +23,12 @@ return {
 			Parent = Props.target,
 			Size = UDim2.fromOffset(300, 0),
 			AutomaticSize = Enum.AutomaticSize.Y,
-			ListEnabled = true,
-			ListFillDirection = Enum.FillDirection.Vertical,
-			ListPadding = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.Spacing["0.5"]))
-			end),
+			List = {
+				FillDirection = Enum.FillDirection.Vertical,
+				Padding = Scope:Computed(function(Use)
+					return UDim.new(0, Use(Theme.Spacing["0.5"]))
+				end),
+			},
 
 			[Children] = {
 				Scope:Text {

@@ -52,49 +52,47 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
-	local EnsuredProps = {
-		Image = Util.Fallback(Props.Image, nil),
-		RingEnabled = Util.Fallback(Props.RingEnabled, false),
-		RingColor = Util.Fallback(Props.RingColor, Theme.Colors.Primary.Main),
-		RingThickness = Util.Fallback(Props.RingThickness, Theme.StrokeThickness["2"]),
-		IndicatorEnabled = Util.Fallback(Props.IndicatorEnabled, false),
-		IndicatorColor = Util.Fallback(Props.IndicatorColor, Theme.Colors.Primary.Main),
-		IndicatorCornerRadius = Util.Fallback(
-			Props.IndicatorCornerRadius,
-			Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.CornerRadius.Full))
-			end)
-		),
-		IndicatorIcon = Util.Fallback(Props.IndicatorIcon, nil),
-		IndicatorIconColor = Util.Fallback(Props.IndicatorIconColor, Util.Colors.White),
-	}
+	local ImageProp = Util.Fallback(Props.Image, nil)
+	local RingEnabled = Util.Fallback(Props.RingEnabled, false)
+	local RingColor = Util.Fallback(Props.RingColor, Theme.Colors.Primary.Main)
+	local RingThickness = Util.Fallback(Props.RingThickness, Theme.StrokeThickness["2"])
+	local IndicatorEnabled = Util.Fallback(Props.IndicatorEnabled, false)
+	local IndicatorColor = Util.Fallback(Props.IndicatorColor, Theme.Colors.Primary.Main)
+	local IndicatorCornerRadius = Util.Fallback(
+		Props.IndicatorCornerRadius,
+		Scope:Computed(function(Use)
+			return UDim.new(0, Use(Theme.CornerRadius.Full))
+		end)
+	)
+	local IndicatorIcon = Util.Fallback(Props.IndicatorIcon, nil)
+	local IndicatorIconColor = Util.Fallback(Props.IndicatorIconColor, Util.Colors.White)
 
 	return Scope:Image(Util.CombineProps(Props, {
 		Name = "Avatar",
-		Image = EnsuredProps.Image,
+		Image = ImageProp,
 		Size = Scope:Computed(function(Use)
 			return UDim2.fromOffset(Use(Theme.TextSize["4.5"]), Use(Theme.TextSize["4.5"]))
 		end),
 		BackgroundColor3 = Theme.Colors.Neutral.Dark,
-		StrokeEnabled = EnsuredProps.RingEnabled,
-		StrokeColor = Scope:Spring(EnsuredProps.RingColor, Theme.SpringSpeed["0.5"], Theme.SpringDampening["1"]),
-		StrokeThickness = Scope:Spring(
-			EnsuredProps.RingThickness,
-			Theme.SpringSpeed["0.5"],
-			Theme.SpringDampening["1"]
-		),
-		CornerRadius = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.CornerRadius["1"]))
-		end),
+		Stroke = {
+			Enabled = RingEnabled,
+			Color = Scope:Spring(RingColor, Theme.SpringSpeed["0.5"], Theme.SpringDampening["1"]),
+			Thickness = Scope:Spring(RingThickness, Theme.SpringSpeed["0.5"], Theme.SpringDampening["1"]),
+		},
+		Corner = {
+			Radius = Scope:Computed(function(Use)
+				return UDim.new(0, Use(Theme.CornerRadius["1"]))
+			end),
+		},
 
 		[Children] = {
 			Scope:Computed(function(Use)
-				if Use(EnsuredProps.IndicatorEnabled) then
+				if Use(IndicatorEnabled) then
 					return Themer.Theme:is(Theme):during(function()
 						return Scope:Group {
 							Name = "Indicator",
 							BackgroundColor3 = Scope:Spring(
-								EnsuredProps.IndicatorColor,
+								IndicatorColor,
 								Theme.SpringSpeed["0.5"],
 								Theme.SpringDampening["1"]
 							),
@@ -103,15 +101,19 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 							AutomaticSize = Enum.AutomaticSize.None,
 							AnchorPoint = Vector2.new(1, 1),
 							Position = UDim2.fromScale(1, 1),
-							AspectRatio = 1,
-							CornerRadius = EnsuredProps.IndicatorCornerRadius,
+							Aspect = {
+								Ratio = 1,
+							},
+							Corner = {
+								Radius = IndicatorCornerRadius,
+							},
 
 							[Children] = {
 								Scope:Icon {
-									Image = EnsuredProps.IndicatorIcon,
-									ImageColor3 = EnsuredProps.IndicatorIconColor,
+									Image = IndicatorIcon,
+									ImageColor3 = IndicatorIconColor,
 									ImageTransparency = Scope:Computed(function(Use)
-										if Use(EnsuredProps.IndicatorIcon) then
+										if Use(IndicatorIcon) then
 											return 0
 										else
 											return 1

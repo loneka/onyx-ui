@@ -76,7 +76,10 @@ return {
 								Radius = UDim.new(0, 15),
 							},
 							Gradient = {
-								Color = ColorSequence.new(Color3.fromRGB(255, 255, 255), Color3.fromRGB(0, 0, 0)),
+								Color = ColorSequence.new({
+									ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+									ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0)),
+								}),
 								Rotation = 90,
 								Transparency = NumberSequence.new(0, 0.5),
 							},

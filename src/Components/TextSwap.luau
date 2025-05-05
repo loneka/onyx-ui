@@ -106,30 +106,36 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 	return Scope:BaseButton(Util.CombineProps(Props, {
 		Name = "TextSwap",
-		ListEnabled = true,
-		ListHorizontalFlex = Enum.UIFlexAlignment.SpaceBetween,
-		ListFillDirection = Enum.FillDirection.Horizontal,
-		ListVerticalAlignment = Enum.VerticalAlignment.Center,
-		Padding = Scope:Computed(function(Use)
-			local Offset = Use(Theme.Padding["0.25"])
-			return UDim.new(0, Offset)
-		end),
-		StrokeEnabled = true,
-		StrokeColor = Color,
-		StrokeTransparency = Scope:Spring(
-			Scope:Computed(function(Use)
-				if Use(Disabled) then
-					return 0.9
-				else
-					return 0.8
-				end
+		List = {
+			HorizontalFlex = Enum.UIFlexAlignment.SpaceBetween,
+			FillDirection = Enum.FillDirection.Horizontal,
+			VerticalAlignment = Enum.VerticalAlignment.Center,
+		},
+		Padding = {
+			All = Scope:Computed(function(Use)
+				local Offset = Use(Theme.Padding["0.25"])
+				return UDim.new(0, Offset)
 			end),
-			Theme.SpringSpeed["1"],
-			Theme.SpringDampening["1"]
-		),
-		CornerRadius = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.CornerRadius["1"]))
-		end),
+		},
+		Stroke = {
+			Color = Color,
+			Transparency = Scope:Spring(
+				Scope:Computed(function(Use)
+					if Use(Disabled) then
+						return 0.9
+					else
+						return 0.8
+					end
+				end),
+				Theme.SpringSpeed["1"],
+				Theme.SpringDampening["1"]
+			),
+		},
+		Corner = {
+			Radius = Scope:Computed(function(Use)
+				return UDim.new(0, Use(Theme.CornerRadius["1"]))
+			end),
+		},
 		Disabled = Disabled,
 
 		IsHolding = IsHolding,

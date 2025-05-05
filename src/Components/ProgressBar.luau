@@ -46,19 +46,15 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Color = Util.Fallback(Props.Color, Theme.Colors.Primary.Main)
 	local Direction = Util.Fallback(Props.Direction, Enum.FillDirection.Horizontal)
 	local Inverted = Util.Fallback(Props.Inverted, false)
-	local CornerRadius = Util.Fallback(
-		Props.CornerRadius,
-		Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.CornerRadius["Full"]))
-		end)
-	)
 	local Length = Util.Fallback(
 		Props.Length,
 		Scope:Computed(function()
 			return UDim.new(0, 200)
 		end)
 	)
-	local StrokeThickness = Util.Fallback(Props.StrokeThickness, Theme.StrokeThickness["1"])
+	local Stroke = Util.Fallback(Props.Stroke, {
+		Thickness = Theme.StrokeThickness["1"],
+	})
 
 	return Scope:Group(Util.CombineProps(Props, {
 		Name = "ProgressBar",
@@ -74,10 +70,16 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		AutomaticSize = Enum.AutomaticSize.None,
 		BackgroundTransparency = 0,
 		BackgroundColor3 = Theme.Colors.Neutral.Dark,
-		CornerRadius = CornerRadius,
-		Padding = Scope:Computed(function(Use)
-			return UDim.new(0, Use(StrokeThickness))
-		end),
+		Corner = {
+			Radius = Scope:Computed(function(Use)
+				return UDim.new(0, Use(Theme.CornerRadius["Full"]))
+			end),
+		},
+		Padding = {
+			All = Scope:Computed(function(Use)
+				return UDim.new(0, Use(Use(Stroke).Thickness))
+			end),
+		},
 
 		[Children] = {
 			Scope:Frame {
@@ -118,7 +120,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 				AutomaticSize = Enum.AutomaticSize.None,
 				BackgroundTransparency = 0,
 				BackgroundColor3 = Color,
-				StrokeEnabled = true,
+				Stroke = {},
 			},
 		},
 	}))

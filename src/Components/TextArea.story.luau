@@ -21,13 +21,16 @@ return {
 			Parent = Props.target,
 			Size = UDim2.fromOffset(250, 0),
 			AutomaticSize = Enum.AutomaticSize.Y,
-			ListEnabled = true,
-			ListPadding = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.Spacing["0.5"]))
-			end),
-			Padding = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.StrokeThickness["1"]))
-			end),
+			List = {
+				Padding = Scope:Computed(function(Use)
+					return UDim.new(0, Use(Theme.Spacing["0.5"]))
+				end),
+			},
+			Padding = {
+				All = Scope:Computed(function(Use)
+					return UDim.new(0, Use(Theme.StrokeThickness["1"]))
+				end),
+			},
 
 			[Children] = {
 				Scope:TextArea {

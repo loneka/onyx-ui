@@ -166,35 +166,63 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			end
 		end),
 		BackgroundColor3 = Scope:Spring(EffectiveColor, Theme.SpringSpeed["1"], Theme.SpringDampening["1"]),
-		PaddingLeft = PaddingX,
-		PaddingRight = PaddingX,
-		PaddingTop = PaddingY,
-		PaddingBottom = PaddingY,
-		CornerRadius = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.CornerRadius["1"]))
-		end),
-		ListEnabled = true,
-		ListFillDirection = Enum.FillDirection.Horizontal,
-		ListHorizontalAlignment = Enum.HorizontalAlignment.Center,
-		ListVerticalAlignment = Enum.VerticalAlignment.Center,
-		ListWraps = false,
-		StrokeEnabled = true,
-		StrokeColor = Scope:Spring(
-			Scope:Computed(function(Use)
-				return Util.Emphasize(Use(EffectiveColor), Use(EffectiveStrokeEmphasis))
+		Padding = {
+			Left = PaddingX,
+			Right = PaddingX,
+			Top = PaddingY,
+			Bottom = PaddingY,
+		},
+		Corner = {
+			Radius = Scope:Computed(function(Use)
+				return UDim.new(0, Use(Theme.CornerRadius["1"]))
 			end),
-			Theme.SpringSpeed["1"],
-			Theme.SpringDampening["1"]
-		),
-		StrokeTransparency = Scope:Computed(function(Use)
-			if Use(Style) == "Ghost" then
-				return 1
-			elseif Use(Disabled) then
-				return DISABLED_BACKGROUND_TRANSPARENCY
-			else
-				return 0
-			end
-		end),
+		},
+		List = {
+			FillDirection = Enum.FillDirection.Horizontal,
+			HorizontalAlignment = Enum.HorizontalAlignment.Center,
+			VerticalAlignment = Enum.VerticalAlignment.Center,
+			Wraps = false,
+		},
+		Stroke = {
+			Gradient = {
+				Color = Scope:Spring(
+					Scope:Computed(function(Use)
+						local KeypointColor = Util.Emphasize(Use(EffectiveColor), Use(EffectiveStrokeEmphasis))
+
+						return ColorSequence.new({
+							ColorSequenceKeypoint.new(0, KeypointColor),
+							ColorSequenceKeypoint.new(1, KeypointColor),
+						})
+					end),
+					Theme.SpringSpeed["1"],
+					Theme.SpringDampening["1"]
+				),
+				Transparency = Scope:Computed(function(Use)
+					if Use(Style) == "Filled" then
+						return NumberSequence.new({
+							NumberSequenceKeypoint.new(0, 0),
+							NumberSequenceKeypoint.new(1, 1),
+						})
+					else
+						return NumberSequence.new({
+							NumberSequenceKeypoint.new(0, 0),
+							NumberSequenceKeypoint.new(1, 0),
+						})
+					end
+				end),
+				Rotation = 90,
+			},
+			Transparency = Scope:Computed(function(Use)
+				if Use(Style) == "Ghost" then
+					return 1
+				elseif Use(Disabled) then
+					return DISABLED_BACKGROUND_TRANSPARENCY
+				else
+					return 0
+				end
+			end),
+		},
+
 		IsHolding = IsHolding,
 		IsHovering = IsHovering,
 
@@ -205,11 +233,13 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 				ContentTransparency = EffectiveContentTransparency,
 				ContentSize = ContentSize,
 				ContentWrapped = ContentWrapped,
-				ListPadding = Scope:Computed(function(Use)
-					return UDim.new(0, Use(Theme.Spacing["0.25"]))
-				end),
-				ListHorizontalAlignment = Enum.HorizontalAlignment.Center,
-				ListVerticalAlignment = Enum.VerticalAlignment.Center,
+				List = {
+					Padding = Scope:Computed(function(Use)
+						return UDim.new(0, Use(Theme.Spacing["0.25"]))
+					end),
+					VerticalAlignment = Enum.VerticalAlignment.Center,
+					HorizontalAlignment = Enum.HorizontalAlignment.Center,
+				},
 			},
 		},
 	}))

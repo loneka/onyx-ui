@@ -80,24 +80,27 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			Theme.SpringDampening["1"]
 		),
 		Disabled = Disabled,
-		CornerRadius = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.CornerRadius["0.5"]))
-		end),
-		StrokeEnabled = true,
-		StrokeColor = Scope:Computed(function(Use)
-			if (not Use(Checked)) or Use(Disabled) or Use(IsHovering) or Use(IsHolding) then
-				return Use(EffectiveColor)
-			else
-				return Util.Emphasize(Use(EffectiveColor), Use(Theme.StrokeEmphasis.Regular))
-			end
-		end),
-		StrokeTransparency = Scope:Computed(function(Use)
-			if Use(Disabled) then
-				return DISABLED_BACKGROUND_TRANSPARENCY
-			else
-				return 0
-			end
-		end),
+		Corner = {
+			Radius = Scope:Computed(function(Use)
+				return UDim.new(0, Use(Theme.CornerRadius["0.5"]))
+			end),
+		},
+		Stroke = {
+			Color = Scope:Computed(function(Use)
+				if (not Use(Checked)) or Use(Disabled) or Use(IsHovering) or Use(IsHolding) then
+					return Use(EffectiveColor)
+				else
+					return Util.Emphasize(Use(EffectiveColor), Use(Theme.StrokeEmphasis.Regular))
+				end
+			end),
+			Transparency = Scope:Computed(function(Use)
+				if Use(Disabled) then
+					return DISABLED_BACKGROUND_TRANSPARENCY
+				else
+					return 0
+				end
+			end),
+		},
 
 		IsHovering = IsHovering,
 		IsHolding = IsHolding,

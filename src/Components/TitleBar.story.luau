@@ -19,15 +19,18 @@ return {
 
 		Scope:Frame {
 			Parent = Props.target,
-			Padding = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.StrokeThickness["1"]))
-			end),
 			Size = Scope:Computed(function(Use)
 				return UDim2.fromOffset(Use(Theme.Padding["16"]), 0)
 			end),
 			AutomaticSize = Enum.AutomaticSize.Y,
-			ListEnabled = true,
-			ListHorizontalFlex = Enum.UIFlexAlignment.Fill,
+			Padding = {
+				All = Scope:Computed(function(Use)
+					return UDim.new(0, Use(Theme.StrokeThickness["1"]))
+				end),
+			},
+			List = {
+				HorizontalFlex = Enum.UIFlexAlignment.Fill,
+			},
 
 			[Children] = {
 				Scope:TitleBar {

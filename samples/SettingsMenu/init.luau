@@ -24,12 +24,11 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		end),
 		AutomaticSize = Enum.AutomaticSize.Y,
 		List = {},
-		ListEnabled = true,
-		Corner = Scope:Computed(function(Use)
-			return {
-				Radius = UDim.new(0, Use(Theme.CornerRadius["2"])),
-			}
-		end),
+		Corner = {
+			Radius = Scope:Computed(function(Use)
+				return UDim.new(0, Use(Theme.CornerRadius["2"]))
+			end),
+		},
 
 		[Children] = {
 			Scope:TitleBar {
@@ -42,12 +41,14 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 				List = {
 					HorizontalFlex = Enum.UIFlexAlignment.Fill,
 				},
-				Padding = Scope:Computed(function(Use)
-					return {
-						Padding = UDim.new(0, Use(Theme.StrokeThickness["1"])),
-						Right = UDim.new(0, Use(Theme.StrokeThickness["1"]) + Use(Theme.Spacing["1"])),
-					}
-				end),
+				Padding = {
+					All = Scope:Computed(function(Use)
+						return UDim.new(0, Use(Theme.StrokeThickness["1"]))
+					end),
+					Right = Scope:Computed(function(Use)
+						return UDim.new(0, Use(Theme.StrokeThickness["1"]) + Use(Theme.Spacing["1"]))
+					end),
+				},
 
 				[Children] = {
 					Scope:SettingToggle {

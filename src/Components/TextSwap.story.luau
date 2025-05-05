@@ -21,14 +21,17 @@ return {
 				return UDim2.fromOffset(Use(Theme.Padding["16"]), 0)
 			end),
 			AutomaticSize = Enum.AutomaticSize.Y,
-			Padding = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.StrokeThickness["1"]))
-			end),
-			ListEnabled = true,
-			ListPadding = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.Spacing["0.5"]))
-			end),
-			ListHorizontalFlex = Enum.UIFlexAlignment.Fill,
+			Padding = {
+				All = Scope:Computed(function(Use)
+					return UDim.new(0, Use(Theme.StrokeThickness["1"]))
+				end),
+			},
+			List = {
+				Padding = Scope:Computed(function(Use)
+					return UDim.new(0, Use(Theme.Spacing["0.5"]))
+				end),
+				HorizontalFlex = Enum.UIFlexAlignment.Fill,
+			},
 
 			[Children] = {
 				Scope:TextSwap {

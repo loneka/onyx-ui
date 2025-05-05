@@ -25,11 +25,12 @@ return {
 			Parent = Props.target,
 			Size = UDim2.fromOffset(300, 0),
 			AutomaticSize = Enum.AutomaticSize.Y,
-			ListEnabled = true,
-			ListFillDirection = Enum.FillDirection.Vertical,
-			ListPadding = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.Spacing["0.75"]))
-			end),
+			List = {
+				FillDirection = Enum.FillDirection.Vertical,
+				Padding = Scope:Computed(function(Use)
+					return UDim.new(0, Use(Theme.Spacing["0.75"]))
+				end),
+			},
 
 			[Children] = {
 				Scope:Card {
@@ -39,10 +40,11 @@ return {
 				Scope:Card {
 					Size = UDim2.fromScale(1, 0),
 					AutomaticSize = Enum.AutomaticSize.Y,
-					ListEnabled = true,
-					ListPadding = Scope:Computed(function(Use)
-						return UDim.new(0, Use(Theme.Spacing["0.25"]))
-					end),
+					List = {
+						Padding = Scope:Computed(function(Use)
+							return UDim.new(0, Use(Theme.Spacing["0.5"]))
+						end),
+					},
 
 					[Children] = {
 						Scope:Text {

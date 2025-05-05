@@ -76,9 +76,11 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 				ContentSize = ContentSize,
 				ContentFontFace = ContentFontFace,
 				ContentWrapped = false,
-				ListPadding = Scope:Computed(function(Use)
-					return UDim.new(0, Use(Theme.Spacing["0.5"]))
-				end),
+				List = {
+					Padding = Scope:Computed(function(Use)
+						return UDim.new(0, Use(Theme.Spacing["0.5"]))
+					end),
+				},
 			},
 			Scope:Computed(function(Use)
 				if Use(CloseButtonDisabled) == false then
