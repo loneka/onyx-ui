@@ -53,9 +53,14 @@ description = "Give your UI the look and feel you desire with ease."
 title = "Styling, now *not* stupid 🖌️"
 description = "Screw messy markup. Style any component, with less code, using OnyxUI's passthrough styling props."
 
+[[navbar.items]]
+href = "https://loneka.com/suite/discord"
+label = "Discord"
+position = "right"
+
 [footer]
 style = "dark"
-copyright = "Copyright © 2024 Avafe. Built with Moonwave and Docusaurus"
+copyright = "Copyright © 2025 Avafe. Built with Moonwave and Docusaurus"
 
 # [[classOrder]]
 # section = "Util"
