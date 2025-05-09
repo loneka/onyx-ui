@@ -20,6 +20,7 @@ export type Props = Base.Props & {
 	FallbackImage: Fusion.UsedAs<string>?,
 	ImageColor3: Fusion.UsedAs<Color3>?,
 	ImageTransparency: Fusion.UsedAs<number>?,
+	ImageRectOffset: Fusion.UsedAs<Vector2>?,
 	ImageRectSize: Fusion.UsedAs<Vector2>?,
 	ResampleMode: Fusion.UsedAs<Enum.ResamplerMode>?,
 	ScaleType: Fusion.UsedAs<Enum.ScaleType>?,
@@ -37,6 +38,7 @@ export type Props = Base.Props & {
 		@field FallbackImage Fusion.UsedAs<string>?
 		@field ImageColor3 Fusion.UsedAs<Color3>?
 		@field ImageTransparency Fusion.UsedAs<number>?
+		@field ImageRectOffset Fusion.UsedAs<Vector2>?
 		@field ImageRectSize Fusion.UsedAs<Vector2>?
 		@field ResampleMode Fusion.UsedAs<Enum.ResamplerMode>?
 		@field ScaleType Fusion.UsedAs<Enum.ScaleType>?
@@ -67,6 +69,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		Image = ImageInUse,
 		ImageColor3 = Props.ImageColor3,
 		ImageTransparency = Props.ImageTransparency,
+		ImageRectOffset = Props.ImageRectOffset,
 		ImageRectSize = Props.ImageRectSize,
 		ResampleMode = Props.ResampleMode,
 		ScaleType = Props.ScaleType,

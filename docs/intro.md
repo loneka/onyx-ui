@@ -4,8 +4,8 @@ sidebar_position: 1
 
 # Getting Started
 
-:::info Fusion 0.2 users:
-While it's recommended to use Fusion 0.3, OnyxUI offers [an old version](https://github.com/ImAvafe/OnyxUI/releases/tag/0.3.0) for Fusion 0.2. It will not receive any updates, and lacks the major improvements of newer OnyxUI versions.
+:::info
+  OnyxUI is premature software, relying on the premature software Fusion. If that doesn't deter you, get ready to enjoy how easy UI can be. ✨
 :::
 
 ## Installation
@@ -17,6 +17,10 @@ While it's recommended to use Fusion 0.3, OnyxUI offers [an old version](https:/
 3. Run `wally install`
 
 ### Roblox model
+
+:::warning Important
+When using the `rbxm`, you must require the copy of Fusion bundled within it, rather than your own install. Or alternatively, switch to Wally to avoid this altogether.
+:::
 
 1. Download the `OnyxUI.rbxm` file [listed here](https://github.com/ImAvafe/OnyxUI/releases/latest)
 2. Insert `OnyxUI.rbxm` into Roblox Studio
