@@ -3,4 +3,6 @@
 *.lock
 *.rbxl.lock
 
+build
+
 sourcemap.json

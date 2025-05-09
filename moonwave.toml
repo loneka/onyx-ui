@@ -35,7 +35,8 @@ classes = [
 [docusaurus]
 title = "OnyxUI"
 tagline = "Quick, customizable components for Fusion"
-url = "https://avafe.me/"
+url = "https://loneka.com/"
+baseUrl = "/onyx-ui"
 favicon = "/favicon.svg"
 
 [home]
