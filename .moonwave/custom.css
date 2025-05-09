@@ -6,6 +6,10 @@
 	--ifm-navbar-background-color: var(--ifm-background-color);
 	--ifm-navbar-search-input-background-color: var(--ifm-background-color);
 	--ifm-color-primary: #d558ff;
+	--ifm-color-primary-dark: #d558ff;
+	--ifm-color-secondary: var(--ifm-color-primary);
+	--ifm-color-secondary-dark: var(--ifm-color-primary-dark);
+	--ifm-color-secondary-darker: var(--ifm-color-primary-dark);
 	--docusaurus-highlighted-code-line-bg: #75757544;
   --ifm-transition-fast: 350ms;
 }
