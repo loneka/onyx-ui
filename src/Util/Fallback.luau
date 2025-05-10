@@ -12,26 +12,45 @@
 local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 
-local function FallbackUtil(Preferred: Fusion.UsedAs<any>, Fallback: any)
-	local PreferredValue = Fusion.peek(Preferred)
+export type Any = Fusion.UsedAs<any>
+export type AnyDictionary = Any | { [any]: Any | AnyDictionary }
 
-	if PreferredValue == nil then
-		if (typeof(Preferred) == "table") and (Preferred.kind == "Value") and (Preferred.set ~= nil) then
-			Preferred:set(Fallback)
-
-			return Preferred
-		else
-			return Fallback
-		end
-	else
-		if (typeof(PreferredValue) == "table") and (typeof(Fallback) == "table") then
-			for Key, Value in pairs(Fallback) do
-				PreferredValue[Key] = FallbackUtil(PreferredValue[Key], Value)
-			end
-		end
-
-		return PreferredValue
-	end
+local function IsReactive(Value: Any)
+	return (typeof(Value) == "table") and (typeof(Value.scope) == nil)
+end
+local function IsValue(Value: Any)
+	return (typeof(Value) == "table") and (typeof(Value.set) == "function")
 end
 
-return FallbackUtil
+local function FallbackUtil(Preferred: Any, Fallback: Any)
+	local PreferredValue = Fusion.peek(Preferred)
+	local FallbackValue = Fusion.peek(Fallback)
+
+	if PreferredValue == nil then
+		if IsValue(Preferred) then
+			Preferred:set(FallbackValue)
+
+			return Preferred
+		end
+
+		return Fallback
+	end
+
+	return Preferred
+end
+
+local function FallbackDictionary(Preferred: AnyDictionary, Fallback: AnyDictionary)
+	if (not IsReactive(Preferred)) and (not IsReactive(Fallback)) then
+		if (typeof(Preferred) == "table") and (typeof(Fallback) == "table") then
+			for Key, Value in pairs(Fallback) do
+				Preferred[Key] = FallbackUtil(Preferred[Key], Value)
+			end
+
+			return Preferred
+		end
+	end
+
+	return FallbackUtil(Preferred, Fallback)
+end
+
+return FallbackDictionary

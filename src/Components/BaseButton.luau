@@ -55,8 +55,6 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Theme = Themer.Theme:now()
 
 	local Disabled = Util.Fallback(Props.Disabled, false)
-	local IsHovering = Scope:EnsureValue(Util.Fallback(Props.IsHovering, false))
-	local IsHolding = Scope:EnsureValue(Util.Fallback(Props.IsHolding, false))
 	local OnActivated = Util.Fallback(Props.OnActivated, function() end)
 	local OnMouseEnter = Util.Fallback(Props.OnMouseEnter, function() end)
 	local OnMouseLeave = Util.Fallback(Props.OnMouseLeave, function() end)
@@ -77,6 +75,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		end)
 	)
 
+	local IsHovering = Scope:EnsureValue(Util.Fallback(Props.IsHovering, false))
+	local IsHolding = Scope:EnsureValue(Util.Fallback(Props.IsHolding, false))
+
 	return Scope:Hydrate(Scope:Base(Util.CombineProps(Props, {
 		ClassName = "TextButton",
 		Name = script.Name,
@@ -91,6 +92,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		[OnEvent "Activated"] = function()
 			if not Fusion.peek(Disabled) then
 				SoundService:PlayLocalSound(Fusion.peek(ClickSound))
+
 				Fusion.peek(OnActivated)()
 			end
 		end,
@@ -98,34 +100,42 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			if Fusion.peek(Active) then
 				SoundService:PlayLocalSound(Fusion.peek(HoverSound))
 			end
+
 			IsHovering:set(true)
+
 			Fusion.peek(OnMouseEnter)()
 		end,
 		[OnEvent "SelectionGained"] = function()
 			if Fusion.peek(Active) then
 				SoundService:PlayLocalSound(Fusion.peek(HoverSound))
 			end
+
 			IsHovering:set(true)
+
 			Fusion.peek(OnMouseEnter)()
 		end,
 		[OnEvent "SelectionLost"] = function()
 			IsHovering:set(false)
 			IsHolding:set(false)
+
 			Fusion.peek(OnMouseLeave)()
 		end,
 		[OnEvent "MouseLeave"] = function()
 			IsHovering:set(false)
 			IsHolding:set(false)
+
 			Fusion.peek(OnMouseLeave)()
 		end,
 		[OnEvent "MouseButton1Down"] = function()
 			if not Fusion.peek(Disabled) then
 				IsHolding:set(true)
+
 				Fusion.peek(OnMouseButton1Down)()
 			end
 		end,
 		[OnEvent "MouseButton1Up"] = function()
 			IsHolding:set(false)
+
 			Fusion.peek(OnMouseButton1Up)()
 		end,
 	}

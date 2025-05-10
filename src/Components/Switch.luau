@@ -143,10 +143,11 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		},
 		Corner = Corner,
 
-		ClickSound = Theme.Sound.Switch,
-
 		IsHovering = IsHovering,
 		IsHolding = IsHolding,
+
+		ClickSound = Theme.Sound.Switch,
+
 		OnActivated = function()
 			Switched:set(not Fusion.peek(Switched))
 		end,

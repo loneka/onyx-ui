@@ -50,6 +50,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Value = Scope:EnsureValue(Util.Fallback(Props.Value, 1))
 	local Color = Util.Fallback(Props.Color, Theme.Colors.Primary.Main)
 	local Disabled = Util.Fallback(Props.Disabled, false)
+
 	local IsHovering = Scope:EnsureValue(Util.Fallback(Props.IsHovering, false))
 	local IsHolding = Scope:EnsureValue(Util.Fallback(Props.IsHolding, false))
 
@@ -104,6 +105,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 		Disabled = Disabled,
 		IsHovering = IsHovering,
+		IsHolding = IsHolding,
 
 		[Children] = {
 			DragDetector,
