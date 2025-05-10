@@ -172,23 +172,23 @@ Scale = {
 }
 ```
 
-### Size constraint
+### Size limit
 
 Smaller than 100x 100y:
 
 ```lua
-SizeConstraint = {
+SizeLimit = {
   Max = Vector2.new(100, 100),
   Min = Vector2.new(0, 0),
 }
 ```
 
-### Text size constraint
+### Text size limit
 
 Smaller than 24, bigger than 12:
 
 ```lua
-TextSizeConstraint = {
+TextSizeLimit = {
   Max = 24,
   Min = 12,
 }

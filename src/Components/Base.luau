@@ -111,12 +111,12 @@ export type PageProps = {
 	ScrollWheelInputEnabled: Fusion.UsedAs<boolean>?,
 	TouchInputEnabled: Fusion.UsedAs<boolean>?,
 }
-export type SizeConstraintProps = {
+export type SizeLimitProps = {
 	Enabled: Fusion.UsedAs<boolean>?,
 	Max: Fusion.UsedAs<Vector2>?,
 	Min: Fusion.UsedAs<Vector2>?,
 }
-export type TextSizeConstraintProps = {
+export type TextSizeLimitProps = {
 	Enabled: Fusion.UsedAs<boolean>?,
 	Max: Fusion.UsedAs<number>?,
 	Min: Fusion.UsedAs<number>?,
@@ -168,8 +168,8 @@ export type Props = {
 	Page: PageProps?,
 	Flex: FlexProps?,
 
-	SizeConstraint: SizeConstraintProps?,
-	TextSizeConstraint: TextSizeConstraintProps?,
+	SizeLimit: SizeLimitProps?,
+	TextSizeLimit: TextSizeLimitProps?,
 }
 
 --[=[
@@ -583,25 +583,25 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 				end
 			end),
 			Scope:Computed(function(Use)
-				local SizeConstraintValue: SizeConstraintProps = Use(Props.SizeConstraint) or {}
+				local SizeLimitValue: SizeLimitProps = Use(Props.SizeLimit) or {}
 
 				if
-					(Use(SizeConstraintValue.Enabled) ~= false) and (Use(SizeConstraintValue.Max) ~= nil)
-					or (Use(SizeConstraintValue.Min) ~= nil)
+					(Use(SizeLimitValue.Enabled) ~= false) and (Use(SizeLimitValue.Max) ~= nil)
+					or (Use(SizeLimitValue.Min) ~= nil)
 				then
 					return Scope:New "UISizeConstraint" {
-						MaxSize = SizeConstraintValue.Max,
-						MinSize = SizeConstraintValue.Min,
+						MaxSize = SizeLimitValue.Max,
+						MinSize = SizeLimitValue.Min,
 					}
 				end
 			end),
 			Scope:Computed(function(Use)
-				local TextSizeConstraintValue: TextSizeConstraintProps = Use(Props.TextSizeConstraint) or {}
+				local TextSizeLimitValue: TextSizeLimitProps = Use(Props.TextSizeLimit) or {}
 
-				if (Use(TextSizeConstraintValue.Max) ~= nil) or (Use(TextSizeConstraintValue.Min) ~= nil) then
+				if (Use(TextSizeLimitValue.Max) ~= nil) or (Use(TextSizeLimitValue.Min) ~= nil) then
 					return Scope:New "UITextSizeConstraint" {
-						MaxTextSize = TextSizeConstraintValue.Max,
-						MinTextSize = TextSizeConstraintValue.Min,
+						MaxTextSize = TextSizeLimitValue.Max,
+						MinTextSize = TextSizeLimitValue.Min,
 					}
 				end
 			end),

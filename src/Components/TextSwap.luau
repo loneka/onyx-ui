@@ -193,9 +193,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 						return 0
 					end
 				end),
-				SizeConstraint = {
+				SizeLimit = {
 					Min = Scope:Computed(function(Use)
-						return Use(ContentSize)
+						return Vector2.new(0, Use(ContentSize))
 					end),
 				},
 			},
