@@ -31,7 +31,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 	return Scope:Hydrate(Scope:Base(Util.CombineProps(Props, {
 		ClassName = "CanvasGroup",
-		Name = "Group",
+		Name = script.Name,
 		BackgroundTransparency = 1,
 		AutomaticSize = Enum.AutomaticSize.XY,
 	}))) {

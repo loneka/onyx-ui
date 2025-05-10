@@ -35,7 +35,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	end)
 
 	return Scope:Button(Util.CombineProps(Props, {
-		Name = "IconButton",
+		Name = script.Name,
 		Padding = {
 			Left = Padding,
 			Right = Padding,

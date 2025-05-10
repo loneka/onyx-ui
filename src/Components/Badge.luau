@@ -56,7 +56,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local ContentSize = Util.Fallback(Props.ContentSize, Theme.TextSize["1"])
 
 	return Scope:Frame(Util.CombineProps(Props, {
-		Name = "Badge",
+		Name = script.Name,
 		BackgroundColor3 = Color,
 		BackgroundTransparency = 0,
 		Padding = Scope:Computed(function(Use)

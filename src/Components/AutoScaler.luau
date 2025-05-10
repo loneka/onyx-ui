@@ -50,7 +50,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	}
 
 	return Scope:Frame(Util.CombineProps(Props, {
-		Name = "AutoScaler",
+		Name = script.Name,
 		Scale = {
 			Scale = Scope:Computed(function(Use)
 				local Ratio = Use(ScaleMultiplier)

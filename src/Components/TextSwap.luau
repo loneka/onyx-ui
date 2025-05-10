@@ -105,7 +105,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	end)
 
 	return Scope:BaseButton(Util.CombineProps(Props, {
-		Name = "TextSwap",
+		Name = script.Name,
 		List = {
 			HorizontalFlex = Enum.UIFlexAlignment.SpaceBetween,
 			FillDirection = Enum.FillDirection.Horizontal,

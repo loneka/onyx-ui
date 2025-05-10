@@ -68,7 +68,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local IndicatorIconColor = Util.Fallback(Props.IndicatorIconColor, Util.Colors.White)
 
 	return Scope:Image(Util.CombineProps(Props, {
-		Name = "Avatar",
+		Name = script.Name,
 		Image = ImageProp,
 		Size = Scope:Computed(function(Use)
 			return UDim2.fromOffset(Use(Theme.TextSize["4.5"]), Use(Theme.TextSize["4.5"]))

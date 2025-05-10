@@ -29,7 +29,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local BackgroundColor3 = Util.Fallback(Props.BackgroundColor3, Theme.Colors.Base.Main)
 
 	return Scope:Frame(Util.CombineProps(Props, {
-		Name = "Card",
+		Name = script.Name,
 		BackgroundColor3 = BackgroundColor3,
 		BackgroundTransparency = 0,
 		Corner = Scope:Computed(function(Use)

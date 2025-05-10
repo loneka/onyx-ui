@@ -26,7 +26,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 	return Scope:Base(Util.CombineProps(Props, {
 		ClassName = "Frame",
-		Name = "Frame",
+		Name = script.Name,
 		BackgroundTransparency = 1,
 		AutomaticSize = Enum.AutomaticSize.XY,
 	}))

@@ -153,7 +153,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	end)
 
 	return Scope:BaseButton(Util.CombineProps(Props, {
-		Name = "Button",
+		Name = script.Name,
 		BackgroundTransparency = Scope:Computed(function(Use)
 			if Use(Style) == "Filled" then
 				if Use(Disabled) then

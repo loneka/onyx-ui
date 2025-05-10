@@ -86,7 +86,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 
 	return Scope:Hydrate(Scope:Base(Util.CombineProps(Props, {
 		ClassName = "ScrollingFrame",
-		Name = "Scroller",
+		Name = script.Name,
 		Selectable = false,
 		BackgroundTransparency = 1,
 		AutomaticSize = Enum.AutomaticSize.None,

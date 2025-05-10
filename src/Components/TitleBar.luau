@@ -62,7 +62,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local OnClose = Util.Fallback(Props.OnClose, function() end)
 
 	return Scope:Frame(Util.CombineProps(Props, {
-		Name = "TitleBar",
+		Name = script.Name,
 		Size = UDim2.fromScale(1, 0),
 		AutomaticSize = Enum.AutomaticSize.Y,
 

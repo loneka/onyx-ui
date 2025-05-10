@@ -134,7 +134,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 	local Object = Scope:Hydrate(Scope:Base(Util.CombineProps(Props, {
 		ClassName = "TextBox",
-		Name = "TextInput",
+		Name = script.Name,
 		Corner = {
 			Radius = Scope:Computed(function(Use)
 				return UDim.new(0, Use(Theme.CornerRadius["1"]))

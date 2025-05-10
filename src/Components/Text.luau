@@ -72,7 +72,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 
 	return Scope:Hydrate(Scope:Base(Util.CombineProps(Props, {
 		ClassName = "TextLabel",
-		Name = "Text",
+		Name = script.Name,
 		AutomaticSize = Enum.AutomaticSize.XY,
 		ClipsDescendants = false,
 		BackgroundTransparency = 1,

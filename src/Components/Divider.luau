@@ -66,7 +66,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	end)
 
 	return Scope:Frame(Util.CombineProps(Props, {
-		Name = "Divider",
+		Name = script.Name,
 		Size = Scope:Computed(function(Use)
 			if Use(FillDirection) == Enum.FillDirection.Horizontal then
 				return UDim2.new(Length, UDim.new(0, 0))

@@ -62,7 +62,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	end)
 
 	return Scope:BaseButton(Util.CombineProps(Props, {
-		Name = "Checkbox",
+		Name = script.Name,
 		BackgroundColor3 = EffectiveColor,
 		BackgroundTransparency = Scope:Spring(
 			Scope:Computed(function(Use)
@@ -111,7 +111,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 		[Children] = {
 			Scope:Icon {
-				Name = "CheckIcon",
+				Name = "Checkmark",
 				Image = IconId,
 				ImageTransparency = Scope:Spring(
 					Scope:Computed(function(Use)

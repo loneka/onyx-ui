@@ -60,7 +60,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 	return Scope:Hydrate(Scope:Base(Util.CombineProps(Props, {
 		ClassName = "ImageLabel",
-		Name = "Image",
+		Name = script.Name,
 		Size = UDim2.fromOffset(100, 100),
 		AutomaticSize = Enum.AutomaticSize.None,
 	}))) {

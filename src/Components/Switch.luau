@@ -55,6 +55,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 	local IsHovering = Scope:EnsureValue(Util.Fallback(Props.IsHovering, false))
 	local IsHolding = Scope:EnsureValue(Util.Fallback(Props.IsHolding, false))
+
 	local EffectiveColor = Scope:Computed(function(Use)
 		local ActiveColor
 		if Use(Switched) then
@@ -110,7 +111,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	end)
 
 	return Scope:BaseButton(Util.CombineProps(Props, {
-		Name = "Switch",
+		Name = script.Name,
 		Size = Size,
 		AutomaticSize = AutomaticSize,
 		Disabled = Disabled,

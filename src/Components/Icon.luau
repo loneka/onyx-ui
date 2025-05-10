@@ -27,7 +27,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Theme = Themer.Theme:now()
 
 	return Scope:Image(Util.CombineProps(Props, {
-		Name = "Icon",
+		Name = script.Name,
 		Size = Scope:Computed(function(Use)
 			return UDim2.fromOffset(Use(Theme.TextSize["1"]), Use(Theme.TextSize["1"]))
 		end),

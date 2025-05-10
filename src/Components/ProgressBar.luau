@@ -57,7 +57,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	})
 
 	return Scope:Group(Util.CombineProps(Props, {
-		Name = "ProgressBar",
+		Name = script.Name,
 		Size = Scope:Computed(function(Use)
 			local DirectionValue = Use(Direction)
 			local LengthValue = Use(Length)
