@@ -111,6 +111,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			DragDetector,
 			Scope:Hydrate(Scope:Frame {
 				Name = "Progress",
+				Selectable = false,
 				BackgroundTransparency = 0,
 				BackgroundColor3 = Theme.Colors.Neutral.Main,
 				Size = Scope:Computed(function(Use)
@@ -128,6 +129,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 				[Children] = {
 					Scope:Frame {
 						Name = "Progress",
+						Selectable = false,
 						Size = Scope:Computed(function(Use)
 							local ValueValue = Use(Value)
 							return UDim2.fromScale(ValueValue, 1)
@@ -176,6 +178,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 						[Children] = {
 							Scope:Frame {
 								Name = "Ball",
+								Selectable = false,
 								AnchorPoint = Scope:Computed(function(Use)
 									local ValueValue = Use(Value)
 									return Vector2.new(ValueValue, 0.5)
@@ -210,6 +213,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 								[Children] = {
 									Scope:Frame {
 										Name = "SmallBall",
+										Selectable = false,
 										AspectRatio = 1,
 										AnchorPoint = Vector2.new(0.5, 0.5),
 										Position = UDim2.fromScale(0.5, 0.5),

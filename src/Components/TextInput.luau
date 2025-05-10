@@ -64,6 +64,8 @@ export type Props = Base.Props & {
 	TextProcessor: Fusion.UsedAs<(string) -> string>?,
 
 	IsFocused: Fusion.UsedAs<boolean>?,
+	IsHovering: Fusion.UsedAs<boolean>?,
+
 	OnFocused: Fusion.UsedAs<() -> ()>?,
 	OnFocusLost: Fusion.UsedAs<() -> ()>?,
 }
@@ -73,8 +75,10 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Theme = Themer.Theme:now()
 
 	local Text = Scope:EnsureValue(Util.Fallback(Props.Text, ""))
-	local Disabled = Util.Fallback(Props.Disabled, false)
 	local IsFocused = Scope:EnsureValue(Util.Fallback(Props.IsFocused, false))
+	local IsHovering = Scope:EnsureValue(Util.Fallback(Props.IsHovering, false))
+
+	local Disabled = Util.Fallback(Props.Disabled, false)
 	local OnFocused = Util.Fallback(Props.OnFocused, function() end)
 	local OnFocusLost = Util.Fallback(Props.OnFocusLost, function() end)
 	local Color = Util.Fallback(Props.Color, Theme.Colors.Primary.Main)
@@ -162,12 +166,12 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			Transparency = Scope:Spring(
 				Scope:Computed(function(Use)
 					if Use(Disabled) then
-						return 0.9
+						return 0.8
 					end
 					if Use(IsFocused) then
 						return 0
 					else
-						return 0.8
+						return 0.6
 					end
 				end),
 				Theme.SpringSpeed["1"],
@@ -210,17 +214,27 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		[OnEvent "Focused"] = function()
 			if (not Fusion.peek(Disabled)) and Fusion.peek(TextEditable) then
 				IsFocused:set(true)
+
 				SoundService:PlayLocalSound(Fusion.peek(Theme.Sound.Focus))
+
 				Fusion.peek(OnFocused)()
 			end
 		end,
 		[OnEvent "FocusLost"] = function()
 			IsFocused:set(false)
+
 			Fusion.peek(OnFocusLost)()
 		end,
 		[OnEvent "MouseEnter"] = function()
 			if not Fusion.peek(Disabled) then
+				IsHovering:set(true)
+
 				SoundService:PlayLocalSound(Fusion.peek(Theme.Sound.Hover))
+			end
+		end,
+		[OnEvent "MouseLeave"] = function()
+			if not Fusion.peek(Disabled) then
+				IsHovering:set(false)
 			end
 		end,
 		[OnEvent "SelectionGained"] = function()

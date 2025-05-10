@@ -84,6 +84,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		[Children] = {
 			Scope:Frame {
 				Name = "ProgressFill",
+				Selectable = false,
 				Size = Scope:Spring(
 					Scope:Computed(function(Use)
 						if Use(Direction) == Enum.FillDirection.Horizontal then

@@ -70,11 +70,6 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			end
 		end
 	end)
-	local ArrowSize = Scope:Computed(function(Use)
-		local ContentSizeValue = Use(ContentSize)
-
-		return ContentSizeValue * 1.25
-	end)
 
 	Scope:Observer(Options):onChange(function()
 		Selection:set(1)
@@ -104,6 +99,10 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		ShownIncrement:set(0)
 	end)
 
+	local NoPadding = Scope:Computed(function(Use)
+		return UDim.new(0, Use(Theme.Padding["0"]))
+	end)
+
 	return Scope:BaseButton(Util.CombineProps(Props, {
 		Name = script.Name,
 		List = {
@@ -113,8 +112,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		},
 		Padding = {
 			All = Scope:Computed(function(Use)
-				local Offset = Use(Theme.Padding["0.25"])
-				return UDim.new(0, Offset)
+				return UDim.new(0, Use(Theme.Padding["0.5"]))
 			end),
 		},
 		Stroke = {
@@ -136,6 +134,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 				return UDim.new(0, Use(Theme.CornerRadius["1"]))
 			end),
 		},
+
 		Disabled = Disabled,
 
 		IsHolding = IsHolding,
@@ -147,6 +146,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 		[Children] = {
 			Scope:IconButton {
+				Name = "LeftArrow",
 				Image = "rbxassetid://136326079088976",
 				Style = "Ghost",
 				Color = Color,
@@ -154,10 +154,10 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 				ContentSize = Scope:Spring(
 					Scope:Computed(function(Use)
 						local ShownIncrementValue = Use(ShownIncrement)
-						local ContentSizeValue = Use(ArrowSize)
+						local ContentSizeValue = Use(ContentSize)
 
 						if ShownIncrementValue < 0 then
-							return Use(ContentSizeValue * (1 - Use(Theme.Emphasis.Regular)))
+							return ContentSizeValue * (1 - Use(Theme.Emphasis.Regular))
 						else
 							return Use(ContentSizeValue)
 						end
@@ -165,6 +165,12 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 					Theme.SpringSpeed["1"],
 					Theme.SpringDampening["1"]
 				),
+				Padding = {
+					Top = NoPadding,
+					Left = NoPadding,
+					Right = NoPadding,
+					Bottom = NoPadding,
+				},
 
 				OnActivated = function()
 					RotateSelection(-1)
@@ -187,8 +193,14 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 						return 0
 					end
 				end),
+				SizeConstraint = {
+					Min = Scope:Computed(function(Use)
+						return Use(ContentSize)
+					end),
+				},
 			},
 			Scope:IconButton {
+				Name = "RightArrow",
 				Image = "rbxassetid://85293585205481",
 				Style = "Ghost",
 				Color = Color,
@@ -196,7 +208,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 				ContentSize = Scope:Spring(
 					Scope:Computed(function(Use)
 						local ShownIncrementValue = Use(ShownIncrement)
-						local ContentSizeValue = Use(ArrowSize)
+						local ContentSizeValue = Use(ContentSize)
 
 						if ShownIncrementValue > 0 then
 							return Use(ContentSizeValue * (1 - Use(Theme.Emphasis.Regular)))
@@ -207,6 +219,12 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 					Theme.SpringSpeed["1"],
 					Theme.SpringDampening["1"]
 				),
+				Padding = {
+					Top = NoPadding,
+					Left = NoPadding,
+					Right = NoPadding,
+					Bottom = NoPadding,
+				},
 
 				OnActivated = function()
 					RotateSelection(1)
