@@ -13,7 +13,7 @@ import Rorooms from '/Rorooms.png';
 These projects use OnyxUI to power their user experience.
 
 :::tip List your project
-If you're working on something, send me a message on Discord! `(@avafe)` I love seeing what people make. <3
+If you're working on something, send it in the [Discord](https://loneka.com/suite/discord)!
 :::
 
 * ## [Avalog](https://github.com/imavafe/avalog)
