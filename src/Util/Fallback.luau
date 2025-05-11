@@ -16,23 +16,11 @@ export type Any = Fusion.UsedAs<any>
 export type AnyDictionary = Any | { [any]: Any | AnyDictionary }
 
 local function IsReactive(Value: Any)
-	return (typeof(Value) == "table") and (typeof(Value.scope) == nil)
-end
-local function IsValue(Value: Any)
-	return (typeof(Value) == "table") and (typeof(Value.set) == "function")
+	return (typeof(Value) == "table") and (Value.scope ~= nil)
 end
 
 local function FallbackUtil(Preferred: Any, Fallback: Any)
-	local PreferredValue = Fusion.peek(Preferred)
-	local FallbackValue = Fusion.peek(Fallback)
-
-	if PreferredValue == nil then
-		if IsValue(Preferred) then
-			Preferred:set(FallbackValue)
-
-			return Preferred
-		end
-
+	if Preferred == nil then
 		return Fallback
 	end
 
