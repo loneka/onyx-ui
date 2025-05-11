@@ -17,5 +17,10 @@ return {
 	CombineProps = CombineProps,
 	Fallback = Fallback,
 	Emphasize = Emphasize,
-	Unit = Unit,
+
+	Vector2 = Unit.Vector2,
+	UDim = Unit.UDim,
+	UDim2 = Unit.UDim2,
+	UDim2Offset = Unit.UDim2Offset,
+	UDim2Scale = Unit.UDim2Scale,
 }

@@ -1,20 +1,29 @@
 local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 
---[=[
-	@interface Unit
-	@within Util
-	.Vector2 (Fusion.Scope(typeof(Fusion)), Fusion.UsedAs<number>, Fusion.UsedAs<number>) - > Fusion.Computed<Vector2>
-	.UDim (Fusion.Scope<typeof(Fusion)>, Fusion.UsedAs<number>, Fusion.UsedAs<number>) - > Fusion.Computed<UDim>
-	.UDim2 (Fusion.Scope<typeof(Fusion)>, Fusion.UsedAs<number>, Fusion.UsedAs<number>, Fusion.UsedAs<number>, Fusion.UsedAs<number>) - > Fusion.Computed<UDim2>
-	.UDim2Offset (Fusion.Scope<typeof(Fusion)>, Fusion.UsedAs<number>, Fusion.UsedAs<number>) - > Fusion.Computed<UDim2>
-	.UDim2Scale (Fusion.Scope<typeof(Fusion)>, Fusion.UsedAs<number>, Fusion.UsedAs<number>) - > Fusion.Computed<UDim2>
+-- --[=[
+-- 	@interface Unit
+-- 	@within Util
+-- 	.
+-- 	.UDim (Fusion.Scope<typeof(Fusion)>, Fusion.UsedAs<number>, Fusion.UsedAs<number>) - > Fusion.Computed<UDim>
+-- 	.UDim2 (Fusion.Scope<typeof(Fusion)>, Fusion.UsedAs<number>, Fusion.UsedAs<number>, Fusion.UsedAs<number>, Fusion.UsedAs<number>) - > Fusion.Computed<UDim2>
+-- 	.UDim2Offset (Fusion.Scope<typeof(Fusion)>, Fusion.UsedAs<number>, Fusion.UsedAs<number>) - > Fusion.Computed<UDim2>
+-- 	.UDim2Scale (Fusion.Scope<typeof(Fusion)>, Fusion.UsedAs<number>, Fusion.UsedAs<number>) - > Fusion.Computed<UDim2>
 
-	Fusion must be bundled within the scope parameter.
-]=]
+-- 	Fusion must be bundled within the scope parameter.
+-- ]=]
 
 local Unit = {}
 
+--[=[
+	@function Vector2
+	@within Util
+
+	@param Scope Fusion.Scope(typeof(Fusion))
+	@param X Fusion.UsedAs<number>
+	@param Y Fusion.UsedAs<number>
+	@return Fusion.Computed<Vector2>
+]=]
 function Unit.Vector2(
 	Scope: Fusion.Scope<typeof(Fusion)>,
 	X: Fusion.UsedAs<number>,
@@ -25,6 +34,15 @@ function Unit.Vector2(
 	end)
 end
 
+--[=[
+	@function UDim
+	@within Util
+
+	@param Scope Fusion.Scope<typeof(Fusion)>
+	@param Scale Fusion.UsedAs<number>
+	@param Offset Fusion.UsedAs<number>
+	@return Fusion.Computed<UDim>
+]=]
 function Unit.UDim(
 	Scope: Fusion.Scope<typeof(Fusion)>,
 	Scale: Fusion.UsedAs<number>,
@@ -35,6 +53,17 @@ function Unit.UDim(
 	end)
 end
 
+--[=[
+	@function UDim2
+	@within Util
+
+	@param Scope Fusion.Scope<typeof(Fusion)>
+	@param XScale Fusion.UsedAs<number>
+	@param XOffset Fusion.UsedAs<number>
+	@param YScale Fusion.UsedAs<number>
+	@param YOffset Fusion.UsedAs<number>
+	@return Fusion.Computed<UDim2>
+]=]
 function Unit.UDim2(
 	Scope: Fusion.Scope<typeof(Fusion)>,
 	XScale: Fusion.UsedAs<number>,
@@ -47,6 +76,15 @@ function Unit.UDim2(
 	end)
 end
 
+--[=[
+	@function UDim2Offset
+	@within Util
+
+	@param Scope Fusion.Scope<typeof(Fusion)>
+	@param X Fusion.UsedAs<number>
+	@param Y Fusion.UsedAs<number>
+	@return Fusion.Computed<UDim2>
+]=]
 function Unit.UDim2Offset(
 	Scope: Fusion.Scope<typeof(Fusion)>,
 	X: Fusion.UsedAs<number>,
@@ -55,6 +93,15 @@ function Unit.UDim2Offset(
 	return Unit.UDim2(Scope, 0, X, 0, Y)
 end
 
+--[=[
+	@function UDim2Scale
+	@within Util
+
+	@param Scope Fusion.Scope<typeof(Fusion)>
+	@param X Fusion.UsedAs<number>
+	@param Y Fusion.UsedAs<number>
+	@return Fusion.Computed<UDim2>
+]=]
 function Unit.UDim2Scale(
 	Scope: Fusion.Scope<typeof(Fusion)>,
 	X: Fusion.UsedAs<number>,
