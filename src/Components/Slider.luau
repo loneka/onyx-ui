@@ -94,13 +94,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Slider = Scope:BaseButton(Util.CombineProps(Props, {
 		Name = script.Name,
 		Corner = {
-			Radius = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.CornerRadius.Full))
-			end),
+			Radius = Scope:UDim(0, Theme.CornerRadius.Full),
 		},
-		Size = Scope:Computed(function(Use)
-			return UDim2.fromOffset(0, Use(Theme.TextSize["1"]))
-		end),
+		Size = Scope:UDim2Offset(0, Theme.TextSize["1"]),
 		AutomaticSize = Enum.AutomaticSize.Y,
 
 		Disabled = Disabled,
@@ -118,9 +114,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 					return UDim2.new(UDim.new(1, 0), UDim.new(0, Use(Theme.TextSize["0.75"])))
 				end),
 				Corner = {
-					Radius = Scope:Computed(function(Use)
-						return UDim.new(0, Use(Theme.CornerRadius.Full))
-					end),
+					Radius = Scope:UDim(0, Theme.CornerRadius.Full),
 				},
 				Flex = {
 					Mode = Enum.UIFlexMode.Fill,
@@ -148,9 +142,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 						),
 						AutomaticSize = Enum.AutomaticSize.None,
 						Corner = {
-							Radius = Scope:Computed(function(Use)
-								return UDim.new(0, Use(Theme.CornerRadius.Full))
-							end),
+							Radius = Scope:UDim(0, Theme.CornerRadius.Full),
 						},
 						Stroke = {
 							Color = Color3.fromRGB(255, 255, 255),
@@ -179,15 +171,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 							Scope:Frame {
 								Name = "Ball",
 								Selectable = false,
-								AnchorPoint = Scope:Computed(function(Use)
-									local ValueValue = Use(Value)
-									return Vector2.new(ValueValue, 0.5)
-								end),
+								AnchorPoint = Scope:Vector2(Value, 0.5),
 								Position = UDim2.fromScale(1, 0.5),
-								Size = Scope:Computed(function(Use)
-									local Offset = Use(Theme.TextSize["1"])
-									return UDim2.fromOffset(Offset, Offset)
-								end),
+								Size = Scope:UDim2Offset(Theme.TextSize["1"], Theme.TextSize["1"]),
 								BackgroundTransparency = 0,
 								BackgroundColor3 = Scope:Computed(function(Use)
 									if Use(Disabled) then
@@ -198,9 +184,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 								end),
 								AutomaticSize = Enum.AutomaticSize.None,
 								Corner = {
-									Radius = Scope:Computed(function(Use)
-										return UDim.new(0, Use(Theme.CornerRadius.Full))
-									end),
+									Radius = Scope:UDim(0, Theme.CornerRadius.Full),
 								},
 								Stroke = {
 									Color = Theme.Colors.Neutral.Main,
@@ -217,10 +201,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 										AspectRatio = 1,
 										AnchorPoint = Vector2.new(0.5, 0.5),
 										Position = UDim2.fromScale(0.5, 0.5),
-										Size = Scope:Computed(function(Use)
-											local Offset = Use(Theme.TextSize["0.75"])
-											return UDim2.fromOffset(Offset, Offset)
-										end),
+										Size = Scope:UDim2Offset(Theme.TextSize["0.75"], Theme.TextSize["0.75"]),
 										BackgroundTransparency = 0,
 										BackgroundColor3 = Scope:Spring(
 											Scope:Computed(function(Use)
@@ -235,9 +216,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 										),
 										AutomaticSize = Enum.AutomaticSize.None,
 										Corner = {
-											Radius = Scope:Computed(function(Use)
-												return UDim.new(0, Use(Theme.CornerRadius.Full))
-											end),
+											Radius = Scope:UDim(0, Theme.CornerRadius.Full),
 										},
 									},
 								},

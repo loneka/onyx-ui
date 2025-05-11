@@ -67,14 +67,10 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			}
 		end),
 		Corner = {
-			Radius = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.CornerRadius["2"]))
-			end),
+			Radius = Scope:UDim(0, Theme.CornerRadius["2"]),
 		},
 		List = {
-			Padding = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.Spacing["0.25"]))
-			end),
+			Padding = Scope:UDim(0, Theme.Spacing["0.25"]),
 			FillDirection = Enum.FillDirection.Horizontal,
 			HorizontalAlignment = Enum.HorizontalAlignment.Center,
 			VerticalAlignment = Enum.VerticalAlignment.Center,
@@ -91,9 +87,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 				List = {
 					HorizontalAlignment = Enum.HorizontalAlignment.Center,
 					VerticalAlignment = Enum.VerticalAlignment.Center,
-					Padding = Scope:Computed(function(Use)
-						return UDim.new(0, Use(Theme.Spacing["0.25"]))
-					end),
+					Padding = Scope:UDim(0, Theme.Spacing["0.25"]),
 				},
 			},
 		},

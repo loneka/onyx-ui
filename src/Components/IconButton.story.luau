@@ -15,21 +15,17 @@ local Components = {
 
 return {
 	story = function(Props)
-		local Scope = Fusion.innerScope(Props.scope, Fusion, Components)
+		local Scope = Fusion.innerScope(Props.scope, Fusion, Util, Components)
 		local Theme = Themer.Theme:now()
 
 		Scope:Frame {
 			Parent = Props.target,
 			Padding = {
-				All = Scope:Computed(function(Use)
-					return UDim.new(0, Use(Theme.StrokeThickness["1"]))
-				end),
+				All = Scope:UDim(0, Theme.StrokeThickness["1"]),
 			},
 			List = {
 				FillDirection = Enum.FillDirection.Horizontal,
-				Padding = Scope:Computed(function(Use)
-					return UDim.new(0, Use(Theme.Spacing["0.5"]))
-				end),
+				Padding = Scope:UDim(0, Theme.Spacing["0.5"]),
 			},
 
 			[Children] = {

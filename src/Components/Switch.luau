@@ -48,9 +48,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	)
 	local AutomaticSize = Util.Fallback(Props.AutomaticSize, Enum.AutomaticSize.None)
 	local Corner = Util.Fallback(Props.Corner, {
-		Radius = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.CornerRadius.Full))
-		end),
+		Radius = Scope:UDim(0, Theme.CornerRadius["Full"]),
 	})
 
 	local IsHovering = Scope:EnsureValue(Util.Fallback(Props.IsHovering, false))

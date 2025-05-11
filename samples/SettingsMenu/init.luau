@@ -19,15 +19,11 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 	return Scope:Card(Util.CombineProps(Props, {
 		Parent = Props.Parent,
-		Size = Scope:Computed(function(Use)
-			return UDim2.fromOffset(Use(Theme.Sizing["16"], 0))
-		end),
+		Size = Scope:UDim2Offset(Theme.Sizing["16"], 0),
 		AutomaticSize = Enum.AutomaticSize.Y,
 		List = {},
 		Corner = {
-			Radius = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.CornerRadius["2"]))
-			end),
+			Radius = Scope:UDim(0, Theme.CornerRadius["2"]),
 		},
 
 		[Children] = {
@@ -42,9 +38,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 					HorizontalFlex = Enum.UIFlexAlignment.Fill,
 				},
 				Padding = {
-					All = Scope:Computed(function(Use)
-						return UDim.new(0, Use(Theme.StrokeThickness["1"]))
-					end),
+					All = Scope:UDim(0, Theme.StrokeThickness["1"]),
 					Right = Scope:Computed(function(Use)
 						return UDim.new(0, Use(Theme.StrokeThickness["1"]) + Use(Theme.Spacing["1"]))
 					end),

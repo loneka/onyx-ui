@@ -18,7 +18,7 @@ local Components = {
 
 return {
 	story = function(Props)
-		local Scope = Fusion.innerScope(Props.scope, Fusion, Components)
+		local Scope = Fusion.innerScope(Props.scope, Fusion, Util, Components)
 		local Theme = Themer.Theme:now()
 
 		local Progress = Scope:Value(0)
@@ -41,18 +41,14 @@ return {
 			Parent = Props.target,
 			List = {
 				HorizontalFlex = Enum.UIFlexAlignment.Fill,
-				Padding = Scope:Computed(function(Use)
-					return UDim.new(0, Use(Theme.Spacing["1.5"]))
-				end),
+				Padding = Scope:UDim(0, Theme.Spacing["1.5"]),
 			},
 
 			[Children] = {
 				Scope:Frame {
 					List = {
 						HorizontalFlex = Enum.UIFlexAlignment.Fill,
-						Padding = Scope:Computed(function(Use)
-							return UDim.new(0, Use(Theme.Spacing["0.5"]))
-						end),
+						Padding = Scope:UDim(0, Theme.Spacing["0.5"]),
 					},
 
 					[Children] = {
@@ -71,9 +67,7 @@ return {
 				Scope:Frame {
 					List = {
 						HorizontalFlex = Enum.UIFlexAlignment.Fill,
-						Padding = Scope:Computed(function(Use)
-							return UDim.new(0, Use(Theme.Spacing["0.5"]))
-						end),
+						Padding = Scope:UDim(0, Theme.Spacing["0.5"]),
 					},
 
 					[Children] = {
@@ -84,9 +78,7 @@ return {
 							List = {
 								FillDirection = Enum.FillDirection.Horizontal,
 								VerticalAlignment = Enum.VerticalAlignment.Center,
-								Padding = Scope:Computed(function(Use)
-									return UDim.new(0, Use(Theme.Spacing["0.5"]))
-								end),
+								Padding = Scope:UDim(0, Theme.Spacing["0.5"]),
 							},
 
 							[Children] = {
@@ -105,9 +97,7 @@ return {
 				Scope:Frame {
 					List = {
 						HorizontalFlex = Enum.UIFlexAlignment.Fill,
-						Padding = Scope:Computed(function(Use)
-							return UDim.new(0, Use(Theme.Spacing["0.5"]))
-						end),
+						Padding = Scope:UDim(0, Theme.Spacing["0.5"]),
 					},
 
 					[Children] = {
@@ -123,9 +113,7 @@ return {
 				Scope:Frame {
 					List = {
 						HorizontalFlex = Enum.UIFlexAlignment.Fill,
-						Padding = Scope:Computed(function(Use)
-							return UDim.new(0, Use(Theme.Spacing["0.5"]))
-						end),
+						Padding = Scope:UDim(0, Theme.Spacing["0.75"]),
 					},
 
 					[Children] = {
@@ -135,9 +123,7 @@ return {
 						Scope:Frame {
 							List = {
 								FillDirection = Enum.FillDirection.Horizontal,
-								Padding = Scope:Computed(function(Use)
-									return UDim.new(0, Use(Theme.Spacing["0.5"]))
-								end),
+								Padding = Scope:UDim(0, Theme.Spacing["0.5"]),
 							},
 
 							[Children] = {

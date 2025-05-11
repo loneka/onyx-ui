@@ -64,9 +64,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		Name = script.Name,
 		List = {
 			FillDirection = Enum.FillDirection.Horizontal,
-			Padding = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.Spacing["0"]))
-			end),
+			Padding = Scope:UDim(0, Theme.Spacing["0"]),
 		},
 
 		[Children] = {
@@ -77,9 +75,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 							return Scope:Icon {
 								Image = ContentString,
 								ImageColor3 = ContentColor,
-								Size = Scope:Computed(function(Use)
-									return UDim2.fromOffset(Use(ContentSize), Use(ContentSize))
-								end),
+								Size = Scope:UDim2Offset(ContentSize, ContentSize),
 								ImageTransparency = ContentTransparency,
 							}
 						else

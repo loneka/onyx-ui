@@ -140,14 +140,10 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		ClassName = "TextBox",
 		Name = script.Name,
 		Corner = {
-			Radius = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.CornerRadius["1"]))
-			end),
+			Radius = Scope:UDim(0, Theme.CornerRadius["1"]),
 		},
 		Padding = {
-			All = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.Padding["0.5"]))
-			end),
+			All = Scope:UDim(0, Theme.Padding["0.5"]),
 		},
 		Stroke = {
 			Color = Scope:Spring(

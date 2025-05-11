@@ -18,7 +18,7 @@ local INDICATOR_COLORS =
 
 return {
 	story = function(Props)
-		local Scope = Fusion.innerScope(Props.scope, Fusion, Components)
+		local Scope = Fusion.innerScope(Props.scope, Fusion, Util, Components)
 		local Theme = Themer.Theme:now()
 
 		local IndicatorColor = Scope:Value(INDICATOR_COLORS[2])
@@ -45,14 +45,10 @@ return {
 		Scope:Frame {
 			Parent = Props.target,
 			Padding = {
-				All = Scope:Computed(function(Use)
-					return UDim.new(0, Use(Theme.StrokeThickness["4"]))
-				end),
+				All = Scope:UDim(0, Theme.StrokeThickness["4"]),
 			},
 			List = {
-				Padding = Scope:Computed(function(Use)
-					return UDim.new(0, Use(Theme.Spacing["1"]))
-				end),
+				Padding = Scope:UDim(0, Theme.Spacing["1"]),
 				FillDirection = Enum.FillDirection.Horizontal,
 			},
 
@@ -63,17 +59,13 @@ return {
 				Scope:Avatar {
 					Image = "rbxthumb://type=AvatarHeadShot&id=144146784&w=150&h=150",
 					Corner = {
-						Radius = Scope:Computed(function(Use)
-							return UDim.new(0, Use(Theme.CornerRadius.Full))
-						end),
+						Radius = Scope:UDim(0, Theme.CornerRadius.Full),
 					},
 				},
 				Scope:Avatar {
 					Image = "rbxthumb://type=AvatarHeadShot&id=144146784&w=150&h=150",
 					Corner = {
-						Radius = Scope:Computed(function(Use)
-							return UDim.new(0, Use(Theme.CornerRadius.Full))
-						end),
+						Radius = Scope:UDim(0, Theme.CornerRadius.Full),
 					},
 					RingEnabled = true,
 					RingColor = IndicatorColor,
@@ -81,9 +73,7 @@ return {
 				Scope:Avatar {
 					Image = "rbxthumb://type=AvatarHeadShot&id=144146784&w=150&h=150",
 					Corner = {
-						Radius = Scope:Computed(function(Use)
-							return UDim.new(0, Use(Theme.CornerRadius.Full))
-						end),
+						Radius = Scope:UDim(0, Theme.CornerRadius.Full),
 					},
 					IndicatorEnabled = true,
 					IndicatorColor = IndicatorColor,
@@ -91,9 +81,7 @@ return {
 				Scope:Avatar {
 					Image = "rbxthumb://type=AvatarHeadShot&id=144146784&w=150&h=150",
 					Corner = {
-						Radius = Scope:Computed(function(Use)
-							return UDim.new(0, Use(Theme.CornerRadius.Full))
-						end),
+						Radius = Scope:UDim(0, Theme.CornerRadius.Full),
 					},
 					RingEnabled = true,
 					RingColor = Util.Colors.Green["400"],
@@ -102,9 +90,7 @@ return {
 				Scope:Avatar {
 					Image = "rbxthumb://type=AvatarHeadShot&id=144146784&w=150&h=150",
 					Corner = {
-						Radius = Scope:Computed(function(Use)
-							return UDim.new(0, Use(Theme.CornerRadius.Full))
-						end),
+						Radius = Scope:UDim(0, Theme.CornerRadius.Full),
 					},
 					IndicatorEnabled = true,
 					IndicatorColor = Util.Colors.Sky["500"],

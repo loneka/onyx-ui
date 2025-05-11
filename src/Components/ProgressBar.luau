@@ -46,12 +46,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Color = Util.Fallback(Props.Color, Theme.Colors.Primary.Main)
 	local Direction = Util.Fallback(Props.Direction, Enum.FillDirection.Horizontal)
 	local Inverted = Util.Fallback(Props.Inverted, false)
-	local Length = Util.Fallback(
-		Props.Length,
-		Scope:Computed(function()
-			return UDim.new(0, 200)
-		end)
-	)
+	local Length = Util.Fallback(Props.Length, Scope:Udim(0, Theme.Sizing["6"]))
 	local Stroke = Util.Fallback(Props.Stroke, {
 		Thickness = Theme.StrokeThickness["1"],
 	})
@@ -71,9 +66,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		BackgroundTransparency = 0,
 		BackgroundColor3 = Theme.Colors.Neutral.Dark,
 		Corner = {
-			Radius = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.CornerRadius["Full"]))
-			end),
+			Radius = Scope:UDim(0, Theme.CornerRadius["Full"]),
 		},
 		Padding = {
 			All = Scope:Computed(function(Use)

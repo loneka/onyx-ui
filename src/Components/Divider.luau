@@ -43,12 +43,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local FillDirection = Util.Fallback(Props.FillDirection, Enum.FillDirection.Horizontal)
 	local Color = Util.Fallback(Props.Color, Theme.Colors.BaseContent.Main)
 	local Transparency = Util.Fallback(Props.Transparency, 0.9)
-	local Spacing = Util.Fallback(
-		Props.Spacing,
-		Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Spacing["0.5"]))
-		end)
-	)
+	local Spacing = Util.Fallback(Props.Spacing, Scope:UDim(0, Theme.Spacing["0.5"]))
 
 	local VerticalPadding = Scope:Computed(function(Use)
 		if Use(FillDirection) == Enum.FillDirection.Horizontal then

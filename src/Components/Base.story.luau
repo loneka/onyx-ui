@@ -1,6 +1,7 @@
 local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Themer = require(OnyxUI.Themer)
+local Util = require(OnyxUI.Util)
 local Components = require(OnyxUI.Components)
 
 local Children = Fusion.Children
@@ -8,16 +9,14 @@ local Children = Fusion.Children
 return {
 	story = function(Props)
 		local Theme = Themer.Theme:now()
-		local Scope = Fusion.innerScope(Props.scope, Fusion, Components)
+		local Scope = Fusion.innerScope(Props.scope, Fusion, Util, Components)
 
 		Scope:Base {
 			Parent = Props.target,
 			BackgroundTransparency = 1,
 			List = {},
 			Padding = {
-				All = Scope:Computed(function(Use)
-					return UDim.new(0, Use(Theme.StrokeThickness["4"]))
-				end),
+				All = Scope:UDim(0, Theme.StrokeThickness["1"]),
 			},
 
 			[Children] = {

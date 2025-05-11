@@ -28,9 +28,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 	return Scope:Image(Util.CombineProps(Props, {
 		Name = script.Name,
-		Size = Scope:Computed(function(Use)
-			return UDim2.fromOffset(Use(Theme.TextSize["1"]), Use(Theme.TextSize["1"]))
-		end),
+		Size = Scope:UDim2Offset(Theme.TextSize["1"], Theme.TextSize["1"]),
 		BackgroundTransparency = 1,
 	}))
 end

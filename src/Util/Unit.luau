@@ -1,18 +1,6 @@
 local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 
--- --[=[
--- 	@interface Unit
--- 	@within Util
--- 	.
--- 	.UDim (Fusion.Scope<typeof(Fusion)>, Fusion.UsedAs<number>, Fusion.UsedAs<number>) - > Fusion.Computed<UDim>
--- 	.UDim2 (Fusion.Scope<typeof(Fusion)>, Fusion.UsedAs<number>, Fusion.UsedAs<number>, Fusion.UsedAs<number>, Fusion.UsedAs<number>) - > Fusion.Computed<UDim2>
--- 	.UDim2Offset (Fusion.Scope<typeof(Fusion)>, Fusion.UsedAs<number>, Fusion.UsedAs<number>) - > Fusion.Computed<UDim2>
--- 	.UDim2Scale (Fusion.Scope<typeof(Fusion)>, Fusion.UsedAs<number>, Fusion.UsedAs<number>) - > Fusion.Computed<UDim2>
-
--- 	Fusion must be bundled within the scope parameter.
--- ]=]
-
 local Unit = {}
 
 --[=[

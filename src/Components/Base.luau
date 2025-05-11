@@ -367,7 +367,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 	local AutomaticSize = Util.Fallback(Props.AutomaticSize, Enum.AutomaticSize.XY)
 	local BackgroundColor3 = Util.Fallback(Props.BackgroundColor3, Theme.Colors.Base.Main)
 	local Corner = Util.Fallback(Props.Corner, {
-		Radius = UDim.new(0, 0),
+		Radius = Scope:UDim(Scope, 0, Theme.CornerRadius["1"]),
 	})
 	local Stroke = Util.Fallback(Props.Stroke, {
 		Thickness = Theme.StrokeThickness["1"],
@@ -386,32 +386,22 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 		end),
 	})
 	local Padding = Util.Fallback(Props.Padding, {
-		All = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Padding["1"]))
-		end),
+		All = Scope:UDim(0, Theme.Padding["1"]),
 	})
 	local List = Util.Fallback(Props.List, {
-		Padding = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Spacing["1"]))
-		end),
+		Padding = Scope:UDim(0, Theme.Padding["1"]),
 		SortOrder = Enum.SortOrder.LayoutOrder,
 	})
 	local Grid = Util.Fallback(Props.Grid, {
-		CellPadding = Scope:Computed(function(Use)
-			return UDim2.fromOffset(Use(Theme.Spacing["1"]), Use(Theme.Spacing["1"]))
-		end),
+		CellPadding = Scope:UDim2Offset(Theme.Padding["1"], Theme.Padding["1"]),
 		SortOrder = Enum.SortOrder.LayoutOrder,
 	})
 	local Table = Util.Fallback(Props.Table, {
-		Padding = Scope:Computed(function(Use)
-			return UDim2.fromOffset(Use(Theme.Spacing["1"]), Use(Theme.Spacing["1"]))
-		end),
+		Padding = Scope:UDim2Offset(Theme.Padding["1"], Theme.Padding["1"]),
 		SortOrder = Enum.SortOrder.LayoutOrder,
 	})
 	local Page = Util.Fallback(Props.Page, {
-		Padding = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Spacing["1"]))
-		end),
+		Padding = Scope:UDim(0, Theme.Padding["1"]),
 		SortOrder = Enum.SortOrder.LayoutOrder,
 	})
 

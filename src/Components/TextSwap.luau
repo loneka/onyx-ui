@@ -99,9 +99,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		ShownIncrement:set(0)
 	end)
 
-	local NoPadding = Scope:Computed(function(Use)
-		return UDim.new(0, Use(Theme.Padding["0"]))
-	end)
+	local NoPadding = Scope:UDim(0, Theme.Spacing["0"])
 
 	return Scope:BaseButton(Util.CombineProps(Props, {
 		Name = script.Name,
@@ -111,9 +109,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			VerticalAlignment = Enum.VerticalAlignment.Center,
 		},
 		Padding = {
-			All = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.Padding["0.5"]))
-			end),
+			All = UDim.new(0, Theme.Padding["0.5"]),
 		},
 		Stroke = {
 			Color = Color,
@@ -130,9 +126,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			),
 		},
 		Corner = {
-			Radius = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.CornerRadius["1"]))
-			end),
+			Radius = Scope:UDim(0, Theme.CornerRadius["1"]),
 		},
 
 		Disabled = Disabled,
@@ -194,9 +188,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 					end
 				end),
 				SizeLimit = {
-					Min = Scope:Computed(function(Use)
-						return Vector2.new(0, Use(ContentSize))
-					end),
+					Min = Scope:Vector2(0, ContentSize),
 				},
 			},
 			Scope:IconButton {

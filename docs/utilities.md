@@ -24,9 +24,7 @@ return function(Props)
   return Scope:BaseButton(OnyxUI.Util.CombineProps(Props, {
     BackgroundTransparency = 0,
     Corner = {
-      Radius = Computed(function(Use)
-        return UDim.new(0, Use(Theme.CornerRadius["1"]))
-      end),
+      Radius = Scope:UDim(0, Theme.CornerRadius["2"]),
     },
 
     -- All properties from OnyxUI's `BaseButton` component will now work.

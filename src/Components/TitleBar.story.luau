@@ -1,5 +1,5 @@
 local OnyxUI = script.Parent.Parent
-
+local Util = require(OnyxUI.Util)
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Themer = require(OnyxUI.Themer)
 
@@ -14,19 +14,15 @@ local Components = {
 
 return {
 	story = function(Props)
-		local Scope = Fusion.innerScope(Props.scope, Fusion, Components)
+		local Scope = Fusion.innerScope(Props.scope, Fusion, Util, Components)
 		local Theme = Themer.Theme:now()
 
 		Scope:Frame {
 			Parent = Props.target,
-			Size = Scope:Computed(function(Use)
-				return UDim2.fromOffset(Use(Theme.Padding["16"]), 0)
-			end),
+			Size = Scope:UDim2Offset(Theme.Sizing["16"], 0),
 			AutomaticSize = Enum.AutomaticSize.Y,
 			Padding = {
-				All = Scope:Computed(function(Use)
-					return UDim.new(0, Use(Theme.StrokeThickness["1"]))
-				end),
+				All = Scope:UDim(0, Theme.StrokeThickness["1"]),
 			},
 			List = {
 				HorizontalFlex = Enum.UIFlexAlignment.Fill,

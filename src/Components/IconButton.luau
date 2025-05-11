@@ -30,9 +30,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Theme = Themer.Theme:now()
 
 	local Image = Util.Fallback(Props.Image, "")
-	local Padding = Scope:Computed(function(Use)
-		return UDim.new(0, Use(Theme.Padding["0.25"]))
-	end)
+	local Padding = Scope:UDim(0, Theme.Spacing["0.25"])
 
 	return Scope:Button(Util.CombineProps(Props, {
 		Name = script.Name,

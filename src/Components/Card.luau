@@ -32,16 +32,12 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		Name = script.Name,
 		BackgroundColor3 = BackgroundColor3,
 		BackgroundTransparency = 0,
-		Corner = Scope:Computed(function(Use)
-			return {
-				Radius = UDim.new(0, Use(Theme.CornerRadius["1"])),
-			}
-		end),
-		Padding = Scope:Computed(function(Use)
-			return {
-				All = UDim.new(0, Use(Theme.Padding["1"])),
-			}
-		end),
+		Corner = {
+			Radius = Scope:UDim(0, Theme.CornerRadius["1"]),
+		},
+		Padding = {
+			All = Scope:UDim(0, Theme.Padding["1"]),
+		},
 		Stroke = {
 			Color = Scope:Computed(function(Use)
 				return Util.Emphasize(Use(BackgroundColor3), Use(Theme.StrokeEmphasis.Light))

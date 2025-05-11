@@ -173,9 +173,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			Bottom = PaddingY,
 		},
 		Corner = {
-			Radius = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.CornerRadius["1"]))
-			end),
+			Radius = Scope:UDim(0, Theme.CornerRadius["1"]),
 		},
 		List = {
 			FillDirection = Enum.FillDirection.Horizontal,
@@ -216,9 +214,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 				ContentSize = ContentSize,
 				ContentWrapped = ContentWrapped,
 				List = {
-					Padding = Scope:Computed(function(Use)
-						return UDim.new(0, Use(Theme.Spacing["0.25"]))
-					end),
+					Padding = Scope:UDim(0, Theme.Spacing["0.25"]),
 					VerticalAlignment = Enum.VerticalAlignment.Center,
 					HorizontalAlignment = Enum.HorizontalAlignment.Center,
 				},

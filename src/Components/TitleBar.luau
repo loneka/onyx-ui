@@ -77,9 +77,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 				ContentFontFace = ContentFontFace,
 				ContentWrapped = false,
 				List = {
-					Padding = Scope:Computed(function(Use)
-						return UDim.new(0, Use(Theme.Spacing["0.5"]))
-					end),
+					Padding = Scope:UDim(0, Theme.Spacing["0.5"]),
 				},
 			},
 			Scope:Computed(function(Use)

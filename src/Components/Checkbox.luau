@@ -81,9 +81,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		),
 		Disabled = Disabled,
 		Corner = {
-			Radius = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.CornerRadius["0.5"]))
-			end),
+			Radius = Scope:UDim(0, Theme.CornerRadius["0.5"]),
 		},
 		Stroke = {
 			Color = Scope:Computed(function(Use)

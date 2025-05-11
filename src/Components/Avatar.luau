@@ -58,21 +58,14 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local RingThickness = Util.Fallback(Props.RingThickness, Theme.StrokeThickness["2"])
 	local IndicatorEnabled = Util.Fallback(Props.IndicatorEnabled, false)
 	local IndicatorColor = Util.Fallback(Props.IndicatorColor, Theme.Colors.Primary.Main)
-	local IndicatorCornerRadius = Util.Fallback(
-		Props.IndicatorCornerRadius,
-		Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.CornerRadius.Full))
-		end)
-	)
+	local IndicatorCornerRadius = Util.Fallback(Props.IndicatorCornerRadius, Scope:UDim(0, Theme.CornerRadius["Full"]))
 	local IndicatorIcon = Util.Fallback(Props.IndicatorIcon, nil)
 	local IndicatorIconColor = Util.Fallback(Props.IndicatorIconColor, Util.Colors.White)
 
 	return Scope:Image(Util.CombineProps(Props, {
 		Name = script.Name,
 		Image = ImageProp,
-		Size = Scope:Computed(function(Use)
-			return UDim2.fromOffset(Use(Theme.TextSize["4.5"]), Use(Theme.TextSize["4.5"]))
-		end),
+		Size = Scope:UDim2Offset(Theme.TextSize["4.5"], Theme.TextSize["4.5"]),
 		BackgroundColor3 = Theme.Colors.Neutral.Dark,
 		Stroke = {
 			Enabled = RingEnabled,
@@ -80,9 +73,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			Thickness = Scope:Spring(RingThickness, Theme.SpringSpeed["0.5"], Theme.SpringDampening["1"]),
 		},
 		Corner = {
-			Radius = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.CornerRadius["1"]))
-			end),
+			Radius = Scope:UDim(0, Theme.CornerRadius["1"]),
 		},
 
 		[Children] = {

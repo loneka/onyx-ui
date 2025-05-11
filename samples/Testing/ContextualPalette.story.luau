@@ -14,9 +14,7 @@ local function Palette(Scope: Fusion.Scope<any>, _: any)
 		Name = "Palette",
 		BackgroundTransparency = 1,
 		List = {
-			Padding = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.Spacing["0.75"]))
-			end),
+			Padding = Scope:UDim(0, Theme.Spacing["0.75"]),
 		},
 
 		[Children] = {
@@ -48,7 +46,7 @@ end
 
 return {
 	story = function(Props)
-		local Scope = Fusion.scoped(Fusion, Components, {
+		local Scope = Fusion.scoped(Fusion, Util, Components, {
 			Palette = Palette,
 		})
 

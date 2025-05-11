@@ -1,5 +1,6 @@
 local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
+local Util = require(OnyxUI.Util)
 
 local Scroller = require(script.Parent.Scroller)
 local Components = {
@@ -8,7 +9,7 @@ local Components = {
 
 return {
 	story = function(Props)
-		local Scope = Fusion.innerScope(Props.scope, Fusion, Components)
+		local Scope = Fusion.innerScope(Props.scope, Fusion, Util, Components)
 
 		Scope:Scroller {
 			Parent = Props.target,

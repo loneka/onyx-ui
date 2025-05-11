@@ -17,7 +17,7 @@ local Components = {
 
 return {
 	story = function(Props)
-		local Scope = Fusion.innerScope(Props.scope, Fusion, Components)
+		local Scope = Fusion.innerScope(Props.scope, Fusion, Util, Components)
 		local Theme = Themer.Theme:now()
 
 		local NotificationCount = Scope:Value(0)
@@ -42,9 +42,7 @@ return {
 		Scope:Frame {
 			Parent = Props.target,
 			List = {
-				Padding = Scope:Computed(function(Use)
-					return UDim.new(0, Use(Theme.Spacing["0.5"]))
-				end),
+				Padding = Scope:UDim(0, Theme.Spacing["0.5"]),
 			},
 
 			[Children] = {
@@ -73,9 +71,7 @@ return {
 					List = {
 						HorizontalAlignment = Enum.HorizontalAlignment.Center,
 						FillDirection = Enum.FillDirection.Horizontal,
-						Padding = Scope:Computed(function(Use)
-							return UDim.new(0, Use(Theme.Spacing["0.25"]))
-						end),
+						Padding = Scope:UDim(0, Theme.Spacing["0.25"]),
 					},
 
 					[Children] = {
