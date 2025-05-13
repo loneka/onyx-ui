@@ -8,6 +8,216 @@
 		:::
 ]=]
 
+--[=[
+	@interface GradientProps
+	@within Base
+
+	.Enabled boolean? -- Whether the gradient is enabled.
+	.Color ColorSequence? -- The color sequence of the gradient.
+	.Offset UDim? -- The offset of the gradient.
+	.Rotation number? -- The rotation of the gradient.
+	.Transparency NumberSequence? -- The transparency sequence of the gradient.
+]=]
+
+--[=[
+	@interface PaddingProps
+	@within Base
+
+	.Enabled boolean? -- Whether the padding is enabled.
+	.All UDim? -- The padding applied to all sides.
+	.Top UDim? -- The padding applied to the top side.
+	.Left UDim? -- The padding applied to the left side.
+	.Right UDim? -- The padding applied to the right side.
+	.Bottom UDim? -- The padding applied to the bottom side.
+]=]
+
+--[=[
+	@interface CornerProps
+	@within Base
+
+	.Enabled boolean? -- Whether the corner is enabled.
+	.Radius UDim? -- The radius of the corner.
+]=]
+
+--[=[
+	@interface StrokeProps
+	@within Base
+
+	.Enabled boolean? -- Whether the stroke is enabled.
+	.Thickness number? -- The thickness of the stroke.
+	.Color Color3? -- The color of the stroke.
+	.Transparency number? -- The transparency of the stroke.
+	.LineJoinMode Enum.LineJoinMode? -- The line join mode of the stroke.
+	.ApplyStrokeMode Enum.ApplyStrokeMode? -- The apply stroke mode of the stroke.
+	.Gradient GradientProps? -- The gradient applied to the stroke.
+]=]
+
+--[=[
+	@interface AspectProps
+	@within Base
+
+	.Enabled boolean? -- Whether the aspect ratio constraint is enabled.
+	.Ratio number? -- The aspect ratio.
+	.Type Enum.AspectType? -- The aspect type.
+	.DominantAxis Enum.DominantAxis? -- The dominant axis.
+]=]
+
+--[=[
+	@interface ScaleProps
+	@within Base
+
+	.Enabled boolean? -- Whether the scale is enabled.
+	.Scale number? -- The scale factor.
+]=]
+
+--[=[
+	@interface FlexProps
+	@within Base
+
+	.Enabled boolean? -- Whether the flex item is enabled.
+	.Mode Enum.UIFlexMode? -- The flex mode.
+	.ItemLineAlignment Enum.ItemLineAlignment? -- The alignment of items along the line.
+	.GrowRatio number? -- The grow ratio of the flex item.
+	.ShrinkRatio number? -- The shrink ratio of the flex item.
+]=]
+
+--[=[
+	@interface ListProps
+	@within Base
+
+	.Enabled boolean? -- Whether the list layout is enabled.
+	.Padding UDim? -- The padding between items in the list.
+	.FillDirection Enum.FillDirection? -- The fill direction of the list.
+	.SortOrder Enum.SortOrder? -- The sort order of the list.
+	.Wraps boolean? -- Whether the list wraps.
+	.HorizontalAlignment Enum.HorizontalAlignment? -- The horizontal alignment of the list.
+	.HorizontalFlex boolean? -- Whether horizontal flex is enabled.
+	.VerticalAlignment Enum.VerticalAlignment? -- The vertical alignment of the list.
+	.VerticalFlex boolean? -- Whether vertical flex is enabled.
+	.ItemLineAlignment Enum.ItemLineAlignment? -- The alignment of items along the line.
+]=]
+
+--[=[
+	@interface GridProps
+	@within Base
+
+	.Enabled boolean? -- Whether the grid layout is enabled.
+	.CellPadding UDim2? -- The padding between cells in the grid.
+	.CellSize UDim2? -- The size of each cell in the grid.
+	.FillDirection Enum.FillDirection? -- The fill direction of the grid.
+	.FillDirectionMaxCells number? -- The maximum number of cells in the fill direction.
+	.SortOrder Enum.SortOrder? -- The sort order of the grid.
+	.StartCorner Enum.StartCorner? -- The starting corner of the grid.
+	.HorizontalAlignment Enum.HorizontalAlignment? -- The horizontal alignment of the grid.
+	.VerticalAlignment Enum.VerticalAlignment? -- The vertical alignment of the grid.
+]=]
+
+--[=[
+	@interface TableProps
+	@within Base
+
+	.Enabled boolean? -- Whether the table layout is enabled.
+	.Padding UDim? -- The padding between items in the table.
+	.FillEmptySpaceColumns boolean? -- Whether empty space in columns is filled.
+	.FillEmptySpaceRows boolean? -- Whether empty space in rows is filled.
+	.FillDirection Enum.FillDirection? -- The fill direction of the table.
+	.SortOrder Enum.SortOrder? -- The sort order of the table.
+	.MajorAxis Enum.TableMajorAxis? -- The major axis of the table.
+	.HorizontalAlignment Enum.HorizontalAlignment? -- The horizontal alignment of the table.
+	.VerticalAlignment Enum.VerticalAlignment? -- The vertical alignment of the table.
+]=]
+
+--[=[
+	@interface PageProps
+	@within Base
+
+	.Enabled boolean? -- Whether the page layout is enabled.
+	.Animated boolean? -- Whether the page transitions are animated.
+	.Circular boolean? -- Whether the pages are circular.
+	.EasingDirection Enum.EasingDirection? -- The easing direction for transitions.
+	.EasingStyle Enum.EasingStyle? -- The easing style for transitions.
+	.Padding UDim? -- The padding between pages.
+	.TweenTime number? -- The time for page transitions.
+	.FillDirection Enum.FillDirection? -- The fill direction of the pages.
+	.SortOrder Enum.SortOrder? -- The sort order of the pages.
+	.HorizontalAlignment Enum.HorizontalAlignment? -- The horizontal alignment of the pages.
+	.VerticalAlignment Enum.VerticalAlignment? -- The vertical alignment of the pages.
+	.GamepadInputEnabled boolean? -- Whether gamepad input is enabled.
+	.ScrollWheelInputEnabled boolean? -- Whether scroll wheel input is enabled.
+	.TouchInputEnabled boolean? -- Whether touch input is enabled.
+]=]
+
+--[=[
+	@interface SizeLimitProps
+	@within Base
+
+	.Enabled boolean? -- Whether the size constraint is enabled.
+	.Max Vector2? -- The maximum size.
+	.Min Vector2? -- The minimum size.
+]=]
+
+--[=[
+	@interface TextSizeLimitProps
+	@within Base
+
+	.Enabled boolean? -- Whether the text size constraint is enabled.
+	.Max number? -- The maximum text size.
+	.Min number? -- The minimum text size.
+]=]
+
+--[=[
+	@interface BaseProps
+	@within Base
+
+	.ClassName string? -- The class name of the component.
+	.Name string? -- The name of the component.
+	.Parent Instance? -- The parent instance of the component.
+	.Position UDim2? -- The position of the component.
+	.Rotation number? -- The rotation of the component.
+	.AnchorPoint Vector2? -- The anchor point of the component.
+	.Size UDim2? -- The size of the component.
+	.AutomaticSize Enum.AutomaticSize? -- The automatic size of the component.
+	.Visible boolean? -- Whether the component is visible.
+	.ZIndex number? -- The ZIndex of the component.
+	.LayoutOrder number? -- The layout order of the component.
+	.ClipsDescendants boolean? -- Whether the component clips its descendants.
+	.Active boolean? -- Whether the component is active.
+	.Selectable boolean? -- Whether the component is selectable.
+	.Interactable boolean? -- Whether the component is interactable.
+	.BackgroundColor3 Color3? -- The background color of the component.
+	.BackgroundTransparency number? -- The background transparency of the component.
+	.NextSelectionDown GuiObject? -- The next selection down.
+	.NextSelectionUp GuiObject? -- The next selection up.
+	.NextSelectionRight GuiObject? -- The next selection right.
+	.NextSelectionLeft GuiObject? -- The next selection left.
+	.SelectionImageObject GuiObject? -- The selection image object.
+	.SelectionOrder number? -- The selection order.
+	.SizeConstraint Enum.SizeConstraint? -- The size constraint of the component.
+	.AutoLocalize boolean? -- Whether the component auto-localizes.
+	.RootLocalizationTable LocalizationTable? -- The root localization table.
+	.SelectionBehaviorDown Enum.SelectionBehavior? -- The selection behavior down.
+	.SelectionBehaviorUp Enum.SelectionBehavior? -- The selection behavior up.
+	.SelectionBehaviorRight Enum.SelectionBehavior? -- The selection behavior right.
+	.SelectionBehaviorLeft Enum.SelectionBehavior? -- The selection behavior left.
+	.SelectionGroup boolean? -- Whether the component is part of a selection group.
+
+	.Corner CornerProps? -- The corner properties.
+	.Padding PaddingProps? -- The padding properties.
+	.Stroke StrokeProps? -- The stroke properties.
+	.Gradient GradientProps? -- The gradient properties.
+	.Aspect AspectProps? -- The aspect ratio properties.
+	.Scale ScaleProps? -- The scale properties.
+
+	.List ListProps? -- The list layout properties.
+	.Grid GridProps? -- The grid layout properties.
+	.Table TableProps? -- The table layout properties.
+	.Page PageProps? -- The page layout properties.
+
+	.Flex FlexProps? -- The flex layout properties.
+	.SizeLimit SizeLimitProps? -- The size limit properties.
+	.TextSizeLimit TextSizeLimitProps? -- The text size limit properties.
+]=]
+
 local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
@@ -172,192 +382,6 @@ export type Props = {
 	TextSizeLimit: TextSizeLimitProps?,
 }
 
---[=[
-	@within Base
-	@interface PaddingProps
-
-	@field Enabled Fusion.UsedAs<boolean>?
-	@field Padding Fusion.UsedAs<UDim>?
-	@field Top Fusion.UsedAs<UDim>?
-	@field Left Fusion.UsedAs<UDim>?
-	@field Right Fusion.UsedAs<UDim>?
-	@field Bottom Fusion.UsedAs<UDim>?
-]=]
---[=[
-	@within Base
-	@interface GradientProps
-
-	@field Enabled Fusion.UsedAs<boolean>?
-	@field Color Fusion.UsedAs<ColorSequence>?
-	@field Offset Fusion.UsedAs<UDim>?
-	@field Rotation Fusion.UsedAs<number>?
-	@field Transparency Fusion.UsedAs<number>?
-]=]
---[=[
-	@within Base
-	@interface CornerProps
-
-	@field Enabled Fusion.UsedAs<boolean>?
-	@field Radius Fusion.UsedAs<UDim>?
-]=]
---[=[
-	@within Base
-	@interface StrokeProps
-
-	@field Enabled Fusion.UsedAs<boolean>?
-	@field Thickness Fusion.UsedAs<number>?
-	@field Color Fusion.UsedAs<Color3>?
-	@field Transparency Fusion.UsedAs<number>?
-	@field LineJoinMode Fusion.UsedAs<Enum.LineJoinMode>?
-	@field ApplyStrokeMode Fusion.UsedAs<Enum.ApplyStrokeMode>?
-
-	@field Gradient Fusion.UsedAs<GradientProps>?
-]=]
---[=[
-	@within Base
-	@interface AspectProps
-
-	@field Enabled Fusion.UsedAs<boolean>?
-	@field Ratio Fusion.UsedAs<number>?
-	@field Type Fusion.UsedAs<Enum.AspectType>?
-	@field DominantAxis Fusion.UsedAs<Enum.DominantAxis>?
-]=]
---[=[
-	@within Base
-	@interface ScaleProps
-
-	@field Enabled Fusion.UsedAs<boolean>?
-	@field Scale Fusion.UsedAs<number>?
-]=]
---[=[
-	@within Base
-	@interface FlexProps
-
-	@field Enabled Fusion.UsedAs<boolean>?
-	@field Mode Fusion.UsedAs<Enum.UIFlexMode>?
-	@field ItemLineAlignment Fusion.UsedAs<Enum.ItemLineAlignment>?
-	@field GrowRatio Fusion.UsedAs<number>?
-	@field ShrinkRatio Fusion.UsedAs<number>?
-]=]
---[=[
-	@within Base
-	@interface ListProps
-
-	@field Enabled Fusion.UsedAs<boolean>?
-	@field Padding Fusion.UsedAs<UDim>?
-	@field FillDirection Fusion.UsedAs<Enum.FillDirection>?
-	@field SortOrder Fusion.UsedAs<Enum.SortOrder>?
-	@field Wraps Fusion.UsedAs<boolean>?
-	@field HorizontalAlignment Fusion.UsedAs<Enum.HorizontalAlignment>?
-	@field HorizontalFlex Fusion.UsedAs<boolean>?
-	@field VerticalAlignment Fusion.UsedAs<Enum.VerticalAlignment>?
-	@field VerticalFlex Fusion.UsedAs<boolean>?
-	@field ItemLineAlignment Fusion.UsedAs<Enum.ItemLineAlignment>?
-]=]
---[=[
-	@within Base
-	@interface GridProps
-
-	@field Enabled Fusion.UsedAs<boolean>?
-	@field CellPadding Fusion.UsedAs<UDim>?
-	@field CellSize Fusion.UsedAs<UDim2>?
-	@field FillDirection Fusion.UsedAs<Enum.FillDirection>?
-	@field FillDirectionMaxCells Fusion.UsedAs<number>?
-	@field SortOrder Fusion.UsedAs<Enum.SortOrder>?
-	@field StartCorner Fusion.UsedAs<Enum.StartCorner>?
-	@field HorizontalAlignment Fusion.UsedAs<Enum.HorizontalAlignment>?
-	@field VerticalAlignment Fusion.UsedAs<Enum.VerticalAlignment>?
-]=]
---[=[
-	@within Base
-	@interface TableProps
-
-	@field Enabled Fusion.UsedAs<boolean>?
-	@field Padding Fusion.UsedAs<UDim>?
-	@field FillEmptySpaceColumns Fusion.UsedAs<boolean>?
-	@field FillEmptySpaceRows Fusion.UsedAs<boolean>?
-	@field FillDirection Fusion.UsedAs<Enum.FillDirection>?
-	@field SortOrder Fusion.UsedAs<Enum.SortOrder>?
-	@field MajorAxis Fusion.UsedAs<Enum.TableMajorAxis>?
-	@field HorizontalAlignment Fusion.UsedAs<Enum.HorizontalAlignment>?
-	@field VerticalAlignment Fusion.UsedAs<Enum.VerticalAlignment>?
-]=]
---[=[
-	@within Base
-	@interface PageProps
-
-	@field Enabled Fusion.UsedAs<boolean>?
-	@field Animated Fusion.UsedAs<boolean>?
-	@field Circular Fusion.UsedAs<boolean>?
-	@field EasingDirection Fusion.UsedAs<Enum.EasingDirection>?
-	@field EasingStyle Fusion.UsedAs<Enum.EasingStyle>?
-	@field Padding Fusion.UsedAs<UDim>?
-	@field TweenTime Fusion.UsedAs<number>?
-	@field FillDirection Fusion.UsedAs<Enum.FillDirection>?
-	@field SortOrder Fusion.UsedAs<Enum.SortOrder>?
-	@field HorizontalAlignment Fusion.UsedAs<Enum.HorizontalAlignment>?
-	@field VerticalAlignment Fusion.UsedAs<Enum.VerticalAlignment>?
-	@field GamepadInputEnabled Fusion.UsedAs<boolean>?
-	@field ScrollWheelInputEnabled Fusion.UsedAs<boolean>?
-	@field TouchInputEnabled Fusion.UsedAs<boolean>?
-]=]
---[=[
-	@within Base
-	@interface BaseProps
-
-	@field ... BaseProps
-	
-	@field ClassName string?
-	@field Name Fusion.UsedAs<string>?
-	@field Parent Fusion.UsedAs<Instance>?
-	@field Position Fusion.UsedAs<UDim2>?
-	@field Rotation Fusion.UsedAs<number>?
-	@field AnchorPoint Fusion.UsedAs<Vector2>?
-	@field Size Fusion.UsedAs<UDim2>?
-	@field AutomaticSize Fusion.UsedAs<Enum.AutomaticSize>?
-	@field Visible Fusion.UsedAs<boolean>?
-	@field ZIndex Fusion.UsedAs<number>?
-	@field LayoutOrder Fusion.UsedAs<number>?
-	@field ClipsDescendants Fusion.UsedAs<boolean>?
-	@field Active Fusion.UsedAs<boolean>?
-	@field Selectable Fusion.UsedAs<boolean>?
-	@field Interactable Fusion.UsedAs<boolean>?
-	@field BackgroundColor3 Fusion.UsedAs<Color3>?
-	@field BackgroundTransparency Fusion.UsedAs<number>?
-	@field NextSelectionDown Fusion.UsedAs<GuiObject>?
-	@field NextSelectionUp Fusion.UsedAs<GuiObject>?
-	@field NextSelectionRight Fusion.UsedAs<GuiObject>?
-	@field NextSelectionLeft Fusion.UsedAs<GuiObject>?
-	@field SelectionImageObject Fusion.UsedAs<GuiObject>?
-	@field SelectionOrder Fusion.UsedAs<number>?
-	@field SizeConstraint Fusion.UsedAs<Enum.SizeConstraint>?
-	@field AutoLocalize Fusion.UsedAs<boolean>?
-	@field RootLocalizationTable Fusion.UsedAs<LocalizationTable>?
-	@field SelectionBehaviorDown Fusion.UsedAs<Enum.SelectionBehavior>?
-	@field SelectionBehaviorUp Fusion.UsedAs<Enum.SelectionBehavior>?
-	@field SelectionBehaviorRight Fusion.UsedAs<Enum.SelectionBehavior>?
-	@field SelectionBehaviorLeft Fusion.UsedAs<Enum.SelectionBehavior>?
-	@field SelectionGroup Fusion.UsedAs<boolean>?
-
-	@field Corner Fusion.UsedAs<CornerProps>?
-	@field Padding Fusion.UsedAs<PaddingProps>?
-	@field Stroke Fusion.UsedAs<StrokeProps>?
-	@field Gradient Fusion.UsedAs<GradientProps>?
-	@field Aspect Fusion.UsedAs<AspectProps>?
-	@field Scale Fusion.UsedAs<ScaleProps>?
-
-	@field List Fusion.UsedAs<ListProps>?
-	@field Grid Fusion.UsedAs<GridProps>?
-	@field Table Fusion.UsedAs<TableProps>?
-	@field Page Fusion.UsedAs<PageProps>?
-	@field Flex Fusion.UsedAs<FlexProps>?
-
-	@field MaxSize Fusion.UsedAs<Vector2>?
-	@field MinSize Fusion.UsedAs<Vector2>?
-
-	@field MaxTextSize Fusion.UsedAs<number>?
-	@field MinTextSize Fusion.UsedAs<number>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 	local Scope = Fusion.innerScope(Scope, Fusion, Util)
 	local Theme = Themer.Theme:now()
