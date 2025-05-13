@@ -4,6 +4,14 @@
 		Like [`Button`](/api/Button), but for a single [`Icon`](/api/Icon).
 ]=]
 
+--[=[
+		@within IconButton
+		@interface IconButtonProps
+
+		. ... ButtonProps -- All Button properties are accepted.
+		. Image string?
+]=]
+
 local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
@@ -18,18 +26,12 @@ export type Props = Button.Props & {
 	Image: Fusion.UsedAs<string>?,
 }
 
---[=[
-		@within IconButton
-		@interface IconButtonProps
-
-		@field ... ButtonProps
-		@field Image Fusion.UsedAs<string>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
 	local Image = Util.Fallback(Props.Image, "")
+
 	local Padding = Scope:UDim(0, Theme.Spacing["0.25"])
 
 	return Scope:Button(Util.CombineProps(Props, {

@@ -4,6 +4,16 @@
 		Useful for letting the user switch things on / off.
 ]=]
 
+--[=[
+		@interface SwitchProps
+		@within Switch
+
+		. ... BaseButtonProps -- All BaseButton properties are accepted.
+		.Switched boolean? -- Whether the switch is toggled on or off
+		.Disabled boolean? -- Whether the switch is disabled
+		.Color Color3? -- The color of the switch when toggled on
+]=]
+
 local OnyxUI = script.Parent.Parent
 
 local Fusion = require(OnyxUI.Parent.Fusion)
@@ -24,15 +34,6 @@ export type Props = BaseButton.Props & {
 	Color: Fusion.UsedAs<Color3>?,
 }
 
---[=[
-		@within Switch
-		@interface SwitchProps
-
-		@field ... BaseButtonProps
-		@field Switched Fusion.UsedAs<boolean>?
-		@field Disabled Fusion.UsedAs<boolean>?
-		@field Color Fusion.UsedAs<Color3>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()

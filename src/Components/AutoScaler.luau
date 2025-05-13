@@ -4,6 +4,17 @@
 		Automatically scales children for the user's screen. 📱💻📺🥽
 ]=]
 
+--[=[
+	@interface AutoScalerProps
+	@within AutoScaler
+	
+	. ... FrameProps -- All Frame properties are accepted.
+	.BaseResolution Vector2 -- The base resolution to scale from.
+	.MinScale number -- The minimum scale factor.
+	.MaxScale number -- The maximum scale factor.
+	.ScaleMultiplier number -- A multiplier applied to the calculated scale.
+]=]
+
 local Workspace = game:GetService("Workspace")
 
 local OnyxUI = script.Parent.Parent
@@ -26,16 +37,6 @@ export type Props = Base.Props & {
 	ScaleMultiplier: Fusion.UsedAs<number>?,
 }
 
---[=[
-		@within AutoScaler
-		@interface AutoScalerProps
-
-		@field ... BaseProps
-		@field BaseResolution Fusion.UsedAs<Vector2>?
-		@field MinScale Fusion.UsedAs<number>?
-		@field MaxScale Fusion.UsedAs<number>?
-		@field ScaleMultiplier Fusion.UsedAs<number>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 

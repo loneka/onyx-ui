@@ -4,6 +4,16 @@
 		Useful for settings, to-do lists, and anything needing a "Check!"
 ]=]
 
+--[=[
+	@interface CheckboxProps
+	@within Checkbox
+
+	. ... BaseButtonProps -- All BaseButton properties are accepted.
+	.Checked boolean? -- Whether the checkbox is checked.
+	.Icon string? -- The icon to display inside the checkbox.
+	.Color Color3? -- The color of the checkbox.
+]=]
+
 local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
@@ -27,15 +37,6 @@ export type Props = BaseButton.Props & {
 local DISABLED_BACKGROUND_TRANSPARENCY = 0.925
 local DISABLED_CONTENT_TRANSPARENCY = 0.75
 
---[=[
-		@within Checkbox
-		@interface CheckboxProps
-
-		@field ... BaseButtonProps
-		@field Checked Fusion.UsedAs<boolean>?
-		@field Icon Fusion.UsedAs<string>?
-		@field Color Fusion.UsedAs<Color3>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()

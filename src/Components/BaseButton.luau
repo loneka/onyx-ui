@@ -4,6 +4,23 @@
 		A barebones button component, like if Roblox had a "`Button`" class rather than only a `TextButton`.
 ]=]
 
+--[=[
+	@interface BaseButtonProps
+	@within BaseButton
+
+	. ... BaseProps -- All Base properties are accepted.
+	.Disabled boolean? -- Whether the button is disabled.
+	.OnActivate (() -> ())? -- Callback for when the button is activated.
+	.OnHover (() -> ())? -- Callback for when the button is hovered over.
+	.OnHoverEnd (() -> ())? -- Callback for when the hover ends.
+	.OnHold (() -> ())? -- Callback for when the button is held.
+	.OnHoldEnd (() -> ())? -- Callback for when the hold ends.
+	.Hovering boolean? -- Whether the button is currently being hovered over.
+	.Holding boolean? -- Whether the button is currently being held.
+	.HoverSound Sound? -- The sound to play when the button is hovered over.
+	.ClickSound Sound? -- The sound to play when the button is clicked.
+]=]
+
 local SoundService = game:GetService("SoundService")
 
 local OnyxUI = script.Parent.Parent
@@ -18,22 +35,6 @@ local Components = {
 	Base = Base,
 }
 
---[=[
-		@within BaseButton
-		@interface BaseButtonProps
-
-		@field ... BaseProps
-		@field Disabled Fusion.UsedAs<boolean>?
-		@field OnActivate Fusion.UsedAs<() -> ()>?
-		@field OnHover Fusion.UsedAs<() -> ()>?
-		@field OnHoverEnd Fusion.UsedAs<() -> ()>?
-		@field OnHold Fusion.UsedAs<() -> ()>?
-		@field OnHoldEnd Fusion.UsedAs<() -> ()>?
-		@field Hovering Fusion.UsedAs<boolean>?
-		@field Holding Fusion.UsedAs<boolean>?
-		@field HoverSound Fusion.UsedAs<Sound>?
-		@field ClickSound Fusion.UsedAs<Sound>?
-]=]
 export type Props = Base.Props & {
 	Disabled: Fusion.UsedAs<boolean>?,
 

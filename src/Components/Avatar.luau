@@ -4,6 +4,22 @@
 		Useful for displaying player headshots and profile pictures. And optionally, user status.
 ]=]
 
+--[=[
+	@interface AvatarProps
+	@within Avatar
+	
+	. ... ImageProps -- All Image properties are accepted.
+	.Image string? -- The image to display in the avatar.
+	.RingEnabled boolean? -- Whether the ring around the avatar is enabled.
+	.RingColor Color3? -- The color of the ring around the avatar.
+	.RingThickness number? -- The thickness of the ring around the avatar.
+	.IndicatorEnabled boolean? -- Whether the indicator is enabled.
+	.IndicatorColor Color3? -- The color of the indicator.
+	.IndicatorIcon string? -- The icon to display in the indicator.
+	.IndicatorIconColor Color3? -- The color of the indicator icon.
+	.IndicatorCornerRadius UDim? -- The corner radius of the indicator.
+]=]
+
 local OnyxUI = script.Parent.Parent
 
 local Fusion = require(OnyxUI.Parent.Fusion)
@@ -33,21 +49,6 @@ export type Props = Image.Props & {
 	IndicatorCornerRadius: Fusion.UsedAs<UDim>?,
 }
 
---[=[
-		@within Avatar
-		@interface AvatarProps
-
-		@field ... ImageProps
-		@field Image Fusion.UsedAs<string>?
-		@field RingEnabled Fusion.UsedAs<boolean>?
-		@field RingColor Fusion.UsedAs<Color3>?
-		@field RingThickness Fusion.UsedAs<number>?
-		@field IndicatorEnabled Fusion.UsedAs<boolean>?
-		@field IndicatorColor Fusion.UsedAs<Color3>?
-		@field IndicatorIcon Fusion.UsedAs<string>?
-		@field IndicatorIconColor Fusion.UsedAs<Color3>?
-		@field IndicatorCornerRadius Fusion.UsedAs<UDim>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()

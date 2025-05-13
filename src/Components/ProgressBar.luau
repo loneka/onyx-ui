@@ -4,6 +4,18 @@
 		Useful for communicating progress towards goals.
 ]=]
 
+--[=[
+	@interface ProgressBarProps
+	@within ProgressBar
+	
+	. ... GroupProps -- All Group properties are accepted.
+	.Inverted boolean? -- Whether the progress bar is inverted.
+	.Progress number? -- The progress value, ranging from 0 to 1.
+	.Color Color3? -- The color of the progress fill.
+	.Direction Enum.FillDirection? -- The direction of the progress bar (Horizontal or Vertical).
+	.Length UDim? -- The length of the progress bar.
+]=]
+
 local OnyxUI = script.Parent.Parent
 
 local Fusion = require(OnyxUI.Parent.Fusion)
@@ -27,17 +39,6 @@ export type Props = Group.Props & {
 	Length: Fusion.UsedAs<UDim>?,
 }
 
---[=[
-		@within ProgressBar
-		@interface ProgressBarProps
-
-		@field ... GroupProps
-		@field Progress Fusion.UsedAs<number>?
-		@field Color Fusion.UsedAs<Color3>?
-		@field Direction Fusion.UsedAs<Enum.FillDirection>?
-		@field Inverted Fusion.UsedAs<boolean>?
-		@field Length Fusion.UsedAs<UDim>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()

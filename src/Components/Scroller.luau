@@ -4,6 +4,28 @@
 		For making Content scrollable. Equivalent to Roblox's `Scroller` instance.
 ]=]
 
+--[=[
+	@interface ScrollerProps
+	@within Scroller
+	
+	. ... BaseProps -- All Base properties are accepted.
+	.AutomaticCanvasSize Enum.AutomaticSize? -- Determines whether the canvas size is automatically adjusted.
+	.BottomImage string? -- The image used for the bottom scroll bar.
+	.CanvasPosition Vector2? -- The position of the canvas.
+	.CanvasSize UDim2? -- The size of the canvas.
+	.ElasticBehavior Enum.ElasticBehavior? -- Determines the elastic behavior of the scrolling frame.
+	.HorizontalScrollBarInset Enum.ScrollBarInset? -- Determines the inset behavior of the horizontal scroll bar.
+	.MidImage string? -- The image used for the middle scroll bar.
+	.ScrollBarImageColor3 Color3? -- The color of the scroll bar image.
+	.ScrollBarImageTransparency number? -- The transparency of the scroll bar image.
+	.ScrollBarThickness number? -- The thickness of the scroll bar.
+	.ScrollingDirection Enum.ScrollingDirection? -- The direction in which scrolling is allowed.
+	.ScrollingEnabled boolean? -- Determines whether scrolling is enabled.
+	.TopImage string? -- The image used for the top scroll bar.
+	.VerticalScrollBarInset Enum.ScrollBarInset? -- Determines the inset behavior of the vertical scroll bar.
+	.VerticalScrollBarPosition Enum.VerticalScrollBarPosition? -- Determines the position of the vertical scroll bar.
+]=]
+
 local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Themer = require(OnyxUI.Themer)
@@ -32,27 +54,6 @@ export type Props = Base.Props & {
 	VerticalScrollBarPosition: Fusion.UsedAs<Enum.VerticalScrollBarPosition>?,
 }
 
---[=[
-		@within Scroller
-		@interface ScrollerProps
-
-		@field ... BaseProps
-		@field AutomaticCanvasSize Fusion.UsedAs<Enum.AutomaticSize>?
-		@field BottomImage Fusion.UsedAs<string>?
-		@field CanvasPosition Fusion.UsedAs<Vector2>?
-		@field CanvasSize Fusion.UsedAs<UDim2>?
-		@field ElasticBehavior Fusion.UsedAs<Enum.ElasticBehavior>?
-		@field HorizontalScrollBarInset Fusion.UsedAs<Enum.ScrollBarInset>?
-		@field MidImage Fusion.UsedAs<string>?
-		@field ScrollBarImageColor3 Fusion.UsedAs<Color3>?
-		@field ScrollBarImageTransparency Fusion.UsedAs<number>?
-		@field ScrollBarThickness Fusion.UsedAs<number>?
-		@field ScrollingDirection Fusion.UsedAs<Enum.ScrollingDirection>?
-		@field ScrollingEnabled Fusion.UsedAs<boolean>?
-		@field TopImage Fusion.UsedAs<string>?
-		@field VerticalScrollBarInset Fusion.UsedAs<Enum.ScrollBarInset>?
-		@field VerticalScrollBarPosition Fusion.UsedAs<Enum.VerticalScrollBarPosition>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()

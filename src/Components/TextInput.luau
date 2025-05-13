@@ -4,6 +4,34 @@
 		For letting the user input text.
 ]=]
 
+--[=[
+	@interface TextInputProps
+	@within TextInput
+
+	. ... BaseProps -- All Base properties are accepted.
+	.Disabled boolean? -- Whether the text input is disabled.
+	.CharacterLimit number? -- The maximum number of characters allowed in the text input.
+	.Color Color3? -- The color of the text input's border when focused.
+	.PlaceholderText string? -- The placeholder text displayed when the input is empty.
+	.Text string? -- The current text in the text input.
+	.ClearTextOnFocus boolean? -- Whether the text should be cleared when the input gains focus.
+	.TextWrapped boolean? -- Whether the text should wrap within the input.
+	.TextEditable boolean? -- Whether the text input is editable.
+	.MultiLine boolean? -- Whether the text input supports multiple lines.
+	.TextSize number? -- The size of the text.
+	.TextColor3 Color3? -- The color of the text.
+	.FontFace Font? -- The font face of the text.
+	.PlaceholderColor3 Color3? -- The color of the placeholder text.
+	.TextXAlignment Enum.TextXAlignment? -- The horizontal alignment of the text.
+	.TextYAlignment Enum.TextYAlignment? -- The vertical alignment of the text.
+	.TextTransparency number? -- The transparency of the text.
+	.TextProcessor (string) -> string? -- A function to process the text input, and return new text.
+	.Focusing boolean? -- Whether the text input is currently focused.
+	.Hovering boolean? -- Whether the mouse is hovering over the text input.
+	.OnFocus () -> ()? -- A callback function triggered when the text input gains focus.
+	.OnFocusEnd () -> ()? -- A callback function triggered when the text input loses focus.
+]=]
+
 local SoundService = game:GetService("SoundService")
 
 local OnyxUI = script.Parent.Parent
@@ -18,32 +46,6 @@ local Components = {
 	Base = Base,
 }
 
---[=[
-		@within TextInput
-		@interface TextInputProps
-
-		@field ... BaseProps
-		@field Disabled Fusion.UsedAs<boolean>?
-		@field CharacterLimit Fusion.UsedAs<number>?
-		@field Color Fusion.UsedAs<Color3>?
-		@field PlaceholderText Fusion.UsedAs<string>?
-		@field Text Fusion.UsedAs<string>?
-		@field ClearTextOnFocus Fusion.UsedAs<boolean>?
-		@field TextWrapped Fusion.UsedAs<boolean>?
-		@field TextEditable Fusion.UsedAs<boolean>?
-		@field MultiLine Fusion.UsedAs<boolean>?
-		@field TextSize Fusion.UsedAs<number>?
-		@field TextColor3 Fusion.UsedAs<Color3>?
-		@field FontFace Fusion.UsedAs<Font>?
-		@field PlaceholderColor3 Fusion.UsedAs<Color3>?
-		@field TextXAlignment Fusion.UsedAs<Enum.TextXAlignment>?
-		@field TextYAlignment Fusion.UsedAs<Enum.TextYAlignment>?
-		@field TextTransparency Fusion.UsedAs<number>?
-		@field TextProcessor Fusion.UsedAs<(string) -> string>?
-		@field Focusing Fusion.UsedAs<boolean>?
-		@field OnFocus Fusion.UsedAs<() -> ()>?
-		@field OnFocusEnd Fusion.UsedAs<() -> ()>?
-]=]
 export type Props = Base.Props & {
 	Disabled: Fusion.UsedAs<boolean>?,
 	CharacterLimit: Fusion.UsedAs<number>?,

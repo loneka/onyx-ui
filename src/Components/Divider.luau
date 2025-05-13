@@ -4,6 +4,18 @@
 		Useful for separating UI into sections.
 ]=]
 
+--[=[
+	@interface DividerProps
+	@within Divider
+	
+	. ... FrameProps -- All Frame properties are accepted.
+	.Length UDim -- The length of the divider.
+	.FillDirection Enum.FillDirection -- The direction in which the divider fills (Horizontal or Vertical).
+	.Color Color3 -- The color of the divider.
+	.Transparency number -- The transparency of the divider.
+	.Spacing UDim -- The spacing around the divider.
+]=]
+
 local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
@@ -24,17 +36,6 @@ export type Props = Frame.Props & {
 	Spacing: Fusion.UsedAs<UDim>?,
 }
 
---[=[
-		@within Divider
-		@interface DividerProps
-
-		@field ... FrameProps
-		@field Length Fusion.UsedAs<UDim>?
-		@field FillDirection Fusion.UsedAs<Enum.FillDirection>?
-		@field Color Fusion.UsedAs<Color3>?
-		@field Transparency Fusion.UsedAs<number>?
-		@field Spacing Fusion.UsedAs<UDim>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()

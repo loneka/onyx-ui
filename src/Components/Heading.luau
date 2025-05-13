@@ -4,6 +4,15 @@
 		For sectioning bodies of text or content, like for a menu title.
 ]=]
 
+--[=[
+	@interface HeadingProps
+	@within Heading
+
+	. ... TextProps -- All Text properties are accepted.
+	.HeadingSize number? -- Multiplier for the text size, default is 1.75.
+	.TextSize number? -- Base text size, default is Theme.TextSize["1"].
+]=]
+
 local OnyxUI = script.Parent.Parent
 local Util = require(OnyxUI.Util)
 local Fusion = require(OnyxUI.Parent.Fusion)
@@ -19,14 +28,6 @@ export type Props = Text.Props & {
 	TextSize: Fusion.UsedAs<number>?,
 }
 
---[=[
-		@within Heading
-		@interface HeadingProps
-
-		@field ... TextProps
-		@field HeadingSize Fusion.UsedAs<number>?
-		@field TextSize Fusion.UsedAs<number>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()

@@ -4,6 +4,23 @@
 		A robust button component, supporting text and icons, and multiple variants.
 ]=]
 
+--[=[
+	@interface ButtonProps
+	@within Button
+
+	. ... BaseButtonProps -- All BaseButton properties are accepted.
+	.Disabled boolean? -- Whether the button is disabled.
+	.Style string? -- The style of the button (e.g., "Filled", "Outlined", "Ghost").
+	.Color Color3? -- The background color of the button.
+	.Content {string}? -- The content of the button (e.g., text or icons).
+	.ContentColor Color3? -- The color of the button's content.
+	.ContentSize number? -- The size of the button's content.
+	.ContentWrapped boolean? -- Whether the content should wrap.
+	.SizeVariant "ExtraSmall" | "Small" | "Medium" | "Large" | "ExtraLarge"? -- The size variant of the button.
+	.Holding boolean? -- Whether the button is being held.
+	.Hovering boolean? -- Whether the button is being hovered over.
+]=]
+
 local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
@@ -33,22 +50,6 @@ export type Props = BaseButton.Props & {
 	Holding: Fusion.UsedAs<boolean>?,
 }
 
---[=[
-		@within Button
-		@interface ButtonProps
-
-		@field ... BaseProps
-
-		@field Disabled Fusion.UsedAs<boolean>?
-		@field Content Fusion.UsedAs<{ string }>?
-		@field Style Fusion.UsedAs<string>?
-		@field Color Fusion.UsedAs<Color3>?
-		@field ContentColor Fusion.UsedAs<Color3>?
-		@field ContentSize Fusion.UsedAs<number>?
-		@field ContentWrapped Fusion.UsedAs<boolean>?
-		@field SizeVariant Fusion.UsedAs<"ExtraSmall" | "Small" | "Medium" | "Large" | "ExtraLarge">?
-		@field Holding Fusion.UsedAs<boolean>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()

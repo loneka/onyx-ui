@@ -4,6 +4,20 @@
 		For displaying both text and icons alongside each other as one seamless body.
 ]=]
 
+--[=[
+	@interface IconTextProps
+	@within IconText
+	
+	. ... FrameProps -- All Frame properties are accepted.
+	.Content {string}? -- The content to display, can include both text and icons.
+	.ContentColor Color3? -- The color of the content.
+	.ContentSize number? -- The size of the content.
+	.ContentTransparency number? -- The transparency of the content.
+	.ContentWrapped boolean? -- Whether the text content should wrap.
+	.ContentRichText boolean? -- Whether the text content supports rich text.
+	.ContentFontFace Font? -- The font face of the text content.
+]=]
+
 local OnyxUI = script.Parent.Parent
 local Util = require(OnyxUI.Util)
 local Fusion = require(OnyxUI.Parent.Fusion)
@@ -30,19 +44,6 @@ export type Props = Frame.Props & {
 	ContentFontFace: Fusion.UsedAs<Font>?,
 }
 
---[=[
-		@within IconText
-		@interface IconTextProps
-
-		@field ... FrameProps
-		@field Content Fusion.UsedAs<{ string }>?
-		@field ContentColor Fusion.UsedAs<Color3>?
-		@field ContentSize Fusion.UsedAs<number>?
-		@field ContentTransparency Fusion.UsedAs<number>?
-		@field ContentWrapped Fusion.UsedAs<boolean>?
-		@field ContentRichText Fusion.UsedAs<boolean>?
-		@field ContentFontFace Fusion.UsedAs<Font>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()

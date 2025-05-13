@@ -4,6 +4,20 @@
 		For displaying a title, and an optional close button.
 ]=]
 
+--[=[
+	@interface TitleBarProps
+	@within TitleBar
+
+	. ... FrameProps -- All Frame properties are accepted.
+	.Content {string}? -- The content of the title bar.
+	.ContentSize number? -- The size of the content text.
+	.ContentColor Color3? -- The color of the content text.
+	.ContentFontFace Font? -- The font face of the content text.
+	.CloseButtonIcon string? -- The icon for the close button.
+	.CloseButtonDisabled boolean? -- Whether the close button is disabled.
+	.OnClose (() -> ())? -- The callback function when the close button is clicked.
+]=]
+
 local OnyxUI = script.Parent.Parent
 
 local Fusion = require(OnyxUI.Parent.Fusion)
@@ -31,19 +45,6 @@ export type Props = Frame.Props & {
 	OnClose: Fusion.UsedAs<() -> ()>?,
 }
 
---[=[
-		@within TitleBar
-		@interface TitleBarProps
-
-		@field ... FrameProps
-		@field Content Fusion.UsedAs<{ string }>?
-		@field ContentSize Fusion.UsedAs<number>?
-		@field ContentColor Fusion.UsedAs<Color3>?
-		@field ContentFontFace Fusion.UsedAs<Font>?
-		@field CloseButtonIcon Fusion.UsedAs<string>?
-		@field CloseButtonDisabled Fusion.UsedAs<boolean>?
-		@field OnClose Fusion.UsedAs<() -> ()>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()

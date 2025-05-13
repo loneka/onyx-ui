@@ -4,6 +4,13 @@
 		It's an icon, what else can I say?
 ]=]
 
+--[=[
+		@within Icon
+		@interface IconProps
+
+		. ... ImageProps -- All Image properties are accepted.
+]=]
+
 local OnyxUI = script.Parent.Parent
 local Util = require(OnyxUI.Util)
 local Fusion = require(OnyxUI.Parent.Fusion)
@@ -16,12 +23,6 @@ local Components = {
 
 export type Props = Image.Props & {}
 
---[=[
-		@within Icon
-		@interface IconProps
-
-		@field ... ImageProps
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()

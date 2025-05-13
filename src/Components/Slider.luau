@@ -4,6 +4,17 @@
 		For draggable linear selection.
 ]=]
 
+--[=[
+	@interface SliderProps
+	@within Slider
+	
+	. ... BaseButtonProps -- All BaseButton properties are accepted.
+	.Value number? -- The current value of the slider (0 to 1).
+	.Disabled boolean? -- Whether the slider is disabled.
+	.Unit number? -- The step size for the slider value.
+	.Color Color3? -- The color of the slider.
+]=]
+
 local OnyxUI = script.Parent.Parent
 
 local Fusion = require(OnyxUI.Parent.Fusion)
@@ -32,16 +43,6 @@ export type Props = BaseButton.Props & {
 	Color: Fusion.UsedAs<Color3>?,
 }
 
---[=[
-		@within Slider
-		@interface SliderProps
-
-		@field ... FrameProps
-		@field Value Fusion.UsedAs<number>?
-		@field Disabled Fusion.UsedAs<boolean>?
-		@field Unit Fusion.UsedAs<number>?
-		@field Color Fusion.UsedAs<Color3>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()

@@ -4,6 +4,13 @@
 		Useful for grouping and displaying Content in a user friendly way.
 ]=]
 
+--[=[
+		@within Card
+		@interface CardProps
+
+		. ... FrameProps -- All Frame properties are accepted.
+]=]
+
 local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Themer = require(OnyxUI.Themer)
@@ -16,12 +23,6 @@ local Components = {
 
 export type Props = Frame.Props & {}
 
---[=[
-		@within Card
-		@interface CardProps
-
-		@field ... FrameProps
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()

@@ -5,6 +5,18 @@
 
 ]=]
 
+--[=[
+	@interface BadgeProps
+	@within Badge
+
+	. ... FrameProps -- All Frame properties are accepted.
+	.Content {string}? -- The content to display inside the badge.
+	.ContentWrapped boolean? -- Whether the content should wrap if it overflows.
+	.Color Color3? -- The background color of the badge.
+	.ContentColor Color3? -- The color of the content inside the badge.
+	.ContentSize number? -- The size of the content inside the badge.
+]=]
+
 local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
@@ -27,18 +39,6 @@ export type Props = Frame.Props & {
 	ContentSize: Fusion.UsedAs<number>?,
 }
 
---[=[
-		@within Badge
-		@interface BadgeProps
-
-		@field ... FrameProps
-		@field Content Fusion.UsedAs<{ string }>?
-		@field ContentWrapped Fusion.UsedAs<boolean>?
-		@field Color Fusion.UsedAs<Color3>?
-		@field ContentColor Fusion.UsedAs<Color3>?
-		@field ContentSize Fusion.UsedAs<number>?
-		@field ContentWrapped Fusion.UsedAs<number>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()

@@ -4,6 +4,18 @@
 		Swap between an array values.
 ]=]
 
+--[=[
+	@interface TextSwapProps
+	@within TextSwap
+	
+	. ... BaseButtonProps -- All BaseButton properties are accepted.
+	.Options {string}? -- Array of string options to swap between
+	.Selection number? -- The currently selected option index
+	.Disabled boolean? -- Whether the TextSwap is disabled
+	.Color Color3? -- The color of the content
+	.ContentSize number? -- The size of the content
+]=]
+
 local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
@@ -26,17 +38,6 @@ export type Props = BaseButton.Props & {
 	ContentSize: Fusion.UsedAs<number>?,
 }
 
---[=[
-		@within TextSwap
-		@interface TextSwapProps
-
-		@field ... BaseButtonProps
-		@field Options Fusion.UsedAs<{ string }>?
-		@field Selection Fusion.UsedAs<number>?
-		@field Disabled Fusion.UsedAs<boolean>?
-		@field Color Fusion.UsedAs<Color3>?
-		@field ContentSize Fusion.UsedAs<number>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()

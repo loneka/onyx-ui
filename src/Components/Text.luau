@@ -4,6 +4,28 @@
 		For displaying text. *Lorem ipsum dolo..*
 ]=]
 
+--[=[
+	@interface TextProps
+	@within Text
+	
+	. ... BaseProps -- All Base properties are accepted.
+	.Text string? -- The text to display.
+	.TextColor3 Color3? -- The color of the text.
+	.TextSize number? -- The size of the text.
+	.RichText boolean? -- Whether the text supports rich text formatting.
+	.FontFace Font? -- The font face of the text.
+	.TextWrapped boolean? -- Whether the text should wrap when it exceeds the label's width.
+	.TextXAlignment Enum.TextXAlignment? -- The horizontal alignment of the text.
+	.TextYAlignment Enum.TextYAlignment? -- The vertical alignment of the text.
+	.Font Enum.Font? -- The font of the text (deprecated, use FontFace instead).
+	.TextScaled boolean? -- Whether the text should scale to fit the label.
+	.TextTruncate boolean? -- Whether the text should truncate when it exceeds the label's width.
+	.LineHeight number? -- The line height of the text.
+	.LocalizedText string? -- The localized text to display.
+	.MaxVisibleGraphemes number? -- The maximum number of visible graphemes.
+	.TextTransparency number? -- The transparency of the text.
+]=]
+
 local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
@@ -32,27 +54,6 @@ export type Props = Base.Props & {
 	TextTransparency: Fusion.UsedAs<number>?,
 }
 
---[=[
-		@within Text
-		@interface TextProps
-
-		@field ... BaseProps
-		@field Text Fusion.UsedAs<string>?
-		@field TextColor3 Fusion.UsedAs<Color3>?
-		@field TextSize Fusion.UsedAs<number>?
-		@field RichText Fusion.UsedAs<boolean>?
-		@field FontFace Fusion.UsedAs<Font>?
-		@field TextWrapped Fusion.UsedAs<boolean>?
-		@field TextXAlignment Fusion.UsedAs<Enum.TextXAlignment>?
-		@field TextYAlignment Fusion.UsedAs<Enum.TextYAlignment>?
-		@field Font Fusion.UsedAs<Enum.Font>?
-		@field TextScaled Fusion.UsedAs<boolean>?
-		@field TextTruncate Fusion.UsedAs<boolean>?
-		@field LineHeight Fusion.UsedAs<number>?
-		@field LocalizedText Fusion.UsedAs<string>?
-		@field MaxVisibleGraphemes Fusion.UsedAs<number>?
-		@field TextTransparency Fusion.UsedAs<number>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
