@@ -57,6 +57,22 @@ export type TitleBarProps = TitleBar.Props
 export type TextSwapProps = TextSwap.Props
 export type SliderProps = Slider.Props
 
+export type CornerProps = Base.CornerProps
+export type PaddingProps = Base.PaddingProps
+export type StrokeProps = Base.StrokeProps
+export type GradientProps = Base.GradientProps
+export type AspectProps = Base.AspectProps
+export type ScaleProps = Base.ScaleProps
+
+export type ListProps = Base.ListProps
+export type GridProps = Base.GridProps
+export type TableProps = Base.TableProps
+export type PageProps = Base.PageProps
+export type FlexProps = Base.FlexProps
+
+export type SizeLimitProps = Base.SizeLimitProps
+export type TextSizeLimitProps = Base.TextSizeLimitProps
+
 return {
 	Util = Util,
 	Components = Components,

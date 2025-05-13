@@ -40,9 +40,9 @@ local Components = {
 		@field TextYAlignment Fusion.UsedAs<Enum.TextYAlignment>?
 		@field TextTransparency Fusion.UsedAs<number>?
 		@field TextProcessor Fusion.UsedAs<(string) -> string>?
-		@field IsFocused Fusion.UsedAs<boolean>?
-		@field OnFocused Fusion.UsedAs<() -> ()>?
-		@field OnFocusLost Fusion.UsedAs<() -> ()>?
+		@field Focusing Fusion.UsedAs<boolean>?
+		@field OnFocus Fusion.UsedAs<() -> ()>?
+		@field OnFocusEnd Fusion.UsedAs<() -> ()>?
 ]=]
 export type Props = Base.Props & {
 	Disabled: Fusion.UsedAs<boolean>?,
@@ -63,11 +63,11 @@ export type Props = Base.Props & {
 	TextTransparency: Fusion.UsedAs<number>?,
 	TextProcessor: Fusion.UsedAs<(string) -> string>?,
 
-	IsFocused: Fusion.UsedAs<boolean>?,
-	IsHovering: Fusion.UsedAs<boolean>?,
+	Focusing: Fusion.UsedAs<boolean>?,
+	Hovering: Fusion.UsedAs<boolean>?,
 
-	OnFocused: Fusion.UsedAs<() -> ()>?,
-	OnFocusLost: Fusion.UsedAs<() -> ()>?,
+	OnFocus: Fusion.UsedAs<() -> ()>?,
+	OnFocusEnd: Fusion.UsedAs<() -> ()>?,
 }
 
 return function(Scope: Fusion.Scope<any>, Props: Props)
@@ -75,12 +75,12 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Theme = Themer.Theme:now()
 
 	local Text = Scope:EnsureValue(Util.Fallback(Props.Text, ""))
-	local IsFocused = Scope:EnsureValue(Util.Fallback(Props.IsFocused, false))
-	local IsHovering = Scope:EnsureValue(Util.Fallback(Props.IsHovering, false))
+	local Focusing = Scope:EnsureValue(Util.Fallback(Props.Focusing, false))
+	local Hovering = Scope:EnsureValue(Util.Fallback(Props.Hovering, false))
 
 	local Disabled = Util.Fallback(Props.Disabled, false)
-	local OnFocused = Util.Fallback(Props.OnFocused, function() end)
-	local OnFocusLost = Util.Fallback(Props.OnFocusLost, function() end)
+	local OnFocus = Util.Fallback(Props.OnFocus, function() end)
+	local OnFocusEnd = Util.Fallback(Props.OnFocusEnd, function() end)
 	local Color = Util.Fallback(Props.Color, Theme.Colors.Primary.Main)
 	local CharacterLimit = Util.Fallback(Props.CharacterLimit, -1)
 	local ClearTextOnFocus = Util.Fallback(Props.ClearTextOnFocus, false)
@@ -108,7 +108,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		Scope:Computed(function(Use)
 			if Use(Disabled) then
 				return 0.75
-			elseif Use(IsFocused) then
+			elseif Use(Focusing) then
 				return 0
 			else
 				return 0.5
@@ -150,7 +150,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 				Scope:Computed(function(Use)
 					if Use(InvalidInputActive) then
 						return Use(Theme.Colors.Error.Main)
-					elseif Use(IsFocused) then
+					elseif Use(Focusing) then
 						return Use(Color)
 					else
 						return Use(Theme.Colors.NeutralContent.Dark)
@@ -164,7 +164,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 					if Use(Disabled) then
 						return 0.8
 					end
-					if Use(IsFocused) then
+					if Use(Focusing) then
 						return 0
 					else
 						return 0.6
@@ -209,28 +209,28 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 		[OnEvent "Focused"] = function()
 			if (not Fusion.peek(Disabled)) and Fusion.peek(TextEditable) then
-				IsFocused:set(true)
+				Focusing:set(true)
 
 				SoundService:PlayLocalSound(Fusion.peek(Theme.Sound.Focus))
 
-				Fusion.peek(OnFocused)()
+				Fusion.peek(OnFocus)()
 			end
 		end,
 		[OnEvent "FocusLost"] = function()
-			IsFocused:set(false)
+			Focusing:set(false)
 
-			Fusion.peek(OnFocusLost)()
+			Fusion.peek(OnFocusEnd)()
 		end,
 		[OnEvent "MouseEnter"] = function()
 			if not Fusion.peek(Disabled) then
-				IsHovering:set(true)
+				Hovering:set(true)
 
 				SoundService:PlayLocalSound(Fusion.peek(Theme.Sound.Hover))
 			end
 		end,
 		[OnEvent "MouseLeave"] = function()
 			if not Fusion.peek(Disabled) then
-				IsHovering:set(false)
+				Hovering:set(false)
 			end
 		end,
 		[OnEvent "SelectionGained"] = function()

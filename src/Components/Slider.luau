@@ -51,8 +51,8 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Color = Util.Fallback(Props.Color, Theme.Colors.Primary.Main)
 	local Disabled = Util.Fallback(Props.Disabled, false)
 
-	local IsHovering = Scope:EnsureValue(Util.Fallback(Props.IsHovering, false))
-	local IsHolding = Scope:EnsureValue(Util.Fallback(Props.IsHolding, false))
+	local Hovering = Scope:EnsureValue(Util.Fallback(Props.Hovering, false))
+	local Holding = Scope:EnsureValue(Util.Fallback(Props.Holding, false))
 
 	local DragDetector = Scope:Value(nil)
 	local AbsoluteSize = Scope:Value(Vector2.new())
@@ -62,9 +62,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		if Use(Disabled) then
 			return Use(Theme.Colors.BaseContent.Main)
 		else
-			if Use(IsHolding) then
+			if Use(Holding) then
 				return Util.Emphasize(Use(Color), Use(Theme.Emphasis.Regular))
-			elseif Use(IsHovering) then
+			elseif Use(Hovering) then
 				return Util.Emphasize(Use(Color), Use(Theme.Emphasis.Light))
 			else
 				return Use(Color)
@@ -74,7 +74,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local EffectiveStrokeEmphasis = Scope:Computed(function(Use)
 		local StrokeEmphasis = Use(Theme.StrokeEmphasis.Regular)
 
-		if Use(Disabled) or Use(IsHovering) or Use(IsHolding) then
+		if Use(Disabled) or Use(Hovering) or Use(Holding) then
 			return 0
 		else
 			return StrokeEmphasis
@@ -100,8 +100,8 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		AutomaticSize = Enum.AutomaticSize.Y,
 
 		Disabled = Disabled,
-		IsHovering = IsHovering,
-		IsHolding = IsHolding,
+		Hovering = Hovering,
+		Holding = Holding,
 
 		[Children] = {
 			DragDetector,
@@ -244,10 +244,10 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		end,
 		[OnEvent "DragStart"] = function(Position: Vector2)
 			ProcessDrag(Position)
-			IsHolding:set(true)
+			Holding:set(true)
 		end,
 		[OnEvent "DragEnd"] = function()
-			IsHolding:set(false)
+			Holding:set(false)
 		end,
 	})
 

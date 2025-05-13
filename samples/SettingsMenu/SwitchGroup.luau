@@ -25,7 +25,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		ClickSound = Theme.Sound.Switch,
 		Disabled = Props.Disabled,
 
-		OnActivated = function()
+		OnActivate = function()
 			Switched:set(not Fusion.peek(Switched))
 		end,
 	}))

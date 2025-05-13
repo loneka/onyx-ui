@@ -93,7 +93,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 							AnchorPoint = Vector2.new(1, 0.5),
 							Position = UDim2.fromScale(1, 0.5),
 
-							OnActivated = function()
+							OnActivate = function()
 								if Use(OnClose) then
 									Use(OnClose)()
 								end

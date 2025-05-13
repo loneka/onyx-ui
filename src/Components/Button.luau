@@ -30,7 +30,7 @@ export type Props = BaseButton.Props & {
 	ContentSize: Fusion.UsedAs<number>?,
 	ContentWrapped: Fusion.UsedAs<boolean>?,
 	SizeVariant: Fusion.UsedAs<"ExtraSmall" | "Small" | "Medium" | "Large" | "ExtraLarge">?,
-	IsHolding: Fusion.UsedAs<boolean>?,
+	Holding: Fusion.UsedAs<boolean>?,
 }
 
 --[=[
@@ -47,7 +47,7 @@ export type Props = BaseButton.Props & {
 		@field ContentSize Fusion.UsedAs<number>?
 		@field ContentWrapped Fusion.UsedAs<boolean>?
 		@field SizeVariant Fusion.UsedAs<"ExtraSmall" | "Small" | "Medium" | "Large" | "ExtraLarge">?
-		@field IsHolding Fusion.UsedAs<boolean>?
+		@field Holding Fusion.UsedAs<boolean>?
 ]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
@@ -80,8 +80,8 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	)
 	local ContentWrapped = Util.Fallback(Props.ContentWrapped, false)
 
-	local IsHovering = Scope:EnsureValue(Util.Fallback(Props.IsHovering, false))
-	local IsHolding = Scope:EnsureValue(Util.Fallback(Props.IsHolding, false))
+	local Hovering = Scope:EnsureValue(Util.Fallback(Props.Hovering, false))
+	local Holding = Scope:EnsureValue(Util.Fallback(Props.Holding, false))
 
 	local EffectiveColor = Scope:Computed(function(Use)
 		if Use(Disabled) then
@@ -89,9 +89,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		else
 			local BaseColor = Use(Color)
 
-			if Use(IsHolding) then
+			if Use(Holding) then
 				return Util.Emphasize(BaseColor, Use(Theme.Emphasis.Regular))
-			elseif Use(IsHovering) then
+			elseif Use(Hovering) then
 				return Util.Emphasize(BaseColor, Use(Theme.Emphasis.Light))
 			else
 				return BaseColor
@@ -116,7 +116,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local EffectiveStrokeEmphasis = Scope:Computed(function(Use)
 		local StrokeEmphasis = Use(Theme.StrokeEmphasis.Regular)
 
-		if (Use(Style) ~= "Filled") or Use(Disabled) or Use(IsHovering) or Use(IsHolding) then
+		if (Use(Style) ~= "Filled") or Use(Disabled) or Use(Hovering) or Use(Holding) then
 			return 0
 		else
 			return StrokeEmphasis
@@ -203,8 +203,8 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			end),
 		},
 
-		IsHolding = IsHolding,
-		IsHovering = IsHovering,
+		Holding = Holding,
+		Hovering = Hovering,
 
 		[Children] = {
 			Scope:IconText {

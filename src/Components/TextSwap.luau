@@ -47,8 +47,8 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Disabled = Util.Fallback(Props.Disabled, false)
 	local ContentSize = Util.Fallback(Props.ContentSize, Theme.TextSize["1"])
 
-	local IsHolding = Scope:Value(false)
-	local IsHovering = Scope:Value(false)
+	local Holding = Scope:Value(false)
+	local Hovering = Scope:Value(false)
 	local ShownIncrement = Scope:Value(0)
 
 	local SelectionContent = Scope:Computed(function(Use)
@@ -61,9 +61,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		if Use(Disabled) then
 			return Use(Theme.Colors.BaseContent.Main)
 		else
-			if Use(IsHolding) then
+			if Use(Holding) then
 				return Util.Emphasize(Use(Color), Use(Theme.Emphasis.Regular))
-			elseif Use(IsHovering) then
+			elseif Use(Hovering) then
 				return Util.Emphasize(Use(Color), Use(Theme.Emphasis.Light))
 			else
 				return Use(Color)
@@ -131,10 +131,10 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 		Disabled = Disabled,
 
-		IsHolding = IsHolding,
-		IsHovering = IsHovering,
+		Holding = Holding,
+		Hovering = Hovering,
 
-		OnActivated = function()
+		OnActivate = function()
 			RotateSelection(1)
 		end,
 
@@ -166,7 +166,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 					Bottom = NoPadding,
 				},
 
-				OnActivated = function()
+				OnActivate = function()
 					RotateSelection(-1)
 				end,
 			},
@@ -218,7 +218,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 					Bottom = NoPadding,
 				},
 
-				OnActivated = function()
+				OnActivate = function()
 					RotateSelection(1)
 				end,
 			},

@@ -1,7 +1,7 @@
 --[=[
 		@class Icon
 		
-		It's an icon, what else do I say? 💀💀
+		It's an icon, what else can I say?
 ]=]
 
 local OnyxUI = script.Parent.Parent

@@ -45,15 +45,15 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Color = Util.Fallback(Props.Color, Theme.Colors.Primary.Main)
 	local IconId = Util.Fallback(Props.Icon, "rbxassetid://13858821963")
 
-	local IsHovering = Scope:EnsureValue(Util.Fallback(Props.IsHovering, false))
-	local IsHolding = Scope:EnsureValue(Util.Fallback(Props.IsHolding, false))
+	local Hovering = Scope:EnsureValue(Util.Fallback(Props.Hovering, false))
+	local Holding = Scope:EnsureValue(Util.Fallback(Props.Holding, false))
 	local EffectiveColor = Scope:Computed(function(Use)
 		if Use(Disabled) then
 			return Use(Theme.Colors.BaseContent.Main)
 		else
-			if Use(IsHolding) then
+			if Use(Holding) then
 				return Util.Emphasize(Use(Color), Use(Theme.Emphasis.Regular))
-			elseif Use(IsHovering) then
+			elseif Use(Hovering) then
 				return Util.Emphasize(Use(Color), Use(Theme.Emphasis.Light))
 			else
 				return Use(Color)
@@ -85,7 +85,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		},
 		Stroke = {
 			Color = Scope:Computed(function(Use)
-				if (not Use(Checked)) or Use(Disabled) or Use(IsHovering) or Use(IsHolding) then
+				if (not Use(Checked)) or Use(Disabled) or Use(Hovering) or Use(Holding) then
 					return Use(EffectiveColor)
 				else
 					return Util.Emphasize(Use(EffectiveColor), Use(Theme.StrokeEmphasis.Regular))
@@ -100,10 +100,10 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			end),
 		},
 
-		IsHovering = IsHovering,
-		IsHolding = IsHolding,
+		Hovering = Hovering,
+		Holding = Holding,
 
-		OnActivated = function()
+		OnActivate = function()
 			Checked:set(not Fusion.peek(Checked))
 		end,
 

@@ -51,8 +51,8 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		Radius = Scope:UDim(0, Theme.CornerRadius["Full"]),
 	})
 
-	local IsHovering = Scope:EnsureValue(Util.Fallback(Props.IsHovering, false))
-	local IsHolding = Scope:EnsureValue(Util.Fallback(Props.IsHolding, false))
+	local Hovering = Scope:EnsureValue(Util.Fallback(Props.Hovering, false))
+	local Holding = Scope:EnsureValue(Util.Fallback(Props.Holding, false))
 
 	local EffectiveColor = Scope:Computed(function(Use)
 		local ActiveColor
@@ -63,9 +63,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		end
 
 		if not Use(Disabled) then
-			if Use(IsHolding) then
+			if Use(Holding) then
 				return Util.Emphasize(Use(ActiveColor), Use(Theme.Emphasis.Regular))
-			elseif Use(IsHovering) then
+			elseif Use(Hovering) then
 				return Util.Emphasize(Use(ActiveColor), Use(Theme.Emphasis.Light))
 			end
 		end
@@ -81,13 +81,13 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		end
 
 		if not Use(Disabled) then
-			if Use(IsHolding) then
+			if Use(Holding) then
 				if not Use(Switched) then
 					return Util.Emphasize(Use(ActiveColor), Use(Theme.Emphasis.Regular))
 				else
 					return ActiveColor
 				end
-			elseif Use(IsHovering) then
+			elseif Use(Hovering) then
 				if not Use(Switched) then
 					return Util.Emphasize(Use(ActiveColor), Use(Theme.Emphasis.Light))
 				else
@@ -101,7 +101,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local EffectiveStrokeEmphasis = Scope:Computed(function(Use)
 		local StrokeEmphasis = Use(Theme.StrokeEmphasis.Regular)
 
-		if Use(Disabled) or Use(IsHovering) or Use(IsHolding) then
+		if Use(Disabled) or Use(Hovering) or Use(Holding) then
 			return 0
 		else
 			return StrokeEmphasis
@@ -141,12 +141,12 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		},
 		Corner = Corner,
 
-		IsHovering = IsHovering,
-		IsHolding = IsHolding,
+		Hovering = Hovering,
+		Holding = Holding,
 
 		ClickSound = Theme.Sound.Switch,
 
-		OnActivated = function()
+		OnActivate = function()
 			Switched:set(not Fusion.peek(Switched))
 		end,
 
@@ -200,7 +200,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 						Size = Scope:Spring(
 							Scope:Computed(function(Use)
 								local Scale = 0.85
-								if Use(IsHovering) then
+								if Use(Hovering) then
 									Scale *= 1.1
 								end
 
@@ -232,7 +232,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 						Aspect = {
 							Ratio = Scope:Spring(
 								Scope:Computed(function(Use)
-									if Use(IsHolding) then
+									if Use(Holding) then
 										return 1.2
 									else
 										return 1
