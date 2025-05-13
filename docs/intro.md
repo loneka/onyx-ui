@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # Getting Started
 
+![Kitty Banner](/kittyBanner.png)
+
 ## Installation
 
 ### Wally package
@@ -21,7 +23,7 @@ When using the `rbxm`, you must require the copy of Fusion bundled within it, ra
 1. Download the `OnyxUI.rbxm` file [listed here](https://github.com/ImAvafe/OnyxUI/releases/latest)
 2. Insert `OnyxUI.rbxm` into Roblox Studio
 
-## Usage Example
+## Usage example
 
 Here's a basic component example, making use of some of OnyxUI's features.
 
@@ -41,4 +43,3 @@ return function(Scope: Fusion.Scope<any>, Props)
 end
 ```
 
-## [See it in action ✨](in-production.md)

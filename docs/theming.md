@@ -4,7 +4,11 @@ sidebar_position: 3
 
 # Theming
 
-[`Themer`](/api/Themer) allows you to customize components throughout OnyxUI, with support for things like colors, corner radiuses, paddings, etc. You should also reference it within your own components for a more consistent design.
+[`Themer`](/api/Themer) allows you to customize components throughout OnyxUI, with support for properties like color, corner radius, padding, etc. You should also reference it within your own components for a more consistent design.
+
+[More examples ➜](/docs/examples)
+
+![Theming](/theming.png)
 
 ## Accessing the theme
 

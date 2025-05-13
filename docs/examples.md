@@ -1,10 +1,10 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 ---
 
-# Real-world Examples
+# Examples
 
-These projects use OnyxUI to power their user experience.
+These real-world projects use OnyxUI to power their user experience. Take a look!
 
 ## [HD Admin v2](https://create.roblox.com/store/asset/857927023/HD-Admin)
 
@@ -29,5 +29,5 @@ These projects use OnyxUI to power their user experience.
 ---
 
 :::tip List your project
-If you're working on something, send it in the [Discord](https://loneka.com/suite/discord)!
+If you're working on something cool, send it in the [Discord](https://loneka.com/suite/discord)!
 :::
