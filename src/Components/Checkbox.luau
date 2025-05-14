@@ -48,6 +48,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 	local Hovering = Scope:EnsureValue(Util.Fallback(Props.Hovering, false))
 	local Holding = Scope:EnsureValue(Util.Fallback(Props.Holding, false))
+
 	local EffectiveColor = Scope:Computed(function(Use)
 		if Use(Disabled) then
 			return Use(Theme.Colors.BaseContent.Main)
@@ -59,6 +60,15 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			else
 				return Use(Color)
 			end
+		end
+	end)
+	local EffectiveStrokeEmphasis = Scope:Computed(function(Use)
+		local StrokeEmphasis = Use(Theme.StrokeEmphasis.Regular)
+
+		if Use(Disabled) or (not Use(Checked)) or Use(Hovering) or Use(Holding) then
+			return 0
+		else
+			return StrokeEmphasis
 		end
 	end)
 
@@ -85,13 +95,16 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			Radius = Scope:UDim(0, Theme.CornerRadius["0.5"]),
 		},
 		Stroke = {
-			Color = Scope:Computed(function(Use)
-				if (not Use(Checked)) or Use(Disabled) or Use(Hovering) or Use(Holding) then
-					return Use(EffectiveColor)
-				else
-					return Util.Emphasize(Use(EffectiveColor), Use(Theme.StrokeEmphasis.Regular))
-				end
-			end),
+			Color = Color3.fromRGB(255, 255, 255),
+			Gradient = {
+				Color = Scope:Computed(function(Use)
+					return ColorSequence.new({
+						ColorSequenceKeypoint.new(0, Util.Emphasize(Use(EffectiveColor), Use(EffectiveStrokeEmphasis))),
+						ColorSequenceKeypoint.new(1, Use(EffectiveColor)),
+					})
+				end),
+				Rotation = 90,
+			},
 			Transparency = Scope:Computed(function(Use)
 				if Use(Disabled) then
 					return DISABLED_BACKGROUND_TRANSPARENCY
