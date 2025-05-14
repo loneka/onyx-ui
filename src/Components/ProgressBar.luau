@@ -8,7 +8,7 @@
 	@interface ProgressBarProps
 	@within ProgressBar
 	
-	. ... GroupProps -- All Group properties are accepted.
+	. ... FrameProps -- All Frame properties are accepted.
 	.Inverted boolean? -- Whether the progress bar is inverted.
 	.Progress number? -- The progress value, ranging from 0 to 1.
 	.Color Color3? -- The color of the progress fill.
@@ -25,13 +25,11 @@ local Themer = require(OnyxUI.Themer)
 local Children = Fusion.Children
 
 local Frame = require(script.Parent.Frame)
-local Group = require(script.Parent.Group)
 local Components = {
 	Frame = Frame,
-	Group = Group,
 }
 
-export type Props = Group.Props & {
+export type Props = Frame.Props & {
 	Progress: Fusion.UsedAs<number>?,
 	Color: Fusion.UsedAs<Color3>?,
 	Direction: Fusion.UsedAs<Enum.FillDirection>?,
@@ -47,12 +45,12 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Color = Util.Fallback(Props.Color, Theme.Colors.Primary.Main)
 	local Direction = Util.Fallback(Props.Direction, Enum.FillDirection.Horizontal)
 	local Inverted = Util.Fallback(Props.Inverted, false)
-	local Length = Util.Fallback(Props.Length, Scope:Udim(0, Theme.Sizing["6"]))
+	local Length = Util.Fallback(Props.Length, Scope:UDim(0, Theme.Sizing["6"]))
 	local Stroke = Util.Fallback(Props.Stroke, {
 		Thickness = Theme.StrokeThickness["1"],
 	})
 
-	return Scope:Group(Util.CombineProps(Props, {
+	return Scope:Frame(Util.CombineProps(Props, {
 		Name = script.Name,
 		Size = Scope:Computed(function(Use)
 			local DirectionValue = Use(Direction)
@@ -129,6 +127,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 						end),
 						Rotation = 90,
 					},
+				},
+				Corner = {
+					Radius = Scope:UDim(0, Theme.CornerRadius["Full"]),
 				},
 			},
 		},
