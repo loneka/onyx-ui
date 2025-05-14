@@ -111,9 +111,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 				Selectable = false,
 				BackgroundTransparency = 0,
 				BackgroundColor3 = Theme.Colors.Neutral.Main,
-				Size = Scope:Computed(function(Use)
-					return UDim2.new(UDim.new(1, 0), UDim.new(0, Use(Theme.TextSize["0.75"])))
-				end),
+				Size = Scope:UDim2(1, 0, 0, Theme.TextSize["0.75"]),
 				Corner = {
 					Radius = Scope:UDim(0, Theme.CornerRadius.Full),
 				},

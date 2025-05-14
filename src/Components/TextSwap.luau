@@ -110,7 +110,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			VerticalAlignment = Enum.VerticalAlignment.Center,
 		},
 		Padding = {
-			All = UDim.new(0, Theme.Padding["0.5"]),
+			All = Scope:UDim(0, Theme.Padding["0.5"]),
 		},
 		Stroke = {
 			Color = Color,

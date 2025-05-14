@@ -59,13 +59,11 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		Name = script.Name,
 		BackgroundColor3 = Color,
 		BackgroundTransparency = 0,
-		Padding = Scope:Computed(function(Use)
-			return {
-				All = UDim.new(0, Use(Theme.Padding["0"])),
-				Left = UDim.new(0, Use(Theme.Padding["0.25"])),
-				Right = UDim.new(0, Use(Theme.Padding["0.25"])),
-			}
-		end),
+		Padding = {
+			All = Scope:UDim(0, Theme.Padding["0"]),
+			Left = Scope:UDim(0, Theme.Padding["0.25"]),
+			Right = Scope:UDim(0, Theme.Padding["0.25"]),
+		},
 		Corner = {
 			Radius = Scope:UDim(0, Theme.CornerRadius["2"]),
 		},
