@@ -9,7 +9,7 @@ license = "MIT"
 name = "imavafe/onyx-ui"
 realm = "shared"
 registry = "https://github.com/UpliftGames/wally-index"
-version = "0.6.0"
+version = "1.0.0-alpha"
 
 exclude = ["**"]
 include = ["src", "src/*", "default.project.json", "wally.lock", "wally.toml"]

@@ -1,5 +1,5 @@
 name = "avafe/onyx_ui"
-version = "0.6.0"
+version = "1.0.0-alpha"
 description = "Quick, quality UI for Fusion"
 authors = ["Avafe"]
 repository = "https://github.com/loneka/onyx-ui"
