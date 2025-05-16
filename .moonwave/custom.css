@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@font-face {
+	font-family: 'Red Hat Text';
+	src: url('/fonts/RedHatText.ttf') format('truetype');
+}
 
 :root {
-	--ifm-font-family-base: "Outfit", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+	--ifm-font-family-base: "Red Hat Text", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
 		sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-	--ifm-font-weight-light: 400;
-	--ifm-font-weight-normal: 500;
 	--ifm-font-weight-semibold: 600;
-	--ifm-font-weight-bold: 700;
 	--ifm-navbar-background-color: var(--ifm-background-color);
 	--ifm-navbar-search-input-background-color: var(--ifm-background-color);
 	--ifm-color-primary: #d558ff;

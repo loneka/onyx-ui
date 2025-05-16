@@ -2,10 +2,6 @@
 		@class Base
 
 		The foundational component of OnyxUI, from which all other components are built off of. Props supported here typically work in all other components.
-
-		:::info Styling props
-		A reference of common styling props can be found in [this docs page](/docs/styling).
-		:::
 ]=]
 
 --[=[
