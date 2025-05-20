@@ -25,21 +25,36 @@ When using the `rbxm`, you must require the copy of Fusion bundled within it, ra
 
 ## Usage example
 
-Here's a basic component example, making use of some of OnyxUI's features.
+Here's a basic text button component example, making use of some of OnyxUI's features:
 
 ```lua
 local OnyxUI = require(path.to.OnyxUI)
 local Fusion = require(path.to.Fusion)
 
-return function(Scope: Fusion.Scope<any>, Props)
+export type TextButtonProps = OnyxUI.ButtonProps & {
+	Text: Fusion.UsedAs<string>?,
+}
+
+return function(Scope: Fusion.Scope<any>, Props: TextButtonProps)
 	local Scope = Fusion.innerScope(Scope, Fusion, OnyxUI.Util, OnyxUI.Components)
 	local Theme = OnyxUI.Themer.Theme:now()
 
-	return Scope:Button {
-		Content = { "Press me!" },
+	local Text = OnyxUI.Util.Fallback(Props.Text, "Hello World")
+
+	return Scope:Button(OnyxUI.Util.CombineProps(Props, {
+		Name = script.Name,
+		Content = Scope:Computed(function(Use)
+			local TextValue = Use(Text)
+
+			return { TextValue }
+		end),
 		Color = Theme.Colors.Primary.Main,
 		SizeVariant = "Large",
-	}
+		Size = Scope:UDim(0, Theme.Sizing["8"]),
+		List = {
+			FillDirection = Enum.FillDirection.Vertical,
+		}
+	}))
 end
 ```
 
