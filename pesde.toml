@@ -27,7 +27,6 @@ rojo = { name = "pesde/rojo", version = "^7.4.4", target = "lune" }
 [dependencies]
 ColorUtils = { wally = "csqrl/colour-utils", version = "^1.4.1" }
 Fusion = { wally = "elttob/fusion", version = "^0.3.0" }
-Signal = { wally = "sleitnick/signal", version = "^2.0.1" }
 
 # For wally
 
