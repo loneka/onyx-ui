@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://suite.loneka.com/OnyxUI">
+  <a href="https://loneka.com/onyx-ui">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="/gh-assets/logo.svg"></source>
       <source media="(prefers-color-scheme: light)" srcset="/gh-assets/logo.svg"></source>
