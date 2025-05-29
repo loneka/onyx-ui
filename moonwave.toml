@@ -29,6 +29,7 @@ classes = [
   "Heading",
   "TextSwap",
   "Slider",
+  "Tabs",
 ]
 
 [docusaurus]

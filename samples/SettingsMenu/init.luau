@@ -21,7 +21,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		Parent = Props.Parent,
 		Size = Scope:UDim2Offset(Theme.Sizing["16"], 0),
 		AutomaticSize = Enum.AutomaticSize.Y,
-		List = {},
+		List = {
+			HorizontalFlex = Enum.UIFlexAlignment.Fill,
+		},
 		Corner = {
 			Radius = Scope:UDim(0, Theme.CornerRadius["2"]),
 		},
