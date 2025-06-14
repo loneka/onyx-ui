@@ -25,6 +25,7 @@ local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
+local ColorUtils = require(OnyxUI.Parent.ColorUtils)
 
 local Children = Fusion.Children
 
@@ -187,7 +188,10 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			Gradient = {
 				Color = Scope:Computed(function(Use)
 					return ColorSequence.new({
-						ColorSequenceKeypoint.new(0, Util.Emphasize(Use(EffectiveColor), Use(EffectiveStrokeEmphasis))),
+						ColorSequenceKeypoint.new(
+							0,
+							ColorUtils.Lighten(Use(EffectiveColor), Use(EffectiveStrokeEmphasis))
+						),
 						ColorSequenceKeypoint.new(1, Use(EffectiveColor)),
 					})
 				end),

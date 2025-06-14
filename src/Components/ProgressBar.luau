@@ -21,6 +21,7 @@ local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
+local ColorUtils = require(OnyxUI.Parent.ColorUtils)
 
 local Children = Fusion.Children
 
@@ -120,7 +121,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 							return ColorSequence.new({
 								ColorSequenceKeypoint.new(
 									0,
-									Util.Emphasize(Use(Color), Use(Theme.StrokeEmphasis.Regular))
+									ColorUtils.Lighten(Use(Color), Use(Theme.StrokeEmphasis.Regular))
 								),
 								ColorSequenceKeypoint.new(1, Use(Color)),
 							})
