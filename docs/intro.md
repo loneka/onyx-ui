@@ -23,6 +23,15 @@ When using the `rbxm`, you must require the copy of Fusion bundled within it, ra
 1. Download the `OnyxUI.rbxm` file [listed here](https://github.com/ImAvafe/OnyxUI/releases/latest)
 2. Insert `OnyxUI.rbxm` into Roblox Studio
 
+## Previewing
+
+Preview and interact with OnyxUI components live:
+
+1. Open a place with OnyxUI installed
+2. Install the [UI Labs](https://create.roblox.com/store/asset/14293316215/UI-Labs) Studio plugin
+3. Open UI Labs
+4. Open the OnyxUI story, and select a component
+
 ## Usage example
 
 Here's a basic text button component example, making use of some of OnyxUI's features:
