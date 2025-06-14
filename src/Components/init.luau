@@ -27,6 +27,7 @@ local Components = {
 	TextSwap = require(script.TextSwap),
 	Slider = require(script.Slider),
 	Tabs = require(script.Tabs),
+	IconSwap = require(script.IconSwap),
 }
 
 task.spawn(function()
