@@ -23,4 +23,5 @@ return {
 	UDim2 = Unit.UDim2,
 	UDim2Offset = Unit.UDim2Offset,
 	UDim2Scale = Unit.UDim2Scale,
+	Font = Unit.Font,
 }

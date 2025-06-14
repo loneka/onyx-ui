@@ -95,13 +95,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			return Use(Theme.Colors.BaseContent.Main)
 		end)
 	)
-	local FontFace = Util.Fallback(
-		Props.FontFace,
-
-		Scope:Computed(function(Use)
-			return Font.new(Use(Theme.Font.Body), Use(Theme.FontWeight.Body))
-		end)
-	)
+	local FontFace = Util.Fallback(Props.FontFace, Scope:Font(Theme.Font.Body, Theme.FontWeight.Body))
 	local TextXAlignment = Util.Fallback(Props.TextXAlignment, Enum.TextXAlignment.Left)
 	local TextYAlignment = Util.Fallback(Props.TextYAlignment, Enum.TextYAlignment.Top)
 	local TextTransparency = Util.Fallback(

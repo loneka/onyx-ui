@@ -61,12 +61,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 	local TextColor3 = Util.Fallback(Props.TextColor3, Theme.Colors.BaseContent.Main)
 	local TextSize = Util.Fallback(Props.TextSize, Theme.TextSize["1"])
 	local RichText = Util.Fallback(Props.RichText, true)
-	local FontFace = Util.Fallback(
-		Props.FontFace,
-		Scope:Computed(function(Use)
-			return Font.new(Use(Theme.Font.Body), Use(Theme.FontWeight.Body))
-		end)
-	)
+	local FontFace = Util.Fallback(Props.FontFace, Scope:Font(Theme.Font.Body, Theme.FontWeight.Body))
 	local TextWrapped = Util.Fallback(Props.TextWrapped, true)
 	local TextXAlignment = Util.Fallback(Props.TextXAlignment, Enum.TextXAlignment.Left)
 	local TextYAlignment = Util.Fallback(Props.TextYAlignment, Enum.TextYAlignment.Top)

@@ -46,9 +46,7 @@ return {
 						Scope:Text {
 							Text = "Title",
 							TextSize = Theme.TextSize["1.25"],
-							FontFace = Scope:Computed(function(Use)
-								return Font.new(Use(Theme.Font.Heading), Use(Theme.FontWeight.Heading))
-							end),
+							FontFace = Scope:Font(Theme.Font.Heading, Theme.FontWeight.Heading),
 						},
 						Scope:Divider {},
 						Scope:Text {

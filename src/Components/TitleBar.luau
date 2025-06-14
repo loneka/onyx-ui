@@ -52,12 +52,8 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Content = Util.Fallback(Props.Content, {})
 	local ContentSize = Util.Fallback(Props.ContentSize, Theme.TextSize["1"])
 	local ContentColor = Util.Fallback(Props.ContentColor, Theme.Colors.BaseContent.Main)
-	local ContentFontFace = Util.Fallback(
-		Props.ContentFontFace,
-		Scope:Computed(function(Use)
-			return Font.new(Use(Theme.Font.Heading), Use(Theme.FontWeight.Heading))
-		end)
-	)
+	local ContentFontFace =
+		Util.Fallback(Props.ContentFontFace, Scope:Font(Theme.Font.Heading, Theme.FontWeight.Heading))
 	local CloseButtonDisabled = Util.Fallback(Props.CloseButtonDisabled, false)
 	local CloseButtonIcon = Util.Fallback(Props.CloseButtonIcon, "rbxassetid://80218226919142")
 	local OnClose = Util.Fallback(Props.OnClose, function() end)

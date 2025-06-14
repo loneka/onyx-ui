@@ -43,8 +43,6 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 			return TextSizeValue * HeadingSizeValue
 		end),
-		FontFace = Scope:Computed(function(Use)
-			return Font.new(Use(Theme.Font.Heading), Use(Theme.FontWeight.Heading))
-		end),
+		FontFace = Scope:Font(Theme.Font.Heading, Theme.FontWeight.Heading),
 	}))
 end

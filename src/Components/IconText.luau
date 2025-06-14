@@ -54,12 +54,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local ContentTransparency = Util.Fallback(Props.ContentTransparency, 0)
 	local ContentWrapped = Util.Fallback(Props.ContentWrapped, true)
 	local ContentRichText = Util.Fallback(Props.ContentRichText, true)
-	local ContentFontFace = Util.Fallback(
-		Props.ContentFontFace,
-		Scope:Computed(function(Use)
-			return Font.new(Use(Theme.Font.Body), Use(Theme.FontWeight.Body))
-		end)
-	)
+	local ContentFontFace = Util.Fallback(Props.ContentFontFace, Scope:Font(Theme.Font.Body, Theme.FontWeight.Body))
 
 	return Scope:Frame(Util.CombineProps(Props, {
 		Name = script.Name,
