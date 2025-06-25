@@ -8,6 +8,8 @@ wally.toml
 *.lock
 *.rbxl.lock
 
+build
+
 sourcemap.json
 
 /build
