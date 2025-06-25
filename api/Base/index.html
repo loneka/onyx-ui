@@ -1,572 +1,1027 @@
 <!doctype html>
-<html lang="en" dir="ltr" class="plugin-moonwave plugin-id-moonwave">
+<html lang="en" dir="ltr" class="plugin-moonwave plugin-id-moonwave" data-has-hydrated="false">
 <head>
 <meta charset="UTF-8">
-<meta name="generator" content="Docusaurus v2.3.1">
-<title data-rh="true">Base | OnyxUI</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://loneka.com/onyx-ui/api/Base"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="Base | OnyxUI"><meta data-rh="true" name="description" content="The foundational component of OnyxUI, from which all other components are built off of. Props supported here typically work in all other components.
-
-:::info Styling props
-A reference of common styling props can be found in [this docs page](/docs/styling-props).
-:::"><meta data-rh="true" property="og:description" content="The foundational component of OnyxUI, from which all other components are built off of. Props supported here typically work in all other components.
-
-:::info Styling props
-A reference of common styling props can be found in [this docs page](/docs/styling-props).
-:::"><link data-rh="true" rel="icon" href="/onyx-ui/favicon.svg"><link data-rh="true" rel="canonical" href="https://loneka.com/onyx-ui/api/Base"><link data-rh="true" rel="alternate" href="https://loneka.com/onyx-ui/api/Base" hreflang="en"><link data-rh="true" rel="alternate" href="https://loneka.com/onyx-ui/api/Base" hreflang="x-default"><link rel="stylesheet" href="/onyx-ui/assets/css/styles.e1adec2f.css">
-<link rel="preload" href="/onyx-ui/assets/js/runtime~main.b2c5602f.js" as="script">
-<link rel="preload" href="/onyx-ui/assets/js/main.ca792070.js" as="script">
+<meta name="generator" content="Docusaurus v3.7.0">
+<title data-rh="true">Base | OnyxUI</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://loneka.com/onyx-ui/api/Base"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="Base | OnyxUI"><meta data-rh="true" name="description" content="The foundational component of OnyxUI, from which all other components are built off of. Props supported here typically work in all other components."><meta data-rh="true" property="og:description" content="The foundational component of OnyxUI, from which all other components are built off of. Props supported here typically work in all other components."><link data-rh="true" rel="icon" href="/onyx-ui/favicon.svg"><link data-rh="true" rel="canonical" href="https://loneka.com/onyx-ui/api/Base"><link data-rh="true" rel="alternate" href="https://loneka.com/onyx-ui/api/Base" hreflang="en"><link data-rh="true" rel="alternate" href="https://loneka.com/onyx-ui/api/Base" hreflang="x-default"><link rel="stylesheet" href="/onyx-ui/assets/css/styles.94c65ba4.css">
+<script src="/onyx-ui/assets/js/runtime~main.810f6de4.js" defer="defer"></script>
+<script src="/onyx-ui/assets/js/main.6ac2c754.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
-<script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
-<div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/onyx-ui/"><b class="navbar__title text--truncate">OnyxUI</b></a><a class="navbar__item navbar__link" href="/onyx-ui/docs/intro">Docs</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/onyx-ui/api/">API</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/loneka/onyx-ui" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="searchBox_ZlJk"><div class="navbar__search"><span aria-label="expand searchbar" role="button" class="search-icon" tabindex="0"></span><input type="search" id="search_input_react" placeholder="Loading..." aria-label="Search" class="navbar__search-input search-bar" disabled=""></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0 docPageContainer_wNNk"><div class="docPage_Dpn1"><div class="docSidebarContainer_o_re"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/onyx-ui/api/Util">​Util</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" aria-expanded="true" href="/onyx-ui/api/Base">Components</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/onyx-ui/api/Base">​Base</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Button">​Button</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Frame">​Frame</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/BaseButton">​Base​Button</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/IconButton">​Icon​Button</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Card">​Card</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Group">​Group</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/MenuFrame">​Menu​Frame</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/SwitchInput">​Switch​Input</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/SwitchGroup">​Switch​Group</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Text">​Text</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Badge">​Badge</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Scroller">​Scroller</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Checkbox">​Checkbox</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/TextInput">​Text​Input</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/TextArea">​Text​Area</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Avatar">​Avatar</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/ProgressBar">​Progress​Bar</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/TitleBar">​Title​Bar</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Icon">​Icon</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Divider">​Divider</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/AutoScaleFrame">​Auto​Scale​Frame</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Image">​Image</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/NumberSpinner">​Number​Spinner</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/IconText">​Icon​Text</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Heading">​Heading</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/SwapInput">​Swap​Input</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Slider">​Slider</a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/onyx-ui/api/Themer">​Themer</a></li></ul></nav></div></div><main class="docMainContainer_HJE1"><div class="container padding-vert--lg"><div class="row"><div class="col docItemCol_MU3C"><div class="docItemContainer_Wv98"><article><div class="member_J0w1 markdown"><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_oUs_"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><header><h1 class="docTitle_mZRt" style="text-decoration:none"><span style="display:inline-block">Base</span></h1><div class="luaClassTags_EipM"></div><div>
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();null!==e?t(e):window.matchMedia("(prefers-color-scheme: dark)").matches?t("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,t("light"))}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/onyx-ui/"><b class="navbar__title text--truncate">OnyxUI</b></a><a class="navbar__item navbar__link" href="/onyx-ui/docs/intro">Docs</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/onyx-ui/api/">API</a></div><div class="navbar__items navbar__items--right"><a href="https://loneka.com/suite/discord" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Discord<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><a href="https://github.com/loneka/onyx-ui" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite" aria-pressed="false"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search"><span aria-label="expand searchbar" role="button" class="search-icon" tabindex="0"></span><input id="search_input_react" type="search" placeholder="Loading..." aria-label="Search" class="navbar__search-input search-bar" disabled=""></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0 docPageContainer_wNNk"><div class="docPage_Dpn1"><div class="docSidebarContainer_o_re"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/onyx-ui/api/Util">​Util</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/onyx-ui/api/Base">Components</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/onyx-ui/api/Base">​Base</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Button">​Button</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Frame">​Frame</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/BaseButton">​Base​Button</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/IconButton">​Icon​Button</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Card">​Card</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Group">​Group</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Switch">​Switch</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Text">​Text</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Badge">​Badge</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Scroller">​Scroller</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Checkbox">​Checkbox</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/TextInput">​Text​Input</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/TextArea">​Text​Area</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Avatar">​Avatar</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/ProgressBar">​Progress​Bar</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/TitleBar">​Title​Bar</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Icon">​Icon</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Divider">​Divider</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/AutoScaler">​Auto​Scaler</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Image">​Image</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/IconText">​Icon​Text</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Heading">​Heading</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/TextSwap">​Text​Swap</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Slider">​Slider</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/onyx-ui/api/Tabs">​Tabs</a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/onyx-ui/api/IconSwap">​Icon​Swap</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/onyx-ui/api/Themer">​Themer</a></li></ul></nav></div></div><main class="docMainContainer_HJE1"><div class="container padding-vert--lg"><div class="row"><div class="col docItemCol_MU3C"><div class="docItemContainer_Wv98"><article><div class="member_J0w1 markdown"><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_oUs_"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><header><h1 class="docTitle_mZRt" style="text-decoration:none"><span style="display:inline-block">Base</span></h1><div class="luaClassTags_EipM"></div><div>
 <p>The foundational component of OnyxUI, from which all other components are built off of. Props supported here typically work in all other components.</p>
-<div class="admonition admonition-info alert alert--info">
-  <div class="admonition-heading">
-    <h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16">
-          <path d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path>
-        </svg></span>Styling props</h5>
-  </div>
-  <div class="admonition-content">
-    <p>A reference of common styling props can be found in <a href="/onyx-ui/docs/styling-props">this docs page</a>.</p>
-  </div>
-</div>
-</div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="types">Types<a href="#types" class="hash-link" aria-label="Direct link to Types" title="Direct link to Types">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="BaseProps"><code style="text-decoration:none">BaseProps</code><a href="#BaseProps" class="hash-link" aria-label="Direct link to BaseProps" title="Direct link to BaseProps">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/loneka/onyx-ui/blob/master/src/Components/Base.luau#L247"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>BaseProps<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>...<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/onyx-ui/api/Base#BaseProps">BaseProps</a></code></div><div><code>ClassName<!-- -->: </code><code class="blue_P4bS">string?</code></div><div><code>Name<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">string</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>Parent<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Instance" target="_blank" rel="noopener noreferrer">Instance<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>Position<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim2" target="_blank" rel="noopener noreferrer">UDim2<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>Rotation<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">number</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>AnchorPoint<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Vector2" target="_blank" rel="noopener noreferrer">Vector2<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>Size<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim2" target="_blank" rel="noopener noreferrer">UDim2<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>AutomaticSize<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.AutomaticSize</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>Visible<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">boolean</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>ZIndex<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">number</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>LayoutOrder<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">number</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>ClipsDescendants<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">boolean</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>Active<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">boolean</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>Selectable<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">boolean</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>Interactable<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">boolean</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>BackgroundColor3<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Color3" target="_blank" rel="noopener noreferrer">Color3<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>BackgroundTransparency<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">number</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>NextSelectionDown<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/GuiObject" target="_blank" rel="noopener noreferrer">GuiObject<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>NextSelectionUp<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/GuiObject" target="_blank" rel="noopener noreferrer">GuiObject<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>NextSelectionRight<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/GuiObject" target="_blank" rel="noopener noreferrer">GuiObject<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>NextSelectionLeft<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/GuiObject" target="_blank" rel="noopener noreferrer">GuiObject<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>SelectionImageObject<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/GuiObject" target="_blank" rel="noopener noreferrer">GuiObject<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>SelectionOrder<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">number</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>SizeConstraint<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.SizeConstraint</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>AutoLocalize<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">boolean</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>RootLocalizationTable<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/LocalizationTable" target="_blank" rel="noopener noreferrer">LocalizationTable<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>SelectionBehaviorDown<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.SelectionBehavior</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>SelectionBehaviorUp<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.SelectionBehavior</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>SelectionBehaviorRight<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.SelectionBehavior</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>SelectionBehaviorLeft<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.SelectionBehavior</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>SelectionGroup<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">boolean</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>CornerRadius<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim" target="_blank" rel="noopener noreferrer">UDim<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>Padding<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim" target="_blank" rel="noopener noreferrer">UDim<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>PaddingTop<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim" target="_blank" rel="noopener noreferrer">UDim<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>PaddingLeft<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim" target="_blank" rel="noopener noreferrer">UDim<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>PaddingRight<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim" target="_blank" rel="noopener noreferrer">UDim<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>PaddingBottom<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim" target="_blank" rel="noopener noreferrer">UDim<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>Scale<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">number</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>StrokeEnabled<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">boolean</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>StrokeThickness<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">number</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>StrokeColor<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Color3" target="_blank" rel="noopener noreferrer">Color3<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>StrokeTransparency<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">number</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>StrokeLineJoinMode<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.LineJoinMode</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>StrokeApplyStrokeMode<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.ApplyStrokeMode</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>GradientEnabled<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">boolean</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>GradientColor<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/ColorSequence" target="_blank" rel="noopener noreferrer">ColorSequence<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>GradientOffset<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim" target="_blank" rel="noopener noreferrer">UDim<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>GradientRotation<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">number</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>GradientTransparency<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">number</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>AspectRatio<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">number</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>AspectType<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.AspectType</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>DominantAxis<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.DominantAxis</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>ListEnabled<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">boolean</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>ListPadding<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim" target="_blank" rel="noopener noreferrer">UDim<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>ListFillDirection<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.FillDirection</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>ListSortOrder<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.SortOrder</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>ListWraps<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">boolean</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>ListHorizontalAlignment<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.HorizontalAlignment</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>ListHorizontalFlex<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">boolean</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>ListVerticalAlignment<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.VerticalAlignment</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>ListVerticalFlex<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">boolean</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>ListItemLineAlignment<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.ItemLineAlignment</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>GridEnabled<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">boolean</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>GridCellPadding<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim" target="_blank" rel="noopener noreferrer">UDim<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>GridCellSize<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim2" target="_blank" rel="noopener noreferrer">UDim2<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>GridFillDirection<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.FillDirection</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>GridFillDirectionMaxCells<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">number</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>GridSortOrder<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.SortOrder</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>GridStartCorner<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.StartCorner</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>GridHorizontalAlignment<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.HorizontalAlignment</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>GridVerticalAlignment<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.VerticalAlignment</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>TableEnabled<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">boolean</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>TablePadding<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim" target="_blank" rel="noopener noreferrer">UDim<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>TableFillEmptySpaceColumns<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">boolean</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>TableFillEmptySpaceRows<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">boolean</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>TableFillDirection<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.FillDirection</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>TableSortOrder<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.SortOrder</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>TableMajorAxis<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.TableMajorAxis</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>TableHorizontalAlignment<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.HorizontalAlignment</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>TableVerticalAlignment<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.VerticalAlignment</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>PageEnabled<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">boolean</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>PageAnimated<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">boolean</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>PageCircular<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">boolean</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>PageEasingDirection<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.EasingDirection</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>PageEasingStyle<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.EasingStyle</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>PagePadding<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim" target="_blank" rel="noopener noreferrer">UDim<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>PageTweenTime<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">number</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>PageFillDirection<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.FillDirection</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>PageSortOrder<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.SortOrder</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>PageHorizontalAlignment<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.HorizontalAlignment</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>PageVerticalAlignment<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.VerticalAlignment</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>PageGamepadInputEnabled<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">boolean</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>PageScrollWheelInputEnabled<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">boolean</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>PageTouchInputEnabled<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">boolean</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>FlexMode<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.UIFlexMode</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>FlexItemLineAlignment<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Enum.ItemLineAlignment</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>FlexGrowRatio<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">number</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>FlexShrinkRatio<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">number</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>MaxSize<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Vector2" target="_blank" rel="noopener noreferrer">Vector2<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>MinSize<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Vector2" target="_blank" rel="noopener noreferrer">Vector2<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>MaxTextSize<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">number</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div><div><code>MinTextSize<!-- -->: </code><code class="blue_P4bS">Fusion.UsedAs</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">number</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">?</code></div></div><code>}</code></div><div></div></div></article></div><details><summary>Show raw api</summary><pre style="max-width:100%;white-space:pre-wrap">{
+</div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="types">Types<a href="#types" class="hash-link" aria-label="Direct link to Types" title="Direct link to Types">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="GradientProps"><code style="text-decoration:none">GradientProps</code><a href="#GradientProps" class="hash-link" aria-label="Direct link to GradientProps" title="Direct link to GradientProps">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/loneka/onyx-ui/blob/master/src/Components/Base.luau#L17"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>GradientProps<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>Enabled<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether the gradient is enabled.</p>
+</span></span></div><div><code>Color<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/ColorSequence" target="_blank" rel="noopener noreferrer">ColorSequence?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The color sequence of the gradient.</p>
+</span></span></div><div><code>Offset<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim" target="_blank" rel="noopener noreferrer">UDim?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The offset of the gradient.</p>
+</span></span></div><div><code>Rotation<!-- -->: </code><code class="blue_P4bS">number?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The rotation of the gradient.</p>
+</span></span></div><div><code>Transparency<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/NumberSequence" target="_blank" rel="noopener noreferrer">NumberSequence?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The transparency sequence of the gradient.</p>
+</span></span></div></div><code>}</code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="PaddingProps"><code style="text-decoration:none">PaddingProps</code><a href="#PaddingProps" class="hash-link" aria-label="Direct link to PaddingProps" title="Direct link to PaddingProps">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/loneka/onyx-ui/blob/master/src/Components/Base.luau#L29"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>PaddingProps<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>Enabled<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether the padding is enabled.</p>
+</span></span></div><div><code>All<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim" target="_blank" rel="noopener noreferrer">UDim?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The padding applied to all sides.</p>
+</span></span></div><div><code>Top<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim" target="_blank" rel="noopener noreferrer">UDim?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The padding applied to the top side.</p>
+</span></span></div><div><code>Left<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim" target="_blank" rel="noopener noreferrer">UDim?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The padding applied to the left side.</p>
+</span></span></div><div><code>Right<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim" target="_blank" rel="noopener noreferrer">UDim?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The padding applied to the right side.</p>
+</span></span></div><div><code>Bottom<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim" target="_blank" rel="noopener noreferrer">UDim?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The padding applied to the bottom side.</p>
+</span></span></div></div><code>}</code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="CornerProps"><code style="text-decoration:none">CornerProps</code><a href="#CornerProps" class="hash-link" aria-label="Direct link to CornerProps" title="Direct link to CornerProps">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/loneka/onyx-ui/blob/master/src/Components/Base.luau#L37"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>CornerProps<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>Enabled<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether the corner is enabled.</p>
+</span></span></div><div><code>Radius<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim" target="_blank" rel="noopener noreferrer">UDim?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The radius of the corner.</p>
+</span></span></div></div><code>}</code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="StrokeProps"><code style="text-decoration:none">StrokeProps</code><a href="#StrokeProps" class="hash-link" aria-label="Direct link to StrokeProps" title="Direct link to StrokeProps">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/loneka/onyx-ui/blob/master/src/Components/Base.luau#L50"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>StrokeProps<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>Enabled<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether the stroke is enabled.</p>
+</span></span></div><div><code>Thickness<!-- -->: </code><code class="blue_P4bS">number?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The thickness of the stroke.</p>
+</span></span></div><div><code>Color<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Color3" target="_blank" rel="noopener noreferrer">Color3?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The color of the stroke.</p>
+</span></span></div><div><code>Transparency<!-- -->: </code><code class="blue_P4bS">number?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The transparency of the stroke.</p>
+</span></span></div><div><code>LineJoinMode<!-- -->: </code><code class="blue_P4bS">Enum.LineJoinMode?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The line join mode of the stroke.</p>
+</span></span></div><div><code>ApplyStrokeMode<!-- -->: </code><code class="blue_P4bS">Enum.ApplyStrokeMode?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The apply stroke mode of the stroke.</p>
+</span></span></div><div><code>Gradient<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/onyx-ui/api/Base#GradientProps">GradientProps?</a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The gradient applied to the stroke.</p>
+</span></span></div></div><code>}</code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="AspectProps"><code style="text-decoration:none">AspectProps</code><a href="#AspectProps" class="hash-link" aria-label="Direct link to AspectProps" title="Direct link to AspectProps">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/loneka/onyx-ui/blob/master/src/Components/Base.luau#L60"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>AspectProps<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>Enabled<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether the aspect ratio constraint is enabled.</p>
+</span></span></div><div><code>Ratio<!-- -->: </code><code class="blue_P4bS">number?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The aspect ratio.</p>
+</span></span></div><div><code>Type<!-- -->: </code><code class="blue_P4bS">Enum.AspectType?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The aspect type.</p>
+</span></span></div><div><code>DominantAxis<!-- -->: </code><code class="blue_P4bS">Enum.DominantAxis?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The dominant axis.</p>
+</span></span></div></div><code>}</code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="ScaleProps"><code style="text-decoration:none">ScaleProps</code><a href="#ScaleProps" class="hash-link" aria-label="Direct link to ScaleProps" title="Direct link to ScaleProps">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/loneka/onyx-ui/blob/master/src/Components/Base.luau#L68"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>ScaleProps<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>Enabled<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether the scale is enabled.</p>
+</span></span></div><div><code>Scale<!-- -->: </code><code class="blue_P4bS">number?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The scale factor.</p>
+</span></span></div></div><code>}</code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="FlexProps"><code style="text-decoration:none">FlexProps</code><a href="#FlexProps" class="hash-link" aria-label="Direct link to FlexProps" title="Direct link to FlexProps">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/loneka/onyx-ui/blob/master/src/Components/Base.luau#L79"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>FlexProps<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>Enabled<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether the flex item is enabled.</p>
+</span></span></div><div><code>Mode<!-- -->: </code><code class="blue_P4bS">Enum.UIFlexMode?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The flex mode.</p>
+</span></span></div><div><code>ItemLineAlignment<!-- -->: </code><code class="blue_P4bS">Enum.ItemLineAlignment?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The alignment of items along the line.</p>
+</span></span></div><div><code>GrowRatio<!-- -->: </code><code class="blue_P4bS">number?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The grow ratio of the flex item.</p>
+</span></span></div><div><code>ShrinkRatio<!-- -->: </code><code class="blue_P4bS">number?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The shrink ratio of the flex item.</p>
+</span></span></div></div><code>}</code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="ListProps"><code style="text-decoration:none">ListProps</code><a href="#ListProps" class="hash-link" aria-label="Direct link to ListProps" title="Direct link to ListProps">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/loneka/onyx-ui/blob/master/src/Components/Base.luau#L95"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>ListProps<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>Enabled<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether the list layout is enabled.</p>
+</span></span></div><div><code>Padding<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim" target="_blank" rel="noopener noreferrer">UDim?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The padding between items in the list.</p>
+</span></span></div><div><code>FillDirection<!-- -->: </code><code class="blue_P4bS">Enum.FillDirection?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The fill direction of the list.</p>
+</span></span></div><div><code>SortOrder<!-- -->: </code><code class="blue_P4bS">Enum.SortOrder?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The sort order of the list.</p>
+</span></span></div><div><code>Wraps<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether the list wraps.</p>
+</span></span></div><div><code>HorizontalAlignment<!-- -->: </code><code class="blue_P4bS">Enum.HorizontalAlignment?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The horizontal alignment of the list.</p>
+</span></span></div><div><code>HorizontalFlex<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether horizontal flex is enabled.</p>
+</span></span></div><div><code>VerticalAlignment<!-- -->: </code><code class="blue_P4bS">Enum.VerticalAlignment?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The vertical alignment of the list.</p>
+</span></span></div><div><code>VerticalFlex<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether vertical flex is enabled.</p>
+</span></span></div><div><code>ItemLineAlignment<!-- -->: </code><code class="blue_P4bS">Enum.ItemLineAlignment?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The alignment of items along the line.</p>
+</span></span></div></div><code>}</code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="GridProps"><code style="text-decoration:none">GridProps</code><a href="#GridProps" class="hash-link" aria-label="Direct link to GridProps" title="Direct link to GridProps">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/loneka/onyx-ui/blob/master/src/Components/Base.luau#L110"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>GridProps<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>Enabled<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether the grid layout is enabled.</p>
+</span></span></div><div><code>CellPadding<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim2" target="_blank" rel="noopener noreferrer">UDim2?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The padding between cells in the grid.</p>
+</span></span></div><div><code>CellSize<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim2" target="_blank" rel="noopener noreferrer">UDim2?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The size of each cell in the grid.</p>
+</span></span></div><div><code>FillDirection<!-- -->: </code><code class="blue_P4bS">Enum.FillDirection?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The fill direction of the grid.</p>
+</span></span></div><div><code>FillDirectionMaxCells<!-- -->: </code><code class="blue_P4bS">number?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The maximum number of cells in the fill direction.</p>
+</span></span></div><div><code>SortOrder<!-- -->: </code><code class="blue_P4bS">Enum.SortOrder?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The sort order of the grid.</p>
+</span></span></div><div><code>StartCorner<!-- -->: </code><code class="blue_P4bS">Enum.StartCorner?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The starting corner of the grid.</p>
+</span></span></div><div><code>HorizontalAlignment<!-- -->: </code><code class="blue_P4bS">Enum.HorizontalAlignment?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The horizontal alignment of the grid.</p>
+</span></span></div><div><code>VerticalAlignment<!-- -->: </code><code class="blue_P4bS">Enum.VerticalAlignment?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The vertical alignment of the grid.</p>
+</span></span></div></div><code>}</code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="TableProps"><code style="text-decoration:none">TableProps</code><a href="#TableProps" class="hash-link" aria-label="Direct link to TableProps" title="Direct link to TableProps">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/loneka/onyx-ui/blob/master/src/Components/Base.luau#L125"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>TableProps<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>Enabled<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether the table layout is enabled.</p>
+</span></span></div><div><code>Padding<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim" target="_blank" rel="noopener noreferrer">UDim?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The padding between items in the table.</p>
+</span></span></div><div><code>FillEmptySpaceColumns<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether empty space in columns is filled.</p>
+</span></span></div><div><code>FillEmptySpaceRows<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether empty space in rows is filled.</p>
+</span></span></div><div><code>FillDirection<!-- -->: </code><code class="blue_P4bS">Enum.FillDirection?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The fill direction of the table.</p>
+</span></span></div><div><code>SortOrder<!-- -->: </code><code class="blue_P4bS">Enum.SortOrder?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The sort order of the table.</p>
+</span></span></div><div><code>MajorAxis<!-- -->: </code><code class="blue_P4bS">Enum.TableMajorAxis?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The major axis of the table.</p>
+</span></span></div><div><code>HorizontalAlignment<!-- -->: </code><code class="blue_P4bS">Enum.HorizontalAlignment?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The horizontal alignment of the table.</p>
+</span></span></div><div><code>VerticalAlignment<!-- -->: </code><code class="blue_P4bS">Enum.VerticalAlignment?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The vertical alignment of the table.</p>
+</span></span></div></div><code>}</code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="PageProps"><code style="text-decoration:none">PageProps</code><a href="#PageProps" class="hash-link" aria-label="Direct link to PageProps" title="Direct link to PageProps">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/loneka/onyx-ui/blob/master/src/Components/Base.luau#L145"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>PageProps<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>Enabled<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether the page layout is enabled.</p>
+</span></span></div><div><code>Animated<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether the page transitions are animated.</p>
+</span></span></div><div><code>Circular<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether the pages are circular.</p>
+</span></span></div><div><code>EasingDirection<!-- -->: </code><code class="blue_P4bS">Enum.EasingDirection?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The easing direction for transitions.</p>
+</span></span></div><div><code>EasingStyle<!-- -->: </code><code class="blue_P4bS">Enum.EasingStyle?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The easing style for transitions.</p>
+</span></span></div><div><code>Padding<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim" target="_blank" rel="noopener noreferrer">UDim?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The padding between pages.</p>
+</span></span></div><div><code>TweenTime<!-- -->: </code><code class="blue_P4bS">number?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The time for page transitions.</p>
+</span></span></div><div><code>FillDirection<!-- -->: </code><code class="blue_P4bS">Enum.FillDirection?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The fill direction of the pages.</p>
+</span></span></div><div><code>SortOrder<!-- -->: </code><code class="blue_P4bS">Enum.SortOrder?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The sort order of the pages.</p>
+</span></span></div><div><code>HorizontalAlignment<!-- -->: </code><code class="blue_P4bS">Enum.HorizontalAlignment?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The horizontal alignment of the pages.</p>
+</span></span></div><div><code>VerticalAlignment<!-- -->: </code><code class="blue_P4bS">Enum.VerticalAlignment?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The vertical alignment of the pages.</p>
+</span></span></div><div><code>GamepadInputEnabled<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether gamepad input is enabled.</p>
+</span></span></div><div><code>ScrollWheelInputEnabled<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether scroll wheel input is enabled.</p>
+</span></span></div><div><code>TouchInputEnabled<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether touch input is enabled.</p>
+</span></span></div></div><code>}</code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="SizeLimitProps"><code style="text-decoration:none">SizeLimitProps</code><a href="#SizeLimitProps" class="hash-link" aria-label="Direct link to SizeLimitProps" title="Direct link to SizeLimitProps">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/loneka/onyx-ui/blob/master/src/Components/Base.luau#L154"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>SizeLimitProps<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>Enabled<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether the size constraint is enabled.</p>
+</span></span></div><div><code>Max<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Vector2" target="_blank" rel="noopener noreferrer">Vector2?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The maximum size.</p>
+</span></span></div><div><code>Min<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Vector2" target="_blank" rel="noopener noreferrer">Vector2?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The minimum size.</p>
+</span></span></div></div><code>}</code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="TextSizeLimitProps"><code style="text-decoration:none">TextSizeLimitProps</code><a href="#TextSizeLimitProps" class="hash-link" aria-label="Direct link to TextSizeLimitProps" title="Direct link to TextSizeLimitProps">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/loneka/onyx-ui/blob/master/src/Components/Base.luau#L163"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>TextSizeLimitProps<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>Enabled<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether the text size constraint is enabled.</p>
+</span></span></div><div><code>Max<!-- -->: </code><code class="blue_P4bS">number?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The maximum text size.</p>
+</span></span></div><div><code>Min<!-- -->: </code><code class="blue_P4bS">number?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The minimum text size.</p>
+</span></span></div></div><code>}</code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="BaseProps"><code style="text-decoration:none">BaseProps</code><a href="#BaseProps" class="hash-link" aria-label="Direct link to BaseProps" title="Direct link to BaseProps">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/loneka/onyx-ui/blob/master/src/Components/Base.luau#L216"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>BaseProps<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>ClassName<!-- -->: </code><code class="blue_P4bS">string?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The class name of the component.</p>
+</span></span></div><div><code>Name<!-- -->: </code><code class="blue_P4bS">string?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The name of the component.</p>
+</span></span></div><div><code>Parent<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Instance" target="_blank" rel="noopener noreferrer">Instance?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The parent instance of the component.</p>
+</span></span></div><div><code>Position<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim2" target="_blank" rel="noopener noreferrer">UDim2?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The position of the component.</p>
+</span></span></div><div><code>Rotation<!-- -->: </code><code class="blue_P4bS">number?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The rotation of the component.</p>
+</span></span></div><div><code>AnchorPoint<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Vector2" target="_blank" rel="noopener noreferrer">Vector2?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The anchor point of the component.</p>
+</span></span></div><div><code>Size<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/UDim2" target="_blank" rel="noopener noreferrer">UDim2?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The size of the component.</p>
+</span></span></div><div><code>AutomaticSize<!-- -->: </code><code class="blue_P4bS">Enum.AutomaticSize?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The automatic size of the component.</p>
+</span></span></div><div><code>Visible<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether the component is visible.</p>
+</span></span></div><div><code>ZIndex<!-- -->: </code><code class="blue_P4bS">number?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The ZIndex of the component.</p>
+</span></span></div><div><code>LayoutOrder<!-- -->: </code><code class="blue_P4bS">number?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The layout order of the component.</p>
+</span></span></div><div><code>ClipsDescendants<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether the component clips its descendants.</p>
+</span></span></div><div><code>Active<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether the component is active.</p>
+</span></span></div><div><code>Selectable<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether the component is selectable.</p>
+</span></span></div><div><code>Interactable<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether the component is interactable.</p>
+</span></span></div><div><code>BackgroundColor3<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Color3" target="_blank" rel="noopener noreferrer">Color3?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The background color of the component.</p>
+</span></span></div><div><code>BackgroundTransparency<!-- -->: </code><code class="blue_P4bS">number?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The background transparency of the component.</p>
+</span></span></div><div><code>NextSelectionDown<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/GuiObject" target="_blank" rel="noopener noreferrer">GuiObject?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The next selection down.</p>
+</span></span></div><div><code>NextSelectionUp<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/GuiObject" target="_blank" rel="noopener noreferrer">GuiObject?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The next selection up.</p>
+</span></span></div><div><code>NextSelectionRight<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/GuiObject" target="_blank" rel="noopener noreferrer">GuiObject?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The next selection right.</p>
+</span></span></div><div><code>NextSelectionLeft<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/GuiObject" target="_blank" rel="noopener noreferrer">GuiObject?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The next selection left.</p>
+</span></span></div><div><code>SelectionImageObject<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/GuiObject" target="_blank" rel="noopener noreferrer">GuiObject?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The selection image object.</p>
+</span></span></div><div><code>SelectionOrder<!-- -->: </code><code class="blue_P4bS">number?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The selection order.</p>
+</span></span></div><div><code>SizeConstraint<!-- -->: </code><code class="blue_P4bS">Enum.SizeConstraint?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The size constraint of the component.</p>
+</span></span></div><div><code>AutoLocalize<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether the component auto-localizes.</p>
+</span></span></div><div><code>RootLocalizationTable<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/LocalizationTable" target="_blank" rel="noopener noreferrer">LocalizationTable?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The root localization table.</p>
+</span></span></div><div><code>SelectionBehaviorDown<!-- -->: </code><code class="blue_P4bS">Enum.SelectionBehavior?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The selection behavior down.</p>
+</span></span></div><div><code>SelectionBehaviorUp<!-- -->: </code><code class="blue_P4bS">Enum.SelectionBehavior?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The selection behavior up.</p>
+</span></span></div><div><code>SelectionBehaviorRight<!-- -->: </code><code class="blue_P4bS">Enum.SelectionBehavior?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The selection behavior right.</p>
+</span></span></div><div><code>SelectionBehaviorLeft<!-- -->: </code><code class="blue_P4bS">Enum.SelectionBehavior?</code><span class="inlineDescription_G7Er">-- <span>
+<p>The selection behavior left.</p>
+</span></span></div><div><code>SelectionGroup<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether the component is part of a selection group.</p>
+</span></span></div><div><code>Corner<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/onyx-ui/api/Base#CornerProps">CornerProps?</a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The corner properties.</p>
+</span></span></div><div><code>Padding<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/onyx-ui/api/Base#PaddingProps">PaddingProps?</a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The padding properties.</p>
+</span></span></div><div><code>Stroke<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/onyx-ui/api/Base#StrokeProps">StrokeProps?</a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The stroke properties.</p>
+</span></span></div><div><code>Gradient<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/onyx-ui/api/Base#GradientProps">GradientProps?</a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The gradient properties.</p>
+</span></span></div><div><code>Aspect<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/onyx-ui/api/Base#AspectProps">AspectProps?</a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The aspect ratio properties.</p>
+</span></span></div><div><code>Scale<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/onyx-ui/api/Base#ScaleProps">ScaleProps?</a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The scale properties.</p>
+</span></span></div><div><code>List<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/onyx-ui/api/Base#ListProps">ListProps?</a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The list layout properties.</p>
+</span></span></div><div><code>Grid<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/onyx-ui/api/Base#GridProps">GridProps?</a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The grid layout properties.</p>
+</span></span></div><div><code>Table<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/onyx-ui/api/Base#TableProps">TableProps?</a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The table layout properties.</p>
+</span></span></div><div><code>Page<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/onyx-ui/api/Base#PageProps">PageProps?</a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The page layout properties.</p>
+</span></span></div><div><code>Flex<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/onyx-ui/api/Base#FlexProps">FlexProps?</a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The flex layout properties.</p>
+</span></span></div><div><code>SizeLimit<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/onyx-ui/api/Base#SizeLimitProps">SizeLimitProps?</a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The size limit properties.</p>
+</span></span></div><div><code>TextSizeLimit<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/onyx-ui/api/Base#TextSizeLimitProps">TextSizeLimitProps?</a></code><span class="inlineDescription_G7Er">-- <span>
+<p>The text size limit properties.</p>
+</span></span></div></div><code>}</code></div><div></div></div></article></div><details><summary>Show raw api</summary><pre style="max-width:100%;white-space:pre-wrap">{
     &quot;functions&quot;: [],
     &quot;properties&quot;: [],
     &quot;types&quot;: [
+        {
+            &quot;name&quot;: &quot;GradientProps&quot;,
+            &quot;desc&quot;: &quot;&quot;,
+            &quot;fields&quot;: [
+                {
+                    &quot;name&quot;: &quot;Enabled&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether the gradient is enabled.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Color&quot;,
+                    &quot;lua_type&quot;: &quot;ColorSequence?&quot;,
+                    &quot;desc&quot;: &quot;The color sequence of the gradient.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Offset&quot;,
+                    &quot;lua_type&quot;: &quot;UDim?&quot;,
+                    &quot;desc&quot;: &quot;The offset of the gradient.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Rotation&quot;,
+                    &quot;lua_type&quot;: &quot;number?&quot;,
+                    &quot;desc&quot;: &quot;The rotation of the gradient.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Transparency&quot;,
+                    &quot;lua_type&quot;: &quot;NumberSequence?&quot;,
+                    &quot;desc&quot;: &quot;The transparency sequence of the gradient.&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 17,
+                &quot;path&quot;: &quot;src/Components/Base.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;PaddingProps&quot;,
+            &quot;desc&quot;: &quot;&quot;,
+            &quot;fields&quot;: [
+                {
+                    &quot;name&quot;: &quot;Enabled&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether the padding is enabled.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;All&quot;,
+                    &quot;lua_type&quot;: &quot;UDim?&quot;,
+                    &quot;desc&quot;: &quot;The padding applied to all sides.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Top&quot;,
+                    &quot;lua_type&quot;: &quot;UDim?&quot;,
+                    &quot;desc&quot;: &quot;The padding applied to the top side.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Left&quot;,
+                    &quot;lua_type&quot;: &quot;UDim?&quot;,
+                    &quot;desc&quot;: &quot;The padding applied to the left side.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Right&quot;,
+                    &quot;lua_type&quot;: &quot;UDim?&quot;,
+                    &quot;desc&quot;: &quot;The padding applied to the right side.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Bottom&quot;,
+                    &quot;lua_type&quot;: &quot;UDim?&quot;,
+                    &quot;desc&quot;: &quot;The padding applied to the bottom side.&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 29,
+                &quot;path&quot;: &quot;src/Components/Base.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;CornerProps&quot;,
+            &quot;desc&quot;: &quot;&quot;,
+            &quot;fields&quot;: [
+                {
+                    &quot;name&quot;: &quot;Enabled&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether the corner is enabled.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Radius&quot;,
+                    &quot;lua_type&quot;: &quot;UDim?&quot;,
+                    &quot;desc&quot;: &quot;The radius of the corner.&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 37,
+                &quot;path&quot;: &quot;src/Components/Base.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;StrokeProps&quot;,
+            &quot;desc&quot;: &quot;&quot;,
+            &quot;fields&quot;: [
+                {
+                    &quot;name&quot;: &quot;Enabled&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether the stroke is enabled.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Thickness&quot;,
+                    &quot;lua_type&quot;: &quot;number?&quot;,
+                    &quot;desc&quot;: &quot;The thickness of the stroke.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Color&quot;,
+                    &quot;lua_type&quot;: &quot;Color3?&quot;,
+                    &quot;desc&quot;: &quot;The color of the stroke.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Transparency&quot;,
+                    &quot;lua_type&quot;: &quot;number?&quot;,
+                    &quot;desc&quot;: &quot;The transparency of the stroke.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;LineJoinMode&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.LineJoinMode?&quot;,
+                    &quot;desc&quot;: &quot;The line join mode of the stroke.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;ApplyStrokeMode&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.ApplyStrokeMode?&quot;,
+                    &quot;desc&quot;: &quot;The apply stroke mode of the stroke.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Gradient&quot;,
+                    &quot;lua_type&quot;: &quot;GradientProps?&quot;,
+                    &quot;desc&quot;: &quot;The gradient applied to the stroke.&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 50,
+                &quot;path&quot;: &quot;src/Components/Base.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;AspectProps&quot;,
+            &quot;desc&quot;: &quot;&quot;,
+            &quot;fields&quot;: [
+                {
+                    &quot;name&quot;: &quot;Enabled&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether the aspect ratio constraint is enabled.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Ratio&quot;,
+                    &quot;lua_type&quot;: &quot;number?&quot;,
+                    &quot;desc&quot;: &quot;The aspect ratio.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Type&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.AspectType?&quot;,
+                    &quot;desc&quot;: &quot;The aspect type.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;DominantAxis&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.DominantAxis?&quot;,
+                    &quot;desc&quot;: &quot;The dominant axis.&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 60,
+                &quot;path&quot;: &quot;src/Components/Base.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;ScaleProps&quot;,
+            &quot;desc&quot;: &quot;&quot;,
+            &quot;fields&quot;: [
+                {
+                    &quot;name&quot;: &quot;Enabled&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether the scale is enabled.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Scale&quot;,
+                    &quot;lua_type&quot;: &quot;number?&quot;,
+                    &quot;desc&quot;: &quot;The scale factor.&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 68,
+                &quot;path&quot;: &quot;src/Components/Base.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;FlexProps&quot;,
+            &quot;desc&quot;: &quot;&quot;,
+            &quot;fields&quot;: [
+                {
+                    &quot;name&quot;: &quot;Enabled&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether the flex item is enabled.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Mode&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.UIFlexMode?&quot;,
+                    &quot;desc&quot;: &quot;The flex mode.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;ItemLineAlignment&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.ItemLineAlignment?&quot;,
+                    &quot;desc&quot;: &quot;The alignment of items along the line.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;GrowRatio&quot;,
+                    &quot;lua_type&quot;: &quot;number?&quot;,
+                    &quot;desc&quot;: &quot;The grow ratio of the flex item.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;ShrinkRatio&quot;,
+                    &quot;lua_type&quot;: &quot;number?&quot;,
+                    &quot;desc&quot;: &quot;The shrink ratio of the flex item.&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 79,
+                &quot;path&quot;: &quot;src/Components/Base.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;ListProps&quot;,
+            &quot;desc&quot;: &quot;&quot;,
+            &quot;fields&quot;: [
+                {
+                    &quot;name&quot;: &quot;Enabled&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether the list layout is enabled.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Padding&quot;,
+                    &quot;lua_type&quot;: &quot;UDim?&quot;,
+                    &quot;desc&quot;: &quot;The padding between items in the list.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;FillDirection&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.FillDirection?&quot;,
+                    &quot;desc&quot;: &quot;The fill direction of the list.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;SortOrder&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.SortOrder?&quot;,
+                    &quot;desc&quot;: &quot;The sort order of the list.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Wraps&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether the list wraps.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;HorizontalAlignment&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.HorizontalAlignment?&quot;,
+                    &quot;desc&quot;: &quot;The horizontal alignment of the list.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;HorizontalFlex&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether horizontal flex is enabled.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;VerticalAlignment&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.VerticalAlignment?&quot;,
+                    &quot;desc&quot;: &quot;The vertical alignment of the list.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;VerticalFlex&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether vertical flex is enabled.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;ItemLineAlignment&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.ItemLineAlignment?&quot;,
+                    &quot;desc&quot;: &quot;The alignment of items along the line.&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 95,
+                &quot;path&quot;: &quot;src/Components/Base.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;GridProps&quot;,
+            &quot;desc&quot;: &quot;&quot;,
+            &quot;fields&quot;: [
+                {
+                    &quot;name&quot;: &quot;Enabled&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether the grid layout is enabled.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;CellPadding&quot;,
+                    &quot;lua_type&quot;: &quot;UDim2?&quot;,
+                    &quot;desc&quot;: &quot;The padding between cells in the grid.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;CellSize&quot;,
+                    &quot;lua_type&quot;: &quot;UDim2?&quot;,
+                    &quot;desc&quot;: &quot;The size of each cell in the grid.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;FillDirection&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.FillDirection?&quot;,
+                    &quot;desc&quot;: &quot;The fill direction of the grid.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;FillDirectionMaxCells&quot;,
+                    &quot;lua_type&quot;: &quot;number?&quot;,
+                    &quot;desc&quot;: &quot;The maximum number of cells in the fill direction.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;SortOrder&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.SortOrder?&quot;,
+                    &quot;desc&quot;: &quot;The sort order of the grid.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;StartCorner&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.StartCorner?&quot;,
+                    &quot;desc&quot;: &quot;The starting corner of the grid.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;HorizontalAlignment&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.HorizontalAlignment?&quot;,
+                    &quot;desc&quot;: &quot;The horizontal alignment of the grid.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;VerticalAlignment&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.VerticalAlignment?&quot;,
+                    &quot;desc&quot;: &quot;The vertical alignment of the grid.&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 110,
+                &quot;path&quot;: &quot;src/Components/Base.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;TableProps&quot;,
+            &quot;desc&quot;: &quot;&quot;,
+            &quot;fields&quot;: [
+                {
+                    &quot;name&quot;: &quot;Enabled&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether the table layout is enabled.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Padding&quot;,
+                    &quot;lua_type&quot;: &quot;UDim?&quot;,
+                    &quot;desc&quot;: &quot;The padding between items in the table.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;FillEmptySpaceColumns&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether empty space in columns is filled.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;FillEmptySpaceRows&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether empty space in rows is filled.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;FillDirection&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.FillDirection?&quot;,
+                    &quot;desc&quot;: &quot;The fill direction of the table.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;SortOrder&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.SortOrder?&quot;,
+                    &quot;desc&quot;: &quot;The sort order of the table.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;MajorAxis&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.TableMajorAxis?&quot;,
+                    &quot;desc&quot;: &quot;The major axis of the table.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;HorizontalAlignment&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.HorizontalAlignment?&quot;,
+                    &quot;desc&quot;: &quot;The horizontal alignment of the table.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;VerticalAlignment&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.VerticalAlignment?&quot;,
+                    &quot;desc&quot;: &quot;The vertical alignment of the table.&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 125,
+                &quot;path&quot;: &quot;src/Components/Base.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;PageProps&quot;,
+            &quot;desc&quot;: &quot;&quot;,
+            &quot;fields&quot;: [
+                {
+                    &quot;name&quot;: &quot;Enabled&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether the page layout is enabled.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Animated&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether the page transitions are animated.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Circular&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether the pages are circular.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;EasingDirection&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.EasingDirection?&quot;,
+                    &quot;desc&quot;: &quot;The easing direction for transitions.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;EasingStyle&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.EasingStyle?&quot;,
+                    &quot;desc&quot;: &quot;The easing style for transitions.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Padding&quot;,
+                    &quot;lua_type&quot;: &quot;UDim?&quot;,
+                    &quot;desc&quot;: &quot;The padding between pages.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;TweenTime&quot;,
+                    &quot;lua_type&quot;: &quot;number?&quot;,
+                    &quot;desc&quot;: &quot;The time for page transitions.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;FillDirection&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.FillDirection?&quot;,
+                    &quot;desc&quot;: &quot;The fill direction of the pages.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;SortOrder&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.SortOrder?&quot;,
+                    &quot;desc&quot;: &quot;The sort order of the pages.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;HorizontalAlignment&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.HorizontalAlignment?&quot;,
+                    &quot;desc&quot;: &quot;The horizontal alignment of the pages.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;VerticalAlignment&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.VerticalAlignment?&quot;,
+                    &quot;desc&quot;: &quot;The vertical alignment of the pages.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;GamepadInputEnabled&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether gamepad input is enabled.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;ScrollWheelInputEnabled&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether scroll wheel input is enabled.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;TouchInputEnabled&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether touch input is enabled.&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 145,
+                &quot;path&quot;: &quot;src/Components/Base.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;SizeLimitProps&quot;,
+            &quot;desc&quot;: &quot;&quot;,
+            &quot;fields&quot;: [
+                {
+                    &quot;name&quot;: &quot;Enabled&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether the size constraint is enabled.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Max&quot;,
+                    &quot;lua_type&quot;: &quot;Vector2?&quot;,
+                    &quot;desc&quot;: &quot;The maximum size.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Min&quot;,
+                    &quot;lua_type&quot;: &quot;Vector2?&quot;,
+                    &quot;desc&quot;: &quot;The minimum size.&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 154,
+                &quot;path&quot;: &quot;src/Components/Base.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;TextSizeLimitProps&quot;,
+            &quot;desc&quot;: &quot;&quot;,
+            &quot;fields&quot;: [
+                {
+                    &quot;name&quot;: &quot;Enabled&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether the text size constraint is enabled.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Max&quot;,
+                    &quot;lua_type&quot;: &quot;number?&quot;,
+                    &quot;desc&quot;: &quot;The maximum text size.&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Min&quot;,
+                    &quot;lua_type&quot;: &quot;number?&quot;,
+                    &quot;desc&quot;: &quot;The minimum text size.&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 163,
+                &quot;path&quot;: &quot;src/Components/Base.luau&quot;
+            }
+        },
         {
             &quot;name&quot;: &quot;BaseProps&quot;,
             &quot;desc&quot;: &quot;&quot;,
             &quot;fields&quot;: [
                 {
-                    &quot;name&quot;: &quot;...&quot;,
-                    &quot;lua_type&quot;: &quot;BaseProps&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
                     &quot;name&quot;: &quot;ClassName&quot;,
                     &quot;lua_type&quot;: &quot;string?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;desc&quot;: &quot;The class name of the component.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;Name&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;string&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;string?&quot;,
+                    &quot;desc&quot;: &quot;The name of the component.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;Parent&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Instance&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;Instance?&quot;,
+                    &quot;desc&quot;: &quot;The parent instance of the component.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;Position&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;UDim2&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;UDim2?&quot;,
+                    &quot;desc&quot;: &quot;The position of the component.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;Rotation&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;number&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;number?&quot;,
+                    &quot;desc&quot;: &quot;The rotation of the component.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;AnchorPoint&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Vector2&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;Vector2?&quot;,
+                    &quot;desc&quot;: &quot;The anchor point of the component.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;Size&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;UDim2&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;UDim2?&quot;,
+                    &quot;desc&quot;: &quot;The size of the component.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;AutomaticSize&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.AutomaticSize&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;Enum.AutomaticSize?&quot;,
+                    &quot;desc&quot;: &quot;The automatic size of the component.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;Visible&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;boolean&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether the component is visible.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;ZIndex&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;number&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;number?&quot;,
+                    &quot;desc&quot;: &quot;The ZIndex of the component.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;LayoutOrder&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;number&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;number?&quot;,
+                    &quot;desc&quot;: &quot;The layout order of the component.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;ClipsDescendants&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;boolean&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether the component clips its descendants.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;Active&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;boolean&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether the component is active.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;Selectable&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;boolean&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether the component is selectable.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;Interactable&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;boolean&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether the component is interactable.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;BackgroundColor3&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Color3&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;Color3?&quot;,
+                    &quot;desc&quot;: &quot;The background color of the component.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;BackgroundTransparency&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;number&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;number?&quot;,
+                    &quot;desc&quot;: &quot;The background transparency of the component.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;NextSelectionDown&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;GuiObject&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;GuiObject?&quot;,
+                    &quot;desc&quot;: &quot;The next selection down.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;NextSelectionUp&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;GuiObject&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;GuiObject?&quot;,
+                    &quot;desc&quot;: &quot;The next selection up.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;NextSelectionRight&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;GuiObject&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;GuiObject?&quot;,
+                    &quot;desc&quot;: &quot;The next selection right.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;NextSelectionLeft&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;GuiObject&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;GuiObject?&quot;,
+                    &quot;desc&quot;: &quot;The next selection left.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;SelectionImageObject&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;GuiObject&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;GuiObject?&quot;,
+                    &quot;desc&quot;: &quot;The selection image object.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;SelectionOrder&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;number&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;number?&quot;,
+                    &quot;desc&quot;: &quot;The selection order.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;SizeConstraint&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.SizeConstraint&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;Enum.SizeConstraint?&quot;,
+                    &quot;desc&quot;: &quot;The size constraint of the component.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;AutoLocalize&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;boolean&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether the component auto-localizes.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;RootLocalizationTable&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;LocalizationTable&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;LocalizationTable?&quot;,
+                    &quot;desc&quot;: &quot;The root localization table.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;SelectionBehaviorDown&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.SelectionBehavior&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;Enum.SelectionBehavior?&quot;,
+                    &quot;desc&quot;: &quot;The selection behavior down.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;SelectionBehaviorUp&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.SelectionBehavior&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;Enum.SelectionBehavior?&quot;,
+                    &quot;desc&quot;: &quot;The selection behavior up.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;SelectionBehaviorRight&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.SelectionBehavior&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;Enum.SelectionBehavior?&quot;,
+                    &quot;desc&quot;: &quot;The selection behavior right.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;SelectionBehaviorLeft&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.SelectionBehavior&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;Enum.SelectionBehavior?&quot;,
+                    &quot;desc&quot;: &quot;The selection behavior left.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;SelectionGroup&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;boolean&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;Whether the component is part of a selection group.&quot;
                 },
                 {
-                    &quot;name&quot;: &quot;CornerRadius&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;UDim&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;name&quot;: &quot;Corner&quot;,
+                    &quot;lua_type&quot;: &quot;CornerProps?&quot;,
+                    &quot;desc&quot;: &quot;The corner properties.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;Padding&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;UDim&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;PaddingProps?&quot;,
+                    &quot;desc&quot;: &quot;The padding properties.&quot;
                 },
                 {
-                    &quot;name&quot;: &quot;PaddingTop&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;UDim&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;name&quot;: &quot;Stroke&quot;,
+                    &quot;lua_type&quot;: &quot;StrokeProps?&quot;,
+                    &quot;desc&quot;: &quot;The stroke properties.&quot;
                 },
                 {
-                    &quot;name&quot;: &quot;PaddingLeft&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;UDim&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;name&quot;: &quot;Gradient&quot;,
+                    &quot;lua_type&quot;: &quot;GradientProps?&quot;,
+                    &quot;desc&quot;: &quot;The gradient properties.&quot;
                 },
                 {
-                    &quot;name&quot;: &quot;PaddingRight&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;UDim&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;PaddingBottom&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;UDim&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;name&quot;: &quot;Aspect&quot;,
+                    &quot;lua_type&quot;: &quot;AspectProps?&quot;,
+                    &quot;desc&quot;: &quot;The aspect ratio properties.&quot;
                 },
                 {
                     &quot;name&quot;: &quot;Scale&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;number&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;lua_type&quot;: &quot;ScaleProps?&quot;,
+                    &quot;desc&quot;: &quot;The scale properties.&quot;
                 },
                 {
-                    &quot;name&quot;: &quot;StrokeEnabled&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;boolean&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;name&quot;: &quot;List&quot;,
+                    &quot;lua_type&quot;: &quot;ListProps?&quot;,
+                    &quot;desc&quot;: &quot;The list layout properties.&quot;
                 },
                 {
-                    &quot;name&quot;: &quot;StrokeThickness&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;number&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;name&quot;: &quot;Grid&quot;,
+                    &quot;lua_type&quot;: &quot;GridProps?&quot;,
+                    &quot;desc&quot;: &quot;The grid layout properties.&quot;
                 },
                 {
-                    &quot;name&quot;: &quot;StrokeColor&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Color3&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;name&quot;: &quot;Table&quot;,
+                    &quot;lua_type&quot;: &quot;TableProps?&quot;,
+                    &quot;desc&quot;: &quot;The table layout properties.&quot;
                 },
                 {
-                    &quot;name&quot;: &quot;StrokeTransparency&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;number&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;name&quot;: &quot;Page&quot;,
+                    &quot;lua_type&quot;: &quot;PageProps?&quot;,
+                    &quot;desc&quot;: &quot;The page layout properties.&quot;
                 },
                 {
-                    &quot;name&quot;: &quot;StrokeLineJoinMode&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.LineJoinMode&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;name&quot;: &quot;Flex&quot;,
+                    &quot;lua_type&quot;: &quot;FlexProps?&quot;,
+                    &quot;desc&quot;: &quot;The flex layout properties.&quot;
                 },
                 {
-                    &quot;name&quot;: &quot;StrokeApplyStrokeMode&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.ApplyStrokeMode&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;name&quot;: &quot;SizeLimit&quot;,
+                    &quot;lua_type&quot;: &quot;SizeLimitProps?&quot;,
+                    &quot;desc&quot;: &quot;The size limit properties.&quot;
                 },
                 {
-                    &quot;name&quot;: &quot;GradientEnabled&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;boolean&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;GradientColor&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;ColorSequence&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;GradientOffset&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;UDim&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;GradientRotation&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;number&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;GradientTransparency&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;number&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;AspectRatio&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;number&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;AspectType&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.AspectType&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;DominantAxis&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.DominantAxis&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;ListEnabled&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;boolean&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;ListPadding&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;UDim&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;ListFillDirection&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.FillDirection&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;ListSortOrder&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.SortOrder&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;ListWraps&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;boolean&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;ListHorizontalAlignment&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.HorizontalAlignment&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;ListHorizontalFlex&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;boolean&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;ListVerticalAlignment&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.VerticalAlignment&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;ListVerticalFlex&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;boolean&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;ListItemLineAlignment&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.ItemLineAlignment&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;GridEnabled&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;boolean&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;GridCellPadding&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;UDim&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;GridCellSize&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;UDim2&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;GridFillDirection&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.FillDirection&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;GridFillDirectionMaxCells&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;number&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;GridSortOrder&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.SortOrder&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;GridStartCorner&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.StartCorner&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;GridHorizontalAlignment&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.HorizontalAlignment&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;GridVerticalAlignment&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.VerticalAlignment&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;TableEnabled&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;boolean&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;TablePadding&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;UDim&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;TableFillEmptySpaceColumns&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;boolean&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;TableFillEmptySpaceRows&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;boolean&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;TableFillDirection&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.FillDirection&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;TableSortOrder&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.SortOrder&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;TableMajorAxis&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.TableMajorAxis&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;TableHorizontalAlignment&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.HorizontalAlignment&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;TableVerticalAlignment&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.VerticalAlignment&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;PageEnabled&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;boolean&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;PageAnimated&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;boolean&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;PageCircular&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;boolean&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;PageEasingDirection&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.EasingDirection&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;PageEasingStyle&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.EasingStyle&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;PagePadding&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;UDim&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;PageTweenTime&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;number&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;PageFillDirection&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.FillDirection&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;PageSortOrder&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.SortOrder&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;PageHorizontalAlignment&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.HorizontalAlignment&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;PageVerticalAlignment&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.VerticalAlignment&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;PageGamepadInputEnabled&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;boolean&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;PageScrollWheelInputEnabled&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;boolean&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;PageTouchInputEnabled&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;boolean&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;FlexMode&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.UIFlexMode&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;FlexItemLineAlignment&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Enum.ItemLineAlignment&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;FlexGrowRatio&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;number&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;FlexShrinkRatio&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;number&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;MaxSize&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Vector2&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;MinSize&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;Vector2&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;MaxTextSize&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;number&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;MinTextSize&quot;,
-                    &quot;lua_type&quot;: &quot;Fusion.UsedAs&lt;number&gt;?&quot;,
-                    &quot;desc&quot;: &quot;&quot;
+                    &quot;name&quot;: &quot;TextSizeLimit&quot;,
+                    &quot;lua_type&quot;: &quot;TextSizeLimitProps?&quot;,
+                    &quot;desc&quot;: &quot;The text size limit properties.&quot;
                 }
             ],
             &quot;source&quot;: {
-                &quot;line&quot;: 247,
+                &quot;line&quot;: 216,
                 &quot;path&quot;: &quot;src/Components/Base.luau&quot;
             }
         }
     ],
     &quot;name&quot;: &quot;Base&quot;,
-    &quot;desc&quot;: &quot;The foundational component of OnyxUI, from which all other components are built off of. Props supported here typically work in all other components.\n\n:::info Styling props\nA reference of common styling props can be found in [this docs page](/docs/styling-props).\n:::&quot;,
+    &quot;desc&quot;: &quot;The foundational component of OnyxUI, from which all other components are built off of. Props supported here typically work in all other components.&quot;,
     &quot;source&quot;: {
-        &quot;line&quot;: 10,
+        &quot;line&quot;: 6,
         &quot;path&quot;: &quot;src/Components/Base.luau&quot;
     }
-}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a><ul><li><a href="#BaseProps" class="table-of-contents__link toc-highlight">BaseProps</a></li></ul></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 Avafe. Built with Moonwave and Docusaurus</div></div></div></footer></div>
-<script src="/onyx-ui/assets/js/runtime~main.b2c5602f.js"></script>
-<script src="/onyx-ui/assets/js/main.ca792070.js"></script>
+}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a><ul><li><a href="#AspectProps" class="table-of-contents__link toc-highlight">AspectProps</a></li><li><a href="#BaseProps" class="table-of-contents__link toc-highlight">BaseProps</a></li><li><a href="#CornerProps" class="table-of-contents__link toc-highlight">CornerProps</a></li><li><a href="#FlexProps" class="table-of-contents__link toc-highlight">FlexProps</a></li><li><a href="#GradientProps" class="table-of-contents__link toc-highlight">GradientProps</a></li><li><a href="#GridProps" class="table-of-contents__link toc-highlight">GridProps</a></li><li><a href="#ListProps" class="table-of-contents__link toc-highlight">ListProps</a></li><li><a href="#PaddingProps" class="table-of-contents__link toc-highlight">PaddingProps</a></li><li><a href="#PageProps" class="table-of-contents__link toc-highlight">PageProps</a></li><li><a href="#ScaleProps" class="table-of-contents__link toc-highlight">ScaleProps</a></li><li><a href="#SizeLimitProps" class="table-of-contents__link toc-highlight">SizeLimitProps</a></li><li><a href="#StrokeProps" class="table-of-contents__link toc-highlight">StrokeProps</a></li><li><a href="#TableProps" class="table-of-contents__link toc-highlight">TableProps</a></li><li><a href="#TextSizeLimitProps" class="table-of-contents__link toc-highlight">TextSizeLimitProps</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Loneka</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://loneka.com/suite/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Suite<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Avafe. Built with Moonwave and Docusaurus</div></div></div></footer></div>
 </body>
 </html>
