@@ -1,14 +1,14 @@
-[package]
-name = "imavafe/onyx-ui"
-description = "Quick, quality UI for Fusion"
-version = "0.5.4"
-license = "MIT"
-authors = ["Avafe"]
-
-registry = "https://github.com/UpliftGames/wally-index"
-realm = "shared"
-
 [dependencies]
-ColorUtils = "csqrl/colour-utils@1.4.1"
-Fusion = "elttob/fusion@0.3.0"
-Signal = "sleitnick/signal@2.0.1"
+ColorUtils = "csqrl/colour-utils@^1.4.1"
+Fusion = "elttob/fusion@^0.3.0"
+
+[package]
+authors = ["Avafe"]
+license = "MIT"
+name = "imavafe/onyx-ui"
+realm = "shared"
+registry = "https://github.com/UpliftGames/wally-index"
+version = "1.0.0"
+
+exclude = ["**"]
+include = ["src", "src/*", "default.project.json", "wally.lock", "wally.toml"]

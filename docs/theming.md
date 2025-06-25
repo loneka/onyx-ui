@@ -4,41 +4,58 @@ sidebar_position: 3
 
 # Theming
 
-OnyxUI handles theming through a module called [`Themer`](/api/Themer). Themer allows you to customize components throughout OnyxUI, with support for things like colors, corner radiuses, paddings, etc. You'll also probably want to reference it within your own UI for a more consistent design.
+[`Themer`](/api/Themer) allows you to customize components throughout OnyxUI, with support for properties like color, corner radius, padding, etc. You should also reference it within your own components for a more consistent design.
 
-## Sample themes
+[More examples ➜](/docs/examples)
 
-- [OnyxNight](https://github.com/ImAvafe/OnyxUI/blob/main/src/Themer/OnyxNight.luau) - *The default theme*
-- [BitCave](https://github.com/ImAvafe/OnyxUI/blob/main/samples/Themes/BitCave.luau)
+![Theming](/theming.png)
+
+## Accessing the theme
+
+A card making use of the theme for color, stroke and padding:
+
+```lua
+local Theme = OnyxUI.Themer.Theme:now()
+
+Scope:Card {
+  BackgroundColor3 = Theme.Colors.Neutral.Main,
+  Stroke = {
+    Thickness = Theme.StrokeThickness["2"],
+  },
+  Padding = {
+    All = Scope:UDim(0, Theme.Spacing["2"])
+  }
+}
+```
 
 ## Making your own theme
 
 :::tip
-Check out [ThemeSpec.luau](https://github.com/ImAvafe/OnyxUI/blob/main/src/Themer/ThemeSpec.luau) for a full reference of available theme properties.
+Check out [ThemeSpec.luau](https://github.com/ImAvafe/OnyxUI/blob/main/src/Themer/ThemeSpec.luau) for a full reference of available theme properties. The default OnyxUI theme can also [be found here](https://github.com/ImAvafe/OnyxUI/blob/main/src/Themer/ThemeSpec.luau).
 :::
 
 1. Copy the following code into a new "`MyTheme`" module
-  ```lua
-  local Themer = OnyxUI.Themer
-  local Scoped = Fusion.scoped
+```lua
+local Themer = OnyxUI.Themer
 
-  local Scope = Scoped()
 
-  local MyTheme = Themer.NewTheme(Scope, {
-    -- Specify theme properties here
-  })
+local Scope = Fusion.scoped()
 
-  return MyTheme
-  ```
+local MyTheme = Themer.NewTheme(Scope, {
+  -- Specify theme properties here
+})
+
+return MyTheme
+```
 2. Specify the properties you want
 3. Use it when constructing your UI
-  ```lua
-  local MyTheme = require(path.to.MyTheme)
+```lua
+local MyTheme = require(path.to.MyTheme)
 
-  local Themer = OnyxUI.Themer
+local Themer = OnyxUI.Themer
 
-  Themer.Theme:is(MyTheme):during(function()
-    local Theme = Themer.Theme:now() -- This now returns MyTheme!
-    -- Any UI constructed from this callback will also use MyTheme.
-  end)
-  ```
+Themer.Theme:is(MyTheme):during(function()
+  local Theme = Themer.Theme:now() -- This now returns MyTheme!
+  -- Any UI constructed from this callback will also use MyTheme.
+end)
+```

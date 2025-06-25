@@ -4,6 +4,23 @@
 		A barebones button component, like if Roblox had a "`Button`" class rather than only a `TextButton`.
 ]=]
 
+--[=[
+	@interface BaseButtonProps
+	@within BaseButton
+
+	. ... BaseProps -- All Base properties are accepted.
+	.Disabled boolean? -- Whether the button is disabled.
+	.OnActivate (() -> ())? -- Callback for when the button is activated.
+	.OnHover (() -> ())? -- Callback for when the button is hovered over.
+	.OnHoverEnd (() -> ())? -- Callback for when the hover ends.
+	.OnHold (() -> ())? -- Callback for when the button is held.
+	.OnHoldEnd (() -> ())? -- Callback for when the hold ends.
+	.Hovering boolean? -- Whether the button is currently being hovered over.
+	.Holding boolean? -- Whether the button is currently being held.
+	.HoverSound Sound? -- The sound to play when the button is hovered over.
+	.ClickSound Sound? -- The sound to play when the button is clicked.
+]=]
+
 local SoundService = game:GetService("SoundService")
 
 local OnyxUI = script.Parent.Parent
@@ -11,59 +28,39 @@ local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
 
-local Peek = Fusion.peek
 local OnEvent = Fusion.OnEvent
-local InnerScope = Fusion.innerScope
 
 local Base = require(script.Parent.Base)
 local Components = {
 	Base = Base,
 }
 
---[=[
-		@within BaseButton
-		@interface BaseButtonProps
-
-		@field ... BaseProps
-		@field Disabled Fusion.UsedAs<boolean>?
-		@field OnActivated Fusion.UsedAs<() -> ()>?
-		@field OnMouseEnter Fusion.UsedAs<() -> ()>?
-		@field OnMouseLeave Fusion.UsedAs<() -> ()>?
-		@field OnMouseButton1Down Fusion.UsedAs<() -> ()>?
-		@field OnMouseButton1Up Fusion.UsedAs<() -> ()>?
-		@field IsHovering Fusion.UsedAs<boolean>?
-		@field IsHolding Fusion.UsedAs<boolean>?
-		@field HoverSound Fusion.UsedAs<Sound>?
-		@field ClickSound Fusion.UsedAs<Sound>?
-]=]
 export type Props = Base.Props & {
 	Disabled: Fusion.UsedAs<boolean>?,
 
-	OnActivated: Fusion.UsedAs<() -> ()>?,
-	OnMouseEnter: Fusion.UsedAs<() -> ()>?,
-	OnMouseLeave: Fusion.UsedAs<() -> ()>?,
-	OnMouseButton1Down: Fusion.UsedAs<() -> ()>?,
-	OnMouseButton1Up: Fusion.UsedAs<() -> ()>?,
+	OnActivate: Fusion.UsedAs<() -> ()>?,
+	OnHover: Fusion.UsedAs<() -> ()>?,
+	OnHoverEnd: Fusion.UsedAs<() -> ()>?,
+	OnHold: Fusion.UsedAs<() -> ()>?,
+	OnHoldEnd: Fusion.UsedAs<() -> ()>?,
 
-	IsHovering: Fusion.UsedAs<boolean>?,
-	IsHolding: Fusion.UsedAs<boolean>?,
+	Hovering: Fusion.UsedAs<boolean>?,
+	Holding: Fusion.UsedAs<boolean>?,
 
 	HoverSound: Fusion.UsedAs<Sound>?,
 	ClickSound: Fusion.UsedAs<Sound>?,
 }
 
 return function(Scope: Fusion.Scope<any>, Props: Props)
-	local Scope = InnerScope(Scope, Fusion, Util, Components)
+	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
 	local Disabled = Util.Fallback(Props.Disabled, false)
-	local IsHovering = Scope:EnsureValue(Util.Fallback(Props.IsHovering, false))
-	local IsHolding = Scope:EnsureValue(Util.Fallback(Props.IsHolding, false))
-	local OnActivated = Util.Fallback(Props.OnActivated, function() end)
-	local OnMouseEnter = Util.Fallback(Props.OnMouseEnter, function() end)
-	local OnMouseLeave = Util.Fallback(Props.OnMouseLeave, function() end)
-	local OnMouseButton1Down = Util.Fallback(Props.OnMouseButton1Down, function() end)
-	local OnMouseButton1Up = Util.Fallback(Props.OnMouseButton1Up, function() end)
+	local OnActivate = Util.Fallback(Props.OnActivate, function() end)
+	local OnHover = Util.Fallback(Props.OnHover, function() end)
+	local OnHoverEnd = Util.Fallback(Props.OnHoverEnd, function() end)
+	local OnHold = Util.Fallback(Props.OnHold, function() end)
+	local OnHoldEnd = Util.Fallback(Props.OnHoldEnd, function() end)
 	local HoverSound = Util.Fallback(Props.HoverSound, Theme.Sound.Hover)
 	local ClickSound = Util.Fallback(Props.ClickSound, Theme.Sound.Click)
 	local Active = Util.Fallback(
@@ -79,9 +76,12 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		end)
 	)
 
+	local Hovering = Scope:EnsureValue(Util.Fallback(Props.Hovering, false))
+	local Holding = Scope:EnsureValue(Util.Fallback(Props.Holding, false))
+
 	return Scope:Hydrate(Scope:Base(Util.CombineProps(Props, {
 		ClassName = "TextButton",
-		Name = "BaseButton",
+		Name = script.Name,
 		AutomaticSize = Enum.AutomaticSize.XY,
 		Selectable = Selectable,
 		BackgroundTransparency = 1,
@@ -91,39 +91,53 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		TextSize = 0,
 
 		[OnEvent "Activated"] = function()
-			if not Peek(Disabled) then
-				SoundService:PlayLocalSound(Peek(ClickSound))
-				Peek(OnActivated)()
+			if not Fusion.peek(Disabled) then
+				SoundService:PlayLocalSound(Fusion.peek(ClickSound))
+
+				Fusion.peek(OnActivate)()
 			end
 		end,
 		[OnEvent "MouseEnter"] = function()
-			if Peek(Active) then
-				SoundService:PlayLocalSound(Peek(HoverSound))
+			if Fusion.peek(Active) then
+				SoundService:PlayLocalSound(Fusion.peek(HoverSound))
 			end
-			IsHovering:set(true)
-			Peek(OnMouseEnter)()
+
+			Hovering:set(true)
+
+			Fusion.peek(OnHover)()
 		end,
 		[OnEvent "SelectionGained"] = function()
-			if Peek(Active) then
-				SoundService:PlayLocalSound(Peek(HoverSound))
+			if Fusion.peek(Active) then
+				SoundService:PlayLocalSound(Fusion.peek(HoverSound))
 			end
-			IsHovering:set(true)
-			Peek(OnMouseEnter)()
+
+			Hovering:set(true)
+
+			Fusion.peek(OnHover)()
+		end,
+		[OnEvent "SelectionLost"] = function()
+			Hovering:set(false)
+			Holding:set(false)
+
+			Fusion.peek(OnHoverEnd)()
 		end,
 		[OnEvent "MouseLeave"] = function()
-			IsHovering:set(false)
-			IsHolding:set(false)
-			Peek(OnMouseLeave)()
+			Hovering:set(false)
+			Holding:set(false)
+
+			Fusion.peek(OnHoverEnd)()
 		end,
 		[OnEvent "MouseButton1Down"] = function()
-			if not Peek(Disabled) then
-				IsHolding:set(true)
-				Peek(OnMouseButton1Down)()
+			if not Fusion.peek(Disabled) then
+				Holding:set(true)
+
+				Fusion.peek(OnHold)()
 			end
 		end,
 		[OnEvent "MouseButton1Up"] = function()
-			IsHolding:set(false)
-			Peek(OnMouseButton1Up)()
+			Holding:set(false)
+
+			Fusion.peek(OnHoldEnd)()
 		end,
 	}
 end

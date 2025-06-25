@@ -4,16 +4,13 @@ local ThemeSpec = require(script.Parent.ThemeSpec)
 local ColorUtils = require(OnyxUI.Parent.ColorUtils)
 local Util = require(OnyxUI.Util)
 
-local Peek = Fusion.peek
-local InnerScope = Fusion.innerScope
-
 export type ThemeSpec = ThemeSpec.ThemeSpec
 
 local function ReconcileValues(Target: { [string]: Fusion.UsedAs<any> }, Source: { [string]: any })
 	for Key, Value in pairs(Target) do
 		if typeof(Value) == "table" and Value.set then
 			if typeof(Source[Key]) == "table" and Source[Key].get then
-				Value:set(Peek(Source[Key]))
+				Value:set(Fusion.peek(Source[Key]))
 			elseif Source[Key] ~= nil then
 				Value:set(Source[Key])
 			end
@@ -27,30 +24,37 @@ end
 
 local function ProcessColors(ThemeObject)
 	for _, ColorObject in pairs(ThemeObject.Colors) do
-		local MainValue = Peek(ColorObject.Main)
+		local MainValue = Fusion.peek(ColorObject.Main)
 		if MainValue ~= nil then
-			if Peek(ColorObject.Contrast) == nil then
-				ColorObject.Contrast:set(ColorUtils.Emphasize(MainValue, Peek(ThemeObject.Emphasis.Contrast)))
+			if Fusion.peek(ColorObject.Contrast) == nil then
+				ColorObject.Contrast:set(Util.Emphasize(MainValue, Fusion.peek(ThemeObject.Emphasis.Contrast)))
 			end
 
-			if Peek(ColorObject.Dark) == nil then
-				ColorObject.Dark:set(ColorUtils.Darken(MainValue, Peek(ThemeObject.Emphasis.Strong)))
+			if Fusion.peek(ColorObject.Dark) == nil then
+				ColorObject.Dark:set(ColorUtils.Darken(MainValue, Fusion.peek(ThemeObject.Emphasis.Strong)))
 			end
 
-			if Peek(ColorObject.Light) == nil then
-				ColorObject.Light:set(ColorUtils.Lighten(MainValue, Peek(ThemeObject.Emphasis.Strong)))
+			if Fusion.peek(ColorObject.Light) == nil then
+				ColorObject.Light:set(ColorUtils.Lighten(MainValue, Fusion.peek(ThemeObject.Emphasis.Strong)))
 			end
 		end
 	end
+end
+
+local function ProcessEmphasis(Objects)
+	local BaseEmphasis = Fusion.peek(Objects.Regular)
+
+	Objects.Light:set(BaseEmphasis * 2 / 3)
+	Objects.Strong:set(BaseEmphasis * 2)
 end
 
 local function ProcessMultipliers(Objects: {
 	Base: Fusion.Value<Fusion.Scope<any>, number>,
 	[string]: Fusion.Value<Fusion.Scope<any>, number>,
 })
-	local Base = Peek(Objects.Base)
+	local Base = Fusion.peek(Objects.Base)
 	for Key, Value in pairs(Objects) do
-		if Peek(Value) == nil then
+		if Fusion.peek(Value) == nil then
 			local Multiplier = tonumber(Key)
 			if Multiplier ~= nil then
 				Value:set(Base * Multiplier)
@@ -64,7 +68,7 @@ local function ProcessMultipliers(Objects: {
 end
 
 local function NewTheme(Scope: Fusion.Scope<any>, ThemeSpec: ThemeSpec)
-	local Scope = InnerScope(Scope, Fusion)
+	local Scope = Fusion.innerScope(Scope, Fusion)
 
 	local ThemeObject = {
 		Colors = {
@@ -162,7 +166,7 @@ local function NewTheme(Scope: Fusion.Scope<any>, ThemeSpec: ThemeSpec)
 			["3.75"] = Scope:Value(nil),
 			["4.5"] = Scope:Value(nil),
 		},
-		Spacing = {
+		Padding = {
 			Base = Scope:Value(16),
 			["0"] = Scope:Value(0),
 			["0.25"] = Scope:Value(nil),
@@ -177,9 +181,61 @@ local function NewTheme(Scope: Fusion.Scope<any>, ThemeSpec: ThemeSpec)
 			["8"] = Scope:Value(nil),
 			["12"] = Scope:Value(nil),
 			["16"] = Scope:Value(nil),
+			["20"] = Scope:Value(nil),
 			["24"] = Scope:Value(nil),
+			["28"] = Scope:Value(nil),
 			["32"] = Scope:Value(nil),
+			["36"] = Scope:Value(nil),
 			["40"] = Scope:Value(nil),
+			["44"] = Scope:Value(nil),
+			["48"] = Scope:Value(nil),
+		},
+		Spacing = {
+			Base = Scope:Value(22),
+			["0"] = Scope:Value(0),
+			["0.25"] = Scope:Value(nil),
+			["0.5"] = Scope:Value(nil),
+			["0.75"] = Scope:Value(nil),
+			["1"] = Scope:Value(nil),
+			["1.5"] = Scope:Value(nil),
+			["2"] = Scope:Value(nil),
+			["3"] = Scope:Value(nil),
+			["4"] = Scope:Value(nil),
+			["6"] = Scope:Value(nil),
+			["8"] = Scope:Value(nil),
+			["12"] = Scope:Value(nil),
+			["16"] = Scope:Value(nil),
+			["20"] = Scope:Value(nil),
+			["24"] = Scope:Value(nil),
+			["28"] = Scope:Value(nil),
+			["32"] = Scope:Value(nil),
+			["36"] = Scope:Value(nil),
+			["40"] = Scope:Value(nil),
+			["44"] = Scope:Value(nil),
+			["48"] = Scope:Value(nil),
+		},
+		Sizing = {
+			Base = Scope:Value(22),
+			["0"] = Scope:Value(0),
+			["0.25"] = Scope:Value(nil),
+			["0.5"] = Scope:Value(nil),
+			["0.75"] = Scope:Value(nil),
+			["1"] = Scope:Value(nil),
+			["1.5"] = Scope:Value(nil),
+			["2"] = Scope:Value(nil),
+			["3"] = Scope:Value(nil),
+			["4"] = Scope:Value(nil),
+			["6"] = Scope:Value(nil),
+			["8"] = Scope:Value(nil),
+			["12"] = Scope:Value(nil),
+			["16"] = Scope:Value(nil),
+			["20"] = Scope:Value(nil),
+			["24"] = Scope:Value(nil),
+			["28"] = Scope:Value(nil),
+			["32"] = Scope:Value(nil),
+			["36"] = Scope:Value(nil),
+			["40"] = Scope:Value(nil),
+			["44"] = Scope:Value(nil),
 			["48"] = Scope:Value(nil),
 		},
 		CornerRadius = {
@@ -202,6 +258,12 @@ local function NewTheme(Scope: Fusion.Scope<any>, ThemeSpec: ThemeSpec)
 			["3"] = Scope:Value(nil),
 			["4"] = Scope:Value(nil),
 			["8"] = Scope:Value(nil),
+		},
+		StrokeEmphasis = {
+			Regular = Scope:Value(0.1),
+			Light = Scope:Value(nil),
+			Strong = Scope:Value(nil),
+			Contrast = Scope:Value(1),
 		},
 		SpringSpeed = {
 			Base = Scope:Value(40),
@@ -250,17 +312,21 @@ local function NewTheme(Scope: Fusion.Scope<any>, ThemeSpec: ThemeSpec)
 			}),
 		},
 		Emphasis = {
-			Light = Scope:Value(0.15),
-			Regular = Scope:Value(0.3),
-			Strong = Scope:Value(0.5),
+			Regular = Scope:Value(0.2),
+			Light = Scope:Value(nil),
+			Strong = Scope:Value(nil),
 			Contrast = Scope:Value(1),
 		},
 	}
 
 	ReconcileValues(ThemeObject, ThemeSpec)
 
+	ProcessEmphasis(ThemeObject.Emphasis)
+	ProcessEmphasis(ThemeObject.StrokeEmphasis)
 	ProcessColors(ThemeObject)
+	ProcessMultipliers(ThemeObject.Padding)
 	ProcessMultipliers(ThemeObject.Spacing)
+	ProcessMultipliers(ThemeObject.Sizing)
 	ProcessMultipliers(ThemeObject.TextSize)
 	ProcessMultipliers(ThemeObject.CornerRadius)
 	ProcessMultipliers(ThemeObject.StrokeThickness)

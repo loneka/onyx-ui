@@ -1,7 +1,17 @@
 --[=[
-		@class SwitchInput
+		@class Switch
 		
 		Useful for letting the user switch things on / off.
+]=]
+
+--[=[
+		@interface SwitchProps
+		@within Switch
+
+		. ... BaseButtonProps -- All BaseButton properties are accepted.
+		.Switched boolean? -- Whether the switch is toggled on or off
+		.Disabled boolean? -- Whether the switch is disabled
+		.Color Color3? -- The color of the switch when toggled on
 ]=]
 
 local OnyxUI = script.Parent.Parent
@@ -11,9 +21,7 @@ local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
 local ColorUtils = require(OnyxUI.Parent.ColorUtils)
 
-local Peek = Fusion.peek
 local Children = Fusion.Children
-local InnerScope = Fusion.innerScope
 
 local Frame = require(script.Parent.Frame)
 local BaseButton = require(script.Parent.BaseButton)
@@ -27,17 +35,8 @@ export type Props = BaseButton.Props & {
 	Color: Fusion.UsedAs<Color3>?,
 }
 
---[=[
-		@within SwitchInput
-		@interface SwitchInputProps
-
-		@field ... BaseButtonProps
-		@field Switched Fusion.UsedAs<boolean>?
-		@field Disabled Fusion.UsedAs<boolean>?
-		@field Color Fusion.UsedAs<Color3>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
-	local Scope = InnerScope(Scope, Fusion, Util, Components)
+	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
 	local Switched = Scope:EnsureValue(Util.Fallback(Props.Switched, false))
@@ -50,9 +49,13 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		end)
 	)
 	local AutomaticSize = Util.Fallback(Props.AutomaticSize, Enum.AutomaticSize.None)
+	local Corner = Util.Fallback(Props.Corner, {
+		Radius = Scope:UDim(0, Theme.CornerRadius["Full"]),
+	})
 
-	local IsHovering = Scope:EnsureValue(Util.Fallback(Props.IsHovering, false))
-	local IsHolding = Scope:EnsureValue(Util.Fallback(Props.IsHolding, false))
+	local Hovering = Scope:EnsureValue(Util.Fallback(Props.Hovering, false))
+	local Holding = Scope:EnsureValue(Util.Fallback(Props.Holding, false))
+
 	local EffectiveColor = Scope:Computed(function(Use)
 		local ActiveColor
 		if Use(Switched) then
@@ -62,10 +65,10 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		end
 
 		if not Use(Disabled) then
-			if Use(IsHolding) then
-				return ColorUtils.Emphasize(Use(ActiveColor), Use(Theme.Emphasis.Regular))
-			elseif Use(IsHovering) then
-				return ColorUtils.Emphasize(Use(ActiveColor), Use(Theme.Emphasis.Light))
+			if Use(Holding) then
+				return Util.Emphasize(Use(ActiveColor), Use(Theme.Emphasis.Regular))
+			elseif Use(Hovering) then
+				return Util.Emphasize(Use(ActiveColor), Use(Theme.Emphasis.Light))
 			end
 		end
 
@@ -80,15 +83,15 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		end
 
 		if not Use(Disabled) then
-			if Use(IsHolding) then
+			if Use(Holding) then
 				if not Use(Switched) then
-					return ColorUtils.Emphasize(Use(ActiveColor), Use(Theme.Emphasis.Regular))
+					return Util.Emphasize(Use(ActiveColor), Use(Theme.Emphasis.Regular))
 				else
 					return ActiveColor
 				end
-			elseif Use(IsHovering) then
+			elseif Use(Hovering) then
 				if not Use(Switched) then
-					return ColorUtils.Emphasize(Use(ActiveColor), Use(Theme.Emphasis.Light))
+					return Util.Emphasize(Use(ActiveColor), Use(Theme.Emphasis.Light))
 				else
 					return ActiveColor
 				end
@@ -97,41 +100,59 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 		return ActiveColor
 	end)
-	local EffectiveCornerRadius = Util.Fallback(
-		Props.CornerRadius,
-		Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.CornerRadius.Full))
-		end)
-	)
+	local EffectiveStrokeEmphasis = Scope:Computed(function(Use)
+		local StrokeEmphasis = Use(Theme.StrokeEmphasis.Regular)
+
+		if Use(Disabled) or Use(Hovering) or Use(Holding) then
+			return 0
+		else
+			return StrokeEmphasis
+		end
+	end)
 
 	return Scope:BaseButton(Util.CombineProps(Props, {
-		Name = "SwitchInput",
+		Name = script.Name,
 		Size = Size,
 		AutomaticSize = AutomaticSize,
 		Disabled = Disabled,
-		StrokeEnabled = true,
-		StrokeTransparency = Scope:Spring(
-			Scope:Computed(function(Use)
-				if Use(Disabled) then
-					return 0.8
-				end
-				if Use(Switched) then
-					return 0
-				else
-					return 0.6
-				end
-			end),
-			Theme.SpringSpeed["1"],
-			Theme.SpringDampening["1"]
-		),
-		StrokeColor = Scope:Spring(EffectiveColor, Theme.SpringSpeed["1"], Theme.SpringDampening["1"]),
-		CornerRadius = EffectiveCornerRadius,
+		Stroke = {
+			Color = Color3.fromRGB(255, 255, 255),
+			Gradient = {
+				Color = Scope:Computed(function(Use)
+					return ColorSequence.new({
+						ColorSequenceKeypoint.new(
+							0,
+							ColorUtils.Lighten(Use(EffectiveColor), Use(EffectiveStrokeEmphasis))
+						),
+						ColorSequenceKeypoint.new(1, Use(EffectiveColor)),
+					})
+				end),
+				Rotation = 90,
+			},
+			Transparency = Scope:Spring(
+				Scope:Computed(function(Use)
+					if Use(Disabled) then
+						return 0.8
+					end
+					if Use(Switched) then
+						return 0
+					else
+						return 0.6
+					end
+				end),
+				Theme.SpringSpeed["1"],
+				Theme.SpringDampening["1"]
+			),
+		},
+		Corner = Corner,
+
+		Hovering = Hovering,
+		Holding = Holding,
+
 		ClickSound = Theme.Sound.Switch,
 
-		IsHovering = IsHovering,
-		IsHolding = IsHolding,
-		OnActivated = function()
-			Switched:set(not Peek(Switched))
+		OnActivate = function()
+			Switched:set(not Fusion.peek(Switched))
 		end,
 
 		[Children] = {
@@ -151,8 +172,10 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 					Theme.SpringSpeed["1"],
 					Theme.SpringDampening["1"]
 				),
-				Padding = UDim.new(0, 2),
-				CornerRadius = EffectiveCornerRadius,
+				Padding = {
+					All = UDim.new(0, 2),
+				},
+				Corner = Corner,
 
 				[Children] = {
 					Scope:Frame {
@@ -182,7 +205,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 						Size = Scope:Spring(
 							Scope:Computed(function(Use)
 								local Scale = 0.85
-								if Use(IsHovering) then
+								if Use(Hovering) then
 									Scale *= 1.1
 								end
 
@@ -211,20 +234,22 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 							Theme.SpringSpeed["1"],
 							Theme.SpringDampening["1"]
 						),
-						AspectRatio = Scope:Spring(
-							Scope:Computed(function(Use)
-								if Use(IsHolding) then
-									return 1.2
-								else
-									return 1
-								end
-							end),
-							Theme.SpringSpeed["1"],
-							Theme.SpringDampening["1"]
-						),
-						AspectType = Enum.AspectType.ScaleWithParentSize,
-						DominantAxis = Enum.DominantAxis.Height,
-						CornerRadius = EffectiveCornerRadius,
+						Aspect = {
+							Ratio = Scope:Spring(
+								Scope:Computed(function(Use)
+									if Use(Holding) then
+										return 1.2
+									else
+										return 1
+									end
+								end),
+								Theme.SpringSpeed["1"],
+								Theme.SpringDampening["1"]
+							),
+							Type = Enum.AspectType.ScaleWithParentSize,
+							DominantAxis = Enum.DominantAxis.Height,
+						},
+						Corner = Corner,
 					},
 				},
 			},

@@ -1,7 +1,6 @@
 local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
-
-local Scoped = Fusion.scoped
+local Util = require(OnyxUI.Util)
 
 local Icon = require(script.Parent.Icon)
 local Components = {
@@ -10,7 +9,7 @@ local Components = {
 
 return {
 	story = function(Props)
-		local Scope = Fusion.innerScope(Props.scope, Fusion, Components)
+		local Scope = Fusion.innerScope(Props.scope, Fusion, Util, Components)
 
 		Scope:Icon {
 			Parent = Props.target,

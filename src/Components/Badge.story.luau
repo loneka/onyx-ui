@@ -4,9 +4,7 @@ local Fusion = require(OnyxUI.Parent.Fusion)
 local Themer = require(OnyxUI.Themer)
 local Util = require(OnyxUI.Util)
 
-local Scoped = Fusion.scoped
 local Children = Fusion.Children
-local Peek = Fusion.peek
 
 local Frame = require(OnyxUI.Components.Frame)
 local Badge = require(OnyxUI.Components.Badge)
@@ -19,18 +17,18 @@ local Components = {
 
 return {
 	story = function(Props)
-		local Scope = Fusion.innerScope(Props.scope, Fusion, Components)
+		local Scope = Fusion.innerScope(Props.scope, Fusion, Util, Components)
 		local Theme = Themer.Theme:now()
 
 		local NotificationCount = Scope:Value(0)
 
 		local CountThread = task.spawn(function()
 			while task.wait(0.08) do
-				if Peek(NotificationCount) == 100 then
+				if Fusion.peek(NotificationCount) == 100 then
 					task.wait(3)
 					NotificationCount:set(1)
 				else
-					NotificationCount:set(Peek(NotificationCount) + 1)
+					NotificationCount:set(Fusion.peek(NotificationCount) + 1)
 				end
 			end
 		end)
@@ -43,18 +41,13 @@ return {
 
 		Scope:Frame {
 			Parent = Props.target,
-			ListEnabled = true,
-			ListPadding = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.Spacing["0.5"]))
-			end),
+			List = {
+				Padding = Scope:UDim(0, Theme.Spacing["0.5"]),
+			},
 
 			[Children] = {
 				Scope:Badge {
 					Content = { "Badge" },
-				},
-				Scope:Badge {
-					Content = { " PREMIUM" },
-					Color = Util.Colors.Amber["500"],
 				},
 				Scope:Badge {
 					Content = { "rbxassetid://103798699021677", "-50%" },
@@ -75,12 +68,11 @@ return {
 					Color = Theme.Colors.Primary.Main,
 				},
 				Scope:Frame {
-					ListEnabled = true,
-					ListHorizontalAlignment = Enum.HorizontalAlignment.Center,
-					ListFillDirection = Enum.FillDirection.Horizontal,
-					ListPadding = Scope:Computed(function(Use)
-						return UDim.new(0, Use(Theme.Spacing["0.25"]))
-					end),
+					List = {
+						HorizontalAlignment = Enum.HorizontalAlignment.Center,
+						FillDirection = Enum.FillDirection.Horizontal,
+						Padding = Scope:UDim(0, Theme.Spacing["0.25"]),
+					},
 
 					[Children] = {
 						Scope:Text {

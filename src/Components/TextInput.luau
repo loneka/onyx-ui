@@ -4,6 +4,34 @@
 		For letting the user input text.
 ]=]
 
+--[=[
+	@interface TextInputProps
+	@within TextInput
+
+	. ... BaseProps -- All Base properties are accepted.
+	.Disabled boolean? -- Whether the text input is disabled.
+	.CharacterLimit number? -- The maximum number of characters allowed in the text input.
+	.Color Color3? -- The color of the text input's border when focused.
+	.PlaceholderText string? -- The placeholder text displayed when the input is empty.
+	.Text string? -- The current text in the text input.
+	.ClearTextOnFocus boolean? -- Whether the text should be cleared when the input gains focus.
+	.TextWrapped boolean? -- Whether the text should wrap within the input.
+	.TextEditable boolean? -- Whether the text input is editable.
+	.MultiLine boolean? -- Whether the text input supports multiple lines.
+	.TextSize number? -- The size of the text.
+	.TextColor3 Color3? -- The color of the text.
+	.FontFace Font? -- The font face of the text.
+	.PlaceholderColor3 Color3? -- The color of the placeholder text.
+	.TextXAlignment Enum.TextXAlignment? -- The horizontal alignment of the text.
+	.TextYAlignment Enum.TextYAlignment? -- The vertical alignment of the text.
+	.TextTransparency number? -- The transparency of the text.
+	.TextProcessor (string) -> string? -- A function to process the text input, and return new text.
+	.Focusing boolean? -- Whether the text input is currently focused.
+	.Hovering boolean? -- Whether the mouse is hovering over the text input.
+	.OnFocus () -> ()? -- A callback function triggered when the text input gains focus.
+	.OnFocusEnd () -> ()? -- A callback function triggered when the text input loses focus.
+]=]
+
 local SoundService = game:GetService("SoundService")
 
 local OnyxUI = script.Parent.Parent
@@ -11,41 +39,13 @@ local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
 
-local Peek = Fusion.peek
 local OnEvent = Fusion.OnEvent
-local InnerScope = Fusion.innerScope
 
 local Base = require(script.Parent.Base)
 local Components = {
 	Base = Base,
 }
 
---[=[
-		@within TextInput
-		@interface TextInputProps
-
-		@field ... BaseProps
-		@field Disabled Fusion.UsedAs<boolean>?
-		@field CharacterLimit Fusion.UsedAs<number>?
-		@field Color Fusion.UsedAs<Color3>?
-		@field PlaceholderText Fusion.UsedAs<string>?
-		@field Text Fusion.UsedAs<string>?
-		@field ClearTextOnFocus Fusion.UsedAs<boolean>?
-		@field TextWrapped Fusion.UsedAs<boolean>?
-		@field TextEditable Fusion.UsedAs<boolean>?
-		@field MultiLine Fusion.UsedAs<boolean>?
-		@field TextSize Fusion.UsedAs<number>?
-		@field TextColor3 Fusion.UsedAs<Color3>?
-		@field FontFace Fusion.UsedAs<Font>?
-		@field PlaceholderColor3 Fusion.UsedAs<Color3>?
-		@field TextXAlignment Fusion.UsedAs<Enum.TextXAlignment>?
-		@field TextYAlignment Fusion.UsedAs<Enum.TextYAlignment>?
-		@field TextTransparency Fusion.UsedAs<number>?
-		@field TextProcessor Fusion.UsedAs<(string) -> string>?
-		@field IsFocused Fusion.UsedAs<boolean>?
-		@field OnFocused Fusion.UsedAs<() -> ()>?
-		@field OnFocusLost Fusion.UsedAs<() -> ()>?
-]=]
 export type Props = Base.Props & {
 	Disabled: Fusion.UsedAs<boolean>?,
 	CharacterLimit: Fusion.UsedAs<number>?,
@@ -65,20 +65,24 @@ export type Props = Base.Props & {
 	TextTransparency: Fusion.UsedAs<number>?,
 	TextProcessor: Fusion.UsedAs<(string) -> string>?,
 
-	IsFocused: Fusion.UsedAs<boolean>?,
-	OnFocused: Fusion.UsedAs<() -> ()>?,
-	OnFocusLost: Fusion.UsedAs<() -> ()>?,
+	Focusing: Fusion.UsedAs<boolean>?,
+	Hovering: Fusion.UsedAs<boolean>?,
+
+	OnFocus: Fusion.UsedAs<() -> ()>?,
+	OnFocusEnd: Fusion.UsedAs<() -> ()>?,
 }
 
 return function(Scope: Fusion.Scope<any>, Props: Props)
-	local Scope = InnerScope(Scope, Fusion, Util, Components)
+	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
 	local Text = Scope:EnsureValue(Util.Fallback(Props.Text, ""))
+	local Focusing = Scope:EnsureValue(Util.Fallback(Props.Focusing, false))
+	local Hovering = Scope:EnsureValue(Util.Fallback(Props.Hovering, false))
+
 	local Disabled = Util.Fallback(Props.Disabled, false)
-	local IsFocused = Scope:EnsureValue(Util.Fallback(Props.IsFocused, false))
-	local OnFocused = Util.Fallback(Props.OnFocused, function() end)
-	local OnFocusLost = Util.Fallback(Props.OnFocusLost, function() end)
+	local OnFocus = Util.Fallback(Props.OnFocus, function() end)
+	local OnFocusEnd = Util.Fallback(Props.OnFocusEnd, function() end)
 	local Color = Util.Fallback(Props.Color, Theme.Colors.Primary.Main)
 	local CharacterLimit = Util.Fallback(Props.CharacterLimit, -1)
 	local ClearTextOnFocus = Util.Fallback(Props.ClearTextOnFocus, false)
@@ -91,13 +95,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			return Use(Theme.Colors.BaseContent.Main)
 		end)
 	)
-	local FontFace = Util.Fallback(
-		Props.FontFace,
-
-		Scope:Computed(function(Use)
-			return Font.new(Use(Theme.Font.Body), Use(Theme.FontWeight.Body))
-		end)
-	)
+	local FontFace = Util.Fallback(Props.FontFace, Scope:Font(Theme.Font.Body, Theme.FontWeight.Body))
 	local TextXAlignment = Util.Fallback(Props.TextXAlignment, Enum.TextXAlignment.Left)
 	local TextYAlignment = Util.Fallback(Props.TextYAlignment, Enum.TextYAlignment.Top)
 	local TextTransparency = Util.Fallback(
@@ -106,7 +104,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		Scope:Computed(function(Use)
 			if Use(Disabled) then
 				return 0.75
-			elseif Use(IsFocused) then
+			elseif Use(Focusing) then
 				return 0
 			else
 				return 0.5
@@ -126,8 +124,8 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local InvalidInputActive = Scope:Value(false)
 
 	local function ProcessText(NewText: string)
-		local CharacterLimitValue = Peek(CharacterLimit)
-		local TextProcessorValue = Peek(TextProcessor)
+		local CharacterLimitValue = Fusion.peek(CharacterLimit)
+		local TextProcessorValue = Fusion.peek(TextProcessor)
 		local LimitedText = NewText:sub(1, utf8.offset(NewText, CharacterLimitValue))
 		local FullyProcessedText = TextProcessorValue(LimitedText)
 
@@ -136,41 +134,42 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 	local Object = Scope:Hydrate(Scope:Base(Util.CombineProps(Props, {
 		ClassName = "TextBox",
-		Name = "TextInput",
-		CornerRadius = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.CornerRadius["1"]))
-		end),
-		Padding = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Spacing["0.5"]))
-		end),
-		StrokeEnabled = true,
-		StrokeColor = Scope:Spring(
-			Scope:Computed(function(Use)
-				if Use(InvalidInputActive) then
-					return Use(Theme.Colors.Error.Main)
-				elseif Use(IsFocused) then
-					return Use(Color)
-				else
-					return Use(Theme.Colors.NeutralContent.Dark)
-				end
-			end),
-			Theme.SpringSpeed.Immediate,
-			Theme.SpringDampening["1"]
-		),
-		StrokeTransparency = Scope:Spring(
-			Scope:Computed(function(Use)
-				if Use(Disabled) then
-					return 0.9
-				end
-				if Use(IsFocused) then
-					return 0
-				else
-					return 0.8
-				end
-			end),
-			Theme.SpringSpeed["1"],
-			Theme.SpringDampening["1"]
-		),
+		Name = script.Name,
+		Corner = {
+			Radius = Scope:UDim(0, Theme.CornerRadius["1"]),
+		},
+		Padding = {
+			All = Scope:UDim(0, Theme.Padding["0.5"]),
+		},
+		Stroke = {
+			Color = Scope:Spring(
+				Scope:Computed(function(Use)
+					if Use(InvalidInputActive) then
+						return Use(Theme.Colors.Error.Main)
+					elseif Use(Focusing) then
+						return Use(Color)
+					else
+						return Use(Theme.Colors.NeutralContent.Dark)
+					end
+				end),
+				Theme.SpringSpeed["1"],
+				Theme.SpringDampening["1"]
+			),
+			Transparency = Scope:Spring(
+				Scope:Computed(function(Use)
+					if Use(Disabled) then
+						return 0.8
+					end
+					if Use(Focusing) then
+						return 0
+					else
+						return 0.6
+					end
+				end),
+				Theme.SpringSpeed["1"],
+				Theme.SpringDampening["1"]
+			),
+		},
 		AutomaticSize = Enum.AutomaticSize.XY,
 		AutoLocalize = false,
 		Active = Scope:Computed(function(Use)
@@ -205,24 +204,34 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		TextWrapped = Props.TextWrapped,
 
 		[OnEvent "Focused"] = function()
-			if (not Peek(Disabled)) and Peek(TextEditable) then
-				IsFocused:set(true)
-				SoundService:PlayLocalSound(Peek(Theme.Sound.Focus))
-				Peek(OnFocused)()
+			if (not Fusion.peek(Disabled)) and Fusion.peek(TextEditable) then
+				Focusing:set(true)
+
+				SoundService:PlayLocalSound(Fusion.peek(Theme.Sound.Focus))
+
+				Fusion.peek(OnFocus)()
 			end
 		end,
 		[OnEvent "FocusLost"] = function()
-			IsFocused:set(false)
-			Peek(OnFocusLost)()
+			Focusing:set(false)
+
+			Fusion.peek(OnFocusEnd)()
 		end,
 		[OnEvent "MouseEnter"] = function()
-			if not Peek(Disabled) then
-				SoundService:PlayLocalSound(Peek(Theme.Sound.Hover))
+			if not Fusion.peek(Disabled) then
+				Hovering:set(true)
+
+				SoundService:PlayLocalSound(Fusion.peek(Theme.Sound.Hover))
+			end
+		end,
+		[OnEvent "MouseLeave"] = function()
+			if not Fusion.peek(Disabled) then
+				Hovering:set(false)
 			end
 		end,
 		[OnEvent "SelectionGained"] = function()
-			if (not Peek(Disabled)) and Peek(TextEditable) then
-				SoundService:PlayLocalSound(Peek(Theme.Sound.Hover))
+			if (not Fusion.peek(Disabled)) and Fusion.peek(TextEditable) then
+				SoundService:PlayLocalSound(Fusion.peek(Theme.Sound.Hover))
 			end
 		end,
 	}

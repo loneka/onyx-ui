@@ -1,18 +1,27 @@
 --[=[
-		@class SwapInput
+		@class TextSwap
 		
 		Swap between an array values.
+]=]
+
+--[=[
+	@interface TextSwapProps
+	@within TextSwap
+	
+	. ... BaseButtonProps -- All BaseButton properties are accepted.
+	.Options {string}? -- Array of string options to swap between
+	.Selection number? -- The currently selected option index
+	.Disabled boolean? -- Whether the TextSwap is disabled
+	.Color Color3? -- The color of the content
+	.ContentSize number? -- The size of the content
 ]=]
 
 local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
-local ColorUtils = require(OnyxUI.Parent.ColorUtils)
 
-local InnerScope = Fusion.innerScope
 local Children = Fusion.Children
-local Peek = Fusion.peek
 
 local BaseButton = require(script.Parent.BaseButton)
 local Components = {
@@ -29,19 +38,8 @@ export type Props = BaseButton.Props & {
 	ContentSize: Fusion.UsedAs<number>?,
 }
 
---[=[
-		@within SwapInput
-		@interface SwapInputProps
-
-		@field ... BaseButtonProps
-		@field Options Fusion.UsedAs<{ string }>?
-		@field Selection Fusion.UsedAs<number>?
-		@field Disabled Fusion.UsedAs<boolean>?
-		@field Color Fusion.UsedAs<Color3>?
-		@field ContentSize Fusion.UsedAs<number>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
-	local Scope = InnerScope(Scope, Fusion, Util, Components)
+	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
 	local Options = Util.Fallback(Props.Options, {})
@@ -50,8 +48,8 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Disabled = Util.Fallback(Props.Disabled, false)
 	local ContentSize = Util.Fallback(Props.ContentSize, Theme.TextSize["1"])
 
-	local IsHolding = Scope:Value(false)
-	local IsHovering = Scope:Value(false)
+	local Holding = Scope:Value(false)
+	local Hovering = Scope:Value(false)
 	local ShownIncrement = Scope:Value(0)
 
 	local SelectionContent = Scope:Computed(function(Use)
@@ -64,19 +62,14 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		if Use(Disabled) then
 			return Use(Theme.Colors.BaseContent.Main)
 		else
-			if Use(IsHolding) then
-				return ColorUtils.Emphasize(Use(Color), Use(Theme.Emphasis.Regular))
-			elseif Use(IsHovering) then
-				return ColorUtils.Emphasize(Use(Color), Use(Theme.Emphasis.Light))
+			if Use(Holding) then
+				return Util.Emphasize(Use(Color), Use(Theme.Emphasis.Regular))
+			elseif Use(Hovering) then
+				return Util.Emphasize(Use(Color), Use(Theme.Emphasis.Light))
 			else
 				return Use(Color)
 			end
 		end
-	end)
-	local ArrowSize = Scope:Computed(function(Use)
-		local ContentSizeValue = Use(ContentSize)
-
-		return ContentSizeValue * 1.25
 	end)
 
 	Scope:Observer(Options):onChange(function()
@@ -84,8 +77,8 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	end)
 
 	local function RotateSelection(Increment: number)
-		local OptionsValue = Peek(Options)
-		local SelectionValue = Peek(Selection)
+		local OptionsValue = Fusion.peek(Options)
+		local SelectionValue = Fusion.peek(Selection)
 		local NewSelection = SelectionValue + Increment
 
 		if NewSelection > #OptionsValue then
@@ -97,9 +90,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		Selection:set(NewSelection)
 	end
 
-	local OldSelectionValue = Peek(Props.Selection) or 1
+	local OldSelectionValue = Fusion.peek(Props.Selection) or 1
 	Scope:Observer(Selection):onChange(function()
-		local SelectionValue = Peek(Selection)
+		local SelectionValue = Fusion.peek(Selection)
 
 		local SelectionIncreased = SelectionValue > OldSelectionValue
 		ShownIncrement:set((SelectionIncreased and 1) or -1)
@@ -107,43 +100,48 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		ShownIncrement:set(0)
 	end)
 
+	local NoPadding = Scope:UDim(0, Theme.Spacing["0"])
+
 	return Scope:BaseButton(Util.CombineProps(Props, {
-		Name = "SwapInput",
-		ListEnabled = true,
-		ListHorizontalFlex = Enum.UIFlexAlignment.SpaceBetween,
-		ListFillDirection = Enum.FillDirection.Horizontal,
-		ListVerticalAlignment = Enum.VerticalAlignment.Center,
-		Padding = Scope:Computed(function(Use)
-			local Offset = Use(Theme.Spacing["0.25"])
-			return UDim.new(0, Offset)
-		end),
-		StrokeEnabled = true,
-		StrokeColor = Color,
-		StrokeTransparency = Scope:Spring(
-			Scope:Computed(function(Use)
-				if Use(Disabled) then
-					return 0.9
-				else
-					return 0.8
-				end
-			end),
-			Theme.SpringSpeed["1"],
-			Theme.SpringDampening["1"]
-		),
-		CornerRadius = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.CornerRadius["1"]))
-		end),
+		Name = script.Name,
+		List = {
+			HorizontalFlex = Enum.UIFlexAlignment.SpaceBetween,
+			FillDirection = Enum.FillDirection.Horizontal,
+			VerticalAlignment = Enum.VerticalAlignment.Center,
+		},
+		Padding = {
+			All = Scope:UDim(0, Theme.Padding["0.5"]),
+		},
+		Stroke = {
+			Color = Color,
+			Transparency = Scope:Spring(
+				Scope:Computed(function(Use)
+					if Use(Disabled) then
+						return 0.9
+					else
+						return 0.8
+					end
+				end),
+				Theme.SpringSpeed["1"],
+				Theme.SpringDampening["1"]
+			),
+		},
+		Corner = {
+			Radius = Scope:UDim(0, Theme.CornerRadius["1"]),
+		},
+
 		Disabled = Disabled,
 
-		IsHolding = IsHolding,
-		IsHovering = IsHovering,
+		Holding = Holding,
+		Hovering = Hovering,
 
-		OnActivated = function()
+		OnActivate = function()
 			RotateSelection(1)
 		end,
 
 		[Children] = {
 			Scope:IconButton {
+				Name = "LeftArrow",
 				Image = "rbxassetid://136326079088976",
 				Style = "Ghost",
 				Color = Color,
@@ -151,10 +149,10 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 				ContentSize = Scope:Spring(
 					Scope:Computed(function(Use)
 						local ShownIncrementValue = Use(ShownIncrement)
-						local ContentSizeValue = Use(ArrowSize)
+						local ContentSizeValue = Use(ContentSize)
 
 						if ShownIncrementValue < 0 then
-							return Use(ContentSizeValue * (1 - Use(Theme.Emphasis.Regular)))
+							return ContentSizeValue * (1 - Use(Theme.Emphasis.Regular))
 						else
 							return Use(ContentSizeValue)
 						end
@@ -162,8 +160,14 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 					Theme.SpringSpeed["1"],
 					Theme.SpringDampening["1"]
 				),
+				Padding = {
+					Top = NoPadding,
+					Left = NoPadding,
+					Right = NoPadding,
+					Bottom = NoPadding,
+				},
 
-				OnActivated = function()
+				OnActivate = function()
 					RotateSelection(-1)
 				end,
 			},
@@ -184,8 +188,12 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 						return 0
 					end
 				end),
+				SizeLimit = {
+					Min = Scope:Vector2(0, ContentSize),
+				},
 			},
 			Scope:IconButton {
+				Name = "RightArrow",
 				Image = "rbxassetid://85293585205481",
 				Style = "Ghost",
 				Color = Color,
@@ -193,7 +201,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 				ContentSize = Scope:Spring(
 					Scope:Computed(function(Use)
 						local ShownIncrementValue = Use(ShownIncrement)
-						local ContentSizeValue = Use(ArrowSize)
+						local ContentSizeValue = Use(ContentSize)
 
 						if ShownIncrementValue > 0 then
 							return Use(ContentSizeValue * (1 - Use(Theme.Emphasis.Regular)))
@@ -204,8 +212,14 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 					Theme.SpringSpeed["1"],
 					Theme.SpringDampening["1"]
 				),
+				Padding = {
+					Top = NoPadding,
+					Left = NoPadding,
+					Right = NoPadding,
+					Bottom = NoPadding,
+				},
 
-				OnActivated = function()
+				OnActivate = function()
 					RotateSelection(1)
 				end,
 			},

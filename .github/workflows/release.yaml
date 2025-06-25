@@ -1,6 +1,11 @@
 name: Releases
 
-on: push
+on:
+  workflow_dispatch:
+  push:
+
+permissions:
+  contents: write
 
 jobs:
   deploy:
@@ -9,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout Main
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Setup Aftman
         uses: ok-nick/setup-aftman@v0.4.2
@@ -25,14 +30,11 @@ jobs:
       - name: Create Packages Directory
         run: mkdir -p Packages
 
-      - name: Run Selene
-        run: selene src
-
       - name: Build package rbxm
         run: rojo build -o OnyxUI.rbxm standalone.project.json
 
       - name: Upload package rbxm as build artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.6.1
         with:
           name: OnyxUI
           path: OnyxUI.rbxm
@@ -67,7 +69,7 @@ jobs:
 
     steps:
       - name: Checkout development
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Setup Aftman
         uses: ok-nick/setup-aftman@v0.4.2
@@ -76,9 +78,6 @@ jobs:
 
       - name: Install Aftman Toolchains
         run: aftman install
-
-      - name: Run Selene
-        run: selene src
 
       - name: Install Dependencies
         run: wally install
@@ -90,7 +89,7 @@ jobs:
         run: rojo build -o test-pack.rbxm standalone.project.json
 
       - name: Upload test-pack.rbxm as build artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.6.1
         with:
           name: OnyxUI
           path: test-pack.rbxm

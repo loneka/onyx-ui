@@ -4,13 +4,26 @@
 		For displaying both text and icons alongside each other as one seamless body.
 ]=]
 
+--[=[
+	@interface IconTextProps
+	@within IconText
+	
+	. ... FrameProps -- All Frame properties are accepted.
+	.Content {string}? -- The content to display, can include both text and icons.
+	.ContentColor Color3? -- The color of the content.
+	.ContentSize number? -- The size of the content.
+	.ContentTransparency number? -- The transparency of the content.
+	.ContentWrapped boolean? -- Whether the text content should wrap.
+	.ContentRichText boolean? -- Whether the text content supports rich text.
+	.ContentFontFace Font? -- The font face of the text content.
+]=]
+
 local OnyxUI = script.Parent.Parent
 local Util = require(OnyxUI.Util)
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Themer = require(OnyxUI.Themer)
 
 local Children = Fusion.Children
-local InnerScope = Fusion.innerScope
 
 local Frame = require(OnyxUI.Components.Frame)
 local Text = require(OnyxUI.Components.Text)
@@ -31,21 +44,8 @@ export type Props = Frame.Props & {
 	ContentFontFace: Fusion.UsedAs<Font>?,
 }
 
---[=[
-		@within IconText
-		@interface IconTextProps
-
-		@field ... FrameProps
-		@field Content Fusion.UsedAs<{ string }>?
-		@field ContentColor Fusion.UsedAs<Color3>?
-		@field ContentSize Fusion.UsedAs<number>?
-		@field ContentTransparency Fusion.UsedAs<number>?
-		@field ContentWrapped Fusion.UsedAs<boolean>?
-		@field ContentRichText Fusion.UsedAs<boolean>?
-		@field ContentFontFace Fusion.UsedAs<Font>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
-	local Scope = InnerScope(Scope, Fusion, Util, Components)
+	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
 	local Content = Util.Fallback(Props.Content, {})
@@ -54,43 +54,38 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local ContentTransparency = Util.Fallback(Props.ContentTransparency, 0)
 	local ContentWrapped = Util.Fallback(Props.ContentWrapped, true)
 	local ContentRichText = Util.Fallback(Props.ContentRichText, true)
-	local ContentFontFace = Util.Fallback(
-		Props.ContentFontFace,
-		Scope:Computed(function(Use)
-			return Font.new(Use(Theme.Font.Body), Use(Theme.FontWeight.Body))
-		end)
-	)
+	local ContentFontFace = Util.Fallback(Props.ContentFontFace, Scope:Font(Theme.Font.Body, Theme.FontWeight.Body))
 
 	return Scope:Frame(Util.CombineProps(Props, {
 		Name = script.Name,
-		ListEnabled = true,
-		ListFillDirection = Enum.FillDirection.Horizontal,
-		ListPadding = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Spacing["0"]))
-		end),
+		List = {
+			FillDirection = Enum.FillDirection.Horizontal,
+			Padding = Scope:UDim(0, Theme.Spacing["0"]),
+		},
 
 		[Children] = {
-			Scope:ForValues(Content, function(Use, Scope, ContentString: string)
-				if string.find(ContentString, "rbxassetid://", 1, true) then
-					return Scope:Icon {
-						Image = ContentString,
-						ImageColor3 = ContentColor,
-						Size = Scope:Computed(function(Use)
-							return UDim2.fromOffset(Use(ContentSize), Use(ContentSize))
-						end),
-						ImageTransparency = ContentTransparency,
-					}
-				else
-					return Scope:Text {
-						Text = ContentString,
-						TextColor3 = ContentColor,
-						TextSize = ContentSize,
-						TextTransparency = ContentTransparency,
-						TextWrapped = ContentWrapped,
-						RichText = ContentRichText,
-						FontFace = ContentFontFace,
-					}
-				end
+			Scope:ForPairs(Content, function(Use, Scope, Index: number, ContentString: string)
+				return Index,
+					Themer.Theme:is(Theme):during(function()
+						if string.find(ContentString, "rbxassetid://", 1, true) then
+							return Scope:Icon {
+								Image = ContentString,
+								ImageColor3 = ContentColor,
+								Size = Scope:UDim2Offset(ContentSize, ContentSize),
+								ImageTransparency = ContentTransparency,
+							}
+						else
+							return Scope:Text {
+								Text = ContentString,
+								TextColor3 = ContentColor,
+								TextSize = ContentSize,
+								TextTransparency = ContentTransparency,
+								TextWrapped = ContentWrapped,
+								RichText = ContentRichText,
+								FontFace = ContentFontFace,
+							}
+						end
+					end)
 			end),
 		},
 	}))

@@ -2,10 +2,216 @@
 		@class Base
 
 		The foundational component of OnyxUI, from which all other components are built off of. Props supported here typically work in all other components.
+]=]
 
-		:::info Styling props
-		A reference of common styling props can be found in [this docs page](/docs/styling-props).
-		:::
+--[=[
+	@interface GradientProps
+	@within Base
+
+	.Enabled boolean? -- Whether the gradient is enabled.
+	.Color ColorSequence? -- The color sequence of the gradient.
+	.Offset UDim? -- The offset of the gradient.
+	.Rotation number? -- The rotation of the gradient.
+	.Transparency NumberSequence? -- The transparency sequence of the gradient.
+]=]
+
+--[=[
+	@interface PaddingProps
+	@within Base
+
+	.Enabled boolean? -- Whether the padding is enabled.
+	.All UDim? -- The padding applied to all sides.
+	.Top UDim? -- The padding applied to the top side.
+	.Left UDim? -- The padding applied to the left side.
+	.Right UDim? -- The padding applied to the right side.
+	.Bottom UDim? -- The padding applied to the bottom side.
+]=]
+
+--[=[
+	@interface CornerProps
+	@within Base
+
+	.Enabled boolean? -- Whether the corner is enabled.
+	.Radius UDim? -- The radius of the corner.
+]=]
+
+--[=[
+	@interface StrokeProps
+	@within Base
+
+	.Enabled boolean? -- Whether the stroke is enabled.
+	.Thickness number? -- The thickness of the stroke.
+	.Color Color3? -- The color of the stroke.
+	.Transparency number? -- The transparency of the stroke.
+	.LineJoinMode Enum.LineJoinMode? -- The line join mode of the stroke.
+	.ApplyStrokeMode Enum.ApplyStrokeMode? -- The apply stroke mode of the stroke.
+	.Gradient GradientProps? -- The gradient applied to the stroke.
+]=]
+
+--[=[
+	@interface AspectProps
+	@within Base
+
+	.Enabled boolean? -- Whether the aspect ratio constraint is enabled.
+	.Ratio number? -- The aspect ratio.
+	.Type Enum.AspectType? -- The aspect type.
+	.DominantAxis Enum.DominantAxis? -- The dominant axis.
+]=]
+
+--[=[
+	@interface ScaleProps
+	@within Base
+
+	.Enabled boolean? -- Whether the scale is enabled.
+	.Scale number? -- The scale factor.
+]=]
+
+--[=[
+	@interface FlexProps
+	@within Base
+
+	.Enabled boolean? -- Whether the flex item is enabled.
+	.Mode Enum.UIFlexMode? -- The flex mode.
+	.ItemLineAlignment Enum.ItemLineAlignment? -- The alignment of items along the line.
+	.GrowRatio number? -- The grow ratio of the flex item.
+	.ShrinkRatio number? -- The shrink ratio of the flex item.
+]=]
+
+--[=[
+	@interface ListProps
+	@within Base
+
+	.Enabled boolean? -- Whether the list layout is enabled.
+	.Padding UDim? -- The padding between items in the list.
+	.FillDirection Enum.FillDirection? -- The fill direction of the list.
+	.SortOrder Enum.SortOrder? -- The sort order of the list.
+	.Wraps boolean? -- Whether the list wraps.
+	.HorizontalAlignment Enum.HorizontalAlignment? -- The horizontal alignment of the list.
+	.HorizontalFlex boolean? -- Whether horizontal flex is enabled.
+	.VerticalAlignment Enum.VerticalAlignment? -- The vertical alignment of the list.
+	.VerticalFlex boolean? -- Whether vertical flex is enabled.
+	.ItemLineAlignment Enum.ItemLineAlignment? -- The alignment of items along the line.
+]=]
+
+--[=[
+	@interface GridProps
+	@within Base
+
+	.Enabled boolean? -- Whether the grid layout is enabled.
+	.CellPadding UDim2? -- The padding between cells in the grid.
+	.CellSize UDim2? -- The size of each cell in the grid.
+	.FillDirection Enum.FillDirection? -- The fill direction of the grid.
+	.FillDirectionMaxCells number? -- The maximum number of cells in the fill direction.
+	.SortOrder Enum.SortOrder? -- The sort order of the grid.
+	.StartCorner Enum.StartCorner? -- The starting corner of the grid.
+	.HorizontalAlignment Enum.HorizontalAlignment? -- The horizontal alignment of the grid.
+	.VerticalAlignment Enum.VerticalAlignment? -- The vertical alignment of the grid.
+]=]
+
+--[=[
+	@interface TableProps
+	@within Base
+
+	.Enabled boolean? -- Whether the table layout is enabled.
+	.Padding UDim? -- The padding between items in the table.
+	.FillEmptySpaceColumns boolean? -- Whether empty space in columns is filled.
+	.FillEmptySpaceRows boolean? -- Whether empty space in rows is filled.
+	.FillDirection Enum.FillDirection? -- The fill direction of the table.
+	.SortOrder Enum.SortOrder? -- The sort order of the table.
+	.MajorAxis Enum.TableMajorAxis? -- The major axis of the table.
+	.HorizontalAlignment Enum.HorizontalAlignment? -- The horizontal alignment of the table.
+	.VerticalAlignment Enum.VerticalAlignment? -- The vertical alignment of the table.
+]=]
+
+--[=[
+	@interface PageProps
+	@within Base
+
+	.Enabled boolean? -- Whether the page layout is enabled.
+	.Animated boolean? -- Whether the page transitions are animated.
+	.Circular boolean? -- Whether the pages are circular.
+	.EasingDirection Enum.EasingDirection? -- The easing direction for transitions.
+	.EasingStyle Enum.EasingStyle? -- The easing style for transitions.
+	.Padding UDim? -- The padding between pages.
+	.TweenTime number? -- The time for page transitions.
+	.FillDirection Enum.FillDirection? -- The fill direction of the pages.
+	.SortOrder Enum.SortOrder? -- The sort order of the pages.
+	.HorizontalAlignment Enum.HorizontalAlignment? -- The horizontal alignment of the pages.
+	.VerticalAlignment Enum.VerticalAlignment? -- The vertical alignment of the pages.
+	.GamepadInputEnabled boolean? -- Whether gamepad input is enabled.
+	.ScrollWheelInputEnabled boolean? -- Whether scroll wheel input is enabled.
+	.TouchInputEnabled boolean? -- Whether touch input is enabled.
+]=]
+
+--[=[
+	@interface SizeLimitProps
+	@within Base
+
+	.Enabled boolean? -- Whether the size constraint is enabled.
+	.Max Vector2? -- The maximum size.
+	.Min Vector2? -- The minimum size.
+]=]
+
+--[=[
+	@interface TextSizeLimitProps
+	@within Base
+
+	.Enabled boolean? -- Whether the text size constraint is enabled.
+	.Max number? -- The maximum text size.
+	.Min number? -- The minimum text size.
+]=]
+
+--[=[
+	@interface BaseProps
+	@within Base
+
+	.ClassName string? -- The class name of the component.
+	.Name string? -- The name of the component.
+	.Parent Instance? -- The parent instance of the component.
+	.Position UDim2? -- The position of the component.
+	.Rotation number? -- The rotation of the component.
+	.AnchorPoint Vector2? -- The anchor point of the component.
+	.Size UDim2? -- The size of the component.
+	.AutomaticSize Enum.AutomaticSize? -- The automatic size of the component.
+	.Visible boolean? -- Whether the component is visible.
+	.ZIndex number? -- The ZIndex of the component.
+	.LayoutOrder number? -- The layout order of the component.
+	.ClipsDescendants boolean? -- Whether the component clips its descendants.
+	.Active boolean? -- Whether the component is active.
+	.Selectable boolean? -- Whether the component is selectable.
+	.Interactable boolean? -- Whether the component is interactable.
+	.BackgroundColor3 Color3? -- The background color of the component.
+	.BackgroundTransparency number? -- The background transparency of the component.
+	.NextSelectionDown GuiObject? -- The next selection down.
+	.NextSelectionUp GuiObject? -- The next selection up.
+	.NextSelectionRight GuiObject? -- The next selection right.
+	.NextSelectionLeft GuiObject? -- The next selection left.
+	.SelectionImageObject GuiObject? -- The selection image object.
+	.SelectionOrder number? -- The selection order.
+	.SizeConstraint Enum.SizeConstraint? -- The size constraint of the component.
+	.AutoLocalize boolean? -- Whether the component auto-localizes.
+	.RootLocalizationTable LocalizationTable? -- The root localization table.
+	.SelectionBehaviorDown Enum.SelectionBehavior? -- The selection behavior down.
+	.SelectionBehaviorUp Enum.SelectionBehavior? -- The selection behavior up.
+	.SelectionBehaviorRight Enum.SelectionBehavior? -- The selection behavior right.
+	.SelectionBehaviorLeft Enum.SelectionBehavior? -- The selection behavior left.
+	.SelectionGroup boolean? -- Whether the component is part of a selection group.
+
+	.Corner CornerProps? -- The corner properties.
+	.Padding PaddingProps? -- The padding properties.
+	.Stroke StrokeProps? -- The stroke properties.
+	.Gradient GradientProps? -- The gradient properties.
+	.Aspect AspectProps? -- The aspect ratio properties.
+	.Scale ScaleProps? -- The scale properties.
+
+	.List ListProps? -- The list layout properties.
+	.Grid GridProps? -- The grid layout properties.
+	.Table TableProps? -- The table layout properties.
+	.Page PageProps? -- The page layout properties.
+
+	.Flex FlexProps? -- The flex layout properties.
+	.SizeLimit SizeLimitProps? -- The size limit properties.
+	.TextSizeLimit TextSizeLimitProps? -- The text size limit properties.
 ]=]
 
 local OnyxUI = script.Parent.Parent
@@ -14,8 +220,113 @@ local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
 
 local Children = Fusion.Children
-local InnerScope = Fusion.innerScope
 
+export type GradientProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	Color: Fusion.UsedAs<ColorSequence>?,
+	Offset: Fusion.UsedAs<UDim>?,
+	Rotation: Fusion.UsedAs<number>?,
+	Transparency: Fusion.UsedAs<NumberSequence>?,
+}
+export type PaddingProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	All: Fusion.UsedAs<UDim>?,
+	Top: Fusion.UsedAs<UDim>?,
+	Left: Fusion.UsedAs<UDim>?,
+	Right: Fusion.UsedAs<UDim>?,
+	Bottom: Fusion.UsedAs<UDim>?,
+}
+export type CornerProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	Radius: Fusion.UsedAs<UDim>?,
+}
+export type StrokeProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	Thickness: Fusion.UsedAs<number>?,
+	Color: Fusion.UsedAs<Color3>?,
+	Transparency: Fusion.UsedAs<number>?,
+	LineJoinMode: Fusion.UsedAs<Enum.LineJoinMode>?,
+	ApplyStrokeMode: Fusion.UsedAs<Enum.ApplyStrokeMode>?,
+
+	Gradient: Fusion.UsedAs<GradientProps>?,
+}
+export type AspectProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	Ratio: Fusion.UsedAs<number>?,
+	Type: Fusion.UsedAs<Enum.AspectType>?,
+	DominantAxis: Fusion.UsedAs<Enum.DominantAxis>?,
+}
+export type ScaleProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	Scale: Fusion.UsedAs<number>?,
+}
+export type FlexProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	Mode: Fusion.UsedAs<Enum.UIFlexMode>?,
+	ItemLineAlignment: Fusion.UsedAs<Enum.ItemLineAlignment>?,
+	GrowRatio: Fusion.UsedAs<number>?,
+	ShrinkRatio: Fusion.UsedAs<number>?,
+}
+export type ListProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	Padding: Fusion.UsedAs<UDim>?,
+	FillDirection: Fusion.UsedAs<Enum.FillDirection>?,
+	SortOrder: Fusion.UsedAs<Enum.SortOrder>?,
+	Wraps: Fusion.UsedAs<boolean>?,
+	HorizontalAlignment: Fusion.UsedAs<Enum.HorizontalAlignment>?,
+	HorizontalFlex: Fusion.UsedAs<boolean>?,
+	VerticalAlignment: Fusion.UsedAs<Enum.VerticalAlignment>?,
+	VerticalFlex: Fusion.UsedAs<boolean>?,
+	ItemLineAlignment: Fusion.UsedAs<Enum.ItemLineAlignment>?,
+}
+export type GridProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	CellPadding: Fusion.UsedAs<UDim>?,
+	CellSize: Fusion.UsedAs<UDim2>?,
+	FillDirection: Fusion.UsedAs<Enum.FillDirection>?,
+	FillDirectionMaxCells: Fusion.UsedAs<number>?,
+	SortOrder: Fusion.UsedAs<Enum.SortOrder>?,
+	StartCorner: Fusion.UsedAs<Enum.StartCorner>?,
+	HorizontalAlignment: Fusion.UsedAs<Enum.HorizontalAlignment>?,
+	VerticalAlignment: Fusion.UsedAs<Enum.VerticalAlignment>?,
+}
+export type TableProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	Padding: Fusion.UsedAs<UDim>?,
+	FillEmptySpaceColumns: Fusion.UsedAs<boolean>?,
+	FillEmptySpaceRows: Fusion.UsedAs<boolean>?,
+	FillDirection: Fusion.UsedAs<Enum.FillDirection>?,
+	SortOrder: Fusion.UsedAs<Enum.SortOrder>?,
+	MajorAxis: Fusion.UsedAs<Enum.TableMajorAxis>?,
+	HorizontalAlignment: Fusion.UsedAs<Enum.HorizontalAlignment>?,
+	VerticalAlignment: Fusion.UsedAs<Enum.VerticalAlignment>?,
+}
+export type PageProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	Animated: Fusion.UsedAs<boolean>?,
+	Circular: Fusion.UsedAs<boolean>?,
+	EasingDirection: Fusion.UsedAs<Enum.EasingDirection>?,
+	EasingStyle: Fusion.UsedAs<Enum.EasingStyle>?,
+	Padding: Fusion.UsedAs<UDim>?,
+	TweenTime: Fusion.UsedAs<number>?,
+	FillDirection: Fusion.UsedAs<Enum.FillDirection>?,
+	SortOrder: Fusion.UsedAs<Enum.SortOrder>?,
+	HorizontalAlignment: Fusion.UsedAs<Enum.HorizontalAlignment>?,
+	VerticalAlignment: Fusion.UsedAs<Enum.VerticalAlignment>?,
+	GamepadInputEnabled: Fusion.UsedAs<boolean>?,
+	ScrollWheelInputEnabled: Fusion.UsedAs<boolean>?,
+	TouchInputEnabled: Fusion.UsedAs<boolean>?,
+}
+export type SizeLimitProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	Max: Fusion.UsedAs<Vector2>?,
+	Min: Fusion.UsedAs<Vector2>?,
+}
+export type TextSizeLimitProps = {
+	Enabled: Fusion.UsedAs<boolean>?,
+	Max: Fusion.UsedAs<number>?,
+	Min: Fusion.UsedAs<number>?,
+}
 export type Props = {
 	ClassName: string?,
 
@@ -50,268 +361,83 @@ export type Props = {
 	SelectionBehaviorLeft: Fusion.UsedAs<Enum.SelectionBehavior>?,
 	SelectionGroup: Fusion.UsedAs<boolean>?,
 
-	CornerRadius: Fusion.UsedAs<UDim>?,
+	Corner: CornerProps?,
+	Padding: PaddingProps?,
+	Stroke: StrokeProps?,
+	Gradient: GradientProps?,
+	Aspect: AspectProps?,
+	Scale: ScaleProps?,
 
-	Padding: Fusion.UsedAs<UDim>?,
-	PaddingTop: Fusion.UsedAs<UDim>?,
-	PaddingLeft: Fusion.UsedAs<UDim>?,
-	PaddingRight: Fusion.UsedAs<UDim>?,
-	PaddingBottom: Fusion.UsedAs<UDim>?,
+	List: ListProps?,
+	Grid: GridProps?,
+	Table: TableProps?,
+	Page: PageProps?,
+	Flex: FlexProps?,
 
-	Scale: Fusion.UsedAs<number>?,
-
-	StrokeEnabled: Fusion.UsedAs<boolean>?,
-	StrokeThickness: Fusion.UsedAs<number>?,
-	StrokeColor: Fusion.UsedAs<Color3>?,
-	StrokeTransparency: Fusion.UsedAs<number>?,
-	StrokeLineJoinMode: Fusion.UsedAs<Enum.LineJoinMode>?,
-	StrokeApplyStrokeMode: Fusion.UsedAs<Enum.ApplyStrokeMode>?,
-
-	GradientEnabled: Fusion.UsedAs<boolean>?,
-	GradientColor: Fusion.UsedAs<ColorSequence>?,
-	GradientOffset: Fusion.UsedAs<UDim>?,
-	GradientRotation: Fusion.UsedAs<number>?,
-	GradientTransparency: Fusion.UsedAs<number>?,
-
-	AspectRatio: Fusion.UsedAs<number>?,
-	AspectType: Fusion.UsedAs<Enum.AspectType>?,
-	DominantAxis: Fusion.UsedAs<Enum.DominantAxis>?,
-
-	ListEnabled: Fusion.UsedAs<boolean>?,
-	ListPadding: Fusion.UsedAs<UDim>?,
-	ListFillDirection: Fusion.UsedAs<Enum.FillDirection>?,
-	ListSortOrder: Fusion.UsedAs<Enum.SortOrder>?,
-	ListWraps: Fusion.UsedAs<boolean>?,
-	ListHorizontalAlignment: Fusion.UsedAs<Enum.HorizontalAlignment>?,
-	ListHorizontalFlex: Fusion.UsedAs<boolean>?,
-	ListVerticalAlignment: Fusion.UsedAs<Enum.VerticalAlignment>?,
-	ListVerticalFlex: Fusion.UsedAs<boolean>?,
-	ListItemLineAlignment: Fusion.UsedAs<Enum.ItemLineAlignment>?,
-
-	GridEnabled: Fusion.UsedAs<boolean>?,
-	GridCellPadding: Fusion.UsedAs<UDim>?,
-	GridCellSize: Fusion.UsedAs<UDim2>?,
-	GridFillDirection: Fusion.UsedAs<Enum.FillDirection>?,
-	GridFillDirectionMaxCells: Fusion.UsedAs<number>?,
-	GridSortOrder: Fusion.UsedAs<Enum.SortOrder>?,
-	GridStartCorner: Fusion.UsedAs<Enum.StartCorner>?,
-	GridHorizontalAlignment: Fusion.UsedAs<Enum.HorizontalAlignment>?,
-	GridVerticalAlignment: Fusion.UsedAs<Enum.VerticalAlignment>?,
-
-	TableEnabled: Fusion.UsedAs<boolean>?,
-	TablePadding: Fusion.UsedAs<UDim>?,
-	TableFillEmptySpaceColumns: Fusion.UsedAs<boolean>?,
-	TableFillEmptySpaceRows: Fusion.UsedAs<boolean>?,
-	TableFillDirection: Fusion.UsedAs<Enum.FillDirection>?,
-	TableSortOrder: Fusion.UsedAs<Enum.SortOrder>?,
-	TableMajorAxis: Fusion.UsedAs<Enum.TableMajorAxis>?,
-	TableHorizontalAlignment: Fusion.UsedAs<Enum.HorizontalAlignment>?,
-	TableVerticalAlignment: Fusion.UsedAs<Enum.VerticalAlignment>?,
-
-	PageEnabled: Fusion.UsedAs<boolean>?,
-	PageAnimated: Fusion.UsedAs<boolean>?,
-	PageCircular: Fusion.UsedAs<boolean>?,
-	PageEasingDirection: Fusion.UsedAs<Enum.EasingDirection>?,
-	PageEasingStyle: Fusion.UsedAs<Enum.EasingStyle>?,
-	PagePadding: Fusion.UsedAs<UDim>?,
-	PageTweenTime: Fusion.UsedAs<number>?,
-	PageFillDirection: Fusion.UsedAs<Enum.FillDirection>?,
-	PageSortOrder: Fusion.UsedAs<Enum.SortOrder>?,
-	PageHorizontalAlignment: Fusion.UsedAs<Enum.HorizontalAlignment>?,
-	PageVerticalAlignment: Fusion.UsedAs<Enum.VerticalAlignment>?,
-	PageGamepadInputEnabled: Fusion.UsedAs<boolean>?,
-	PageScrollWheelInputEnabled: Fusion.UsedAs<boolean>?,
-	PageTouchInputEnabled: Fusion.UsedAs<boolean>?,
-
-	FlexMode: Fusion.UsedAs<Enum.UIFlexMode>?,
-	FlexItemLineAlignment: Fusion.UsedAs<Enum.ItemLineAlignment>?,
-	FlexGrowRatio: Fusion.UsedAs<number>?,
-	FlexShrinkRatio: Fusion.UsedAs<number>?,
-
-	MaxSize: Fusion.UsedAs<Vector2>?,
-	MinSize: Fusion.UsedAs<Vector2>?,
-
-	MaxTextSize: Fusion.UsedAs<number>?,
-	MinTextSize: Fusion.UsedAs<number>?,
+	SizeLimit: SizeLimitProps?,
+	TextSizeLimit: TextSizeLimitProps?,
 }
 
---[=[
-	@within Base
-	@interface BaseProps
-
-	@field ... BaseProps
-	
-	@field ClassName string?
-	@field Name Fusion.UsedAs<string>?
-	@field Parent Fusion.UsedAs<Instance>?
-	@field Position Fusion.UsedAs<UDim2>?
-	@field Rotation Fusion.UsedAs<number>?
-	@field AnchorPoint Fusion.UsedAs<Vector2>?
-	@field Size Fusion.UsedAs<UDim2>?
-	@field AutomaticSize Fusion.UsedAs<Enum.AutomaticSize>?
-	@field Visible Fusion.UsedAs<boolean>?
-	@field ZIndex Fusion.UsedAs<number>?
-	@field LayoutOrder Fusion.UsedAs<number>?
-	@field ClipsDescendants Fusion.UsedAs<boolean>?
-	@field Active Fusion.UsedAs<boolean>?
-	@field Selectable Fusion.UsedAs<boolean>?
-	@field Interactable Fusion.UsedAs<boolean>?
-	@field BackgroundColor3 Fusion.UsedAs<Color3>?
-	@field BackgroundTransparency Fusion.UsedAs<number>?
-	@field NextSelectionDown Fusion.UsedAs<GuiObject>?
-	@field NextSelectionUp Fusion.UsedAs<GuiObject>?
-	@field NextSelectionRight Fusion.UsedAs<GuiObject>?
-	@field NextSelectionLeft Fusion.UsedAs<GuiObject>?
-	@field SelectionImageObject Fusion.UsedAs<GuiObject>?
-	@field SelectionOrder Fusion.UsedAs<number>?
-	@field SizeConstraint Fusion.UsedAs<Enum.SizeConstraint>?
-	@field AutoLocalize Fusion.UsedAs<boolean>?
-	@field RootLocalizationTable Fusion.UsedAs<LocalizationTable>?
-	@field SelectionBehaviorDown Fusion.UsedAs<Enum.SelectionBehavior>?
-	@field SelectionBehaviorUp Fusion.UsedAs<Enum.SelectionBehavior>?
-	@field SelectionBehaviorRight Fusion.UsedAs<Enum.SelectionBehavior>?
-	@field SelectionBehaviorLeft Fusion.UsedAs<Enum.SelectionBehavior>?
-	@field SelectionGroup Fusion.UsedAs<boolean>?
-	@field CornerRadius Fusion.UsedAs<UDim>?
-	@field Padding Fusion.UsedAs<UDim>?
-	@field PaddingTop Fusion.UsedAs<UDim>?
-	@field PaddingLeft Fusion.UsedAs<UDim>?
-	@field PaddingRight Fusion.UsedAs<UDim>?
-	@field PaddingBottom Fusion.UsedAs<UDim>?
-	@field Scale Fusion.UsedAs<number>?
-	@field StrokeEnabled Fusion.UsedAs<boolean>?
-	@field StrokeThickness Fusion.UsedAs<number>?
-	@field StrokeColor Fusion.UsedAs<Color3>?
-	@field StrokeTransparency Fusion.UsedAs<number>?
-	@field StrokeLineJoinMode Fusion.UsedAs<Enum.LineJoinMode>?
-	@field StrokeApplyStrokeMode Fusion.UsedAs<Enum.ApplyStrokeMode>?
-	@field GradientEnabled Fusion.UsedAs<boolean>?
-	@field GradientColor Fusion.UsedAs<ColorSequence>?
-	@field GradientOffset Fusion.UsedAs<UDim>?
-	@field GradientRotation Fusion.UsedAs<number>?
-	@field GradientTransparency Fusion.UsedAs<number>?
-	@field AspectRatio Fusion.UsedAs<number>?
-	@field AspectType Fusion.UsedAs<Enum.AspectType>?
-	@field DominantAxis Fusion.UsedAs<Enum.DominantAxis>?
-	@field ListEnabled Fusion.UsedAs<boolean>?
-	@field ListPadding Fusion.UsedAs<UDim>?
-	@field ListFillDirection Fusion.UsedAs<Enum.FillDirection>?
-	@field ListSortOrder Fusion.UsedAs<Enum.SortOrder>?
-	@field ListWraps Fusion.UsedAs<boolean>?
-	@field ListHorizontalAlignment Fusion.UsedAs<Enum.HorizontalAlignment>?
-	@field ListHorizontalFlex Fusion.UsedAs<boolean>?
-	@field ListVerticalAlignment Fusion.UsedAs<Enum.VerticalAlignment>?
-	@field ListVerticalFlex Fusion.UsedAs<boolean>?
-	@field ListItemLineAlignment Fusion.UsedAs<Enum.ItemLineAlignment>?
-	@field GridEnabled Fusion.UsedAs<boolean>?
-	@field GridCellPadding Fusion.UsedAs<UDim>?
-	@field GridCellSize Fusion.UsedAs<UDim2>?
-	@field GridFillDirection Fusion.UsedAs<Enum.FillDirection>?
-	@field GridFillDirectionMaxCells Fusion.UsedAs<number>?
-	@field GridSortOrder Fusion.UsedAs<Enum.SortOrder>?
-	@field GridStartCorner Fusion.UsedAs<Enum.StartCorner>?
-	@field GridHorizontalAlignment Fusion.UsedAs<Enum.HorizontalAlignment>?
-	@field GridVerticalAlignment Fusion.UsedAs<Enum.VerticalAlignment>?
-	@field TableEnabled Fusion.UsedAs<boolean>?
-	@field TablePadding Fusion.UsedAs<UDim>?
-	@field TableFillEmptySpaceColumns Fusion.UsedAs<boolean>?
-	@field TableFillEmptySpaceRows Fusion.UsedAs<boolean>?
-	@field TableFillDirection Fusion.UsedAs<Enum.FillDirection>?
-	@field TableSortOrder Fusion.UsedAs<Enum.SortOrder>?
-	@field TableMajorAxis Fusion.UsedAs<Enum.TableMajorAxis>?
-	@field TableHorizontalAlignment Fusion.UsedAs<Enum.HorizontalAlignment>?
-	@field TableVerticalAlignment Fusion.UsedAs<Enum.VerticalAlignment>?
-	@field PageEnabled Fusion.UsedAs<boolean>?
-	@field PageAnimated Fusion.UsedAs<boolean>?
-	@field PageCircular Fusion.UsedAs<boolean>?
-	@field PageEasingDirection Fusion.UsedAs<Enum.EasingDirection>?
-	@field PageEasingStyle Fusion.UsedAs<Enum.EasingStyle>?
-	@field PagePadding Fusion.UsedAs<UDim>?
-	@field PageTweenTime Fusion.UsedAs<number>?
-	@field PageFillDirection Fusion.UsedAs<Enum.FillDirection>?
-	@field PageSortOrder Fusion.UsedAs<Enum.SortOrder>?
-	@field PageHorizontalAlignment Fusion.UsedAs<Enum.HorizontalAlignment>?
-	@field PageVerticalAlignment Fusion.UsedAs<Enum.VerticalAlignment>?
-	@field PageGamepadInputEnabled Fusion.UsedAs<boolean>?
-	@field PageScrollWheelInputEnabled Fusion.UsedAs<boolean>?
-	@field PageTouchInputEnabled Fusion.UsedAs<boolean>?
-	@field FlexMode Fusion.UsedAs<Enum.UIFlexMode>?
-	@field FlexItemLineAlignment Fusion.UsedAs<Enum.ItemLineAlignment>?
-	@field FlexGrowRatio Fusion.UsedAs<number>?
-	@field FlexShrinkRatio Fusion.UsedAs<number>?
-	@field MaxSize Fusion.UsedAs<Vector2>?
-	@field MinSize Fusion.UsedAs<Vector2>?
-	@field MaxTextSize Fusion.UsedAs<number>?
-	@field MinTextSize Fusion.UsedAs<number>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props): Instance
-	local Scope = InnerScope(Scope, Fusion, Util)
+	local Scope = Fusion.innerScope(Scope, Fusion, Util)
 	local Theme = Themer.Theme:now()
 
 	local ClassName = Util.Fallback(Props.ClassName, "Frame")
 	local Name = Util.Fallback(Props.Name, "Base")
 	local AutomaticSize = Util.Fallback(Props.AutomaticSize, Enum.AutomaticSize.XY)
-	local CornerRadius = Util.Fallback(Props.CornerRadius, UDim.new(0, 0))
-	local StrokeThickness = Util.Fallback(Props.StrokeThickness, Theme.StrokeThickness["1"])
-	local StrokeColor = Util.Fallback(Props.StrokeColor, Theme.Colors.Neutral.Main)
-	local StrokeApplyStrokeMode = Util.Fallback(Props.StrokeApplyStrokeMode, Enum.ApplyStrokeMode.Border)
-	local StrokeLineJoinMode = Util.Fallback(
-		Props.StrokeLineJoinMode,
-		Scope:Computed(function(Use)
-			local CornerRadiusValue = Use(CornerRadius)
+	local BackgroundColor3 = Util.Fallback(Props.BackgroundColor3, Theme.Colors.Base.Main)
+	local Corner = Util.Fallback(Props.Corner, {
+		Radius = Scope:UDim(Scope, 0, Theme.CornerRadius["1"]),
+	})
+	local Stroke = Util.Fallback(Props.Stroke, {
+		Thickness = Theme.StrokeThickness["1"],
+		Color = Scope:Computed(function(Use)
+			return Util.Emphasize(Use(BackgroundColor3), Use(Theme.StrokeEmphasis["Regular"]))
+		end),
+		ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
+		LineJoinMode = Scope:Computed(function(Use)
+			local CornerRadiusValue = Use(Use(Corner).Radius)
+
 			if (CornerRadiusValue ~= nil) and ((CornerRadiusValue.Offset > 1) or (CornerRadiusValue.Scale > 1)) then
 				return Enum.LineJoinMode.Round
 			else
 				return Enum.LineJoinMode.Miter
 			end
-		end)
-	)
-	local Padding = Util.Fallback(
-		Props.Padding,
-		Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Spacing["1"]))
-		end)
-	)
-	local PaddingBottom = Util.Fallback(Props.PaddingBottom, Props.Padding)
-	local PaddingLeft = Util.Fallback(Props.PaddingLeft, Props.Padding)
-	local PaddingRight = Util.Fallback(Props.PaddingRight, Props.Padding)
-	local PaddingTop = Util.Fallback(Props.PaddingTop, Props.Padding)
-	local ListPadding = Util.Fallback(
-		Props.ListPadding,
-		Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Spacing["1"]))
-		end)
-	)
-	local ListSortOrder = Util.Fallback(Props.ListSortOrder, Enum.SortOrder.LayoutOrder)
-	local GridCellPadding = Util.Fallback(
-		Props.GridCellPadding,
-		Scope:Computed(function(Use)
-			return UDim2.fromOffset(Use(Theme.Spacing["0.5"]), Use(Theme.Spacing["0.5"]))
-		end)
-	)
-	local GridSortOrder = Util.Fallback(Props.GridSortOrder, Enum.SortOrder.LayoutOrder)
-	local PagePadding = Util.Fallback(
-		Props.PagePadding,
-		Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Spacing["0.5"]))
-		end)
-	)
-	local PageSortOrder = Util.Fallback(Props.PageSortOrder, Enum.SortOrder.LayoutOrder)
-	local TablePadding = Util.Fallback(
-		Props.TablePadding,
-		Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Spacing["0.5"]))
-		end)
-	)
-	local TableSortOrder = Util.Fallback(Props.TableSortOrder, Enum.SortOrder.LayoutOrder)
+		end),
+	})
+	local Padding = Util.Fallback(Props.Padding, {
+		All = Scope:UDim(0, Theme.Padding["1"]),
+	})
+	local List = Util.Fallback(Props.List, {
+		Padding = Scope:UDim(0, Theme.Padding["1"]),
+		SortOrder = Enum.SortOrder.LayoutOrder,
+	})
+	local Grid = Util.Fallback(Props.Grid, {
+		CellPadding = Scope:UDim2Offset(Theme.Padding["1"], Theme.Padding["1"]),
+		SortOrder = Enum.SortOrder.LayoutOrder,
+	})
+	local Table = Util.Fallback(Props.Table, {
+		Padding = Scope:UDim2Offset(Theme.Padding["1"], Theme.Padding["1"]),
+		SortOrder = Enum.SortOrder.LayoutOrder,
+	})
+	local Page = Util.Fallback(Props.Page, {
+		Padding = Scope:UDim(0, Theme.Padding["1"]),
+		SortOrder = Enum.SortOrder.LayoutOrder,
+	})
 
-	local PaddingInEffect = Scope:Computed(function(Use)
-		local Paddings = { Props.Padding, Props.PaddingTop, Props.PaddingLeft, Props.PaddingRight, Props.PaddingBottom }
+	local PaddingActive = Scope:Computed(function(Use)
+		local InProps = Use(Props.Padding) ~= nil
+		local PaddingValue = Use(Padding) or {}
+		local Paddings =
+			{ PaddingValue.All, PaddingValue.Top, PaddingValue.Left, PaddingValue.Right, PaddingValue.Bottom }
 
-		for _, PaddingProp in pairs(Paddings) do
-			local PaddingValue = Use(PaddingProp)
-			if typeof(PaddingValue) == "UDim" then
-				return true
+		if InProps then
+			for _, PaddingProp in Paddings do
+				local PaddingPropValue = Use(PaddingProp)
+
+				if typeof(PaddingPropValue) == "UDim" then
+					return true
+				end
 			end
 		end
 
@@ -352,221 +478,232 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 		SelectionGroup = Props.SelectionGroup,
 
 		[Children] = {
+			-- Styling
 			Scope:Computed(function(Use)
-				local CornerRadiusValue = Use(CornerRadius)
-				if
-					(CornerRadiusValue ~= nil)
-					and ((CornerRadiusValue.Offset ~= 0) or (CornerRadiusValue.Scale ~= 0))
-				then
+				local CornerValue: CornerProps = Use(Corner) or {}
+				local InProps = Use(Props.Corner) ~= nil
+
+				if InProps and (Use(CornerValue.Enabled) ~= false) then
 					return Scope:New "UICorner" {
-						CornerRadius = CornerRadius,
+						CornerRadius = CornerValue.Radius,
 					}
-				else
-					return
 				end
 			end),
 			Scope:Computed(function(Use)
-				local PaddingInEffectValue = Use(PaddingInEffect)
-				if PaddingInEffectValue == true then
+				local PaddingActiveValue = Use(PaddingActive)
+				local PaddingValue: PaddingProps = Use(Padding) or {}
+
+				if PaddingActiveValue == true then
 					return Scope:New "UIPadding" {
 						PaddingTop = Scope:Computed(function(Use)
-							local PaddingTopValue = Use(PaddingTop)
-							local PaddingValue = Use(Padding)
-							if typeof(PaddingTopValue) == "UDim" then
-								return PaddingTopValue
-							elseif typeof(PaddingValue) == "UDim" then
-								return PaddingValue
-							else
-								return UDim.new()
-							end
+							local PaddingAllValue = Use(PaddingValue.All)
+							local PaddingTopValue = Use(PaddingValue.Top)
+
+							return PaddingTopValue or PaddingAllValue or UDim.new()
 						end),
 						PaddingBottom = Scope:Computed(function(Use)
-							local PaddingBottomValue = Use(PaddingBottom)
-							local PaddingValue = Use(Padding)
-							if typeof(PaddingBottomValue) == "UDim" then
-								return PaddingBottomValue
-							elseif typeof(PaddingValue) == "UDim" then
-								return PaddingValue
-							else
-								return UDim.new()
-							end
+							local PaddingAllValue = Use(PaddingValue.All)
+							local PaddingBottomValue = Use(PaddingValue.Bottom)
+
+							return PaddingBottomValue or PaddingAllValue or UDim.new()
 						end),
 						PaddingLeft = Scope:Computed(function(Use)
-							local PaddingLeftValue = Use(PaddingLeft)
-							local PaddingValue = Use(Padding)
-							if typeof(PaddingLeftValue) == "UDim" then
-								return PaddingLeftValue
-							elseif typeof(PaddingValue) == "UDim" then
-								return PaddingValue
-							else
-								return UDim.new()
-							end
+							local PaddingAllValue = Use(PaddingValue.All)
+							local PaddingLeftValue = Use(PaddingValue.Left)
+
+							return PaddingLeftValue or PaddingAllValue or UDim.new()
 						end),
 						PaddingRight = Scope:Computed(function(Use)
-							local PaddingRightValue = Use(PaddingRight)
-							local PaddingValue = Use(Padding)
-							if typeof(PaddingRightValue) == "UDim" then
-								return PaddingRightValue
-							elseif typeof(PaddingValue) == "UDim" then
-								return PaddingValue
-							else
-								return UDim.new()
-							end
+							local PaddingAllValue = Use(PaddingValue.All)
+							local PaddingRightValue = Use(PaddingValue.Right)
+
+							return PaddingRightValue or PaddingAllValue or UDim.new()
 						end),
 					}
-				else
-					return
 				end
 			end),
 			Scope:Computed(function(Use)
-				local ScaleValue = Use(Props.Scale)
-				if (ScaleValue ~= nil) and (ScaleValue ~= 1) then
-					return Scope:New "UIScale" {
-						Scale = ScaleValue,
-					}
-				else
-					return
-				end
-			end),
-			Scope:Computed(function(Use)
-				if Use(Props.StrokeEnabled) == true then
+				local StrokeValue: StrokeProps = Use(Stroke) or {}
+				local InProps = Use(Props.Stroke) ~= nil
+
+				if InProps and (Use(StrokeValue.Enabled) ~= false) then
 					return Scope:New "UIStroke" {
-						Enabled = Props.StrokeEnabled,
-						Thickness = StrokeThickness,
-						Color = StrokeColor,
-						Transparency = Props.StrokeTransparency,
-						ApplyStrokeMode = StrokeApplyStrokeMode,
-						LineJoinMode = StrokeLineJoinMode,
+						Enabled = StrokeValue.Enabled,
+						Thickness = StrokeValue.Thickness,
+						Color = StrokeValue.Color,
+						Transparency = StrokeValue.Transparency,
+						ApplyStrokeMode = StrokeValue.ApplyStrokeMode,
+						LineJoinMode = StrokeValue.LineJoinMode,
+
+						[Children] = {
+							Scope:Computed(function(Use)
+								local GradientValue: GradientProps = Use(StrokeValue.Gradient) or {}
+								local GradientInProps = StrokeValue.Gradient ~= nil
+
+								if GradientInProps and (Use(GradientValue.Enabled) ~= false) then
+									return Scope:New "UIGradient" {
+										Enabled = GradientValue.Enabled,
+										Color = GradientValue.Color,
+										Offset = GradientValue.Offset,
+										Rotation = GradientValue.Rotation,
+										Transparency = GradientValue.Transparency,
+									}
+								end
+							end),
+						},
 					}
-				else
-					return
 				end
 			end),
 			Scope:Computed(function(Use)
-				if Use(Props.GradientEnabled) == true then
+				local GradientValue: GradientProps = Use(Props.Gradient) or {}
+				local InProps = Use(Props.Gradient) ~= nil
+
+				if InProps and (Use(GradientValue.Enabled) ~= false) then
 					return Scope:New "UIGradient" {
-						Enabled = Props.GradientEnabled,
-						Color = Props.GradientColor,
-						Offset = Props.GradientOffset,
-						Rotation = Props.GradientRotation,
-						Transparency = Props.GradientTransparency,
+						Enabled = GradientValue.Enabled,
+						Color = GradientValue.Color,
+						Offset = GradientValue.Offset,
+						Rotation = GradientValue.Rotation,
+						Transparency = GradientValue.Transparency,
 					}
-				else
-					return
+				end
+			end),
+
+			-- Sizing
+			Scope:Computed(function(Use)
+				local ScaleValue: ScaleProps = Use(Props.Scale) or {}
+				local InProps = Use(Props.Scale) ~= nil
+
+				if InProps and (Use(ScaleValue.Enabled) ~= false) then
+					return Scope:New "UIScale" {
+						Scale = ScaleValue.Scale,
+					}
 				end
 			end),
 			Scope:Computed(function(Use)
-				if Use(Props.AspectRatio) ~= nil then
+				local AspectValue: AspectProps = Use(Props.Aspect) or {}
+				local InProps = Use(Props.Aspect) ~= nil
+
+				if InProps and (Use(AspectValue.Enabled) ~= false) then
 					return Scope:New "UIAspectRatioConstraint" {
-						AspectRatio = Props.AspectRatio,
-						DominantAxis = Props.DominantAxis,
-						AspectType = Props.AspectType,
+						AspectRatio = AspectValue.Ratio,
+						DominantAxis = AspectValue.DominantAxis,
+						AspectType = AspectValue.Type,
 					}
-				else
-					return
 				end
 			end),
 			Scope:Computed(function(Use)
-				if (Use(Props.MaxSize) ~= nil) or (Use(Props.MinSize) ~= nil) then
+				local SizeLimitValue: SizeLimitProps = Use(Props.SizeLimit) or {}
+
+				if
+					(Use(SizeLimitValue.Enabled) ~= false) and (Use(SizeLimitValue.Max) ~= nil)
+					or (Use(SizeLimitValue.Min) ~= nil)
+				then
 					return Scope:New "UISizeConstraint" {
-						MaxSize = Props.MaxSize,
-						MinSize = Props.MinSize,
+						MaxSize = SizeLimitValue.Max,
+						MinSize = SizeLimitValue.Min,
 					}
-				else
-					return
 				end
 			end),
 			Scope:Computed(function(Use)
-				if (Use(Props.MaxTextSize) ~= nil) or (Use(Props.MinTextSize) ~= nil) then
+				local TextSizeLimitValue: TextSizeLimitProps = Use(Props.TextSizeLimit) or {}
+
+				if (Use(TextSizeLimitValue.Max) ~= nil) or (Use(TextSizeLimitValue.Min) ~= nil) then
 					return Scope:New "UITextSizeConstraint" {
-						MaxTextSize = Props.MaxTextSize,
-						MinTextSize = Props.MinTextSize,
+						MaxTextSize = TextSizeLimitValue.Max,
+						MinTextSize = TextSizeLimitValue.Min,
 					}
-				else
-					return
 				end
 			end),
+
+			-- Layout
 			Scope:Computed(function(Use)
-				if Use(Props.ListEnabled) == true then
+				local ListValue: ListProps = Use(List) or {}
+				local InProps = Use(Props.List) ~= nil
+
+				if InProps and (Use(ListValue.Enabled) ~= false) then
 					return Scope:New "UIListLayout" {
-						Padding = ListPadding,
-						FillDirection = Props.ListFillDirection,
-						SortOrder = ListSortOrder,
-						Wraps = Props.ListWraps,
-						HorizontalAlignment = Props.ListHorizontalAlignment,
-						HorizontalFlex = Props.ListHorizontalFlex,
-						ItemLineAlignment = Props.ListItemLineAlignment,
-						VerticalAlignment = Props.ListVerticalAlignment,
-						VerticalFlex = Props.ListVerticalFlex,
+						Padding = ListValue.Padding,
+						FillDirection = ListValue.FillDirection,
+						SortOrder = ListValue.SortOrder,
+						Wraps = ListValue.Wraps,
+						HorizontalAlignment = ListValue.HorizontalAlignment,
+						HorizontalFlex = ListValue.HorizontalFlex,
+						ItemLineAlignment = ListValue.ItemLineAlignment,
+						VerticalAlignment = ListValue.VerticalAlignment,
+						VerticalFlex = ListValue.VerticalFlex,
 					}
-				else
-					return
 				end
 			end),
 			Scope:Computed(function(Use)
-				if Use(Props.GridEnabled) == true then
+				local GridValue = Use(Grid) or {}
+				local InProps = Use(Props.Grid) ~= nil
+
+				if InProps and (Use(GridValue.Enabled) ~= false) then
 					return Scope:New "UIGridLayout" {
-						CellPadding = GridCellPadding,
-						CellSize = Props.GridCellSize,
-						FillDirection = Props.GridFillDirection,
-						FillDirectionMaxCells = Props.GridFillDirectionMaxCells,
-						SortOrder = GridSortOrder,
-						StartCorner = Props.GridStartCorner,
-						HorizontalAlignment = Props.GridHorizontalAlignment,
-						VerticalAlignment = Props.GridVerticalAlignment,
+						CellPadding = GridValue.CellPadding,
+						CellSize = GridValue.CellSize,
+						FillDirection = GridValue.FillDirection,
+						FillDirectionMaxCells = GridValue.FillDirectionMaxCells,
+						SortOrder = GridValue.SortOrder,
+						StartCorner = GridValue.StartCorner,
+						HorizontalAlignment = GridValue.HorizontalAlignment,
+						VerticalAlignment = GridValue.VerticalAlignment,
 					}
-				else
-					return
 				end
 			end),
 			Scope:Computed(function(Use)
-				if Use(Props.TableEnabled) == true then
+				local TableValue = Use(Table) or {}
+				local InProps = Use(Props.Table) ~= nil
+
+				if InProps and (Use(TableValue.Enabled) ~= false) then
 					return Scope:New "UITableLayout" {
-						Padding = TablePadding,
-						FillEmptySpaceColumns = Props.TableFillEmptySpaceColumns,
-						FillEmptySpaceRows = Props.TableFillEmptySpaceRows,
-						FillDirection = Props.TableFillDirection,
-						SortOrder = TableSortOrder,
-						MajorAxis = Props.TableMajorAxis,
-						HorizontalAlignment = Props.TableHorizontalAlignment,
-						VerticalAlignment = Props.TableVerticalAlignment,
+						Padding = TableValue.Padding,
+						FillEmptySpaceColumns = TableValue.FillEmptySpaceColumns,
+						FillEmptySpaceRows = TableValue.FillEmptySpaceRows,
+						FillDirection = TableValue.FillDirection,
+						SortOrder = TableValue.SortOrder,
+						MajorAxis = TableValue.MajorAxis,
+						HorizontalAlignment = TableValue.HorizontalAlignment,
+						VerticalAlignment = TableValue.VerticalAlignment,
 					}
 				else
 					return
 				end
 			end),
 			Scope:Computed(function(Use)
-				if Use(Props.PageEnabled) == true then
+				local PageValue = Use(Page) or {}
+				local InProps = Use(Props.Page) ~= nil
+
+				if InProps and (Use(PageValue.Enabled) ~= false) then
 					return Scope:New "UIPageLayout" {
-						Animated = Props.PageAnimated,
-						Circular = Props.PageCircular,
-						EasingDirection = Props.PageEasingDirection,
-						EasingStyle = Props.PageEasingStyle,
-						Padding = PagePadding,
-						TweenTime = Props.PageTweenTime,
-						FillDirection = Props.PageFillDirection,
-						SortOrder = PageSortOrder,
-						HorizontalAlignment = Props.PageHorizontalAlignment,
-						VerticalAlignment = Props.PageVerticalAlignment,
-						GamepadInputEnabled = Props.PageGamepadInputEnabled,
-						ScrollWheelInputEnabled = Props.PageScrollWheelInputEnabled,
-						TouchInputEnabled = Props.PageTouchInputEnabled,
+						Animated = PageValue.Animated,
+						Circular = PageValue.Circular,
+						EasingDirection = PageValue.EasingDirection,
+						EasingStyle = PageValue.EasingStyle,
+						Padding = PageValue.Padding,
+						TweenTime = PageValue.TweenTime,
+						FillDirection = PageValue.FillDirection,
+						SortOrder = PageValue.SortOrder,
+						HorizontalAlignment = PageValue.HorizontalAlignment,
+						VerticalAlignment = PageValue.VerticalAlignment,
+						GamepadInputEnabled = PageValue.GamepadInputEnabled,
+						ScrollWheelInputEnabled = PageValue.ScrollWheelInputEnabled,
+						TouchInputEnabled = PageValue.TouchInputEnabled,
 					}
-				else
-					return
 				end
 			end),
 			Scope:Computed(function(Use)
-				local FlexMode = Use(Props.FlexMode)
-				if (FlexMode ~= nil) and (FlexMode ~= Enum.UIFlexMode.None) then
+				local FlexValue = Use(Props.Flex) or {}
+				local InProps = Use(Props.Flex) ~= nil
+
+				if InProps and (Use(FlexValue.Mode) ~= Enum.UIFlexMode.None) then
 					return Scope:New "UIFlexItem" {
-						FlexMode = Props.FlexMode,
-						FlexItemLineAlignment = Props.FlexItemLineAlignment,
-						FlexGrowRatio = Props.FlexGrowRatio,
-						FlexShrinkRatio = Props.FlexShrinkRatio,
+						FlexMode = FlexValue.Mode,
+						FlexItemLineAlignment = FlexValue.ItemLineAlignment,
+						FlexGrowRatio = FlexValue.GrowRatio,
+						FlexShrinkRatio = FlexValue.ShrinkRatio,
 					}
-				else
-					return
 				end
 			end),
 

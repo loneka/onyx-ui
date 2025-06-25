@@ -1,9 +1,8 @@
 local OnyxUI = script.Parent.Parent
-
+local Util = require(OnyxUI.Util)
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Themer = require(OnyxUI.Themer)
 
-local Scoped = Fusion.scoped
 local Children = Fusion.Children
 
 local Heading = require(script.Parent.Heading)
@@ -17,15 +16,14 @@ local Components = {
 
 return {
 	story = function(Props)
-		local Scope = Fusion.innerScope(Props.scope, Fusion, Components)
+		local Scope = Fusion.innerScope(Props.scope, Fusion, Util, Components)
 		local Theme = Themer.Theme:now()
 
 		Scope:Frame {
 			Parent = Props.target,
-			ListEnabled = true,
-			ListPadding = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.Spacing["0.5"]))
-			end),
+			List = {
+				Padding = Scope:UDim(0, Theme.Spacing["0.5"]),
+			},
 
 			[Children] = {
 				Scope:Heading {

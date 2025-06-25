@@ -36,7 +36,7 @@ Give your UI the look and feel you desire with ease.
 
 Messy markup sucks. Style any component, with less code, using OnyxUI's passthrough styling props.
 
-## [Documentation 📄](https://suite.loneka.com/OnyxUI/)
+## [Documentation 📄](https://loneka.com/OnyxUI/)
 
 ##
 

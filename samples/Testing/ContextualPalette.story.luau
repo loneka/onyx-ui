@@ -5,19 +5,17 @@ local Util = OnyxUI.Util
 local Themer = OnyxUI.Themer
 local Components = OnyxUI.Components
 local Children = Fusion.Children
-local InnerScope = Fusion.innerScope
 
 local function Palette(Scope: Fusion.Scope<any>, _: any)
-	local Scope = InnerScope(Scope, Fusion, Util, Components)
+	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
 	return Scope:Base {
 		Name = "Palette",
 		BackgroundTransparency = 1,
-		ListEnabled = true,
-		ListPadding = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Spacing["0.75"]))
-		end),
+		List = {
+			Padding = Scope:UDim(0, Theme.Spacing["0.75"]),
+		},
 
 		[Children] = {
 			{
@@ -48,7 +46,7 @@ end
 
 return {
 	story = function(Props)
-		local Scope = Fusion.scoped(Fusion, Components, {
+		local Scope = Fusion.scoped(Fusion, Util, Components, {
 			Palette = Palette,
 		})
 
@@ -60,8 +58,9 @@ return {
 
 		Scope:Base {
 			Parent = Props.target,
-			ListEnabled = true,
-			ListFillDirection = Enum.FillDirection.Horizontal,
+			List = {
+				FillDirection = Enum.FillDirection.Horizontal,
+			},
 			BackgroundTransparency = 1,
 
 			[Children] = {

@@ -4,6 +4,17 @@
 		For draggable linear selection.
 ]=]
 
+--[=[
+	@interface SliderProps
+	@within Slider
+	
+	. ... BaseButtonProps -- All BaseButton properties are accepted.
+	.Value number? -- The current value of the slider (0 to 1).
+	.Disabled boolean? -- Whether the slider is disabled.
+	.Unit number? -- The step size for the slider value.
+	.Color Color3? -- The color of the slider.
+]=]
+
 local OnyxUI = script.Parent.Parent
 
 local Fusion = require(OnyxUI.Parent.Fusion)
@@ -11,7 +22,6 @@ local Themer = require(OnyxUI.Themer)
 local Util = require(OnyxUI.Util)
 local ColorUtils = require(OnyxUI.Parent.ColorUtils)
 
-local InnerScope = Fusion.innerScope
 local Children = Fusion.Children
 local Out = Fusion.Out
 local OnEvent = Fusion.OnEvent
@@ -34,26 +44,17 @@ export type Props = BaseButton.Props & {
 	Color: Fusion.UsedAs<Color3>?,
 }
 
---[=[
-		@within Slider
-		@interface SliderProps
-
-		@field ... FrameProps
-		@field Value Fusion.UsedAs<number>?
-		@field Disabled Fusion.UsedAs<boolean>?
-		@field Unit Fusion.UsedAs<number>?
-		@field Color Fusion.UsedAs<Color3>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
-	local Scope = InnerScope(Scope, Fusion, Util, Components)
+	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
 	local Unit = Util.Fallback(Props.Unit, 1 / 100)
 	local Value = Scope:EnsureValue(Util.Fallback(Props.Value, 1))
 	local Color = Util.Fallback(Props.Color, Theme.Colors.Primary.Main)
 	local Disabled = Util.Fallback(Props.Disabled, false)
-	local IsHovering = Scope:EnsureValue(Util.Fallback(Props.IsHovering, false))
-	local IsHolding = Scope:EnsureValue(Util.Fallback(Props.IsHolding, false))
+
+	local Hovering = Scope:EnsureValue(Util.Fallback(Props.Hovering, false))
+	local Holding = Scope:EnsureValue(Util.Fallback(Props.Holding, false))
 
 	local DragDetector = Scope:Value(nil)
 	local AbsoluteSize = Scope:Value(Vector2.new())
@@ -63,13 +64,22 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		if Use(Disabled) then
 			return Use(Theme.Colors.BaseContent.Main)
 		else
-			if Use(IsHolding) then
-				return ColorUtils.Emphasize(Use(Color), Use(Theme.Emphasis.Regular))
-			elseif Use(IsHovering) then
-				return ColorUtils.Emphasize(Use(Color), Use(Theme.Emphasis.Light))
+			if Use(Holding) then
+				return Util.Emphasize(Use(Color), Use(Theme.Emphasis.Regular))
+			elseif Use(Hovering) then
+				return Util.Emphasize(Use(Color), Use(Theme.Emphasis.Light))
 			else
 				return Use(Color)
 			end
+		end
+	end)
+	local EffectiveStrokeEmphasis = Scope:Computed(function(Use)
+		local StrokeEmphasis = Use(Theme.StrokeEmphasis.Regular)
+
+		if Use(Disabled) or Use(Hovering) or Use(Holding) then
+			return 0
+		else
+			return StrokeEmphasis
 		end
 	end)
 
@@ -85,33 +95,35 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 
 	local Slider = Scope:BaseButton(Util.CombineProps(Props, {
 		Name = script.Name,
-		CornerRadius = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.CornerRadius.Full))
-		end),
-		Size = Scope:Computed(function(Use)
-			return UDim2.fromOffset(0, Use(Theme.TextSize["1"]))
-		end),
+		Corner = {
+			Radius = Scope:UDim(0, Theme.CornerRadius.Full),
+		},
+		Size = Scope:UDim2Offset(0, Theme.TextSize["1"]),
 		AutomaticSize = Enum.AutomaticSize.Y,
+
 		Disabled = Disabled,
-		IsHovering = IsHovering,
+		Hovering = Hovering,
+		Holding = Holding,
 
 		[Children] = {
 			DragDetector,
 			Scope:Hydrate(Scope:Frame {
 				Name = "Progress",
-				CornerRadius = Scope:Computed(function(Use)
-					return UDim.new(0, Use(Theme.CornerRadius.Full))
-				end),
+				Selectable = false,
 				BackgroundTransparency = 0,
 				BackgroundColor3 = Theme.Colors.Neutral.Main,
-				Size = Scope:Computed(function(Use)
-					return UDim2.new(UDim.new(1, 0), UDim.new(0, Use(Theme.TextSize["0.75"])))
-				end),
-				FlexMode = Enum.UIFlexMode.Fill,
+				Size = Scope:UDim2(1, 0, 0, Theme.TextSize["0.75"]),
+				Corner = {
+					Radius = Scope:UDim(0, Theme.CornerRadius.Full),
+				},
+				Flex = {
+					Mode = Enum.UIFlexMode.Fill,
+				},
 
 				[Children] = {
 					Scope:Frame {
 						Name = "Progress",
+						Selectable = false,
 						Size = Scope:Computed(function(Use)
 							local ValueValue = Use(Value)
 							return UDim2.fromScale(ValueValue, 1)
@@ -128,24 +140,40 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 							Theme.SpringSpeed["1"],
 							Theme.SpringDampening["1"]
 						),
-						CornerRadius = Scope:Computed(function(Use)
-							return UDim.new(0, Use(Theme.CornerRadius.Full))
-						end),
 						AutomaticSize = Enum.AutomaticSize.None,
+						Corner = {
+							Radius = Scope:UDim(0, Theme.CornerRadius.Full),
+						},
+						Stroke = {
+							Color = Color3.fromRGB(255, 255, 255),
+							Gradient = {
+								Color = Scope:Computed(function(Use)
+									return ColorSequence.new({
+										ColorSequenceKeypoint.new(
+											0,
+											ColorUtils.Lighten(Use(EffectiveColor), Use(EffectiveStrokeEmphasis))
+										),
+										ColorSequenceKeypoint.new(1, Use(EffectiveColor)),
+									})
+								end),
+								Rotation = 90,
+							},
+							Transparency = Scope:Computed(function(Use)
+								if Use(Disabled) then
+									return DISABLED_BACKGROUND_TRANSPARENCY
+								else
+									return 0
+								end
+							end),
+						},
 
 						[Children] = {
 							Scope:Frame {
 								Name = "Ball",
-								AspectRatio = 1,
-								AnchorPoint = Scope:Computed(function(Use)
-									local ValueValue = Use(Value)
-									return Vector2.new(ValueValue, 0.5)
-								end),
+								Selectable = false,
+								AnchorPoint = Scope:Vector2(Value, 0.5),
 								Position = UDim2.fromScale(1, 0.5),
-								Size = Scope:Computed(function(Use)
-									local Offset = Use(Theme.TextSize["1"])
-									return UDim2.fromOffset(Offset, Offset)
-								end),
+								Size = Scope:UDim2Offset(Theme.TextSize["1"], Theme.TextSize["1"]),
 								BackgroundTransparency = 0,
 								BackgroundColor3 = Scope:Computed(function(Use)
 									if Use(Disabled) then
@@ -154,24 +182,26 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 										return Use(Theme.Colors.BaseContent.Main)
 									end
 								end),
-								CornerRadius = Scope:Computed(function(Use)
-									return UDim.new(0, Use(Theme.CornerRadius.Full))
-								end),
-								StrokeEnabled = true,
-								StrokeColor = Theme.Colors.Neutral.Main,
-								StrokeThickness = Theme.StrokeThickness["1"],
 								AutomaticSize = Enum.AutomaticSize.None,
+								Corner = {
+									Radius = Scope:UDim(0, Theme.CornerRadius.Full),
+								},
+								Stroke = {
+									Color = Theme.Colors.Neutral.Main,
+									Thickness = Theme.StrokeThickness["1"],
+								},
+								Aspect = {
+									Ratio = 1,
+								},
 
 								[Children] = {
 									Scope:Frame {
 										Name = "SmallBall",
+										Selectable = false,
 										AspectRatio = 1,
 										AnchorPoint = Vector2.new(0.5, 0.5),
 										Position = UDim2.fromScale(0.5, 0.5),
-										Size = Scope:Computed(function(Use)
-											local Offset = Use(Theme.TextSize["0.75"])
-											return UDim2.fromOffset(Offset, Offset)
-										end),
+										Size = Scope:UDim2Offset(Theme.TextSize["0.75"], Theme.TextSize["0.75"]),
 										BackgroundTransparency = 0,
 										BackgroundColor3 = Scope:Spring(
 											Scope:Computed(function(Use)
@@ -184,10 +214,10 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 											Theme.SpringSpeed["1"],
 											Theme.SpringDampening["1"]
 										),
-										CornerRadius = Scope:Computed(function(Use)
-											return UDim.new(0, Use(Theme.CornerRadius.Full))
-										end),
 										AutomaticSize = Enum.AutomaticSize.None,
+										Corner = {
+											Radius = Scope:UDim(0, Theme.CornerRadius.Full),
+										},
 									},
 								},
 							},
@@ -214,10 +244,10 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		end,
 		[OnEvent "DragStart"] = function(Position: Vector2)
 			ProcessDrag(Position)
-			IsHolding:set(true)
+			Holding:set(true)
 		end,
 		[OnEvent "DragEnd"] = function()
-			IsHolding:set(false)
+			Holding:set(false)
 		end,
 	})
 

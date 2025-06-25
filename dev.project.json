@@ -7,7 +7,7 @@
       "OnyxUI": {
         "$path": "include/StandaloneBundler.luau",
         "Packages": {
-          "$path": "Packages",
+          "$path": "roblox_packages",
           "OnyxUI": {
             "$path": "src"
           }

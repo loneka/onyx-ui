@@ -1,10 +1,9 @@
 local OnyxUI = script.Parent.Parent
-
+local Util = require(OnyxUI.Util)
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Themer = require(OnyxUI.Themer)
 
 local Children = Fusion.Children
-local Scoped = Fusion.scoped
 
 local TitleBar = require(OnyxUI.Components.TitleBar)
 local Frame = require(OnyxUI.Components.Frame)
@@ -15,20 +14,19 @@ local Components = {
 
 return {
 	story = function(Props)
-		local Scope = Fusion.innerScope(Props.scope, Fusion, Components)
+		local Scope = Fusion.innerScope(Props.scope, Fusion, Util, Components)
 		local Theme = Themer.Theme:now()
 
 		Scope:Frame {
 			Parent = Props.target,
-			Padding = Scope:Computed(function(Use)
-				return UDim.new(0, Use(Theme.StrokeThickness["1"]))
-			end),
-			Size = Scope:Computed(function(Use)
-				return UDim2.fromOffset(Use(Theme.Spacing["16"]), 0)
-			end),
+			Size = Scope:UDim2Offset(Theme.Sizing["16"], 0),
 			AutomaticSize = Enum.AutomaticSize.Y,
-			ListEnabled = true,
-			ListHorizontalFlex = Enum.UIFlexAlignment.Fill,
+			Padding = {
+				All = Scope:UDim(0, Theme.StrokeThickness["1"]),
+			},
+			List = {
+				HorizontalFlex = Enum.UIFlexAlignment.Fill,
+			},
 
 			[Children] = {
 				Scope:TitleBar {

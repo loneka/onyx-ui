@@ -4,21 +4,31 @@
 		Useful for separating UI into sections.
 ]=]
 
-local OnyxUI = script.Parent.Parent
+--[=[
+	@interface DividerProps
+	@within Divider
+	
+	. ... FrameProps -- All Frame properties are accepted.
+	.Length UDim -- The length of the divider.
+	.FillDirection Enum.FillDirection -- The direction in which the divider fills (Horizontal or Vertical).
+	.Color Color3 -- The color of the divider.
+	.Transparency number -- The transparency of the divider.
+	.Spacing UDim -- The spacing around the divider.
+]=]
 
+local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
 
 local Children = Fusion.Children
-local InnerScope = Fusion.innerScope
 
 local Frame = require(script.Parent.Frame)
 local Components = {
 	Frame = Frame,
 }
 
-type Props = Frame.Props & {
+export type Props = Frame.Props & {
 	Length: Fusion.UsedAs<UDim>?,
 	FillDirection: Fusion.UsedAs<Enum.FillDirection>?,
 	Color: Fusion.UsedAs<Color3>?,
@@ -26,32 +36,15 @@ type Props = Frame.Props & {
 	Spacing: Fusion.UsedAs<UDim>?,
 }
 
---[=[
-		@within Divider
-		@interface DividerProps
-
-		@field ... FrameProps
-		@field Length Fusion.UsedAs<UDim>?
-		@field FillDirection Fusion.UsedAs<Enum.FillDirection>?
-		@field Color Fusion.UsedAs<Color3>?
-		@field Transparency Fusion.UsedAs<number>?
-		@field Spacing Fusion.UsedAs<UDim>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
-	local Scope = InnerScope(Scope, Fusion, Util, Components)
+	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
 	local Length = Util.Fallback(Props.Length, UDim.new(1, 0))
 	local FillDirection = Util.Fallback(Props.FillDirection, Enum.FillDirection.Horizontal)
 	local Color = Util.Fallback(Props.Color, Theme.Colors.BaseContent.Main)
 	local Transparency = Util.Fallback(Props.Transparency, 0.9)
-	local Spacing = Util.Fallback(
-		Props.Spacing,
-
-		Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.Spacing["0.5"]))
-		end)
-	)
+	local Spacing = Util.Fallback(Props.Spacing, Scope:UDim(0, Theme.Spacing["0.5"]))
 
 	local VerticalPadding = Scope:Computed(function(Use)
 		if Use(FillDirection) == Enum.FillDirection.Horizontal then
@@ -69,7 +62,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	end)
 
 	return Scope:Frame(Util.CombineProps(Props, {
-		Name = "Divider",
+		Name = script.Name,
 		Size = Scope:Computed(function(Use)
 			if Use(FillDirection) == Enum.FillDirection.Horizontal then
 				return UDim2.new(Length, UDim.new(0, 0))
@@ -84,10 +77,12 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 				return Enum.AutomaticSize.X
 			end
 		end),
-		PaddingTop = VerticalPadding,
-		PaddingBottom = VerticalPadding,
-		PaddingLeft = HorizontalPadding,
-		PaddingRight = HorizontalPadding,
+		Padding = {
+			Top = VerticalPadding,
+			Bottom = VerticalPadding,
+			Left = HorizontalPadding,
+			Right = HorizontalPadding,
+		},
 
 		[Children] = {
 			Scope:Frame {

@@ -4,14 +4,30 @@
 		A robust button component, supporting text and icons, and multiple variants.
 ]=]
 
+--[=[
+	@interface ButtonProps
+	@within Button
+
+	. ... BaseButtonProps -- All BaseButton properties are accepted.
+	.Disabled boolean? -- Whether the button is disabled.
+	.Style string? -- The style of the button (e.g., "Filled", "Outlined", "Ghost").
+	.Color Color3? -- The background color of the button.
+	.Content {string}? -- The content of the button (e.g., text or icons).
+	.ContentColor Color3? -- The color of the button's content.
+	.ContentSize number? -- The size of the button's content.
+	.ContentWrapped boolean? -- Whether the content should wrap.
+	.SizeVariant "ExtraSmall" | "Small" | "Medium" | "Large" | "ExtraLarge"? -- The size variant of the button.
+	.Holding boolean? -- Whether the button is being held.
+	.Hovering boolean? -- Whether the button is being hovered over.
+]=]
+
 local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
-local ColorUtils = require(OnyxUI.Parent.ColorUtils)
 local Util = require(OnyxUI.Util)
 local Themer = require(OnyxUI.Themer)
+local ColorUtils = require(OnyxUI.Parent.ColorUtils)
 
 local Children = Fusion.Children
-local InnerScope = Fusion.innerScope
 
 local BaseButton = require(script.Parent.BaseButton)
 local IconText = require(script.Parent.IconText)
@@ -32,27 +48,11 @@ export type Props = BaseButton.Props & {
 	ContentSize: Fusion.UsedAs<number>?,
 	ContentWrapped: Fusion.UsedAs<boolean>?,
 	SizeVariant: Fusion.UsedAs<"ExtraSmall" | "Small" | "Medium" | "Large" | "ExtraLarge">?,
-	IsHolding: Fusion.UsedAs<boolean>?,
+	Holding: Fusion.UsedAs<boolean>?,
 }
 
---[=[
-		@within Button
-		@interface ButtonProps
-
-		@field ... BaseProps
-
-		@field Disabled Fusion.UsedAs<boolean>?
-		@field Content Fusion.UsedAs<{ string }>?
-		@field Style Fusion.UsedAs<string>?
-		@field Color Fusion.UsedAs<Color3>?
-		@field ContentColor Fusion.UsedAs<Color3>?
-		@field ContentSize Fusion.UsedAs<number>?
-		@field ContentWrapped Fusion.UsedAs<boolean>?
-		@field SizeVariant Fusion.UsedAs<"ExtraSmall" | "Small" | "Medium" | "Large" | "ExtraLarge">?
-		@field IsHolding Fusion.UsedAs<boolean>?
-]=]
 return function(Scope: Fusion.Scope<any>, Props: Props)
-	local Scope = InnerScope(Scope, Fusion, Util, Components)
+	local Scope = Fusion.innerScope(Scope, Fusion, Util, Components)
 	local Theme = Themer.Theme:now()
 
 	local SizeVariant = Util.Fallback(Props.SizeVariant, "Medium")
@@ -63,7 +63,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local ContentColor = Util.Fallback(
 		Props.ContentColor,
 		Scope:Computed(function(Use)
-			return ColorUtils.Emphasize(Use(Color), Use(Theme.Emphasis.Contrast))
+			return Util.Emphasize(Use(Color), Use(Theme.Emphasis.Contrast))
 		end)
 	)
 	local ContentSize = Util.Fallback(
@@ -82,19 +82,21 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	)
 	local ContentWrapped = Util.Fallback(Props.ContentWrapped, false)
 
-	local IsHovering = Scope:EnsureValue(Util.Fallback(Props.IsHovering, false))
-	local IsHolding = Scope:EnsureValue(Util.Fallback(Props.IsHolding, false))
+	local Hovering = Scope:EnsureValue(Util.Fallback(Props.Hovering, false))
+	local Holding = Scope:EnsureValue(Util.Fallback(Props.Holding, false))
 
 	local EffectiveColor = Scope:Computed(function(Use)
 		if Use(Disabled) then
 			return Use(Theme.Colors.BaseContent.Main)
 		else
-			if Use(IsHolding) then
-				return ColorUtils.Emphasize(Use(Color), Use(Theme.Emphasis.Regular))
-			elseif Use(IsHovering) then
-				return ColorUtils.Emphasize(Use(Color), Use(Theme.Emphasis.Light))
+			local BaseColor = Use(Color)
+
+			if Use(Holding) then
+				return Util.Emphasize(BaseColor, Use(Theme.Emphasis.Regular))
+			elseif Use(Hovering) then
+				return Util.Emphasize(BaseColor, Use(Theme.Emphasis.Light))
 			else
-				return Use(Color)
+				return BaseColor
 			end
 		end
 	end)
@@ -113,6 +115,15 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			end
 		end
 	end)
+	local EffectiveStrokeEmphasis = Scope:Computed(function(Use)
+		local StrokeEmphasis = Use(Theme.StrokeEmphasis.Regular)
+
+		if (Use(Style) ~= "Filled") or Use(Disabled) or Use(Hovering) or Use(Holding) then
+			return 0
+		else
+			return StrokeEmphasis
+		end
+	end)
 	local EffectiveContentTransparency = Scope:Computed(function(Use)
 		if Use(Disabled) then
 			return DISABLED_CONTENT_TRANSPARENCY
@@ -122,11 +133,11 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	end)
 	local PaddingX = Scope:Computed(function(Use)
 		local VariantSizes = {
-			ExtraSmall = Use(Theme.Spacing["0.25"]),
-			Small = Use(Theme.Spacing["0.5"]),
-			Medium = Use(Theme.Spacing["0.75"]),
-			Large = Use(Theme.Spacing["1"]),
-			ExtraLarge = Use(Theme.Spacing["1.5"]),
+			ExtraSmall = Use(Theme.Padding["0.25"]),
+			Small = Use(Theme.Padding["0.5"]),
+			Medium = Use(Theme.Padding["0.75"]),
+			Large = Use(Theme.Padding["1"]),
+			ExtraLarge = Use(Theme.Padding["1.5"]),
 		}
 
 		return UDim.new(0, VariantSizes[Use(SizeVariant)])
@@ -140,11 +151,11 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			ExtraLarge = 2,
 		}
 
-		return UDim.new(0, Use(Theme.Spacing["0.25"]) * VariantSizes[Use(SizeVariant)])
+		return UDim.new(0, Use(Theme.Padding["0.25"]) * VariantSizes[Use(SizeVariant)])
 	end)
 
 	return Scope:BaseButton(Util.CombineProps(Props, {
-		Name = "Button",
+		Name = script.Name,
 		BackgroundTransparency = Scope:Computed(function(Use)
 			if Use(Style) == "Filled" then
 				if Use(Disabled) then
@@ -157,31 +168,48 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 			end
 		end),
 		BackgroundColor3 = Scope:Spring(EffectiveColor, Theme.SpringSpeed["1"], Theme.SpringDampening["1"]),
-		PaddingLeft = PaddingX,
-		PaddingRight = PaddingX,
-		PaddingTop = PaddingY,
-		PaddingBottom = PaddingY,
-		CornerRadius = Scope:Computed(function(Use)
-			return UDim.new(0, Use(Theme.CornerRadius["1"]))
-		end),
-		ListEnabled = true,
-		ListFillDirection = Enum.FillDirection.Horizontal,
-		ListHorizontalAlignment = Enum.HorizontalAlignment.Center,
-		ListVerticalAlignment = Enum.VerticalAlignment.Center,
-		ListWraps = false,
-		StrokeEnabled = true,
-		StrokeColor = Scope:Spring(EffectiveColor, Theme.SpringSpeed["1"], Theme.SpringDampening["1"]),
-		StrokeTransparency = Scope:Computed(function(Use)
-			if Use(Style) == "Ghost" then
-				return 1
-			elseif Use(Disabled) then
-				return DISABLED_BACKGROUND_TRANSPARENCY
-			else
-				return 0
-			end
-		end),
-		IsHolding = IsHolding,
-		IsHovering = IsHovering,
+		Padding = {
+			Left = PaddingX,
+			Right = PaddingX,
+			Top = PaddingY,
+			Bottom = PaddingY,
+		},
+		Corner = {
+			Radius = Scope:UDim(0, Theme.CornerRadius["1"]),
+		},
+		List = {
+			FillDirection = Enum.FillDirection.Horizontal,
+			HorizontalAlignment = Enum.HorizontalAlignment.Center,
+			VerticalAlignment = Enum.VerticalAlignment.Center,
+			Wraps = false,
+		},
+		Stroke = {
+			Color = Color3.fromRGB(255, 255, 255),
+			Gradient = {
+				Color = Scope:Computed(function(Use)
+					return ColorSequence.new({
+						ColorSequenceKeypoint.new(
+							0,
+							ColorUtils.Lighten(Use(EffectiveColor), Use(EffectiveStrokeEmphasis))
+						),
+						ColorSequenceKeypoint.new(1, Use(EffectiveColor)),
+					})
+				end),
+				Rotation = 90,
+			},
+			Transparency = Scope:Computed(function(Use)
+				if Use(Style) == "Ghost" then
+					return 1
+				elseif Use(Disabled) then
+					return DISABLED_BACKGROUND_TRANSPARENCY
+				else
+					return 0
+				end
+			end),
+		},
+
+		Holding = Holding,
+		Hovering = Hovering,
 
 		[Children] = {
 			Scope:IconText {
@@ -190,11 +218,11 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 				ContentTransparency = EffectiveContentTransparency,
 				ContentSize = ContentSize,
 				ContentWrapped = ContentWrapped,
-				ListPadding = Scope:Computed(function(Use)
-					return UDim.new(0, Use(Theme.Spacing["0.25"]))
-				end),
-				ListHorizontalAlignment = Enum.HorizontalAlignment.Center,
-				ListVerticalAlignment = Enum.VerticalAlignment.Center,
+				List = {
+					Padding = Scope:UDim(0, Theme.Spacing["0.25"]),
+					VerticalAlignment = Enum.VerticalAlignment.Center,
+					HorizontalAlignment = Enum.HorizontalAlignment.Center,
+				},
 			},
 		},
 	}))

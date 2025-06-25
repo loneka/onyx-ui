@@ -1,0 +1,40 @@
+name = "avafe/onyx_ui"
+version = "1.0.0"
+description = "Quick, quality UI for Fusion"
+authors = ["Avafe"]
+repository = "https://github.com/loneka/onyx-ui"
+license = "MIT"
+
+[target]
+environment = "roblox"
+lib = "src/init.luau"
+build_files = ["src"]
+
+[indices]
+default = "https://github.com/pesde-pkg/index"
+
+[wally_indices]
+default = "https://github.com/UpliftGames/wally-index"
+
+[scripts]
+roblox_sync_config_generator = ".pesde/scripts/roblox_sync_config_generator.luau"
+sourcemap_generator = ".pesde/scripts/sourcemap_generator.luau"
+
+[dev_dependencies]
+scripts = { name = "pesde/scripts_rojo", version = "^0.1.0", target = "lune" }
+rojo = { name = "pesde/rojo", version = "^7.4.4", target = "lune" }
+
+[dependencies]
+ColorUtils = { wally = "csqrl/colour-utils", version = "^1.4.1" }
+Fusion = { wally = "elttob/fusion", version = "^0.3.0" }
+
+# For wally
+
+# exclude = ["**"]
+# include = [
+#   "src",
+#   "src/*",
+#   "default.project.json",
+#   "wally.lock",
+#   "wally.toml",
+# ]

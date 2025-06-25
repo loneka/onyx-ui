@@ -63,14 +63,26 @@ local BitCave = NewTheme(Scope, {
 	StrokeThickness = {
 		Base = 2,
 	},
+	StrokeEmphasis = {
+		Regular = 0,
+	},
 	Spacing = {
+		Base = 24,
+	},
+	Padding = {
 		Base = 28,
+	},
+	Sizing = {
+		Base = 24,
 	},
 	SpringSpeed = {
 		Base = 60,
 	},
 	SpringDampening = {
 		Base = 0.75,
+	},
+	Emphasis = {
+		Regular = 0.125,
 	},
 })
 
