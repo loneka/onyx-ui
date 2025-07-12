@@ -27,6 +27,8 @@ local TextArea = require(script.Components.TextArea)
 local TitleBar = require(script.Components.TitleBar)
 local TextSwap = require(script.Components.TextSwap)
 local Slider = require(script.Components.Slider)
+local IconSwap = require(script.Components.IconSwap)
+local Tabs = require(script.Components.Tabs)
 
 export type Theme = Themer.Theme
 export type ThemeSpec = Themer.ThemeSpec
@@ -55,7 +57,9 @@ export type TextInputProps = TextInput.Props
 export type TextAreaProps = TextArea.Props
 export type TitleBarProps = TitleBar.Props
 export type TextSwapProps = TextSwap.Props
+export type IconSwapProps = IconSwap.Props
 export type SliderProps = Slider.Props
+export type TabsProps = Tabs.Props
 
 export type CornerProps = Base.CornerProps
 export type PaddingProps = Base.PaddingProps
