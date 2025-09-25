@@ -45,6 +45,10 @@
 	.Transparency number? -- The transparency of the stroke.
 	.LineJoinMode Enum.LineJoinMode? -- The line join mode of the stroke.
 	.ApplyStrokeMode Enum.ApplyStrokeMode? -- The apply stroke mode of the stroke.
+	.BorderOffset UDim? -- The offset of the stroke's position, relative to the parent's minimum height or width.
+	.BorderStrokePosition Enum.BorderStrokePosition? -- The stroke's position on its parent's border.
+	.StrokeSizingMode Enum.StrokeSizingMode? -- The sizing mode of the stroke.
+	.ZIndex number? -- The render order of the stroke relative to sibling stroke instances.
 	.Gradient GradientProps? -- The gradient applied to the stroke.
 ]=]
 
@@ -247,6 +251,10 @@ export type StrokeProps = {
 	Transparency: Fusion.UsedAs<number>?,
 	LineJoinMode: Fusion.UsedAs<Enum.LineJoinMode>?,
 	ApplyStrokeMode: Fusion.UsedAs<Enum.ApplyStrokeMode>?,
+	BorderOffset: Fusion.UsedAs<UDim>?,
+	BorderStrokePosition: Fusion.UsedAs<Enum.BorderStrokePosition>?,
+	StrokeSizingMode: Fusion.UsedAs<Enum.StrokeSizingMode>?,
+	ZIndex: Fusion.UsedAs<number>?,
 
 	Gradient: Fusion.UsedAs<GradientProps>?,
 }
@@ -534,6 +542,10 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 						Transparency = StrokeValue.Transparency,
 						ApplyStrokeMode = StrokeValue.ApplyStrokeMode,
 						LineJoinMode = StrokeValue.LineJoinMode,
+						BorderOffset = StrokeValue.BorderOffset,
+						BorderStrokePosition = StrokeValue.BorderStrokePosition,
+						StrokeSizingMode = StrokeValue.StrokeSizingMode,
+						ZIndex = StrokeValue.ZIndex,
 
 						[Children] = {
 							Scope:Computed(function(Use)
