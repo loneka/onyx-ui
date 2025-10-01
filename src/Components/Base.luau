@@ -542,9 +542,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 						Transparency = StrokeValue.Transparency,
 						ApplyStrokeMode = StrokeValue.ApplyStrokeMode,
 						LineJoinMode = StrokeValue.LineJoinMode,
-						Offset = StrokeValue.Offset,
-						Position = StrokeValue.Position,
-						SizingMode = StrokeValue.SizingMode,
+						BorderOffset = StrokeValue.Offset,
+						BorderStrokePosition = StrokeValue.Position,
+						StrokeSizingMode = StrokeValue.SizingMode,
 						ZIndex = StrokeValue.ZIndex,
 
 						[Children] = {
