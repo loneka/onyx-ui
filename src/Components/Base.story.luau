@@ -33,6 +33,10 @@ return {
 					Stroke = {
 						Thickness = 5,
 						Color = Color3.fromRGB(255, 0, 0),
+						Offset = UDim.new(0, 5),
+						Position = Enum.BorderStrokePosition.Outer,
+						SizingMode = Enum.StrokeSizingMode.FixedSize,
+						ZIndex = 34,
 					},
 				},
 				Scope:Base {
