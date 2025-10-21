@@ -105,14 +105,14 @@ end
 	@param Scope Fusion.Scope<typeof(Fusion)>
 	@param X Fusion.UsedAs<number>
 	@param Y Fusion.UsedAs<number>
-	@return Fusion.Computed<UDim2>
+	@return Fusion.Computed<Font>
 ]=]
 function Unit.Font(
 	Scope: Fusion.Scope<typeof(Fusion)>,
 	Family: Fusion.UsedAs<string>,
 	Weight: Fusion.UsedAs<Enum.FontWeight>?,
 	Style: Fusion.UsedAs<Enum.FontStyle>?
-): Fusion.Computed<UDim2>
+): Fusion.Computed<Font>
 	return Scope:Computed(function(Use)
 		return Font.new(Use(Family), Use(Weight), Use(Style) or Enum.FontStyle.Normal)
 	end)
