@@ -20,6 +20,7 @@ local Workspace = game:GetService("Workspace")
 local OnyxUI = script.Parent.Parent
 local Fusion = require(OnyxUI.Parent.Fusion)
 local Util = require(OnyxUI.Util)
+local ViewportSize = require(OnyxUI.Util.ViewportSize)
 
 local Out = Fusion.Out
 
@@ -45,20 +46,18 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local MaxScale = Util.Fallback(Props.MaxScale, math.huge)
 	local ScaleMultiplier = Util.Fallback(Props.ScaleMultiplier, 1)
 
-	local ViewportSize = Scope:Value(Vector2.new())
-	Scope:Hydrate(Workspace.CurrentCamera) {
-		[Out "ViewportSize"] = ViewportSize,
-	}
+	local ScreenSize = Scope:Value(Vector2.new())
+
+	ViewportSize:Observe(function(Size)
+		ScreenSize:set(Size)
+	end)
 
 	return Scope:Frame(Util.CombineProps(Props, {
 		Name = script.Name,
 		Scale = {
 			Scale = Scope:Computed(function(Use)
 				local Ratio = Use(ScaleMultiplier)
-					/ math.max(
-						(Use(BaseResolution).X / Use(ViewportSize).X),
-						(Use(BaseResolution).Y / Use(ViewportSize).Y)
-					)
+					/ math.max((Use(BaseResolution).X / Use(ScreenSize).X), (Use(BaseResolution).Y / Use(ScreenSize).Y))
 				return math.clamp(Ratio, Use(MinScale), Use(MaxScale))
 			end),
 		},
