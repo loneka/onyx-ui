@@ -712,9 +712,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props): Instance
 				if InProps and (Use(FlexValue.Mode) ~= Enum.UIFlexMode.None) then
 					return Scope:New "UIFlexItem" {
 						FlexMode = FlexValue.Mode,
-						FlexItemLineAlignment = FlexValue.ItemLineAlignment,
-						FlexGrowRatio = FlexValue.GrowRatio,
-						FlexShrinkRatio = FlexValue.ShrinkRatio,
+						ItemLineAlignment = FlexValue.ItemLineAlignment,
+						GrowRatio = FlexValue.GrowRatio,
+						ShrinkRatio = FlexValue.ShrinkRatio,
 					}
 				end
 			end),
