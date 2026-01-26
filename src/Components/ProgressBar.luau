@@ -50,6 +50,9 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 	local Stroke = Util.Fallback(Props.Stroke, {
 		Thickness = Theme.StrokeThickness["1"],
 	})
+	local Corner = Util.Fallback(Props.Corner, {
+		Radius = Scope:UDim(0, Theme.CornerRadius["Full"]),
+	})
 
 	return Scope:Frame(Util.CombineProps(Props, {
 		Name = script.Name,
@@ -65,9 +68,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 		AutomaticSize = Enum.AutomaticSize.None,
 		BackgroundTransparency = 0,
 		BackgroundColor3 = Theme.Colors.Neutral.Dark,
-		Corner = {
-			Radius = Scope:UDim(0, Theme.CornerRadius["Full"]),
-		},
+		Corner = Corner,
 		Padding = {
 			All = Scope:Computed(function(Use)
 				return UDim.new(0, Use(Use(Stroke).Thickness))
@@ -129,9 +130,7 @@ return function(Scope: Fusion.Scope<any>, Props: Props)
 						Rotation = 90,
 					},
 				},
-				Corner = {
-					Radius = Scope:UDim(0, Theme.CornerRadius["Full"]),
-				},
+				Corner = Corner
 			},
 		},
 	}))
