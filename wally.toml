@@ -10,8 +10,6 @@ realm = "shared"
 registry = "https://github.com/UpliftGames/wally-index"
 version = "1.0.4"
 
-For wally
-
 exclude = ["**"]
 include = [
   "src",
