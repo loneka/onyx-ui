@@ -3,8 +3,6 @@ lune_packages
 roblox_packages
 .pesde
 
-wally.toml
-
 *.lock
 *.rbxl.lock
 
