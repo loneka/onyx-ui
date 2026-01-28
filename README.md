@@ -13,10 +13,6 @@
 </p>
 
 <p align="center">
-  <img title="MIT licensed" alt="License" src="https://img.shields.io/github/license/ImAvafe/OnyxUI"></img>
-</p>
-
-<p align="center">
   <a href="https://avafe.me/"><img src="https://img.shields.io/badge/avafe.me-%239f84ff?style=for-the-badge&logo=inertia&logoColor=white " /></a>
   <a href="https://avafe.me/bsky"><img src="https://img.shields.io/badge/Bluesky-0285FF?logo=bluesky&logoColor=fff&style=for-the-badge" /></a>
   <a href="https://avafe.me/x"><img src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white" /></a>
@@ -25,23 +21,24 @@
 
 ---
 
-## High quality components 🧩
+## Quality components 🧩
 
-Make quality UI faster with dozens of fully-typed components.
+Build quality UI faster with dozens of hand-crafted components. Everything is fully typed, so you can spend more time making UI instead of reading the docs.
 
 ##  Comprehensive theming 🎨
 
-Give your UI the look and feel you desire with ease.
+Style *all* components into the look and feel you desire with OnyxUI's dynamic theming system. Base values propagate into proportional scales, enforcing consistency with ease.
 
 ## Styling, now *not* stupid 🖌️
 
-Messy markup sucks. Style any component, with less code, using OnyxUI's passthrough styling props.
+Messy markup sucks. Style any component, with as little as half the code, using passthrough styling props. You can even create compound styles, like gradient strokes.
 
 ## [Documentation 📄](https://loneka.com/onyx-ui/)
 
 ##
 
+---
+
 <span align="center">
   <a href="https://suite.loneka.com" target="_blank" rel="noopener noreferrer"><img src="https://github.com/user-attachments/assets/05d870f1-a166-4908-a437-a62b27be4bec" height="120px"></img></a>
-  <a href="https://avafe.me" target="_blank" rel="noopener noreferrer"><img src="https://github.com/user-attachments/assets/7e8ca32f-d08d-48d7-b9a1-0146092d555b" height="120px"></img></a>
 </span>
